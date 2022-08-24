@@ -1,4 +1,4 @@
-﻿namespace WesternLibraryManagement
+﻿namespace WesternLibraryManagementSystem
 {
     partial class Form1
     {
