@@ -17,8 +17,22 @@ namespace WesternLibraryManagementSystem.Libs
         public static SQLiteConnection Conn = new SQLiteConnection(connectionString);
         public static SQLiteCommand Cmd;
 
-        public static (string Name, string Fields) TableBook = ("book","isbn,dewey,title,author,publisher,publishYear,page,other,qty");
-        public static (string Name, string Fields) TableBookCate = ("bookCate", "cateName");
+        public static string GetDBTableFields(string tableName)
+        {
+            List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
+            {
+                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,page,other,qty,cateID,dayAdded"),
+                ("tblBookCate", "cateID,cateName"),
+                ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel"),
+                ("tblLoanStatus", "loanStatusID,loanStatusName"),
+                ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
+                ("tblUser", "userID,firstName,lastName,gender,dob,addr,tel,email"),
+                ("tblRole", "roleID,roleName"),
+                ("tblUserROle", "userRoleID,userID,roleID")
+            };
+            int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));
+            return dbTables[index].Fields;
+        }
 
         public static void InsertRecord(string tableName, string fieldNames, List<string> values)
         {
@@ -65,6 +79,8 @@ namespace WesternLibraryManagementSystem.Libs
         public static void UpdateRecord(string tableName, List<string> fieldNames,
             string conditionFIeldName, string conditionValue, List<string> values)
         {
+            // remove ID field from fieldNames list
+            fieldNames.RemoveAt(0);
             StringBuilder setFieldsValue = new StringBuilder();
             int index = 1;
             foreach (string field in fieldNames)
@@ -158,6 +174,31 @@ namespace WesternLibraryManagementSystem.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
+        }
+
+        public static string GetAutoID(string tableName, string primaryKeyField)
+        {
+            string autoID = String.Empty;
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand($"SELECT MAX({primaryKeyField})+1 FROM {tableName};", Conn);
+                object result = Cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    autoID = result.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+            return autoID;
         }
     }
 }

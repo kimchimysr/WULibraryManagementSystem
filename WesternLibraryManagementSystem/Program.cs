@@ -16,7 +16,7 @@ namespace WesternLibraryManagementSystem.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSQLiteConnection());
+            Application.Run(new Form1());
         }
     }
 }

@@ -37,7 +37,7 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(12, 349);
+            this.btnInsert.Location = new System.Drawing.Point(12, 358);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(163, 54);
             this.btnInsert.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(329, 349);
+            this.btnUpdate.Location = new System.Drawing.Point(206, 358);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(163, 54);
             this.btnUpdate.TabIndex = 0;
@@ -60,12 +60,12 @@
             this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBooks.Location = new System.Drawing.Point(12, 12);
             this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.Size = new System.Drawing.Size(776, 331);
+            this.dgvBooks.Size = new System.Drawing.Size(1152, 331);
             this.dgvBooks.TabIndex = 1;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(625, 349);
+            this.btnDelete.Location = new System.Drawing.Point(400, 358);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(163, 54);
             this.btnDelete.TabIndex = 0;
@@ -77,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1176, 424);
             this.Controls.Add(this.dgvBooks);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
