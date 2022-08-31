@@ -1,59 +1,59 @@
 CREATE TABLE tblBook (
-	bookID INTEGER PRIMARY KEY AUTOINCREMENT,
-	isbn TEXT,
-	dewey TEXT,
-	title TEXT,
-	author TEXT,
-	publisher TEXT,
-	publishYear INTEGER,
-	pages TEXT,
-	other TEXT,
-	qty INTEGER
-	cateID INTEGER
-	dateAdded TEXT,
+	bookID integer PRIMARY KEY AUTOINCREMENT,
+	isbn text,
+	dewey text,
+	title text,
+	author text,
+	publisher text,
+	publishYear numeric,
+	pages text,
+	other text,
+	qty integer,
+	cateID integer,
+	dateAdded numeric,
 	FOREIGN KEY (cateID) REFERENCES tblBookCategory(cateID)
 );
 
 CREATE TABLE tblBookCategory (
-	cateID INTEGER PRIMARY KEY AUTOINCREMENT,
-	cateName TEXT
+	cateID integer PRIMARY KEY AUTOINCREMENT,
+	cateName text
 );
 
 CREATE TABLE tblUser (
-	userID INTEGER PRIMARY KEY AUTOINCREMENT,
-	firstName TEXT,
-	lastName TEXT,
-	gender TEXT,
-	dob TEXT,
-	addr TEXT,
-	tel TEXT,
-	email TEXT,
-	dateAdded TEXT
+	userID integer PRIMARY KEY AUTOINCREMENT,
+	firstName text,
+	lastName text,
+	gender text,
+	dob date,
+	addr text,
+	tel text,
+	email text
+	dateAdded numeric
 );
 
 CREATE TABLE tblRole (
-	roleID INTEGER PRIMARY KEY AUTOINCREMENT,
-	roleName TEXT
+	roleID integer PRIMARY KEY AUTOINCREMENT,
+	roleName text
 );
 
 CREATE TABLE tblUserRole (
-	userRoleID INTEGER PRIMARY KEY AUTOINCREMENT,
-	userID INTEGER,
-	roleID INTEGER,
+	userRoleID integer PRIMARY KEY AUTOINCREMENT,
+	userID integer,
+	roleID integer,
 	FOREIGN KEY (userID) REFERENCES tblUser(userID),
 	FOREIGN KEY (roleID) REFERENCES tblRole(roleID)
 );
 
 CREATE TABLE tblBorrow (
-	borrowID INTEGER,
-	bookID INTEGER,
-	studentID TEXT,
-	userID INTEGER,
-	dateLoan TEXT,
-	dateDue	TEXT,
-	dateReturned TEXT,
-	overdueFine INTEGER,
-	loanStatusID INTEGER,
+	borrowID integer PRIMARY KEY AUTOINCREMENT,
+	bookID integer,
+	studentID text,
+	userID integer,
+	dateLoan numeric,
+	dateDue numeric,
+	dateReturned numeric,
+	overdueFine numeric,
+	loanStatusID integer,
 	FOREIGN KEY (bookID) REFERENCES tblBook(bookID),
 	FOREIGN KEY (studentID) REFERENCES tblBorrower(studentID),
 	FOREIGN KEY (userID) REFERENCES tblUser(userID),
@@ -61,16 +61,16 @@ CREATE TABLE tblBorrow (
 );
 
 CREATE TABLE tblBorrower (
-	studentID TEXT,
-	firstName TEXT,
-	lastName TEXT,
-	gender TEXT,
-	year INTEGER,
-	major TEXT,
-	tel TEXT
+	studentID text,
+	firstName text,
+	lastName text,
+	gender text,
+	year integer,
+	major text,
+	tel text
 );
 
 CREATE TABLE tblLoanStatus (
-	loanStatusID INTEGER PRIMARY KEY AUTOINCREMENT,
-	loanStatusName TEXT
+	loanStatusID integer PRIMARY KEY AUTOINCREMENT,
+	loanStatusName text
 );

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 using WesternLibraryManagementSystem.Libs;
 
 namespace WesternLibraryManagementSystem.Forms
@@ -27,7 +28,7 @@ namespace WesternLibraryManagementSystem.Forms
         {
             List<string> values = new List<string>
             {
-                LibModule.GetAutoID("tblBook", "bookID"),
+                LibModule.GetAutoID("book", "bookID"),
                 "1234567890123",
                 "800 HAR",
                 "Harry Potter",
@@ -49,7 +50,7 @@ namespace WesternLibraryManagementSystem.Forms
             List<string> fieldNames = new List<string>();
             fieldNames.AddRange(LibModule.GetDBTableFields("tblBook").Split(','));
 
-            string selectedBookID = "2302";
+            string selectedBookID = "4423";
             List<string> values = new List<string>
             {
                 "1234567890123",
@@ -71,7 +72,7 @@ namespace WesternLibraryManagementSystem.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            string selectedBookID = "2302";
+            string selectedBookID = "4423";
             LibModule.DeleteRecord("tblBook", "bookID", selectedBookID);
             LibModule.FillDataGridView("tblBook", dgvBooks);
         }
