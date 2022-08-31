@@ -21,7 +21,7 @@ namespace WesternLibraryManagementSystem.Libs
         {
             List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
             {
-                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,page,other,qty,cateID,dayAdded"),
+                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 ("tblBookCate", "cateID,cateName"),
                 ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
@@ -159,7 +159,7 @@ namespace WesternLibraryManagementSystem.Libs
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName}", Conn);
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -169,6 +169,7 @@ namespace WesternLibraryManagementSystem.Libs
             {
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
+
             finally
             {
                 Cmd.Dispose();
@@ -183,6 +184,7 @@ namespace WesternLibraryManagementSystem.Libs
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand($"SELECT MAX({primaryKeyField})+1 FROM {tableName};", Conn);
+                // return result of a single column
                 object result = Cmd.ExecuteScalar();
                 if (result != null)
                 {
