@@ -21,7 +21,7 @@ namespace WesternLibraryManagementSystem.Libs
         {
             List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
             {
-                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,page,other,qty,cateID,dayAdded"),
+                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 ("tblBookCate", "cateID,cateName"),
                 ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
