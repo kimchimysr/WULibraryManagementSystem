@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0F681D43-8A25-4DA0-97C8-0CCE35434647}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WesternLibraryManagement</RootNamespace>
-    <AssemblyName>WesternLibraryManagement</AssemblyName>
+    <RootNamespace>WesternLibraryManagementSystem</RootNamespace>
+    <AssemblyName>WesternLibraryManagementSystem</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -72,11 +72,47 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBook.Designer.cs">
+      <DependentUpon>FrmBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBorrowBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBorrowBook.Designer.cs">
+      <DependentUpon>FrmBorrowBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBorrower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBorrower.Designer.cs">
+      <DependentUpon>FrmBorrower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMainMenu.Designer.cs">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmReturnBook.Designer.cs">
+      <DependentUpon>FrmReturnBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmSQLiteConnection.Designer.cs">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmUser.Designer.cs">
+      <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Libs\LibModule.cs" />
     <Compile Include="Libs\Utils.cs" />
@@ -85,8 +121,14 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmUser.resx">
+      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,6 +138,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

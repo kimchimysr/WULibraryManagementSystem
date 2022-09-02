@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WesternLibraryManagement.Properties {
+namespace WesternLibraryManagementSystem.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,6 +20,15 @@ namespace WesternLibraryManagement.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Database\\library.db")]
+        public string LibDbConnectionString {
+            get {
+                return ((string)(this["LibDbConnectionString"]));
             }
         }
     }

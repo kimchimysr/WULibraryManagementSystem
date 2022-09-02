@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 
 namespace WesternLibraryManagementSystem.Libs
 {
     public static class LibModule
     {
-        private static string connectionString =
-            Path.Combine("Data Source=" + Environment.CurrentDirectory, "Database/library.db");
+        private static string connectionString = Properties.Settings.Default.LibDbConnectionString;
         public static SQLiteConnection Conn = new SQLiteConnection(connectionString);
         public static SQLiteCommand Cmd;
 
@@ -26,7 +27,7 @@ namespace WesternLibraryManagementSystem.Libs
                 ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
                 ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                ("tblUser", "userID,firstName,lastName,gender,dob,addr,tel,email"),
+                ("tblUser", "userID,uername,password,firstName,lastName,gender,dob,addr,tel,email"),
                 ("tblRole", "roleID,roleName"),
                 ("tblUserROle", "userRoleID,userID,roleID")
             };
@@ -154,6 +155,36 @@ namespace WesternLibraryManagementSystem.Libs
             }
         }
 
+        public static bool IsDuplicatedRecord(string tableName, string fieldName, string checkDuplicateValue)
+        {
+            bool duplicate = false;
+            string query = $"SELECT {fieldName} FROM {tableName};";
+            Cmd = new SQLiteCommand(query, Conn);
+            try
+            {
+                Conn.Open();
+                SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SequentialAccess);
+                if (reader.HasRows)
+                    while (reader.Read())
+                        if (reader.GetString(reader.GetOrdinal(fieldName)).Equals(checkDuplicateValue))
+                        {
+                            duplicate = true;
+                        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Check Duplicate Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+                if (duplicate == true)
+                    MessageBox.Show("Record Already Exist!", "Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return duplicate;
+        }
+
         public static void FillDataGridView(string tableName, DataGridView dataGridView)
         {
             try
@@ -176,17 +207,23 @@ namespace WesternLibraryManagementSystem.Libs
             }
         }
 
+
         public static string GetAutoID(string tableName, string primaryKeyField)
         {
             string autoID = String.Empty;
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT MAX({primaryKeyField})+1 FROM {tableName};", Conn);
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName} ORDER BY {primaryKeyField} DESC;", Conn);
                 object result = Cmd.ExecuteScalar();
                 if (result != null)
                 {
-                    autoID = result.ToString();
+                    int increment = int.Parse(result.ToString()) + 1;
+                    autoID = increment.ToString();
+                }
+                else
+                {
+                    autoID = "1";
                 }
             }
             catch (Exception ex)

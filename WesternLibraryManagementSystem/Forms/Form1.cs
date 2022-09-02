@@ -40,8 +40,11 @@ namespace WesternLibraryManagementSystem.Forms
                 "3",
                 "2022-09-10"
             };
-            LibModule.InsertRecord("tblBook", LibModule.GetDBTableFields("tblBook"), values);
-            LibModule.FillDataGridView("tblBook", dgvBooks);
+            if (!LibModule.IsDuplicatedRecord("tblBook", "title", "Harry Potter"))
+            {
+                LibModule.InsertRecord("tblBook", LibModule.GetDBTableFields("tblBook"), values);
+                LibModule.FillDataGridView("tblBook", dgvBooks);
+            }        
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
