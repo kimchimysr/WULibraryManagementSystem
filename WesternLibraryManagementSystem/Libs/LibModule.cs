@@ -67,8 +67,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of error " + ex.GetType() + "\nMessage: " + ex.Message.ToString() +
-                "\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -119,8 +119,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of error " + ex.GetType() + "\nMessage: " + ex.Message.ToString() +
-                "\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -147,8 +147,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of error " + ex.GetType() + "\nMessage: " + ex.Message.ToString() +
-                "\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -170,8 +170,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of error " + ex.GetType() + "\nMessage: " + ex.Message.ToString() +
-                "\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -195,8 +195,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of error " + ex.GetType() + "\nMessage: " + ex.Message.ToString() +
-                "\nStack Trace: " + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
