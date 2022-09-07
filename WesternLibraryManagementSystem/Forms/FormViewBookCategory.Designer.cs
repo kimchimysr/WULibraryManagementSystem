@@ -31,11 +31,21 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelViewCategory = new System.Windows.Forms.Panel();
             this.panelButton = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panelMain.SuspendLayout();
+            this.panelViewCategory.SuspendLayout();
+            this.panelButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
             // 
+            this.panelMain.Controls.Add(this.label1);
             this.panelMain.Controls.Add(this.panelButton);
             this.panelMain.Controls.Add(this.panelViewCategory);
             this.panelMain.Location = new System.Drawing.Point(-1, -1);
@@ -45,17 +55,79 @@
             // 
             // panelViewCategory
             // 
-            this.panelViewCategory.Location = new System.Drawing.Point(122, 54);
+            this.panelViewCategory.Controls.Add(this.dataGridView1);
+            this.panelViewCategory.Location = new System.Drawing.Point(122, 65);
             this.panelViewCategory.Name = "panelViewCategory";
             this.panelViewCategory.Size = new System.Drawing.Size(557, 508);
             this.panelViewCategory.TabIndex = 0;
             // 
             // panelButton
             // 
+            this.panelButton.Controls.Add(this.button4);
+            this.panelButton.Controls.Add(this.button3);
+            this.panelButton.Controls.Add(this.button2);
+            this.panelButton.Controls.Add(this.button1);
             this.panelButton.Location = new System.Drawing.Point(764, 104);
             this.panelButton.Name = "panelButton";
-            this.panelButton.Size = new System.Drawing.Size(170, 412);
+            this.panelButton.Size = new System.Drawing.Size(170, 373);
             this.panelButton.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(380, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(190, 37);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(30, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 67);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(19, 17);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(513, 480);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(30, 119);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 67);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(30, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 67);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(30, 265);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 67);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // FormViewBookCategory
             // 
@@ -66,6 +138,9 @@
             this.Name = "FormViewBookCategory";
             this.Text = "FormViewBookCategory";
             this.panelMain.ResumeLayout(false);
+            this.panelViewCategory.ResumeLayout(false);
+            this.panelButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -75,5 +150,11 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelButton;
         private System.Windows.Forms.Panel panelViewCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }
