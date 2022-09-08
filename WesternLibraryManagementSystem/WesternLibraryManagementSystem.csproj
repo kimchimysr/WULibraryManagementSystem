@@ -72,6 +72,12 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormViewBookCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormViewBookCategory.Designer.cs">
+      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormViewBookCategory.resx">
+      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
