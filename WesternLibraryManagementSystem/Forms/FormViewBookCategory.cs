@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WesternLibraryManagementSystem.Libs;
 
 namespace WesternLibraryManagement.Forms
 {
@@ -15,6 +16,11 @@ namespace WesternLibraryManagement.Forms
         public FormViewBookCategory()
         {
             InitializeComponent();
+        }
+
+        private void FormViewBookCategory_Load(object sender, EventArgs e)
+        {
+            LibModule.FillDataGridView("tblBookCategory",dgvBookCategories);
         }
     }
 }

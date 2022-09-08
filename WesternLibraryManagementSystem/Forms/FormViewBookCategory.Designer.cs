@@ -50,13 +50,13 @@
             this.panelMain.Controls.Add(this.panelViewCategory);
             this.panelMain.Location = new System.Drawing.Point(-1, -1);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1008, 600);
+            this.panelMain.Size = new System.Drawing.Size(685, 600);
             this.panelMain.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(380, 10);
+            this.label1.Location = new System.Drawing.Point(248, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 37);
             this.label1.TabIndex = 2;
@@ -68,7 +68,7 @@
             this.panelButton.Controls.Add(this.button3);
             this.panelButton.Controls.Add(this.button2);
             this.panelButton.Controls.Add(this.button1);
-            this.panelButton.Location = new System.Drawing.Point(764, 104);
+            this.panelButton.Location = new System.Drawing.Point(469, 98);
             this.panelButton.Name = "panelButton";
             this.panelButton.Size = new System.Drawing.Size(170, 373);
             this.panelButton.TabIndex = 1;
@@ -118,7 +118,7 @@
             this.panelViewCategory.Controls.Add(this.dgvBookCategories);
             this.panelViewCategory.Location = new System.Drawing.Point(122, 65);
             this.panelViewCategory.Name = "panelViewCategory";
-            this.panelViewCategory.Size = new System.Drawing.Size(557, 508);
+            this.panelViewCategory.Size = new System.Drawing.Size(296, 457);
             this.panelViewCategory.TabIndex = 0;
             // 
             // dgvBookCategories
@@ -126,17 +126,18 @@
             this.dgvBookCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookCategories.Location = new System.Drawing.Point(19, 17);
             this.dgvBookCategories.Name = "dgvBookCategories";
-            this.dgvBookCategories.Size = new System.Drawing.Size(513, 480);
+            this.dgvBookCategories.Size = new System.Drawing.Size(250, 410);
             this.dgvBookCategories.TabIndex = 0;
             // 
             // FormViewBookCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 600);
+            this.ClientSize = new System.Drawing.Size(683, 600);
             this.Controls.Add(this.panelMain);
             this.Name = "FormViewBookCategory";
             this.Text = "FormViewBookCategory";
+            this.Load += new System.EventHandler(this.FormViewBookCategory_Load);
             this.panelMain.ResumeLayout(false);
             this.panelButton.ResumeLayout(false);
             this.panelViewCategory.ResumeLayout(false);
