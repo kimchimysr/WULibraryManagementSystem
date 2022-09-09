@@ -113,6 +113,11 @@
     </Compile>
     <Compile Include="Forms\FrmReturnBook.Designer.cs">
       <DependentUpon>FrmReturnBook.cs</DependentUpon>
+    <Compile Include="Forms\FormViewBookCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormViewBookCategory.Designer.cs">
+      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
@@ -147,6 +152,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormViewBookCategory.resx">
+      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
