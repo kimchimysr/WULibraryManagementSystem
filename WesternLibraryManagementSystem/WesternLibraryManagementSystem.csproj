@@ -152,6 +152,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormViewBookCategory.resx">
       <DependentUpon>FormViewBookCategory.cs</DependentUpon>
     </EmbeddedResource>
