@@ -7,4 +7,4 @@ To Run the project
 
 To View Database(library.db)
 - Use DB Browser for SQLite Link:https://sqlitebrowser.org/dl/
-- Open DB Browser for SQLite and Click Open Database then chooose the database(library.db)
+- Open DB Browser for SQLite and Click Open Database then choose the database(library.db)
