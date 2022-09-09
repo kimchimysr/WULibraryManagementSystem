@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\DIalogAddUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DIalogAddUpdateUser.Designer.cs">
+      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     <Compile Include="Forms\FrmMainMenu.Designer.cs">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageUser.Designer.cs">
+      <DependentUpon>FrmManageUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,21 +126,36 @@
     <Compile Include="Forms\FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestingMethod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TestingMethod.Designer.cs">
+      <DependentUpon>TestingMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Libs\LibModule.cs" />
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\DIalogAddUpdateUser.resx">
+      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageUser.resx">
+      <DependentUpon>FrmManageUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestingMethod.resx">
+      <DependentUpon>TestingMethod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

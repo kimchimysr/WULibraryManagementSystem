@@ -25,7 +25,7 @@ namespace WesternLibraryManagementSystem.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Database\\library.db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Database\\library.db; Version=3; Foreign Keys=True;")]
         public string LibDbConnectionString {
             get {
                 return ((string)(this["LibDbConnectionString"]));

@@ -20,7 +20,7 @@ namespace WesternLibraryManagementSystem.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LibModule.FillDataGridView("tblBook", dgvBooks);
+            //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -42,19 +42,17 @@ namespace WesternLibraryManagementSystem.Forms
             };
             if (!LibModule.IsDuplicatedRecord("tblBook", "title", "Harry Potter"))
             {
-                LibModule.InsertRecord("tblBook", LibModule.GetDBTableFields("tblBook"), values);
-                LibModule.FillDataGridView("tblBook", dgvBooks);
+                LibModule.InsertRecord("tblBook", LibModule.GetTableField("tblBook"), values);
+                //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);
             }        
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            List<string> fieldNames = new List<string>();
-            fieldNames.AddRange(LibModule.GetDBTableFields("tblBook").Split(','));
-
             string selectedBookID = "2302";
             List<string> values = new List<string>
             {
+                "2302",
                 "1234567890123",
                 "800 HAR",
                 "Harry Potter",
@@ -68,15 +66,16 @@ namespace WesternLibraryManagementSystem.Forms
                 "2022-09-10"
             };
 
-            LibModule.UpdateRecord("tblBook", fieldNames, "bookID", selectedBookID, values);
-            LibModule.FillDataGridView("tblBook", dgvBooks);
+            LibModule.UpdateRecord("tblBook", LibModule.GetTableField("tblBook"),
+                "bookID", selectedBookID, values, true);
+            //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string selectedBookID = "2302";
             LibModule.DeleteRecord("tblBook", "bookID", selectedBookID);
-            LibModule.FillDataGridView("tblBook", dgvBooks);
+            //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);
         }
     }
 }
