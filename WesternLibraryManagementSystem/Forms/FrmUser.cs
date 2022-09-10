@@ -22,8 +22,8 @@ namespace WesternLibraryManagementSystem.Forms
         {
             LibModule.FillComboBox("tblRole", cbRole, "roleName", "roleID");
             //LibModule.FillDataGridView("tblUser",LibModule.GetTableField("tblUser"), dgvUsers);
-            Utils.ChangeControlEnabled(this, true,
-                txtSearchID.Name, btnNewUser.Name, btnFindUser.Name, btnRefresh.Name);
+            /*Utils.ChangeControlEnabled(this, true,
+                txtSearchID.Name, btnNewUser.Name, btnFindUser.Name, btnRefresh.Name);*/
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -33,11 +33,11 @@ namespace WesternLibraryManagementSystem.Forms
             {
                 case "btnNewUser":
                     txtUserID.Text = LibModule.GetAutoID("tblUser", "userID");
-                    Utils.ChangeControlEnabled(this, true, 
+                    /*Utils.ChangeControlEnabled(this, true, 
                         txtUsername.Name, txtFirstName.Name, txtLastName.Name,
                         txtAddress.Name, txtTelephone.Name, txtEmail.Name,
                         rbMale.Name, rbFemale.Name, dtpDOB.Name, cbRole.Name,
-                        btnSaveChanges.Name);
+                        btnSaveChanges.Name);*/
                     break;
                 case "btnFindUser":
                     break;
