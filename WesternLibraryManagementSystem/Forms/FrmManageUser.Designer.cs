@@ -143,6 +143,7 @@
             // 
             this.dgvUserList.AllowUserToAddRows = false;
             this.dgvUserList.AllowUserToDeleteRows = false;
+            this.dgvUserList.AllowUserToResizeColumns = false;
             this.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUserList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userID,

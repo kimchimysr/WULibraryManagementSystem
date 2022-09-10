@@ -35,7 +35,23 @@ namespace WesternLibraryManagementSystem.Forms
                 lblHeader.Text = "Edit User";
                 this.Text = "Edit User";
                 PopulateFields();
+                btnClear.Enabled = false;
+                txtUsername.ReadOnly = true;
             }
+        }
+
+        private bool IsValidData()
+        {
+            if (Utils.IsEmptyControl(this))
+                return false;
+            if (!isEditMode)
+            {
+                if (LibModule.IsDuplicated("tblUser", "username", txtUsername.Text.Trim(), "Username"))
+                    return false;
+            }
+            if (!Utils.IsValidEmail(txtEmail.Text.Trim()))
+                return false;
+            return true;
         }
 
         private void PopulateFields()
@@ -57,7 +73,7 @@ namespace WesternLibraryManagementSystem.Forms
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            if (!Utils.IsEmptyControl(this))
+            if (IsValidData())
             {
                 try
                 {
@@ -94,16 +110,17 @@ namespace WesternLibraryManagementSystem.Forms
                         dateAdded
                     };
 
+                    List<string> userRole = new List<string>
+                    {
+                        userID,
+                        roleID
+                    };
+
                     if (!isEditMode)
                     {
                         if (LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"),
                             user) == true)
                         {
-                            List<string> userRole = new List<string>
-                            {
-                                userID,
-                                roleID
-                            };
                             LibModule.InsertRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
                             userRole, false);
                         }
@@ -115,13 +132,8 @@ namespace WesternLibraryManagementSystem.Forms
                         if (LibModule.UpdateRecord("tblUser", LibModule.GetTableField("tblUser"),
                             "userID", userID, user, true, "password") == true)
                         {
-                            List<string> editUserRole = new List<string>
-                            {
-                                userID,
-                                roleID
-                            };
                             LibModule.UpdateRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
-                            "userID", userID, editUserRole, false);
+                            "userID", userID, userRole, false);
                         }
                     }
                     frmManageUser.PopulateDataGridView();
@@ -142,6 +154,15 @@ namespace WesternLibraryManagementSystem.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verify that the pressed key isn't CTRL or any non-numeric digit
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

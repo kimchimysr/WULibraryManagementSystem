@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -183,6 +184,20 @@ namespace WesternLibraryManagementSystem.Libs
                 row.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
             }
             return row.ToString();
+        }
+
+        public static bool IsValidEmail(string str)
+        {
+            // a valid email format: (randomString)@(randomString2).(2-3 characters)
+            Regex regex = new Regex("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+            if (!regex.IsMatch(str))
+            {
+                MessageBox.Show("Please enter a valid email address!", "Invalid Email Address",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

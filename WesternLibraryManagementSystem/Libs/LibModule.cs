@@ -173,7 +173,8 @@ namespace WesternLibraryManagementSystem.Libs
             }
         }
 
-        public static bool IsDuplicatedRecord(string tableName, string fieldName, string checkDuplicateValue)
+        public static bool IsDuplicated(string tableName, string fieldName, string checkDuplicateValue,
+            string fieldMessage = "record")
         {
             bool duplicate = false;
             string query = $"SELECT {fieldName} FROM {tableName};";
@@ -198,7 +199,7 @@ namespace WesternLibraryManagementSystem.Libs
                 Cmd.Dispose();
                 Conn.Close();
                 if (duplicate == true)
-                    MessageBox.Show("Record Already Exist!", "Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"{fieldMessage} Already Exist!", $"Duplicate {fieldMessage}", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return duplicate;
         }
