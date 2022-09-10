@@ -17,7 +17,7 @@ namespace WesternLibraryManagementSystem.Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmBook());
+            Application.Run(new FrmManageUser());
         }
     }
 }
