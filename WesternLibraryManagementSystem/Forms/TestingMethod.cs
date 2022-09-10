@@ -16,8 +16,8 @@ namespace WesternLibraryManagementSystem.Forms
         public TestingMethod()
         {
             InitializeComponent();
-            /*Utils.ChangeControlEnabled(this, true,
-                btn1.Name, btn2.Name, txt3.Name,txt4.Name);*/
+            Utils.ChangeControlEnabled(this, true,
+                btn1.Name, btn2.Name, txt3.Name,txt4.Name);
         }
 
         private void button1_Click(object sender, EventArgs e)
