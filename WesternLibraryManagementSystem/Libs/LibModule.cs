@@ -22,7 +22,7 @@ namespace WesternLibraryManagementSystem.Libs
             {
                 ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 ("tblBookCate", "cateID,cateName"),
-                ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel"),
+                ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
                 ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
                 ("tblUser", "userID,username,password,isActive,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
@@ -102,7 +102,7 @@ namespace WesternLibraryManagementSystem.Libs
                     setFieldsValue.Append($"{field}=@val{index++},");
                 }
             }
-            string query = $"UPDATE {tableName} SET {setFieldsValue} WHERE {conditionFIeldName}={conditionValue};";
+            string query = $"UPDATE {tableName} SET {setFieldsValue} WHERE {conditionFIeldName}='{conditionValue}';";
             try
             {
                 index = 1;
@@ -142,7 +142,7 @@ namespace WesternLibraryManagementSystem.Libs
         public static void DeleteRecord(string tableName, string conditionFieldName, string conditionValue,
             string record = null)
         {
-            string query = $"DELETE FROM {tableName} WHERE {conditionFieldName}={conditionValue};";
+            string query = $"DELETE FROM {tableName} WHERE {conditionFieldName}='{conditionValue}';";
             try
             {
                 Conn.Open();
@@ -255,52 +255,12 @@ namespace WesternLibraryManagementSystem.Libs
             return str;
         }
 
-        //public static void FillDataGridView(string tableName, string fieldName,
-        //    DataGridView dgv, params string[] fieldExc)
-        //{
-        //    List<string> fieldList = new List<string>();
-        //    fieldList.AddRange(fieldName.Split(','));
-        //    if (fieldExc.Length > 0)
-        //        foreach (string exc in fieldExc)
-        //            fieldList.Remove(exc);
-        //    StringBuilder fields = new StringBuilder();
-        //    foreach (string f in fieldList)
-        //    {
-        //        if (f == fieldList.Last())
-        //        {
-        //            fields.Append($"{f}");
-        //        }
-        //        else
-        //        {
-        //            fields.Append($"{f},");
-        //        }
-        //    }
-        //    try
-        //    {
-        //        Conn.Open();
-        //        Cmd = new SQLiteCommand($"SELECT {fields} FROM {tableName}", Conn);
-        //        SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-        //        DataTable dt = new DataTable();
-        //        adapter.Fill(dt);
-        //        dgv.DataSource = dt;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //    finally
-        //    {
-        //        Cmd.Dispose();
-        //        Conn.Close();
-        //    }
-        //}
-
-        public static void FillDataGridView(string tableName, DataGridView dgv)
+        public static void FillDataGrid(string tableName, DataGridView dgv)
         {
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName}", Conn);
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -351,7 +311,7 @@ namespace WesternLibraryManagementSystem.Libs
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand($"SELECT * FROM {tableName} " +
-                    $"WHERE {conditionFIeldName}={conditionValue};", Conn);
+                    $"WHERE {conditionFIeldName}='{conditionValue}';", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 adapter.Fill(dt);
             }
@@ -366,29 +326,6 @@ namespace WesternLibraryManagementSystem.Libs
             }
             return dt;
         }
-
-        //public static string GetForeignKeyField(string tableName, string fieldName,
-        //    string conditionFieldName, string conditionValue)
-        //{
-        //    string str = string.Empty;
-        //    try
-        //    {
-        //        Conn.Open();
-        //        Cmd = new SQLiteCommand($"SELECT {fieldName} FROM {tableName} " +
-        //            $"WHERE {conditionFieldName}={conditionValue};", Conn);
-        //        str = Cmd.ExecuteScalar().ToString();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, ex.GetType().ToString());
-        //    }
-        //    finally
-        //    {
-        //        Cmd.Dispose();
-        //        Conn.Close();
-        //    }
-        //    return str;
-        //}
 
         public static string GetAutoID(string tableName, string primaryKeyField)
         {
@@ -445,6 +382,34 @@ namespace WesternLibraryManagementSystem.Libs
             try
             {
                 Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv.AutoGenerateColumns = false;
+                dgv.DataSource = dt;
+                dgv.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
+                    $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+        }
+
+        public static void SearchAndShow(string tableName, DataGridView dgv, string conditionField,
+            string fromDate, string toDate)
+        {
+            try
+            {
+                Conn.Open();
+                string query = $"SELECT * FROM {tableName} " +
+                    $"WHERE DATE({conditionField}) BETWEEN '{fromDate}' AND '{toDate}';";
                 Cmd = new SQLiteCommand(query, Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();

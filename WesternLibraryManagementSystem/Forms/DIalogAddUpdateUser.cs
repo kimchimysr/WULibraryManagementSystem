@@ -11,13 +11,13 @@ using WesternLibraryManagementSystem.Libs;
 
 namespace WesternLibraryManagementSystem.Forms
 {
-    public partial class DIalogAddUpdateUser : Form
+    public partial class DialogAddUpdateUser : Form
     {
         private FrmManageUser frmManageUser;
         private DataTable user;
         private bool isEditMode;
 
-        public DIalogAddUpdateUser(FrmManageUser frm, DataTable _user = null)
+        public DialogAddUpdateUser(FrmManageUser frm, DataTable _user = null)
         {
             InitializeComponent();
             isEditMode = _user != null ? true : false;
@@ -92,7 +92,7 @@ namespace WesternLibraryManagementSystem.Forms
                     string telephone = txtTelephone.Text.Trim();
                     string email = txtEmail.Text.Trim();
                     string dateAdded =
-                        !isEditMode ? DateTime.Now.ToString("dd-MM-yyyy") : this.user.Rows[0]["dateAdded"].ToString().Trim();
+                        !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : this.user.Rows[0]["dateAdded"].ToString().Trim();
 
                     List<string> user = new List<string>
                     {
@@ -136,7 +136,7 @@ namespace WesternLibraryManagementSystem.Forms
                             "userID", userID, userRole, false);
                         }
                     }
-                    frmManageUser.PopulateDataGridView();
+                    frmManageUser.PopulateDataGrid();
                     this.Close();
                 }
                 catch (Exception ex)

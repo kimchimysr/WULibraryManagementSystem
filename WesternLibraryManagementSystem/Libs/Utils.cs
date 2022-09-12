@@ -176,7 +176,7 @@ namespace WesternLibraryManagementSystem.Libs
                     cb.Items.Add(str);
         }
 
-        public static string GetDataGridViewSelectedRowData(DataGridView dgv)
+        public static string GetDataGridSelectedRowData(DataGridView dgv)
         {
             StringBuilder row = new StringBuilder();
             for (int i = 0; i < dgv.Columns.Count; i++)

@@ -1,13 +1,13 @@
-﻿namespace WesternLibraryManagementSystem.Temp
+﻿namespace WesternLibraryManagementSystem
 {
-    partial class FrmSQLiteConnection
+    partial class UserControl1
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,15 +20,16 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,23 +38,30 @@
             this.dgvBooks.AllowUserToAddRows = false;
             this.dgvBooks.AllowUserToDeleteRows = false;
             this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Location = new System.Drawing.Point(12, 61);
+            this.dgvBooks.Location = new System.Drawing.Point(3, 101);
             this.dgvBooks.Name = "dgvBooks";
             this.dgvBooks.ReadOnly = true;
-            this.dgvBooks.Size = new System.Drawing.Size(1020, 435);
-            this.dgvBooks.TabIndex = 0;
+            this.dgvBooks.Size = new System.Drawing.Size(1008, 430);
+            this.dgvBooks.TabIndex = 1;
             // 
-            // FrmSQLiteConnection
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(346, 568);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(244, 50);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 635);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvBooks);
-            this.Name = "FrmSQLiteConnection";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmSQLiteConnection";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSQLiteConnection_FormClosed);
-            this.Load += new System.EventHandler(this.FrmSQLiteConnection_Load);
+            this.Name = "UserControl1";
+            this.Size = new System.Drawing.Size(1014, 637);
+            this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
             this.ResumeLayout(false);
 
@@ -62,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvBooks;
+        private System.Windows.Forms.Button button1;
     }
 }

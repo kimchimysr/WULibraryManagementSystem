@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
-using System.IO;
+using WesternLibraryManagementSystem;
 
-namespace WesternLibraryManagementSystem.Temp
+namespace WesternLibraryManagementSystem
 {
-    public partial class FrmSQLiteConnection : Form
+    public partial class UserControl1 : UserControl
     {
         // connection object
         SQLiteConnection conn = new SQLiteConnection(Path.Combine("Data Source=" + Environment.CurrentDirectory, "Database/library.db"));
-
-        public FrmSQLiteConnection()
+        public UserControl1()
         {
             InitializeComponent();
         }
 
-        private void FrmSQLiteConnection_Load(object sender, EventArgs e)
+        private void UserControl1_Load(object sender, EventArgs e)
         {
             conn.Open();
             // command object
@@ -38,8 +39,9 @@ namespace WesternLibraryManagementSystem.Temp
             dgvBooks.DataSource = dt;
         }
 
-        private void FrmSQLiteConnection_FormClosed(object sender, FormClosedEventArgs e)
+        protected override void OnHandleDestroyed(EventArgs e)
         {
+            base.OnHandleDestroyed(e);
             conn.Close();
         }
     }

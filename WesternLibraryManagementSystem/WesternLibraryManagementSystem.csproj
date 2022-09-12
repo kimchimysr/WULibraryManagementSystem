@@ -66,11 +66,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\DIalogAddUpdateUser.cs">
+    <Compile Include="Forms\DialogAddUpdateBorrower.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DIalogAddUpdateUser.Designer.cs">
-      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    <Compile Include="Forms\DialogAddUpdateBorrower.Designer.cs">
+      <DependentUpon>DialogAddUpdateBorrower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogAddUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogAddUpdateUser.Designer.cs">
+      <DependentUpon>DialogAddUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogViewDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogViewDetail.Designer.cs">
+      <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
@@ -90,11 +102,11 @@
     <Compile Include="Forms\FrmBorrowBook.Designer.cs">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBorrower.cs">
+    <Compile Include="Forms\FrmManageBorrower.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBorrower.Designer.cs">
-      <DependentUpon>FrmBorrower.cs</DependentUpon>
+    <Compile Include="Forms\FrmManageBorrower.Designer.cs">
+      <DependentUpon>FrmManageBorrower.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
@@ -114,6 +126,12 @@
     <Compile Include="Forms\FrmReturnBook.Designer.cs">
       <DependentUpon>FrmReturnBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Temp\FrmMainMenu2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\FrmMainMenu2.Designer.cs">
+      <DependentUpon>FrmMainMenu2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Temp\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,18 +144,27 @@
     <Compile Include="Temp\FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Temp\TestingMethod.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\TestingMethod.Designer.cs">
-      <DependentUpon>TestingMethod.cs</DependentUpon>
-    </Compile>
     <Compile Include="Libs\LibModule.cs" />
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\DIalogAddUpdateUser.resx">
-      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    <Compile Include="Temp\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Temp\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\DialogAddUpdateBorrower.resx">
+      <DependentUpon>DialogAddUpdateBorrower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogAddUpdateUser.resx">
+      <DependentUpon>DialogAddUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageBorrower.resx">
+      <DependentUpon>FrmManageBorrower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogViewDetail.resx">
+      <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -148,14 +175,14 @@
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmMainMenu2.resx">
+      <DependentUpon>FrmMainMenu2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\TestingMethod.resx">
-      <DependentUpon>TestingMethod.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -167,6 +194,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Temp\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
