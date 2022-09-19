@@ -40,7 +40,7 @@ namespace LibraryDBMS.Forms
                 "3",
                 "2022-09-10"
             };
-            if (!LibModule.IsDuplicated("tblBook", "title", "Harry Potter"))
+            if (!LibModule.CheckIfExist("tblBook", "title", "Harry Potter", "Book Title"))
             {
                 LibModule.InsertRecord("tblBook", LibModule.GetTableField("tblBook"), values);
                 //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);

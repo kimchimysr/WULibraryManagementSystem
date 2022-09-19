@@ -34,14 +34,14 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBorrowID = new System.Windows.Forms.TextBox();
-            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
+            this.dtpIssueDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblBookAvailability = new System.Windows.Forms.Label();
             this.btnSearchStudentID = new System.Windows.Forms.Button();
             this.btnSearchBookID = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,9 +70,10 @@
             this.btnClear.Location = new System.Drawing.Point(184, 422);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(150, 50);
-            this.btnClear.TabIndex = 43;
+            this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnCancel
             // 
@@ -81,9 +82,10 @@
             this.btnCancel.Location = new System.Drawing.Point(349, 422);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
-            this.btnCancel.TabIndex = 44;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnSave
             // 
@@ -91,9 +93,10 @@
             this.btnSave.Location = new System.Drawing.Point(19, 422);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 50);
-            this.btnSave.TabIndex = 42;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.Button_Click);
             // 
             // label9
             // 
@@ -112,18 +115,20 @@
             this.txtBorrowID.Name = "txtBorrowID";
             this.txtBorrowID.ReadOnly = true;
             this.txtBorrowID.Size = new System.Drawing.Size(248, 26);
-            this.txtBorrowID.TabIndex = 35;
+            this.txtBorrowID.TabIndex = 0;
+            this.txtBorrowID.TabStop = false;
             // 
-            // dtpDOB
+            // dtpIssueDate
             // 
-            this.dtpDOB.CustomFormat = "yyyy-MM-dd";
-            this.dtpDOB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDOB.Location = new System.Drawing.Point(108, 341);
-            this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(248, 25);
-            this.dtpDOB.TabIndex = 53;
-            this.dtpDOB.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
+            this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpIssueDate.Location = new System.Drawing.Point(108, 341);
+            this.dtpIssueDate.Name = "dtpIssueDate";
+            this.dtpIssueDate.Size = new System.Drawing.Size(248, 25);
+            this.dtpIssueDate.TabIndex = 5;
+            this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
+            this.dtpIssueDate.ValueChanged += new System.EventHandler(this.dtpIssueDate_ValueChanged);
             // 
             // label5
             // 
@@ -145,18 +150,19 @@
             this.label1.TabIndex = 54;
             this.label1.Text = "Due Date:";
             // 
-            // dateTimePicker1
+            // dtpDueDate
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(108, 373);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimePicker1.Size = new System.Drawing.Size(248, 25);
-            this.dateTimePicker1.TabIndex = 53;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
+            this.dtpDueDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpDueDate.Enabled = false;
+            this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDueDate.Location = new System.Drawing.Point(108, 373);
+            this.dtpDueDate.Name = "dtpDueDate";
+            this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtpDueDate.Size = new System.Drawing.Size(248, 25);
+            this.dtpDueDate.TabIndex = 53;
+            this.dtpDueDate.TabStop = false;
+            this.dtpDueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             // 
             // txtStudentID
             // 
@@ -164,7 +170,7 @@
             this.txtStudentID.Location = new System.Drawing.Point(108, 129);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(248, 26);
-            this.txtStudentID.TabIndex = 35;
+            this.txtStudentID.TabIndex = 3;
             // 
             // label2
             // 
@@ -186,16 +192,15 @@
             this.label4.TabIndex = 50;
             this.label4.Text = "Book Availability:";
             // 
-            // label6
+            // lblBookAvailability
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Green;
-            this.label6.Location = new System.Drawing.Point(155, 310);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 22);
-            this.label6.TabIndex = 50;
-            this.label6.Text = "Yes";
+            this.lblBookAvailability.AutoSize = true;
+            this.lblBookAvailability.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookAvailability.ForeColor = System.Drawing.Color.Green;
+            this.lblBookAvailability.Location = new System.Drawing.Point(155, 310);
+            this.lblBookAvailability.Name = "lblBookAvailability";
+            this.lblBookAvailability.Size = new System.Drawing.Size(0, 22);
+            this.lblBookAvailability.TabIndex = 50;
             // 
             // btnSearchStudentID
             // 
@@ -203,9 +208,10 @@
             this.btnSearchStudentID.Location = new System.Drawing.Point(362, 129);
             this.btnSearchStudentID.Name = "btnSearchStudentID";
             this.btnSearchStudentID.Size = new System.Drawing.Size(134, 26);
-            this.btnSearchStudentID.TabIndex = 55;
+            this.btnSearchStudentID.TabIndex = 4;
             this.btnSearchStudentID.Text = "Search Student";
             this.btnSearchStudentID.UseVisualStyleBackColor = true;
+            this.btnSearchStudentID.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnSearchBookID
             // 
@@ -213,9 +219,10 @@
             this.btnSearchBookID.Location = new System.Drawing.Point(362, 99);
             this.btnSearchBookID.Name = "btnSearchBookID";
             this.btnSearchBookID.Size = new System.Drawing.Size(134, 26);
-            this.btnSearchBookID.TabIndex = 82;
+            this.btnSearchBookID.TabIndex = 2;
             this.btnSearchBookID.Text = "Search Book";
             this.btnSearchBookID.UseVisualStyleBackColor = true;
+            this.btnSearchBookID.Click += new System.EventHandler(this.Button_Click);
             // 
             // label3
             // 
@@ -233,7 +240,7 @@
             this.txtBookID.Location = new System.Drawing.Point(108, 99);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.Size = new System.Drawing.Size(248, 26);
-            this.txtBookID.TabIndex = 80;
+            this.txtBookID.TabIndex = 1;
             // 
             // label8
             // 
@@ -297,23 +304,23 @@
             this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSearchStudentID);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDueDate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpDOB);
+            this.Controls.Add(this.dtpIssueDate);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblBookAvailability);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStudentID);
             this.Controls.Add(this.txtBorrowID);
             this.Name = "DialogIssueBook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DialogAddEditBorrowBook";
-            this.Load += new System.EventHandler(this.DialogIssueBook_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -328,14 +335,14 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBorrowID;
-        private System.Windows.Forms.DateTimePicker dtpDOB;
+        private System.Windows.Forms.DateTimePicker dtpIssueDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDueDate;
         private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblBookAvailability;
         private System.Windows.Forms.Button btnSearchStudentID;
         private System.Windows.Forms.Button btnSearchBookID;
         private System.Windows.Forms.Label label3;

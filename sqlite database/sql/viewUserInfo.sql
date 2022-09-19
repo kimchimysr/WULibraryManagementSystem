@@ -1,3 +1,4 @@
+CREATE VIEW viewUserInfo AS
 SELECT 
 	u.userID,
 	u.username,

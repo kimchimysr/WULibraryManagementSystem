@@ -12,9 +12,9 @@ using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
 {
-    public partial class FrmManageBorrower : Form
+    public partial class FrmManageStudent : Form
     {
-        public FrmManageBorrower()
+        public FrmManageStudent()
         {
             InitializeComponent();
         }
@@ -28,9 +28,9 @@ namespace LibraryDBMS.Forms
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("tblBorrower", dgvBorrowerList);
+            LibModule.FillDataGrid("tblStudent", dgvBorrowerList);
             lblCount.Text =
-                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblBorrower;") + " borrower(s)";
+                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;") + " borrower(s)";
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace LibraryDBMS.Forms
                 case "btnAdd":
                     try
                     {
-                        Form frmAddEditUser = new DialogAddEditBorrower(this);
+                        Form frmAddEditUser = new DialogAddEditStudent(this);
                         frmAddEditUser.ShowDialog();
                     }
                     catch (Exception ex)
@@ -60,7 +60,7 @@ namespace LibraryDBMS.Forms
                     {
                         string studentID = dgvBorrowerList.SelectedRows[0].Cells["studentID"].Value.ToString();
                         Form frmAddEditUser =
-                            new DialogAddEditBorrower(this, LibModule.GetSingleRecordDB("tblBorrower", "studentID", studentID));
+                            new DialogAddEditStudent(this, LibModule.GetSingleRecordDB("tblStudent", "studentID", studentID));
                         frmAddEditUser.ShowDialog();
                     }
                     catch (ArgumentOutOfRangeException)
@@ -76,7 +76,7 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         string studentID = dgvBorrowerList.SelectedRows[0].Cells["studentID"].Value.ToString();
-                        LibModule.DeleteRecord("tblBorrower", "studentID", studentID,
+                        LibModule.DeleteRecord("tblStudent", "studentID", studentID,
                             Utils.GetDataGridSelectedRowData(dgvBorrowerList));
                         PopulateDataGrid();
                     }
@@ -94,7 +94,7 @@ namespace LibraryDBMS.Forms
                     {
                         if (dgvBorrowerList.SelectedRows[0].Cells[0].Value != null)
                         {
-                            DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowerList, "Borrower");
+                            DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowerList, "Student");
                             frmViewDetail.ShowDialog();
                         }
                     }
@@ -123,7 +123,7 @@ namespace LibraryDBMS.Forms
                     {
                         string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                         string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                        LibModule.SearchAndShow("tblBorrower", dgvBorrowerList, "dateAdded", fromDate, toDate);
+                        LibModule.SearchAndShow("tblStudent", dgvBorrowerList, "dateAdded", fromDate, toDate);
                     }
                 }
                 else
@@ -134,9 +134,9 @@ namespace LibraryDBMS.Forms
                         string value = txtSearchValue.Text.ToString().Trim();
 
                         if (searchBy == "Student ID")
-                            LibModule.SearchAndShow("tblBorrower", "studentID", value, dgvBorrowerList);
+                            LibModule.SearchAndShow("tblStudent", "studentID", value, dgvBorrowerList);
                         else if (searchBy == "Name")
-                            LibModule.SearchAndShow("tblBorrower", "firstName,lastName", value, dgvBorrowerList, true);
+                            LibModule.SearchAndShow("tblStudent", "firstName,lastName", value, dgvBorrowerList, true);
                     }
                 }
             }

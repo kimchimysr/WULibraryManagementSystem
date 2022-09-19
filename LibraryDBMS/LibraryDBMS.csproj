@@ -90,17 +90,23 @@
     <Compile Include="Forms\DialogIssueBook.Designer.cs">
       <DependentUpon>DialogIssueBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DialogAddEditBorrower.cs">
+    <Compile Include="Forms\DialogAddEditStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DialogAddEditBorrower.Designer.cs">
-      <DependentUpon>DialogAddEditBorrower.cs</DependentUpon>
+    <Compile Include="Forms\DialogAddEditStudent.Designer.cs">
+      <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogAddEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DialogAddEditUser.Designer.cs">
       <DependentUpon>DialogAddEditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogReturnBook.Designer.cs">
+      <DependentUpon>DialogReturnBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogViewDetail.cs">
       <SubType>Form</SubType>
@@ -113,6 +119,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Temp\Breakfast.cs" />
+    <Compile Include="Temp\BreakfastHeavilyDigested.cs" />
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,11 +139,11 @@
     <Compile Include="Forms\FrmBorrowBook.Designer.cs">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmManageBorrower.cs">
+    <Compile Include="Forms\FrmManageStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmManageBorrower.Designer.cs">
-      <DependentUpon>FrmManageBorrower.cs</DependentUpon>
+    <Compile Include="Forms\FrmManageStudent.Designer.cs">
+      <DependentUpon>FrmManageStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
@@ -154,6 +162,18 @@
     </Compile>
     <Compile Include="Forms\FrmReturnBook.Designer.cs">
       <DependentUpon>FrmReturnBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temp\FrmAsyncDataGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\FrmAsyncDataGrid.Designer.cs">
+      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temp\FrmAsyncTextBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\FrmAsyncTextBox.Designer.cs">
+      <DependentUpon>FrmAsyncTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp\FrmMainMenu2.cs">
       <SubType>Form</SubType>
@@ -192,17 +212,20 @@
     <EmbeddedResource Include="Forms\DialogIssueBook.resx">
       <DependentUpon>DialogIssueBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DialogAddEditBorrower.resx">
-      <DependentUpon>DialogAddEditBorrower.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DialogAddEditStudent.resx">
+      <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
       <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogReturnBook.resx">
+      <DependentUpon>DialogReturnBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmManageBorrower.resx">
-      <DependentUpon>FrmManageBorrower.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmManageStudent.resx">
+      <DependentUpon>FrmManageStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogViewDetail.resx">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
@@ -217,6 +240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
+      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmAsyncTextBox.resx">
+      <DependentUpon>FrmAsyncTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmMainMenu2.resx">
       <DependentUpon>FrmMainMenu2.cs</DependentUpon>

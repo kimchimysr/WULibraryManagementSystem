@@ -25,7 +25,7 @@ namespace LibraryDBMS.Libs
             {
                 ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 ("tblBookCate", "cateID,cateName"),
-                ("tblBorrower", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
+                ("tblStudent", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
                 ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
                 ("tblUser", "userID,username,password,isActive,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
@@ -36,6 +36,7 @@ namespace LibraryDBMS.Libs
             return dbTables[index].Fields;
         }
 
+        #region Insert,Update,Delete
         public static bool InsertRecord(string tableName, string fieldNames, List<string> values,
             bool showMessage = true)
         {
@@ -178,38 +179,10 @@ namespace LibraryDBMS.Libs
                 Conn.Close();
             }
         }
+        #endregion
 
-        public static bool IsDuplicated(string tableName, string fieldName, string checkDuplicateValue,
-            string fieldMessage = "record")
-        {
-            bool duplicate = false;
-            string query = $"SELECT {fieldName} FROM {tableName};";
-            Cmd = new SQLiteCommand(query, Conn);
-            try
-            {
-                Conn.Open();
-                using(SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SequentialAccess))
-                {
-                    if (reader.HasRows)
-                    while (reader.Read())
-                        if (reader.GetString(reader.GetOrdinal(fieldName)).Equals(checkDuplicateValue))
-                            duplicate = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Check Duplicate Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cmd.Dispose();
-                Conn.Close();
-                if (duplicate == true)
-                    MessageBox.Show($"{fieldMessage} Already Exist!", $"Duplicate {fieldMessage}", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return duplicate;
-        }
-
+        #region Custom Queries
+        // custom query
         public static bool ExecuteQuery(string query, bool showMessage = false)
         {
             try
@@ -240,6 +213,7 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
+        // custom scalar query
         public static string ExecuteScalarQuery(string query)
         {
             string str = string.Empty;
@@ -260,7 +234,9 @@ namespace LibraryDBMS.Libs
             }
             return str;
         }
+        #endregion
 
+        #region Fill
         public static void FillDataGrid(string tableName, DataGridView dgv)
         {
             try
@@ -310,17 +286,21 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static DataTable GetSingleRecordDB(string tableName,
-            string conditionFIeldName, string conditionValue)
+        public static void FillReportViewer(string tableName, ReportViewer rpv, string rpPath,
+                    string rpDataSet)
         {
-            DataTable dt = new DataTable();
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName} " +
-                    $"WHERE {conditionFIeldName}='{conditionValue}';", Conn);
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                adapter.Fill(dt);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                rpv.LocalReport.ReportEmbeddedResource = rpPath;
+                ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
+                rpv.LocalReport.DataSources.Clear();
+                rpv.LocalReport.DataSources.Add(rds);
             }
             catch (Exception ex)
             {
@@ -331,40 +311,11 @@ namespace LibraryDBMS.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
-            return dt;
         }
 
-        public static string GetAutoID(string tableName, string primaryKeyField)
-        {
-            string autoID = string.Empty;
-            try
-            {
-                Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName} ORDER BY {primaryKeyField} DESC;", Conn);
-                object result = Cmd.ExecuteScalar();
-                if (result != null)
-                {
-                    int increment = int.Parse(result.ToString()) + 1;
-                    autoID = increment.ToString();
-                }
-                else
-                {
-                    autoID = "1";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
-                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cmd.Dispose();
-                Conn.Close();
-            }
-            return autoID;
-        }
+        #endregion
 
+        #region Search
         public static void SearchAndShow(string tableName, string conditionField, string conditionValue,
             DataGridView dgv, bool isNameSearch = false)
         {
@@ -438,20 +389,33 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static void SearchAndShow(string tableName, string fieldName, string conditionField,
+        public static void SearchAndShow(string tableName, string fieldNames, string conditionField,
             string conditionValue, Label disLabel)
         {
-            disLabel.Text = string.Empty;
             try
             {
+                disLabel.Text = string.Empty;
+                List<string> fields = new List<string>();
+                fields.AddRange(fieldNames.Split(','));
+                StringBuilder selectFields = new StringBuilder();
+                foreach (string field in fields)
+                {
+                    if (field == fields.Last())
+                        selectFields.Append($"{field}");
+                    else selectFields.Append($"{field},");
+                }
                 Conn.Open();
-                string query = $"Select {fieldName} From {tableName} Where {conditionField}='{conditionValue}';";
+                string query = $"Select {selectFields} From {tableName} Where {conditionField}='{conditionValue}';";
                 Cmd = new SQLiteCommand(query, Conn);
                 using (SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SingleRow))
                 {
                     if (reader.HasRows)
                         while (reader.Read())
-                            disLabel.Text = reader[fieldName].ToString();
+                        {
+                            if(fields.Count > 1)
+                                disLabel.Text = reader[fields[0]].ToString()+" "+ reader[fields[1]].ToString();
+                            else disLabel.Text = reader[fields[0]].ToString();
+                        }
                     else disLabel.Text = null;
                 }
             }
@@ -466,22 +430,20 @@ namespace LibraryDBMS.Libs
                 Conn.Close();
             }
         }
+        #endregion
 
-        public static void FillReportViewer(string tableName, ReportViewer rpv, string rpPath,
-            string rpDataSet)
+        #region Tools
+        public static DataTable GetSingleRecordDB(string tableName,
+            string conditionFIeldName, string conditionValue)
         {
+            DataTable dt = new DataTable();
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName} " +
+                    $"WHERE {conditionFIeldName}='{conditionValue}';", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-
-                rpv.LocalReport.ReportEmbeddedResource = rpPath;
-                ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
-                rpv.LocalReport.DataSources.Clear();
-                rpv.LocalReport.DataSources.Add(rds);
+                adapter.Fill(dt);
             }
             catch (Exception ex)
             {
@@ -492,6 +454,79 @@ namespace LibraryDBMS.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
+            return dt;
         }
+
+        public static string GetAutoID(string tableName, string primaryKeyField)
+        {
+            string autoID = string.Empty;
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand($"SELECT * FROM {tableName} ORDER BY {primaryKeyField} DESC;", Conn);
+                object result = Cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    int increment = int.Parse(result.ToString()) + 1;
+                    autoID = increment.ToString();
+                }
+                else
+                {
+                    autoID = "1";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+            return autoID;
+        }
+
+        public static bool CheckIfExist(string tableName, string fieldName, string checkDuplicateValue,
+                string fieldMessage, bool showMessage = true)
+        {
+            bool duplicate = false;
+            string query = $"SELECT {fieldName} FROM {tableName};";
+            Cmd = new SQLiteCommand(query, Conn);
+            try
+            {
+                Conn.Open();
+                using (SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SequentialAccess))
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            //if (reader.GetString(reader.GetOrdinal(fieldName)) == checkDuplicateValue)
+                            if (reader[fieldName].ToString() == checkDuplicateValue)
+                            {
+                                duplicate = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+                if (showMessage == true && duplicate == true)
+                    MessageBox.Show(fieldMessage, $"Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return duplicate;
+        }
+
+        #endregion
     }
 }

@@ -46,7 +46,8 @@ namespace LibraryDBMS.Forms
                 return false;
             if (!isEditMode)
             {
-                if (LibModule.IsDuplicated("tblUser", "username", txtUsername.Text.Trim(), "Username"))
+                if (LibModule.CheckIfExist("tblUser", "username", txtUsername.Text.Trim(),
+                    "Username already exists!"))
                     return false;
             }
             if (!Utils.IsValidEmail(txtEmail.Text.Trim()))
@@ -83,7 +84,7 @@ namespace LibraryDBMS.Forms
                     string password = Utils.DefaultHashPassword();
                     string roleID = (cbSelectedIndex + 1).ToString().Trim();
                     string isActive =
-                        !isEditMode ? "1" : this.user.Rows[0]["isActive"].ToString().Trim();
+                        !isEditMode ? "Yes" : this.user.Rows[0]["isActive"].ToString().Trim();
                     string firstName = txtFirstName.Text.Trim();
                     string lastName = txtLastName.Text.Trim();
                     string gender = rbMale.Checked == true ? "M" : "F";

@@ -1,6 +1,6 @@
 ﻿namespace LibraryDBMS.Forms
 {
-    partial class FrmManageBorrower
+    partial class FrmManageStudent
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace LibraryDBMS.Forms
 {
-    partial class DialogAddEditBorrower
+    partial class DialogAddEditStudent
     {
         /// <summary>
         /// Required designer variable.

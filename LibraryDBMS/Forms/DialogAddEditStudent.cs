@@ -11,28 +11,28 @@ using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
 {
-    public partial class DialogAddEditBorrower : Form
+    public partial class DialogAddEditStudent : Form
     {
-        private FrmManageBorrower frmManageBorrower;
+        private FrmManageStudent frmManageStudent;
         private DataTable user;
         private bool isEditMode;
 
-        public DialogAddEditBorrower(FrmManageBorrower frm, DataTable _user = null)
+        public DialogAddEditStudent(FrmManageStudent frm, DataTable _user = null)
         {
             InitializeComponent();
             isEditMode = _user != null ? true : false;
-            frmManageBorrower = frm;
+            frmManageStudent = frm;
             user = _user;
             Utils.FillComboBox(cbYear, "1", "2", "3", "4");
             if (!isEditMode)
             {
-                this.Text = "Add New Borrower";
-                lblHeader.Text = "New Borrower";
+                this.Text = "Add New Student";
+                lblHeader.Text = "New Student";
             }
             else
             {
-                lblHeader.Text = "Edit Borrower";
-                this.Text = "Edit Borrower";
+                lblHeader.Text = "Edit Student";
+                this.Text = "Edit Student";
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
@@ -45,7 +45,8 @@ namespace LibraryDBMS.Forms
                 return false;
             if (!isEditMode)
             {
-                if (LibModule.IsDuplicated("tblBorrower", "studentID", txtStudentID.Text.Trim(), "Student ID"))
+                if (LibModule.CheckIfExist("tblStudent", "studentID", txtStudentID.Text.Trim(),
+                    "Student ID is already exists!"))
                     return false;
             }
             return true;
@@ -95,14 +96,14 @@ namespace LibraryDBMS.Forms
 
                     if (!isEditMode)
                     {
-                        LibModule.InsertRecord("tblBorrower", LibModule.GetTableField("tblBorrower"), borrower);
+                        LibModule.InsertRecord("tblStudent", LibModule.GetTableField("tblStudent"), borrower);
                     }
                     else
                     {
-                        LibModule.UpdateRecord("tblBorrower", LibModule.GetTableField("tblBorrower"),
+                        LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
                             "studentID", studentID, borrower, true);
                     }
-                    frmManageBorrower.PopulateDataGrid();
+                    frmManageStudent.PopulateDataGrid();
                     this.Close();
                 }
                 catch (Exception ex)

@@ -99,8 +99,8 @@ namespace LibraryDBMS.Forms
                     {
                         string userID = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
                         string isActive =
-                            dgvUserList.SelectedRows[0].Cells["isActive"].Value.ToString() == "1" ?
-                            "0" : "1";
+                            dgvUserList.SelectedRows[0].Cells["isActive"].Value.ToString() == "Yes" ?
+                            "No" : "Yes";
                         List<string> value = new List<string>{ isActive };
                         if (LibModule.UpdateRecord("tblUser", "isActive", "userID", userID, value, 
                             false) == true)
