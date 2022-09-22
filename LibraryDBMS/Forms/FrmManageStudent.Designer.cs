@@ -81,7 +81,11 @@
             this.dgvBorrowerList.AllowUserToAddRows = false;
             this.dgvBorrowerList.AllowUserToDeleteRows = false;
             this.dgvBorrowerList.AllowUserToResizeColumns = false;
-            this.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBorrowerList.AllowUserToResizeRows = false;
+            this.dgvBorrowerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvBorrowerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.studentID,
             this.firstName,
@@ -103,6 +107,7 @@
             this.dgvBorrowerList.MultiSelect = false;
             this.dgvBorrowerList.Name = "dgvBorrowerList";
             this.dgvBorrowerList.ReadOnly = true;
+            this.dgvBorrowerList.RowHeadersVisible = false;
             this.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBorrowerList.Size = new System.Drawing.Size(1159, 416);
             this.dgvBorrowerList.TabIndex = 20;
@@ -203,6 +208,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(620, 582);
             this.btnDelete.Name = "btnDelete";
@@ -225,6 +231,7 @@
             // 
             // btnView
             // 
+            this.btnView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnView.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.Location = new System.Drawing.Point(923, 582);
             this.btnView.Name = "btnView";
@@ -236,6 +243,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(317, 582);
             this.btnEdit.Name = "btnEdit";
@@ -247,6 +255,7 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(14, 582);
             this.btnAdd.Name = "btnAdd";
@@ -317,7 +326,7 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.Button_Click);
             // 
-            // FrmManageBorrower
+            // FrmManageStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -339,7 +348,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
-            this.Name = "FrmManageBorrower";
+            this.Name = "FrmManageStudent";
             this.Text = "FrmBorrower";
             this.Load += new System.EventHandler(this.FrmBorrower_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowerList)).EndInit();

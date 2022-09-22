@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
 {
-    public partial class FrmBook : Form
+    public partial class FrmManageBook : Form
     {
-        public FrmBook()
+        public FrmManageBook()
         {
             InitializeComponent();
         }

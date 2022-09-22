@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
-using WesternLibraryManagementSystem.Forms;
+using LibraryDBMS.Forms;
 
 namespace LibraryDBMS.Forms
 {

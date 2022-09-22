@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0F681D43-8A25-4DA0-97C8-0CCE35434647}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WesternLibraryManagementSystem</RootNamespace>
-    <AssemblyName>WesternLibraryManagementSystem</AssemblyName>
+    <RootNamespace>LibraryDBMS</RootNamespace>
+    <AssemblyName>LibraryDBMS</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -114,24 +114,28 @@
     <Compile Include="Forms\DialogViewDetail.Designer.cs">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Temp\Breakfast.cs" />
-    <Compile Include="Temp\BreakfastHeavilyDigested.cs" />
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Temp\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBook.cs">
+    <Compile Include="Forms\FrmManageBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBook.Designer.cs">
-      <DependentUpon>FrmBook.cs</DependentUpon>
+    <Compile Include="Forms\FrmManageBook.Designer.cs">
+      <DependentUpon>FrmManageBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmBorrowBook.cs">
       <SubType>Form</SubType>
@@ -145,23 +149,11 @@
     <Compile Include="Forms\FrmManageStudent.Designer.cs">
       <DependentUpon>FrmManageStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMainMenu.Designer.cs">
-      <DependentUpon>FrmMainMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmManageUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmManageUser.Designer.cs">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmReturnBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmReturnBook.Designer.cs">
-      <DependentUpon>FrmReturnBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp\FrmAsyncDataGrid.cs">
       <SubType>Form</SubType>
@@ -169,17 +161,11 @@
     <Compile Include="Temp\FrmAsyncDataGrid.Designer.cs">
       <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Temp\FrmAsyncTextBox.cs">
+    <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Temp\FrmAsyncTextBox.Designer.cs">
-      <DependentUpon>FrmAsyncTextBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Temp\FrmMainMenu2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\FrmMainMenu2.Designer.cs">
-      <DependentUpon>FrmMainMenu2.cs</DependentUpon>
+    <Compile Include="Forms\FrmMainMenu.Designer.cs">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmReportViewer.cs">
       <SubType>Form</SubType>
@@ -224,6 +210,9 @@
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageStudent.resx">
       <DependentUpon>FrmManageStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,20 +224,14 @@
     <EmbeddedResource Include="Temp\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
-      <DependentUpon>FrmMainMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
       <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmAsyncTextBox.resx">
-      <DependentUpon>FrmAsyncTextBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmMainMenu2.resx">
-      <DependentUpon>FrmMainMenu2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmReportViewer.resx">
       <DependentUpon>FrmReportViewer.cs</DependentUpon>
@@ -260,7 +243,7 @@
       <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -297,10 +280,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\pie_26px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

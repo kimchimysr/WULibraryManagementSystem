@@ -17,6 +17,7 @@ namespace LibraryDBMS.Forms
         public FrmManageStudent()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         private void FrmBorrower_Load(object sender, EventArgs e)

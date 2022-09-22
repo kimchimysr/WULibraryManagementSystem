@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WesternLibraryManagementSystem.Forms
+namespace LibraryDBMS.Forms
 {
     public partial class DialogReturnBook : Form
     {

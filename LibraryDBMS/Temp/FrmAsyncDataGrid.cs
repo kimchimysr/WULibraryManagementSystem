@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WesternLibraryManagementSystem.Temp
+namespace LibraryDBMS.Temp
 {
     public partial class FrmAsyncDataGrid : Form
     {

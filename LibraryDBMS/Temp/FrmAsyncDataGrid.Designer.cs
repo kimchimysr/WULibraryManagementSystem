@@ -1,4 +1,4 @@
-﻿namespace WesternLibraryManagementSystem.Temp
+﻿namespace LibraryDBMS.Temp
 {
     partial class FrmAsyncDataGrid
     {

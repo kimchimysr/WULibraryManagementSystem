@@ -1,6 +1,6 @@
 ﻿namespace LibraryDBMS.Forms
 {
-    partial class FrmBook
+    partial class FrmManageBook
     {
         /// <summary>
         /// Required designer variable.

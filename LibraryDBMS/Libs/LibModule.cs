@@ -447,7 +447,8 @@ namespace LibraryDBMS.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -477,8 +478,8 @@ namespace LibraryDBMS.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
-                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -493,10 +494,10 @@ namespace LibraryDBMS.Libs
         {
             bool duplicate = false;
             string query = $"SELECT {fieldName} FROM {tableName};";
-            Cmd = new SQLiteCommand(query, Conn);
             try
             {
                 Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
                 using (SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SequentialAccess))
                 {
                     if (reader.HasRows)
@@ -515,7 +516,8 @@ namespace LibraryDBMS.Libs
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -525,6 +527,39 @@ namespace LibraryDBMS.Libs
                     MessageBox.Show(fieldMessage, $"Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return duplicate;
+        }
+
+         public static bool IsValidLoginCredential(string username, string password, out (string,string) user)
+        {
+            string query = $"SELECT u.username,r.roleName " +
+                $"FROM tblUser u, tblUserRole ur, tblRole r " +
+                $"WHERE u.username = '{username}' AND u.password = '{password}' " +
+                $"AND u.isActive = 'Yes' AND u.userID = ur.UserID AND r.roleID = ur.roleID;";
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    user = (dt.Rows[0]["username"].ToString(), dt.Rows[0]["roleName"].ToString());
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+            user = (string.Empty, string.Empty);
+            return false;
         }
 
         #endregion
