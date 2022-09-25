@@ -52,8 +52,8 @@ namespace LibraryDBMS.Forms
                 case "btnAddUser":
                     try
                     {
-                        Form frmAddEditUser = new DialogAddEditUser(this);
-                        frmAddEditUser.ShowDialog();
+                        //Form frmAddEditUser = new DialogAddEditUser(this);
+                        //frmAddEditUser.ShowDialog();
                     }
                     catch (Exception ex)
                     {
@@ -64,9 +64,9 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         string id = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
-                        Form frmAddEditUser =
-                            new DialogAddEditUser(this, LibModule.GetSingleRecordDB("viewUserInfo", "userID", id));
-                        frmAddEditUser.ShowDialog();
+                        //Form frmAddEditUser =
+                        //    new DialogAddEditUser(this, LibModule.GetSingleRecordDB("viewUserInfo", "userID", id));
+                        //frmAddEditUser.ShowDialog();
                     }
                     catch (ArgumentOutOfRangeException)
                     {

@@ -10,6 +10,7 @@ using System.Data;
 using Microsoft.Reporting.WinForms;
 using System.Data.SqlClient;
 using System.Drawing;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 
 namespace LibraryDBMS.Libs
 {
@@ -221,7 +222,9 @@ namespace LibraryDBMS.Libs
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
-                str = Cmd.ExecuteScalar().ToString();
+                var result = Cmd.ExecuteScalar();
+                if(result != null)
+                    str = result.ToString();
             }
             catch (Exception ex)
             {
@@ -294,7 +297,7 @@ namespace LibraryDBMS.Libs
                 Conn.Open();
                 Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                DataSet ds = new DataSet();
+                System.Data.DataSet ds = new System.Data.DataSet();
                 adapter.Fill(ds);
 
                 rpv.LocalReport.ReportEmbeddedResource = rpPath;
@@ -560,6 +563,40 @@ namespace LibraryDBMS.Libs
             }
             user = (string.Empty, string.Empty);
             return false;
+        }
+
+        public static (string,string) LoanBookDueAndOverdue()
+        {
+            (string bookDue, string bookOverdue) book = (string.Empty, string.Empty);
+            string query = $"SELECT " +
+                $"COUNT(CASE WHEN date(dateDue)=date('now') AND (dateReturned is NULL OR dateReturned='') THEN dateDue END) AS bookDue, " +
+                $"COUNT(CASE WHEN date(dateDue)<date('now') AND (dateReturned is NULL OR dateReturned='') THEN dateDue END) AS bookOverdue " +
+                $"FROM tblBorrow;";
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    book = (dt.Rows[0]["bookDue"].ToString(), dt.Rows[0]["bookOverdue"].ToString());
+                    return book;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+            book = (string.Empty, string.Empty);
+            return book;
         }
 
         #endregion

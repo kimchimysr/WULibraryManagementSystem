@@ -114,11 +114,29 @@
     <Compile Include="Forms\DialogViewDetail.Designer.cs">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDashboard.Designer.cs">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMainMenu.Designer.cs">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="LibDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -161,17 +179,17 @@
     <Compile Include="Temp\FrmAsyncDataGrid.Designer.cs">
       <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmMainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMainMenu.Designer.cs">
-      <DependentUpon>FrmMainMenu.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmReportViewer.Designer.cs">
       <DependentUpon>FrmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temp\FrmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\FrmMDI.Designer.cs">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
@@ -189,6 +207,12 @@
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Temp\UcManageStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Temp\UcManageStudent.Designer.cs">
+      <DependentUpon>UcManageStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Temp\UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,8 +234,17 @@
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageBook.resx">
+      <DependentUpon>FrmManageBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageStudent.resx">
       <DependentUpon>FrmManageStudent.cs</DependentUpon>
@@ -230,11 +263,11 @@
     <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
       <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMainMenu.resx">
-      <DependentUpon>FrmMainMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmReportViewer.resx">
       <DependentUpon>FrmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmMDI.resx">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
@@ -252,6 +285,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Temp\UcManageStudent.resx">
+      <DependentUpon>UcManageStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Temp\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +319,9 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Resources\pie_26px.png" />
+    <None Include="Resources\close_16px.png" />
+    <None Include="Resources\maximize_button_16px.png" />
+    <None Include="Resources\subtract_16px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

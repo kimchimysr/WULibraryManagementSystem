@@ -63,9 +63,39 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap close_16px {
+            get {
+                object obj = ResourceManager.GetObject("close_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap maximize_button_16px {
+            get {
+                object obj = ResourceManager.GetObject("maximize_button_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap pie_26px {
             get {
                 object obj = ResourceManager.GetObject("pie_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap subtract_16px {
+            get {
+                object obj = ResourceManager.GetObject("subtract_16px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

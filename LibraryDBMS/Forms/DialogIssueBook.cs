@@ -146,7 +146,7 @@ namespace LibraryDBMS.Forms
             // check if the student has already loan a book
             // each person can only loan 1 book at a time
             if (LibModule.ExecuteScalarQuery
-                ($"SELECT borrowID FROM tblBorrow WHERE studentID='{txtStudentID.Text.Trim()}' AND loanStatusID='1';") != null)
+                ($"SELECT borrowID FROM tblBorrow WHERE studentID='{txtStudentID.Text.Trim()}' AND loanStatusID='1';") != string.Empty)
             {
                 MessageBox.Show("Each student can not loan more than 1 book at a time!", "Cannot Loan Book",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

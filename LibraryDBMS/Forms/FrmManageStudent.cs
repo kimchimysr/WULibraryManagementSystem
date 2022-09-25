@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,12 @@ namespace LibraryDBMS.Forms
         public FrmManageStudent()
         {
             InitializeComponent();
-            this.DoubleBuffered = true;
+            typeof(DataGridView).InvokeMember(
+               "DoubleBuffered",
+               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+               null,
+               dgvBorrowerList,
+               new object[] { true });
         }
 
         private void FrmBorrower_Load(object sender, EventArgs e)
