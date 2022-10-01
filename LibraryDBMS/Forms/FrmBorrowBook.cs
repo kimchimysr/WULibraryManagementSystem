@@ -15,10 +15,19 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmBorrowBook : Form
     {
+        private readonly FrmMainMenu frmMainMenu;
+
         public FrmBorrowBook()
         {
             InitializeComponent();
             InitializeValues();
+        }
+        
+        public FrmBorrowBook(FrmMainMenu frm)
+        {
+            InitializeComponent();
+            InitializeValues();
+            frmMainMenu = frm;
         }
 
         private void InitializeValues()
@@ -100,6 +109,7 @@ namespace LibraryDBMS.Forms
                 case "btnAdd":
                     DialogIssueBook dialogIssueBook = new DialogIssueBook(this);
                     dialogIssueBook.ShowDialog();
+                    CheckBookLoanNotificationChanged();
                     break;
                 case "btnEdit":
                     try
@@ -108,6 +118,7 @@ namespace LibraryDBMS.Forms
                         Form dialogReturnBook =
                             new DialogReturnBook(this, LibModule.GetSingleRecordDB("viewBorrowBook", "borrowID", id));
                         dialogReturnBook.ShowDialog();
+                        CheckBookLoanNotificationChanged();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -124,7 +135,10 @@ namespace LibraryDBMS.Forms
                         string borrowID = dgvBorrowList.SelectedRows[0].Cells["borrowID"].Value.ToString();
                         if(LibModule.DeleteRecord("tblBorrow", "borrowID", borrowID,
                             Utils.GetDataGridSelectedRowData(dgvBorrowList)) == true)
+                        {
                             PopulateDataGrid();
+                            CheckBookLoanNotificationChanged();
+                        }
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -175,6 +189,13 @@ namespace LibraryDBMS.Forms
                         break;
                 } 
             }
+        }
+
+        private void CheckBookLoanNotificationChanged()
+        {
+            (string bookDue, string bookOverdue) book = LibModule.HasLoanBookDueAndOverdue();
+            if (book == ("0", "0") && frmMainMenu.niBookLoan.Visible == true)
+                frmMainMenu.niBookLoan.Visible = false;
         }
     }
 }

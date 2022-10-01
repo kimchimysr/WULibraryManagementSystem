@@ -17,6 +17,7 @@ namespace LibraryDBMS.Forms
     {
         FrmLogin frmLogin;
         public readonly (string username, string roleName) user;
+        public NotifyIcon niBookLoan;
 
         private Size formSize;
         private int borderSize = 3;
@@ -71,7 +72,7 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnBookLoanReturn":
                     ActivateButton(btnBookLoanReturn);
-                    OpenChildForm(new FrmBorrowBook(), pBookLoanReturn);
+                    OpenChildForm(new FrmBorrowBook(this), pBookLoanReturn);
                     break;
                 case "btnReport":
                     ActivateButton(btnReport);
@@ -163,6 +164,7 @@ namespace LibraryDBMS.Forms
         #region Windows Popup Notification
         private void ShowBooksDueAndOverdueNotification()
         {
+            niBookLoan = new NotifyIcon();
             niBookLoan.Visible = false;
             (string bookDue, string bookOverdue) book = LibModule.HasLoanBookDueAndOverdue();
             if (book != ("0", "0"))

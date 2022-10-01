@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMenu));
             this.pSidebar = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.PictureBox();
@@ -60,7 +59,6 @@
             this.pNotification = new System.Windows.Forms.Panel();
             this.pAccount = new System.Windows.Forms.Panel();
             this.pSetting = new System.Windows.Forms.Panel();
-            this.niBookLoan = new System.Windows.Forms.NotifyIcon(this.components);
             this.pContainer = new System.Windows.Forms.Panel();
             this.pSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
@@ -470,12 +468,6 @@
             this.pSetting.Size = new System.Drawing.Size(1188, 726);
             this.pSetting.TabIndex = 12;
             // 
-            // niBookLoan
-            // 
-            this.niBookLoan.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.niBookLoan.Text = "Book Loan Status";
-            this.niBookLoan.Visible = true;
-            // 
             // pContainer
             // 
             this.pContainer.Controls.Add(this.pHome);
@@ -549,7 +541,6 @@
         private System.Windows.Forms.Panel pNotification;
         private System.Windows.Forms.Panel pAccount;
         private System.Windows.Forms.Panel pSetting;
-        private System.Windows.Forms.NotifyIcon niBookLoan;
         private System.Windows.Forms.Label lblMenuTitle;
         private System.Windows.Forms.Panel pContainer;
     }
