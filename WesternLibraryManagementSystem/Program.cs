@@ -18,15 +18,6 @@ namespace WesternLibraryManagementSystem.Forms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmBook());
-            /*
-            make it easier to run the form fast in production but when release please only use main form
-            Application.Run(new FormViewBookCategory());
-            Application.Run(new FrmBook());
-            Application.Run(new FrmUser());
-            Application.Run(new Form1());
-            Application.Run(new FormBorrowBook());
-            Application.Run(new FrmManageUser());
-            */
         }
     }
 }

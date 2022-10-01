@@ -54,7 +54,7 @@
             this.btnOperation = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
-            this.dtpPublishYear = new System.Windows.Forms.DateTimePicker();
+            this.txtYear = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -290,22 +290,21 @@
             this.dtpDateAdded.Size = new System.Drawing.Size(131, 26);
             this.dtpDateAdded.TabIndex = 29;
             // 
-            // dtpPublishYear
+            // txtYear
             // 
-            this.dtpPublishYear.CustomFormat = "yyyy";
-            this.dtpPublishYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpPublishYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPublishYear.Location = new System.Drawing.Point(133, 366);
-            this.dtpPublishYear.Name = "dtpPublishYear";
-            this.dtpPublishYear.Size = new System.Drawing.Size(131, 26);
-            this.dtpPublishYear.TabIndex = 30;
+            this.txtYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYear.Location = new System.Drawing.Point(133, 367);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(131, 26);
+            this.txtYear.TabIndex = 31;
+            this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYear_KeyPress);
             // 
             // DialogAddUpdateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 443);
-            this.Controls.Add(this.dtpPublishYear);
+            this.Controls.Add(this.txtYear);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.btnCategory);
             this.Controls.Add(this.btnOperation);
@@ -367,6 +366,6 @@
         private System.Windows.Forms.Button btnOperation;
         private System.Windows.Forms.Button btnCategory;
         private System.Windows.Forms.DateTimePicker dtpDateAdded;
-        private System.Windows.Forms.DateTimePicker dtpPublishYear;
+        private System.Windows.Forms.TextBox txtYear;
     }
 }

@@ -120,7 +120,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(163, 50);
             this.button6.TabIndex = 19;
-            this.button6.Text = "button6";
+            this.button6.Text = "Button 6";
             this.button6.UseVisualStyleBackColor = true;
             // 
             // btnDelete
@@ -177,6 +177,7 @@
             this.dgvBooks.ReadOnly = true;
             this.dgvBooks.Size = new System.Drawing.Size(1236, 354);
             this.dgvBooks.TabIndex = 15;
+            this.dgvBooks.Click += new System.EventHandler(this.dgvBooks_Click);
             // 
             // Column1
             // 

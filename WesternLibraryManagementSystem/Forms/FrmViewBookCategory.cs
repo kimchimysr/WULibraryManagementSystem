@@ -13,7 +13,7 @@ namespace WesternLibraryManagement.Forms
 {
     public partial class FrmViewBookCategory : Form
     {
-        private string categorySelectedName { get; set; }
+        private string categorySelectedID { get; set; }
         public FrmViewBookCategory()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace WesternLibraryManagement.Forms
             switch (button.Name)
             {
                 case "btnCopyToClipboard":
-                    Clipboard.SetText(categorySelectedName);
+                    Clipboard.SetText(categorySelectedID);
                     break;
             }
                 
@@ -40,7 +40,7 @@ namespace WesternLibraryManagement.Forms
         private void dgvBookCategories_Click(object sender, EventArgs e)
         {
             this.btnCopyToClipboard.Enabled = true;
-            categorySelectedName = dgvBookCategories.SelectedRows[0].Cells["Column2"].Value.ToString();
+            categorySelectedID = dgvBookCategories.SelectedRows[0].Cells["Column1"].Value.ToString();
         }
     }
 }

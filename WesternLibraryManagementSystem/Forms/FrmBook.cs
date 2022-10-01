@@ -16,6 +16,7 @@ namespace WesternLibraryManagementSystem.Forms
 {
     public partial class FrmBook : Form
     {
+        DataTable bringEditDataToOtherForm = new DataTable();
         public FrmBook()
         {
             InitializeComponent();
@@ -34,7 +35,8 @@ namespace WesternLibraryManagementSystem.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error Type: {ex.GetType()} \nError Message: {ex.Message}","Error",MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
+                            $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
@@ -42,23 +44,17 @@ namespace WesternLibraryManagementSystem.Forms
                 case "btnEdit":
                     try
                     {
-                        DataTable dt = new DataTable();
-                        string bookid = dgvBooks.SelectedRows[0].Cells["Column1"].Value.ToString().Trim();
-                        MessageBox.Show(bookid);
-                        LibModule.Conn.Open();
-                        string query = $"SELECT * FROM tblBook WHERE bookID={bookid}";
-                        LibModule.Cmd =new SQLiteCommand(query,LibModule.Conn);
-                        SQLiteDataAdapter adapter = new SQLiteDataAdapter(LibModule.Cmd);
-                        adapter.Fill(dt);
-                        Form frmAddUpdateBook = new DialogAddUpdateBook(this, dt);
-                        frmAddUpdateBook.ShowDialog();
+                        string id = dgvBooks.SelectedRows[0].Cells["Column1"].Value.ToString();
+                        Form frmAddEupdateBook =
+                            new DialogAddUpdateBook(this, LibModule.GetSingleRecordDB("tblBook", "bookID", id));
+                        frmAddEupdateBook.ShowDialog();
+                        break;
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error Type: {ex.GetType()} \nError Message: {ex.Message}", "Error", MessageBoxButtons.OK,
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}",ex.GetType()+"",MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
                     break;
 
                 case "btnDelete":
@@ -68,16 +64,8 @@ namespace WesternLibraryManagementSystem.Forms
                         "Confirmation Delection",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        try
-                        {
-                            LibModule.DeleteRecord("tblBook", "bookID", bookID);
-                            MessageBox.Show("Delete Successfully");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Error Type: {ex.GetType()} \nError Message: {ex.Message}", "Error", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                        }
+                        LibModule.DeleteRecord("tblBook", "bookID", bookID);
+                        FrmBook_Load(sender, e);
                     }
                     else { FrmBook_Load(sender, e); }
                     break;
@@ -97,8 +85,9 @@ namespace WesternLibraryManagementSystem.Forms
         private void FrmBook_Load(object sender, EventArgs e)
         {
             this.txtSearch.Clear();
-            /*this.btnEdit.Enabled = false;
-            this.btnDelete.Enabled = false;*/
+            this.btnEdit.Enabled = false;
+            this.btnDelete.Enabled = false;
+            this.btnAdd.Enabled = true;
             this.cbbMeanOfSearch.SelectedIndex = -1;
             this.PopulateDataGridView();
         }
@@ -150,8 +139,9 @@ namespace WesternLibraryManagementSystem.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error Type: {ex.GetType()} \nError Message: {ex.Message}", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
+                            $"{ex.GetType()}", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
 
                     
@@ -159,7 +149,8 @@ namespace WesternLibraryManagementSystem.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error Type: {ex.GetType()} \nError Message: {ex.Message}", "Error", MessageBoxButtons.OK,
+                MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
+                    $"{ex.GetType()}", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
 
@@ -172,5 +163,11 @@ namespace WesternLibraryManagementSystem.Forms
             LibModule.FillDataGridView("tblBook", dgvBooks);
         }
 
+        private void dgvBooks_Click(object sender, EventArgs e)
+        {
+            this.btnAdd.Enabled = false;
+            this.btnDelete.Enabled = true;
+            this.btnEdit.Enabled = true;
+        }
     }
 }
