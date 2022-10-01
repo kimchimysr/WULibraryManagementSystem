@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\DialogAddUpdateBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogAddUpdateBook.Designer.cs">
+      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DIalogAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,11 +120,11 @@
     <Compile Include="Forms\FrmReturnBook.Designer.cs">
       <DependentUpon>FrmReturnBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormViewBookCategory.cs">
+    <Compile Include="Forms\FrmViewBookCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormViewBookCategory.Designer.cs">
-      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
+    <Compile Include="Forms\FrmViewBookCategory.Designer.cs">
+      <DependentUpon>FrmViewBookCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmSQLiteConnection.cs">
       <SubType>Form</SubType>
@@ -142,11 +148,17 @@
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\DialogAddUpdateBook.resx">
+      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DIalogAddUpdateUser.resx">
       <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBook.resx">
+      <DependentUpon>FrmBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
@@ -154,8 +166,8 @@
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormViewBookCategory.resx">
-      <DependentUpon>FormViewBookCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmViewBookCategory.resx">
+      <DependentUpon>FrmViewBookCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
