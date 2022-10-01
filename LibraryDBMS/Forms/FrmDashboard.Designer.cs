@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
@@ -48,21 +49,13 @@
             this.panel1.Size = new System.Drawing.Size(1103, 661);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // panel5
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel2.Location = new System.Drawing.Point(23, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 150);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel3.Location = new System.Drawing.Point(292, 12);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(250, 150);
-            this.panel3.TabIndex = 0;
+            this.panel5.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel5.Location = new System.Drawing.Point(830, 12);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(250, 150);
+            this.panel5.TabIndex = 0;
             // 
             // panel4
             // 
@@ -72,13 +65,21 @@
             this.panel4.Size = new System.Drawing.Size(250, 150);
             this.panel4.TabIndex = 0;
             // 
-            // panel5
+            // panel3
             // 
-            this.panel5.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel5.Location = new System.Drawing.Point(830, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(250, 150);
-            this.panel5.TabIndex = 0;
+            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel3.Location = new System.Drawing.Point(292, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(250, 150);
+            this.panel3.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel2.Location = new System.Drawing.Point(23, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 150);
+            this.panel2.TabIndex = 0;
             // 
             // FrmDashboard
             // 
@@ -88,7 +89,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "FrmDashboard";
-            this.Text = "FrmDashboard";
+            this.Text = "Dashboard";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

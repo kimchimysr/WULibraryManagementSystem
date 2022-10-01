@@ -17,6 +17,7 @@ namespace LibraryDBMS
         public FrmReportViewer()
         {
             InitializeComponent();
+            Utils.FillComboBox(cbReportsList, false, "All Students", "All Books", "All Loan Books");
         }
 
         public FrmReportViewer(string tableName, string rpPath, string rpDataSet)
@@ -29,6 +30,29 @@ namespace LibraryDBMS
 
         private void FrmReportViewer_Load(object sender, EventArgs e)
         {
+            this.reportViewer1.RefreshReport();
+        }
+
+        private void cbReportsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            switch ((string)cb.SelectedItem)
+            {
+                case "All Students":
+                    LibModule.FillReportViewer("tblStudent", reportViewer1,
+                        "LibraryDBMS.Reports.RpStudent.rdlc", "Borrower");
+                    break;
+                case "All Books":
+                    LibModule.FillReportViewer("viewBook", reportViewer1,
+                        "LibraryDBMS.Reports.RpBook.rdlc", "Book");
+                    break;
+                case "All Loan Books":
+                    LibModule.FillReportViewer("tblStudent", reportViewer1,
+                        "LibraryDBMS.Reports.RpStudent.rdlc", "Borrower");
+                    break;
+                default:
+                    break;
+            }
             this.reportViewer1.RefreshReport();
         }
     }

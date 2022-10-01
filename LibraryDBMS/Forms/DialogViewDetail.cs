@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryDBMS.Libs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogViewDetail : Form
     {
-        private DataGridView dgv;
+        private readonly DataGridView dgv;
         public DialogViewDetail()
         {
             InitializeComponent();
@@ -21,28 +22,33 @@ namespace LibraryDBMS.Forms
         public DialogViewDetail(DataGridView _dgv, string title)
         {
             InitializeComponent();
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
             dgv = _dgv;
-            Text = $"View {title}";
-            lblTitle.Text = $"View {title}";
+            lblHeader.Text = $"View {title}";
         }
 
-        private void FrmVIewDetail_Load(object sender, EventArgs e)
+        private void FrmViewDetail_Load(object sender, EventArgs e)
         {
             try
             {
                 int i = 0;
-                StringBuilder sb = new StringBuilder();
+                StringBuilder columns = new StringBuilder();
                 for (i = 0; i < dgv.Columns.Count; i++)
                 {
-                    sb.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
                 }
-                lblText.Text = sb.ToString();
-                this.Size = new Size(Width, (i * 25) + 200);
+                lblText.Text = columns.ToString();
+                this.Size = new Size(Width, lblText.Height + 160);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

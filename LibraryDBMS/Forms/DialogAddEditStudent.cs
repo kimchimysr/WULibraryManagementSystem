@@ -20,10 +20,11 @@ namespace LibraryDBMS.Forms
         public DialogAddEditStudent(FrmManageStudent frm, DataTable _user = null)
         {
             InitializeComponent();
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
             isEditMode = _user != null ? true : false;
             frmManageStudent = frm;
             user = _user;
-            Utils.FillComboBox(cbYear, "1", "2", "3", "4");
+            Utils.FillComboBox(cbYear, false, "1", "2", "3", "4");
             if (!isEditMode)
             {
                 this.Text = "Add New Student";
@@ -33,6 +34,7 @@ namespace LibraryDBMS.Forms
             {
                 lblHeader.Text = "Edit Student";
                 this.Text = "Edit Student";
+                btnSaveChanges.Size = new Size(355, 56);
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
@@ -130,6 +132,11 @@ namespace LibraryDBMS.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

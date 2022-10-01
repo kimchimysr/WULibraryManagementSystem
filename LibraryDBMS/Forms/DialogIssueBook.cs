@@ -38,7 +38,7 @@ namespace LibraryDBMS.Forms
                     {
                         if (txtBookID.Text.Length > 0)
                         {
-                            LibModule.SearchAndShow("tblBook", "title", "bookID", txtBookID.Text.Trim(), lblTitle);
+                            LibModule.SearchAndDisplayLabel("tblBook", "title", "bookID", txtBookID.Text.Trim(), lblTitle);
                             // check if the book qty > 0
                             string qty = LibModule.ExecuteScalarQuery
                                 ($"SELECT qty FROM tblBook WHERE bookID='{txtBookID.Text.Trim()}'");
@@ -64,7 +64,7 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         if (txtStudentID.Text.Length > 0)
-                            LibModule.SearchAndShow("tblStudent", "firstName,lastName", "studentID", txtStudentID.Text.Trim(), lblName);
+                            LibModule.SearchAndDisplayLabel("tblStudent", "firstName,lastName", "studentID", txtStudentID.Text.Trim(), lblName);
                     }
                     catch (Exception ex)
                     {

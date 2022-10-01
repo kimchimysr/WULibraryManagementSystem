@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
-using LibraryDBMS.Temp;
 
 namespace LibraryDBMS.Forms
 {
@@ -21,16 +20,16 @@ namespace LibraryDBMS.Forms
 
         private void FrmManageUser_Load(object sender, EventArgs e)
         {
-            Utils.FillComboBox(cbSearchBy, "Username", "Name");
+            Utils.FillComboBox(cbSearchBy, true, "Username", "Name");
             cbSearchBy.SelectedIndex = 0;
             PopulateDataGrid();
         }
         
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("viewUserInfo", dgvUserList);
-            lblCount.Text = 
-                LibModule.ExecuteScalarQuery("SELECT COUNT(userID) FROM viewUserInfo;") + " user(s)";
+            LibModule.FillDataGrid("viewUserInfo", dgvUserList, "userID");
+            lblUserCount.Text = "Total User: " + 
+                LibModule.ExecuteScalarQuery("SELECT COUNT(userID) FROM viewUserInfo;");
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -43,30 +42,30 @@ namespace LibraryDBMS.Forms
                         "WesternLibraryManagementSystem.Reports.RpUserInfo.rdlc", "UserInfo");
                     frmReportViewer.ShowDialog();
                     break;
-                case "btnFindUser":
+                case "btnSearch":
                     Search();
                     break;
                 case "btnFilter":
                     Search(isFilterDates: true);
                     break;
-                case "btnAddUser":
+                case "btnAdd":
                     try
                     {
-                        //Form frmAddEditUser = new DialogAddEditUser(this);
-                        //frmAddEditUser.ShowDialog();
+                        Form frmAddEditUser = new DialogAddEditUser(this);
+                        frmAddEditUser.ShowDialog();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "btnEditUser":
+                case "btnEdit":
                     try
                     {
                         string id = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
-                        //Form frmAddEditUser =
-                        //    new DialogAddEditUser(this, LibModule.GetSingleRecordDB("viewUserInfo", "userID", id));
-                        //frmAddEditUser.ShowDialog();
+                        Form frmAddEditUser =
+                            new DialogAddEditUser(this, LibModule.GetSingleRecordDB("viewUserInfo", "userID", id));
+                        frmAddEditUser.ShowDialog();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -77,13 +76,13 @@ namespace LibraryDBMS.Forms
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "btnDeleteUser":
+                case "btnDelete":
                     try
                     {
                         string userID = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
-                        LibModule.DeleteRecord("tblUser", "userID", userID,
-                            Utils.GetDataGridSelectedRowData(dgvUserList));
-                        PopulateDataGrid();
+                        if(LibModule.DeleteRecord("tblUser", "userID", userID,
+                            Utils.GetDataGridSelectedRowData(dgvUserList)) == true)
+                            PopulateDataGrid();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -94,7 +93,7 @@ namespace LibraryDBMS.Forms
                         MessageBox.Show(ex.Message);
                     }
                     break;
-                case "btnActivateDeactivateUser":
+                case "btnActivateDeactivate":
                     try
                     {
                         string userID = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
@@ -136,7 +135,7 @@ namespace LibraryDBMS.Forms
                     {
                         string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                         string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                        LibModule.SearchAndShow("viewUserInfo", dgvUserList, "dateAdded", fromDate, toDate);
+                        LibModule.SearchBetweenDateAndFillDataGrid("viewUserInfo", dgvUserList, "dateAdded", fromDate, toDate);
                     }
                 }
                 else
@@ -147,9 +146,9 @@ namespace LibraryDBMS.Forms
                         string value = txtSearchValue.Text.ToString().Trim();
 
                         if (searchBy == "Username")
-                            LibModule.SearchAndShow("viewUserInfo", "username", value, dgvUserList);
+                            LibModule.SearchAndFillDataGrid("viewUserInfo", "username", value, dgvUserList);
                         else if (searchBy == "Name")
-                            LibModule.SearchAndShow("viewUserInfo", "firstName,lastName", value, dgvUserList, true);
+                            LibModule.SearchNameAndFillDataGrid("viewUserInfo", value, dgvUserList);
                     }
                 }
             }

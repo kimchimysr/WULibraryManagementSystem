@@ -45,11 +45,12 @@
             this.btnSetting = new System.Windows.Forms.Button();
             this.pHome = new System.Windows.Forms.Panel();
             this.pTitleBar = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblAppTitle = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pHeader = new System.Windows.Forms.Panel();
+            this.lblMenuTitle = new System.Windows.Forms.Label();
             this.pDashboard = new System.Windows.Forms.Panel();
             this.pManageBook = new System.Windows.Forms.Panel();
             this.pManageStudent = new System.Windows.Forms.Panel();
@@ -60,9 +61,12 @@
             this.pAccount = new System.Windows.Forms.Panel();
             this.pSetting = new System.Windows.Forms.Panel();
             this.niBookLoan = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pContainer = new System.Windows.Forms.Panel();
             this.pSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             this.pTitleBar.SuspendLayout();
+            this.pHeader.SuspendLayout();
+            this.pContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // pSidebar
@@ -83,7 +87,7 @@
             this.pSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pSidebar.Location = new System.Drawing.Point(0, 25);
             this.pSidebar.Name = "pSidebar";
-            this.pSidebar.Size = new System.Drawing.Size(200, 775);
+            this.pSidebar.Size = new System.Drawing.Size(200, 776);
             this.pSidebar.TabIndex = 0;
             // 
             // btnHome
@@ -243,7 +247,7 @@
             this.btnNotification.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNotification.Image = global::LibraryDBMS.Properties.Resources.pie_26px;
             this.btnNotification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotification.Location = new System.Drawing.Point(12, 601);
+            this.btnNotification.Location = new System.Drawing.Point(12, 602);
             this.btnNotification.Name = "btnNotification";
             this.btnNotification.Size = new System.Drawing.Size(188, 50);
             this.btnNotification.TabIndex = 0;
@@ -262,7 +266,7 @@
             this.btnAccount.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAccount.Image = global::LibraryDBMS.Properties.Resources.pie_26px;
             this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccount.Location = new System.Drawing.Point(12, 657);
+            this.btnAccount.Location = new System.Drawing.Point(12, 658);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(188, 50);
             this.btnAccount.TabIndex = 0;
@@ -281,7 +285,7 @@
             this.btnSetting.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnSetting.Image = global::LibraryDBMS.Properties.Resources.pie_26px;
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(12, 713);
+            this.btnSetting.Location = new System.Drawing.Point(12, 714);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(188, 50);
             this.btnSetting.TabIndex = 0;
@@ -292,38 +296,37 @@
             // 
             // pHome
             // 
-            this.pHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pHome.BackColor = System.Drawing.Color.White;
             this.pHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pHome.Location = new System.Drawing.Point(200, 75);
             this.pHome.Name = "pHome";
-            this.pHome.Size = new System.Drawing.Size(1050, 725);
+            this.pHome.Size = new System.Drawing.Size(1188, 726);
             this.pHome.TabIndex = 1;
             // 
             // pTitleBar
             // 
             this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.pTitleBar.Controls.Add(this.lblTitle);
+            this.pTitleBar.Controls.Add(this.lblAppTitle);
             this.pTitleBar.Controls.Add(this.btnMinimize);
             this.pTitleBar.Controls.Add(this.btnMaximize);
             this.pTitleBar.Controls.Add(this.btnExit);
             this.pTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTitleBar.Location = new System.Drawing.Point(0, 0);
             this.pTitleBar.Name = "pTitleBar";
-            this.pTitleBar.Size = new System.Drawing.Size(1250, 25);
+            this.pTitleBar.Size = new System.Drawing.Size(1388, 25);
             this.pTitleBar.TabIndex = 2;
-            this.pTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelHeader_MouseDown);
             // 
-            // lblTitle
+            // lblAppTitle
             // 
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTitle.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(210, 25);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Library Management System";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAppTitle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblAppTitle.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblAppTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblAppTitle.Name = "lblAppTitle";
+            this.lblAppTitle.Size = new System.Drawing.Size(210, 25);
+            this.lblAppTitle.TabIndex = 0;
+            this.lblAppTitle.Text = "Library Management System";
+            this.lblAppTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnMinimize
             // 
@@ -331,7 +334,7 @@
             this.btnMinimize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LibraryDBMS.Properties.Resources.subtract_16px;
-            this.btnMinimize.Location = new System.Drawing.Point(1102, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(1240, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(50, 25);
             this.btnMinimize.TabIndex = 0;
@@ -344,7 +347,7 @@
             this.btnMaximize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LibraryDBMS.Properties.Resources.maximize_button_16px;
-            this.btnMaximize.Location = new System.Drawing.Point(1153, 0);
+            this.btnMaximize.Location = new System.Drawing.Point(1291, 0);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(50, 25);
             this.btnMaximize.TabIndex = 0;
@@ -358,101 +361,113 @@
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnExit.Location = new System.Drawing.Point(1204, 0);
+            this.btnExit.Location = new System.Drawing.Point(1342, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(50, 25);
             this.btnExit.TabIndex = 0;
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.Button_Click);
             // 
-            // panel1
+            // pHeader
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(200, 25);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1050, 50);
-            this.panel1.TabIndex = 3;
+            this.pHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.pHeader.Controls.Add(this.lblMenuTitle);
+            this.pHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pHeader.Location = new System.Drawing.Point(200, 25);
+            this.pHeader.Name = "pHeader";
+            this.pHeader.Size = new System.Drawing.Size(1188, 50);
+            this.pHeader.TabIndex = 3;
+            // 
+            // lblMenuTitle
+            // 
+            this.lblMenuTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblMenuTitle.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenuTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblMenuTitle.Location = new System.Drawing.Point(385, 3);
+            this.lblMenuTitle.Name = "lblMenuTitle";
+            this.lblMenuTitle.Size = new System.Drawing.Size(418, 44);
+            this.lblMenuTitle.TabIndex = 0;
+            this.lblMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pDashboard
             // 
-            this.pDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pDashboard.BackColor = System.Drawing.Color.White;
             this.pDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pDashboard.Location = new System.Drawing.Point(200, 75);
             this.pDashboard.Name = "pDashboard";
-            this.pDashboard.Size = new System.Drawing.Size(1050, 725);
+            this.pDashboard.Size = new System.Drawing.Size(1188, 726);
             this.pDashboard.TabIndex = 4;
             // 
             // pManageBook
             // 
-            this.pManageBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pManageBook.BackColor = System.Drawing.Color.White;
             this.pManageBook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pManageBook.Location = new System.Drawing.Point(200, 75);
             this.pManageBook.Name = "pManageBook";
-            this.pManageBook.Size = new System.Drawing.Size(1050, 725);
+            this.pManageBook.Size = new System.Drawing.Size(1188, 726);
             this.pManageBook.TabIndex = 5;
             // 
             // pManageStudent
             // 
-            this.pManageStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pManageStudent.BackColor = System.Drawing.Color.White;
             this.pManageStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pManageStudent.Location = new System.Drawing.Point(200, 75);
             this.pManageStudent.Name = "pManageStudent";
-            this.pManageStudent.Size = new System.Drawing.Size(1050, 725);
+            this.pManageStudent.Size = new System.Drawing.Size(1188, 726);
             this.pManageStudent.TabIndex = 6;
             // 
             // pBookLoanReturn
             // 
-            this.pBookLoanReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pBookLoanReturn.BackColor = System.Drawing.Color.White;
             this.pBookLoanReturn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pBookLoanReturn.Location = new System.Drawing.Point(200, 75);
             this.pBookLoanReturn.Name = "pBookLoanReturn";
-            this.pBookLoanReturn.Size = new System.Drawing.Size(1050, 725);
+            this.pBookLoanReturn.Size = new System.Drawing.Size(1188, 726);
             this.pBookLoanReturn.TabIndex = 7;
             // 
             // pReport
             // 
-            this.pReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pReport.BackColor = System.Drawing.Color.White;
             this.pReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pReport.Location = new System.Drawing.Point(200, 75);
             this.pReport.Name = "pReport";
-            this.pReport.Size = new System.Drawing.Size(1050, 725);
+            this.pReport.Size = new System.Drawing.Size(1188, 726);
             this.pReport.TabIndex = 8;
             // 
             // pManageUser
             // 
-            this.pManageUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pManageUser.BackColor = System.Drawing.Color.White;
             this.pManageUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pManageUser.Location = new System.Drawing.Point(200, 75);
             this.pManageUser.Name = "pManageUser";
-            this.pManageUser.Size = new System.Drawing.Size(1050, 725);
+            this.pManageUser.Size = new System.Drawing.Size(1188, 726);
             this.pManageUser.TabIndex = 9;
             // 
             // pNotification
             // 
-            this.pNotification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pNotification.BackColor = System.Drawing.Color.White;
             this.pNotification.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pNotification.Location = new System.Drawing.Point(200, 75);
             this.pNotification.Name = "pNotification";
-            this.pNotification.Size = new System.Drawing.Size(1050, 725);
+            this.pNotification.Size = new System.Drawing.Size(1188, 726);
             this.pNotification.TabIndex = 10;
             // 
             // pAccount
             // 
-            this.pAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pAccount.BackColor = System.Drawing.Color.White;
             this.pAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pAccount.Location = new System.Drawing.Point(200, 75);
             this.pAccount.Name = "pAccount";
-            this.pAccount.Size = new System.Drawing.Size(1050, 725);
+            this.pAccount.Size = new System.Drawing.Size(1188, 726);
             this.pAccount.TabIndex = 11;
             // 
             // pSetting
             // 
-            this.pSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.pSetting.BackColor = System.Drawing.Color.White;
             this.pSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pSetting.Location = new System.Drawing.Point(200, 75);
             this.pSetting.Name = "pSetting";
-            this.pSetting.Size = new System.Drawing.Size(1050, 725);
+            this.pSetting.Size = new System.Drawing.Size(1188, 726);
             this.pSetting.TabIndex = 12;
             // 
             // niBookLoan
@@ -461,32 +476,44 @@
             this.niBookLoan.Text = "Book Loan Status";
             this.niBookLoan.Visible = true;
             // 
+            // pContainer
+            // 
+            this.pContainer.Controls.Add(this.pHome);
+            this.pContainer.Controls.Add(this.pDashboard);
+            this.pContainer.Controls.Add(this.pSetting);
+            this.pContainer.Controls.Add(this.pAccount);
+            this.pContainer.Controls.Add(this.pManageBook);
+            this.pContainer.Controls.Add(this.pManageStudent);
+            this.pContainer.Controls.Add(this.pBookLoanReturn);
+            this.pContainer.Controls.Add(this.pReport);
+            this.pContainer.Controls.Add(this.pManageUser);
+            this.pContainer.Controls.Add(this.pNotification);
+            this.pContainer.Controls.Add(this.pHeader);
+            this.pContainer.Controls.Add(this.pSidebar);
+            this.pContainer.Controls.Add(this.pTitleBar);
+            this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pContainer.Location = new System.Drawing.Point(0, 0);
+            this.pContainer.Name = "pContainer";
+            this.pContainer.Size = new System.Drawing.Size(1388, 801);
+            this.pContainer.TabIndex = 0;
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1250, 800);
-            this.Controls.Add(this.pSetting);
-            this.Controls.Add(this.pAccount);
-            this.Controls.Add(this.pNotification);
-            this.Controls.Add(this.pManageUser);
-            this.Controls.Add(this.pReport);
-            this.Controls.Add(this.pBookLoanReturn);
-            this.Controls.Add(this.pManageStudent);
-            this.Controls.Add(this.pManageBook);
-            this.Controls.Add(this.pDashboard);
-            this.Controls.Add(this.pHome);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pSidebar);
-            this.Controls.Add(this.pTitleBar);
+            this.ClientSize = new System.Drawing.Size(1388, 801);
+            this.Controls.Add(this.pContainer);
             this.DoubleBuffered = true;
-            this.MinimumSize = new System.Drawing.Size(1250, 800);
+            this.MinimumSize = new System.Drawing.Size(1404, 840);
             this.Name = "FrmMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMenu_FormClosing);
             this.Resize += new System.EventHandler(this.FrmMainMenu_Resize);
             this.pSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             this.pTitleBar.ResumeLayout(false);
+            this.pHeader.ResumeLayout(false);
+            this.pContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -511,8 +538,8 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.PictureBox btnHome;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblAppTitle;
+        private System.Windows.Forms.Panel pHeader;
         private System.Windows.Forms.Panel pDashboard;
         private System.Windows.Forms.Panel pManageBook;
         private System.Windows.Forms.Panel pManageStudent;
@@ -523,5 +550,7 @@
         private System.Windows.Forms.Panel pAccount;
         private System.Windows.Forms.Panel pSetting;
         private System.Windows.Forms.NotifyIcon niBookLoan;
+        private System.Windows.Forms.Label lblMenuTitle;
+        private System.Windows.Forms.Panel pContainer;
     }
 }

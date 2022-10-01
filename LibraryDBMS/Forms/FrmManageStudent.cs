@@ -18,26 +18,27 @@ namespace LibraryDBMS.Forms
         public FrmManageStudent()
         {
             InitializeComponent();
+            // fix flickering
             typeof(DataGridView).InvokeMember(
                "DoubleBuffered",
                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
                null,
                dgvBorrowerList,
                new object[] { true });
+            InitializeValues();
         }
 
-        private void FrmBorrower_Load(object sender, EventArgs e)
+        private void InitializeValues()
         {
-            Utils.FillComboBox(cbSearchBy, "Student ID", "Name");
-            cbSearchBy.SelectedIndex = 0;
+            Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
             PopulateDataGrid();
         }
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("tblStudent", dgvBorrowerList);
-            lblCount.Text =
-                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;") + " borrower(s)";
+            LibModule.FillDataGrid("tblStudent", dgvBorrowerList, "dateAdded");
+            lblCount.Text = "Total Student: " + 
+                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;");
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -83,9 +84,9 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         string studentID = dgvBorrowerList.SelectedRows[0].Cells["studentID"].Value.ToString();
-                        LibModule.DeleteRecord("tblStudent", "studentID", studentID,
-                            Utils.GetDataGridSelectedRowData(dgvBorrowerList));
-                        PopulateDataGrid();
+                        if (LibModule.DeleteRecord("tblStudent", "studentID", studentID,
+                            Utils.GetDataGridSelectedRowData(dgvBorrowerList)) == true)
+                            PopulateDataGrid();
                     }
                     catch (ArgumentOutOfRangeException)
                     {
@@ -130,7 +131,7 @@ namespace LibraryDBMS.Forms
                     {
                         string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                         string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                        LibModule.SearchAndShow("tblStudent", dgvBorrowerList, "dateAdded", fromDate, toDate);
+                        LibModule.SearchBetweenDateAndFillDataGrid("tblStudent", dgvBorrowerList, "dateAdded", fromDate, toDate);
                     }
                 }
                 else
@@ -141,9 +142,9 @@ namespace LibraryDBMS.Forms
                         string value = txtSearchValue.Text.ToString().Trim();
 
                         if (searchBy == "Student ID")
-                            LibModule.SearchAndShow("tblStudent", "studentID", value, dgvBorrowerList);
+                            LibModule.SearchAndFillDataGrid("tblStudent", "studentID", value, dgvBorrowerList);
                         else if (searchBy == "Name")
-                            LibModule.SearchAndShow("tblStudent", "firstName,lastName", value, dgvBorrowerList, true);
+                            LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvBorrowerList);
                     }
                 }
             }

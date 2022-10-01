@@ -21,6 +21,7 @@ namespace LibraryDBMS.Forms
         public DialogReturnBook(FrmBorrowBook frm, DataTable _borrow)
         {
             InitializeComponent();
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
             frmBorrowBook = frm;
             borrow = _borrow;
             PopulateFields();
@@ -40,12 +41,12 @@ namespace LibraryDBMS.Forms
 
         private void PopulateFields()
         {
-            Utils.FillComboBox(cbStatus, "Loaned", "Returned", "Lost");
+            Utils.FillComboBox(cbStatus, false, "Loaned", "Returned", "Lost");
             txtBorrowID.Text = borrow.Rows[0]["borrowID"].ToString();
             txtBookID.Text = borrow.Rows[0]["bookID"].ToString();
             txtStudentID.Text = borrow.Rows[0]["studentID"].ToString();
             lblTitle.Text = borrow.Rows[0]["title"].ToString();
-            lblName.Text = $"{borrow.Rows[0]["firstName"]} {borrow.Rows[0]["lastName"]}";
+            lblName.Text = borrow.Rows[0]["fullName"].ToString();
             dtpIssueDate.Value = DateTime.Parse(borrow.Rows[0]["dateLoan"].ToString());
             dtpDueDate.Value = DateTime.Parse(borrow.Rows[0]["dateDue"].ToString());
             dtpReturnDate.Value = 
@@ -61,7 +62,7 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
-                case "btnSave":
+                case "btnSaveChanges":
                     if (IsValidData())
                     {
                         try
@@ -73,7 +74,8 @@ namespace LibraryDBMS.Forms
                             string userID = "1";
                             string dateLoan = dtpIssueDate.Text.ToString();
                             string dateDue = dtpDueDate.Text.ToString();
-                            string dateReturned = dtpReturnDate.Text.ToString();
+                            string dateReturned = cbStatus.SelectedItem == "Returned" ?
+                                dtpReturnDate.Text.ToString() : string.Empty;
                             string fine = txtFine.Text.Trim();
                             string status = (cbStatus.SelectedIndex + 1).ToString();
                             List<string> updateStatus = new List<string>
@@ -108,6 +110,25 @@ namespace LibraryDBMS.Forms
 
         private void dtpReturnDate_ValueChanged(object sender, EventArgs e)
         {
+            CalculateFine();
+        }
+
+        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbStatus.SelectedItem == "Returned")
+            {
+                dtpReturnDate.Enabled = true;
+                CalculateFine();
+            }
+            else
+            {
+                dtpReturnDate.Enabled = false;
+                txtFine.Text = string.Empty;
+            }
+        }
+
+        private void CalculateFine()
+        {
             if (dtpReturnDate.Value > dtpDueDate.Value)
             {
                 int overdueDays = GetDaysWithoutWeekend(dtpDueDate.Value.Date, dtpReturnDate.Value.Date);
@@ -117,13 +138,6 @@ namespace LibraryDBMS.Forms
             else txtFine.Text = string.Empty;
         }
 
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbStatus.SelectedItem == "Returned")
-                dtpReturnDate.Enabled = true;
-            else dtpReturnDate.Enabled = false;
-        }
-
         private int GetDaysWithoutWeekend(DateTime dtStart, DateTime dtEnd)
         {
             int ndays = 1 + Convert.ToInt32((dtEnd - dtStart).TotalDays);
@@ -131,6 +145,11 @@ namespace LibraryDBMS.Forms
             return ndays - 2 * nsaturdays
                    - (dtStart.DayOfWeek == DayOfWeek.Sunday ? 1 : 0)
                    + (dtEnd.DayOfWeek == DayOfWeek.Saturday ? 1 : 0) - 1;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

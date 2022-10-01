@@ -8,9 +8,7 @@ using System.Data.SQLite;
 using System.Windows.Forms;
 using System.Data;
 using Microsoft.Reporting.WinForms;
-using System.Data.SqlClient;
-using System.Drawing;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+using LibraryDBMS.Forms;
 
 namespace LibraryDBMS.Libs
 {
@@ -123,14 +121,14 @@ namespace LibraryDBMS.Libs
 
                 if (Cmd.ExecuteNonQuery() == 1)
                 {
-                    if(showMessage)
-                        MessageBox.Show("Record Updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (showMessage)
+                        Utils.NotificationToast.Show("success", "Record Updated Successfully!");
                     return true;
                 }
                 else
                 {
                     if(showMessage)
-                        MessageBox.Show("No Record Has Been Updated!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utils.NotificationToast.Show("fail", "Record Cannot Update!");
                 }
             }
             catch (Exception ex)
@@ -146,17 +144,16 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
-        public static void DeleteRecord(string tableName, string conditionFieldName, string conditionValue,
-            string record = null)
+        public static bool DeleteRecord(string tableName, string conditionFieldName, string conditionValue,
+            string record)
         {
             string query = $"DELETE FROM {tableName} WHERE {conditionFieldName}='{conditionValue}';";
             try
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
-                DialogResult result = MessageBox.Show("Do you want to delete this record?" +
-                    $"\n{record}", "Delete Record", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                Form dialogDeleteRecord = new DialogDeleteRecord(record);
+                if (dialogDeleteRecord.ShowDialog() == DialogResult.Yes)
                 {
                     if (Cmd.ExecuteNonQuery() == 1)
                     {
@@ -166,8 +163,8 @@ namespace LibraryDBMS.Libs
                     {
                         MessageBox.Show("No Record Has Been Deleted!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    return true;
                 }
-                else return;
             }
             catch (Exception ex)
             {
@@ -179,6 +176,7 @@ namespace LibraryDBMS.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
+            return false;
         }
         #endregion
 
@@ -240,18 +238,21 @@ namespace LibraryDBMS.Libs
         #endregion
 
         #region Fill
-        public static void FillDataGrid(string tableName, DataGridView dgv)
+        public static void FillDataGrid(string tableName, DataGridView dgv, string fieldToSort = null)
         {
             try
             {
                 Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
+                string query = fieldToSort == null ?
+                    $"SELECT * FROM {tableName};" : 
+                    $"SELECT * FROM {tableName} ORDER BY {fieldToSort} DESC;";
+                Cmd = new SQLiteCommand(query, Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 dgv.AutoGenerateColumns = false;
                 dgv.DataSource = dt;
-                dgv.ClearSelection();
+                dgv.DataBindingComplete += Dgv_DataBindingComplete;
             }
             catch (Exception ex)
             {
@@ -263,6 +264,12 @@ namespace LibraryDBMS.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
+        }
+
+        private static void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            dgv.ClearSelection();
         }
 
         public static void FillComboBox(string tableName, ComboBox comboBox, string displayMember, string valueMember)
@@ -319,28 +326,12 @@ namespace LibraryDBMS.Libs
         #endregion
 
         #region Search
-        public static void SearchAndShow(string tableName, string conditionField, string conditionValue,
-            DataGridView dgv, bool isNameSearch = false)
+        public static void SearchAndFillDataGrid(string tableName, string conditionField, string conditionValue,
+            DataGridView dgv)
         {
-            string query = string.Empty;
-            if (!isNameSearch)
-            {
-                query = $"SELECT * FROM {tableName} " +
-                $"WHERE {conditionField}='{conditionValue}' " +
-                $"OR {conditionField} LIKE '%{conditionValue}%'";
-            }
-            else
-            {
-                List<string> condFields = new List<string>();
-                condFields.AddRange(conditionField.Split(','));
-                query = $"SELECT * FROM {tableName} " +
-                $"WHERE {condFields[0]} LIKE '%{conditionValue}%' " +
-                $"OR {condFields[1]} LIKE '%{conditionValue}%' " +
-                $"OR {condFields[0]} || {condFields[1]} LIKE '%{conditionValue}%'" +
-                $"OR {condFields[0]} || ' ' || {condFields[1]} LIKE '%{conditionValue}%'" +
-                $"OR {condFields[1]} || {condFields[0]} LIKE '%{conditionValue}%'" +
-                $"OR {condFields[1]} || ' ' || {condFields[0]} LIKE '%{conditionValue}%'";
-            }
+                string query = $"SELECT * FROM {tableName} " +
+                        $"WHERE {conditionField}='{conditionValue}' " +
+                        $"OR {conditionField} LIKE '%{conditionValue}%' ";
             try
             {
                 Conn.Open();
@@ -364,14 +355,45 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static void SearchAndShow(string tableName, DataGridView dgv, string conditionField,
+        public static void SearchNameAndFillDataGrid(string tableName, string conditionValue,
+            DataGridView dgv)
+        {
+            string query = $"SELECT * FROM {tableName} " +
+                    $"WHERE firstName='{conditionValue}' " +
+                    $"OR lastName LIKE '%{conditionValue}%' " +
+                    $"OR firstName || lastName LIKE '%{conditionValue}%'" +
+                    $"OR firstName || ' ' || lastName LIKE '%{conditionValue}%'";
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv.AutoGenerateColumns = false;
+                dgv.DataSource = dt;
+                dgv.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
+                    $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+        }
+
+        public static void SearchBetweenDateAndFillDataGrid(string tableName, DataGridView dgv, string conditionField,
             string fromDate, string toDate)
         {
+            string query = $"SELECT * FROM {tableName} " +
+                $"WHERE DATE({conditionField}) BETWEEN '{fromDate}' AND '{toDate}';";
             try
             {
                 Conn.Open();
-                string query = $"SELECT * FROM {tableName} " +
-                    $"WHERE DATE({conditionField}) BETWEEN '{fromDate}' AND '{toDate}';";
                 Cmd = new SQLiteCommand(query, Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
@@ -392,7 +414,33 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static void SearchAndShow(string tableName, string fieldNames, string conditionField,
+        public static void FilterByColumn(string tableName, DataGridView dgv, string conditionField, string conditionValue)
+        {
+            string query = $"SELECT * FROM {tableName} WHERE {conditionField}='{conditionValue}'";
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv.AutoGenerateColumns = false;
+                dgv.DataSource = dt;
+                dgv.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
+                    $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+        }
+
+        public static void SearchAndDisplayLabel(string tableName, string fieldNames, string conditionField,
             string conditionValue, Label disLabel)
         {
             try
@@ -565,12 +613,12 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
-        public static (string,string) LoanBookDueAndOverdue()
+        public static (string,string) HasLoanBookDueAndOverdue()
         {
             (string bookDue, string bookOverdue) book = (string.Empty, string.Empty);
             string query = $"SELECT " +
-                $"COUNT(CASE WHEN date(dateDue)=date('now') AND (dateReturned is NULL OR dateReturned='') THEN dateDue END) AS bookDue, " +
-                $"COUNT(CASE WHEN date(dateDue)<date('now') AND (dateReturned is NULL OR dateReturned='') THEN dateDue END) AS bookOverdue " +
+                $"COUNT(CASE WHEN date(dateDue)=date('now') AND loanStatusID='1' THEN dateDue END) AS bookDue, " +
+                $"COUNT(CASE WHEN date(dateDue)<date('now') AND loanStatusID='1' THEN dateDue END) AS bookOverdue " +
                 $"FROM tblBorrow;";
             try
             {
@@ -581,8 +629,13 @@ namespace LibraryDBMS.Libs
                 adapter.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    book = (dt.Rows[0]["bookDue"].ToString(), dt.Rows[0]["bookOverdue"].ToString());
-                    return book;
+                    string bookDue = dt.Rows[0]["bookDue"].ToString();
+                    string bookOverdue = dt.Rows[0]["bookOverdue"].ToString();
+                    if (bookDue != "0" || bookOverdue != "0")
+                    {
+                        book = (bookDue, bookOverdue);
+                        return book;
+                    }
                 }
             }
             catch (Exception ex)
@@ -595,7 +648,7 @@ namespace LibraryDBMS.Libs
                 Cmd.Dispose();
                 Conn.Close();
             }
-            book = (string.Empty, string.Empty);
+            book = ("0", "0");
             return book;
         }
 

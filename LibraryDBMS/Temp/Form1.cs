@@ -74,7 +74,7 @@ namespace LibraryDBMS.Forms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string selectedBookID = "2302";
-            LibModule.DeleteRecord("tblBook", "bookID", selectedBookID);
+            //LibModule.DeleteRecord("tblBook", "bookID", selectedBookID);
             //LibModule.FillDataGridView("tblBook", LibModule.GetTableField("tblBook"), dgvBooks);
         }
     }

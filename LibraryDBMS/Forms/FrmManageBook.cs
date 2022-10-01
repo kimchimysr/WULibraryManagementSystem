@@ -17,7 +17,7 @@ namespace LibraryDBMS.Forms
         public FrmManageBook()
         {
             InitializeComponent();
-            LibModule.FillDataGrid("tblBook", dgvBooks);
+            LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
             typeof(DataGridView).InvokeMember(
                "DoubleBuffered",
                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,

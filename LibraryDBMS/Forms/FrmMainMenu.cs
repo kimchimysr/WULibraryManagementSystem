@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-using LibraryDBMS.Temp;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -18,10 +17,9 @@ namespace LibraryDBMS.Forms
     {
         FrmLogin frmLogin;
         public readonly (string username, string roleName) user;
-        Panel currentPanel;
 
         private Size formSize;
-        private int borderSize = 2;
+        private int borderSize = 3;
 
         public FrmMainMenu()
         {
@@ -31,23 +29,27 @@ namespace LibraryDBMS.Forms
         public FrmMainMenu(FrmLogin frm, (string, string) _user)
         {
             InitializeComponent();
+            InitializeValues();
             frmLogin = frm;
             user = _user;
-            InitializeValues();
         }
 
         private void InitializeValues()
         {
-            int style = NativeWinAPI.GetWindowLong(this.pHome.Handle, NativeWinAPI.GWL_EXSTYLE);
+            // drag form
+            Utils.DragFormWithControlMouseDown(this, pTitleBar);
+            // fix flickering
+            int style = NativeWinAPI.GetWindowLong(this.pContainer.Handle, NativeWinAPI.GWL_EXSTYLE);
             style |= NativeWinAPI.WS_EX_COMPOSITED;
-            NativeWinAPI.SetWindowLong(this.pHome.Handle, NativeWinAPI.GWL_EXSTYLE, style);
+            NativeWinAPI.SetWindowLong(this.pContainer.Handle, NativeWinAPI.GWL_EXSTYLE, style);
+            OpenChildForm(new FrmHome(), pHome);
             ShowBooksDueAndOverdueNotification();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             panelSelected.Visible = false;
-            OpenChildForm(new FrmDashboard(), pDashboard);
+            OpenChildForm(new FrmHome(), pHome);
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -120,27 +122,37 @@ namespace LibraryDBMS.Forms
 
         private void OpenChildForm(Form childForm, Panel panel)
         {
-            Stopwatch timer = Stopwatch.StartNew();
+            //Stopwatch timer = Stopwatch.StartNew();
+            //panel.SuspendLayout();
             if (panel.Controls.Count == 0)
             {
                 childForm.TopLevel = false;
                 childForm.FormBorderStyle = FormBorderStyle.None;
                 childForm.Dock = DockStyle.Fill;
+                childForm.BackColor = panel.BackColor;
                 panel.Controls.Add(childForm);
                 panel.Tag = childForm;
                 childForm.Show();
                 panel.BringToFront();
             }
-            else panel.BringToFront();
-            //lblTitleChildForm.Text = childForm.Text;
-            MessageBox.Show($"{timer.ElapsedMilliseconds} ms");
+            else
+            {
+                panel.Controls[childForm.Name].Refresh();
+                panel.BringToFront();
+            }
+            lblMenuTitle.Text = childForm.Text;
+            //panel.ResumeLayout();
+            //MessageBox.Show($"{timer.ElapsedMilliseconds} ms");
         }
 
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             //frmLogin.Close();
-            niBookLoan.Icon.Dispose();
-            niBookLoan.Dispose();
+            if(niBookLoan.Visible == true)
+            {
+                niBookLoan.Icon.Dispose();
+                niBookLoan.Dispose();
+            }
         }
 
         private void FrmMainMenu_Resize(object sender, EventArgs e)
@@ -148,16 +160,12 @@ namespace LibraryDBMS.Forms
             AdjustForm();
         }
 
-        private void panelHeader_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
+        #region Windows Popup Notification
         private void ShowBooksDueAndOverdueNotification()
         {
-            (string bookDue, string bookOverdue) book = LibModule.LoanBookDueAndOverdue();
-            if (book != (string.Empty, string.Empty))
+            niBookLoan.Visible = false;
+            (string bookDue, string bookOverdue) book = LibModule.HasLoanBookDueAndOverdue();
+            if (book != ("0", "0"))
             {
                 niBookLoan.Icon = SystemIcons.Information;
                 niBookLoan.Visible = true;
@@ -173,7 +181,9 @@ namespace LibraryDBMS.Forms
             ActivateButton(btnBookLoanReturn);
             OpenChildForm(new FrmBorrowBook(), pBookLoanReturn);
         }
+        #endregion
 
+        #region Maximize, Fix Flickering, and Disable Form Border
         private void AdjustForm()
         {
             switch (this.WindowState)
@@ -199,13 +209,7 @@ namespace LibraryDBMS.Forms
             [DllImport("user32")]
             internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         }
-
-        //Drag Form
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr Wnd, int wMsg, int wParam, int lParam);
-
+        
         //Overridden methods
         protected override void WndProc(ref Message m)
         {
@@ -214,7 +218,7 @@ namespace LibraryDBMS.Forms
             const int SC_MINIMIZE = 0xF020; //Minimize form (Before)
             const int SC_RESTORE = 0xF120; //Restore form (Before)
             const int WM_NCHITTEST = 0x0084;//Win32, Mouse Input Notification: Determine what part of the window corresponds to a point, allows to resize the form.
-            const int resizeAreaSize = 10;
+            const int resizeAreaSize = 15;
 
             #region Form Resize
             // Resize/WM_NCHITTEST values
@@ -295,5 +299,6 @@ namespace LibraryDBMS.Forms
             }
             base.WndProc(ref m);
         }
+        #endregion
     }
 }

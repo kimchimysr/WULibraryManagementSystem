@@ -23,19 +23,23 @@ namespace LibraryDBMS.Forms
             isEditMode = _user != null ? true : false;
             frmManageUser = frm;
             user = _user;
-            Utils.FillComboBox(cbRole, "Admin", "Librarian", "Viewer");
+            InitializeValues();
+        }
+
+        private void InitializeValues()
+        {
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
+            Utils.FillComboBox(cbRole, false, "Admin", "Librarian", "Viewer");
             if (!isEditMode)
             {
-                this.Text = "Add New User";
                 lblHeader.Text = "New User";
                 txtUserID.Text = LibModule.GetAutoID("tblUser", "userID");
             }
             else
             {
                 lblHeader.Text = "Edit User";
-                this.Text = "Edit User";
                 PopulateFields();
-                btnClear.Enabled = false;
+                btnClear.Visible = false;
                 txtUsername.ReadOnly = true;
             }
         }
@@ -164,6 +168,11 @@ namespace LibraryDBMS.Forms
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

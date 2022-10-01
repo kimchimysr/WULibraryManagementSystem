@@ -84,6 +84,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControls\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogDeleteRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogDeleteRecord.Designer.cs">
+      <DependentUpon>DialogDeleteRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogIssueBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,11 +147,18 @@
     <Compile Include="Forms\FrmMainMenu.Designer.cs">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmNotificationToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNotificationToast.Designer.cs">
+      <DependentUpon>FrmNotificationToast.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Libs\NotificationToast.cs" />
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +235,9 @@
     <Compile Include="Temp\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\DialogDeleteRecord.resx">
+      <DependentUpon>DialogDeleteRecord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogIssueBook.resx">
       <DependentUpon>DialogIssueBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +256,9 @@
     <EmbeddedResource Include="Forms\FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,7 +274,11 @@
     <EmbeddedResource Include="Forms\DialogViewDetail.resx">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RpBorrower.rdlc" />
+    <EmbeddedResource Include="Forms\FrmNotificationToast.resx">
+      <DependentUpon>FrmNotificationToast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RpBook.rdlc" />
+    <EmbeddedResource Include="Reports\RpStudent.rdlc" />
     <EmbeddedResource Include="Reports\RpUserInfo.rdlc" />
     <EmbeddedResource Include="Temp\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -322,6 +348,18 @@
     <None Include="Resources\close_16px.png" />
     <None Include="Resources\maximize_button_16px.png" />
     <None Include="Resources\subtract_16px.png" />
+    <None Include="Resources\save_26px.png" />
+    <None Include="Resources\cancel_26px.png" />
+    <None Include="Resources\clear_symbol_26px.png" />
+    <None Include="Resources\refresh_26px.png" />
+    <None Include="Resources\search_26px.png" />
+    <None Include="Resources\add_32px.png" />
+    <None Include="Resources\edit_32px.png" />
+    <None Include="Resources\trash_32px.png" />
+    <None Include="Resources\view_32px.png" />
+    <None Include="Resources\filter_20px.png" />
+    <None Include="Resources\print_26px.png" />
+    <None Include="Resources\Tools_32px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
