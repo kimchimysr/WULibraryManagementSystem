@@ -1,78 +1,100 @@
 CREATE TABLE tblBook (
-	bookID INTEGER PRIMARY KEY,
-	isbn TEXT,
-	dewey TEXT,
-	title TEXT COLLATE NOCASE,
-	author TEXT COLLATE NOCASE,
-	publisher TEXT COLLATE NOCASE,
-	publishYear TEXT COLLATE NOCASE,
-	pages TEXT,
+	bookID INTEGER,
+	isbn TEXT NOT NULL,
+	dewey TEXT NOT NULL COLLATE NOCASE,
+	title TEXT NOT NULL COLLATE NOCASE,
+	author TEXT NOT NULL COLLATE NOCASE,
+	publisher TEXT NOT NULL COLLATE NOCASE,
+	publishYear TEXT NOT NULL,
+	pages TEXT NOT NULL,
 	other TEXT,
-	qty INTEGER,
-	cateID INTEGER,
-	dateAdded TEXT,
+	qty INTEGER NOT NULL,
+	cateID INTEGER NOT NULL,
+	dateAdded TEXT NOT NULL,
+	PRIMARY KEY(bookID),
 	FOREIGN KEY (cateID) REFERENCES tblBookCategory(cateID)
+	ON UPDATE CASCADE
+	ON DELETE RESTRICT
 );
 
 CREATE TABLE tblBookCategory (
-	cateID INTEGER PRIMARY KEY,
-	cateName TEXT
+	cateID INTEGER,
+	cateName TEXT NOT NULL UNIQUE COLLATE NOCASE,
+	PRIMARY KEY(cateID)
 );
 
 CREATE TABLE tblUser (
-	userID INTEGER PRIMARY KEY,
-	username TEXT,
-	password TEXT,
-	firstName TEXT,
-	lastName TEXT,
-	gender TEXT,
-	dob TEXT,
-	addr TEXT,
-	tel TEXT,
-	email TEXT,
-	dateAdded TEXT
+	userID INTEGER,
+	username TEXT NOT NULL UNIQUE,
+	password TEXT NOT NULL,
+	isActive TEXT NOT NULL,
+	firstName TEXT NOT NULL COLLATE NOCASE,
+	lastName TEXT NOT NULL COLLATE NOCASE,
+	gender TEXT NOT NULL,
+	dob TEXT NOT NULL,
+	addr TEXT NOT NULL,
+	tel TEXT NOT NULL,
+	email TEXT NOT NULL,
+	dateAdded TEXT NOT NULL,
+	PRIMARY KEY(userID)
 );
 
 CREATE TABLE tblRole (
 	roleID INTEGER PRIMARY KEY,
-	roleName TEXT
+	roleName TEXT NOT NULL UNIQUE COLLATE NOCASE
 );
 
-CREATE TABLE tblUserRole (
-	userRoleID INTEGER PRIMARY KEY,
-	userID INTEGER,
-	roleID INTEGER,
-	FOREIGN KEY (userID) REFERENCES tblUser(userID),
+CREATE TABLE tblUserRole(
+	userID INTEGER NOT NULL UNIQUE,
+	roleID INTEGER NOT NULL,
+	PRIMARY KEY(userID,roleID),
+	FOREIGN KEY (userID) REFERENCES tblUSer(userID)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE,
 	FOREIGN KEY (roleID) REFERENCES tblRole(roleID)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 );
 
 CREATE TABLE tblBorrow (
-	borrowID INTEGER PRIMARY KEY,
-	bookID INTEGER,
-	studentID TEXT,
-	userID INTEGER,
-	dateLoan TEXT,
-	dateDue TEXT,
+	borrowID INTEGER,
+	bookID INTEGER NOT NULL,
+	studentID TEXT NOT NULL COLLATE NOCASE,
+	userID INTEGER NOT NULL,
+	dateLoan TEXT NOT NULL,
+	dateDue TEXT NOT NULL,
 	dateReturned TEXT,
 	overdueFine TEXT,
-	loanStatusID INTEGER,
-	FOREIGN KEY (bookID) REFERENCES tblBook(bookID),
-	FOREIGN KEY (studentID) REFERENCES tblBorrower(studentID),
-	FOREIGN KEY (userID) REFERENCES tblUser(userID),
+	loanStatusID INTEGER NOT NULL,
+	PRIMARY KEY(borrowID),
+	FOREIGN KEY (bookID) REFERENCES tblBook(bookID)
+	ON UPDATE CASCADE
+	ON DELETE RESTRICT,
+	FOREIGN KEY (studentID) REFERENCES tblStudent(studentID)
+	ON UPDATE CASCADE
+	ON DELETE RESTRICT,
+	FOREIGN KEY (userID) REFERENCES tblUser(userID)
+	ON UPDATE CASCADE
+	ON DELETE RESTRICT,
 	FOREIGN KEY (loanStatusID) REFERENCES tblLoanStatus(loanStatusID)
+	ON UPDATE CASCADE
+	ON DELETE RESTRICT
 );
 
-CREATE TABLE tblBorrower (
+CREATE TABLE tblStudent (
 	studentID TEXT,
-	firstName TEXT,
-	lastName TEXT,
-	gender TEXT,
-	year INTEGER,
-	major TEXT,
-	tel TEXT
+	firstName TEXT NOT NULL,
+	lastName TEXT NOT NULL,
+	gender TEXT NOT NULL,
+	year TEXT NOT NULL,
+	major TEXT NOT NULL,
+	tel TEXT NOT NULL,
+	dateAdded TEXT NOT NULL,
+	PRIMARY KEY(studentID)
 );
 
 CREATE TABLE tblLoanStatus (
-	loanStatusID INTEGER PRIMARY KEY,
-	loanStatusName TEXT
+	loanStatusID INTEGER,
+	loanStatusName TEXT NOT NULL UNIQUE COLLATE NOCASE,
+	PRIMARY KEY(loanStatusID)
 );

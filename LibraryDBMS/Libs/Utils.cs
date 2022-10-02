@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LibraryDBMS.CustomControls;
 
-namespace WesternLibraryManagementSystem.Libs
+namespace LibraryDBMS.Libs
 {
-    public static class Utils
+    public static partial class Utils
     {
-        public static bool FormIsOpen(string form)
-        {
-            // check if window has already open
-            var OpenForms = Application.OpenForms.Cast<Form>();
 
-            return OpenForms.Any(x => x.Name == form);
-        }
-
+        #region Security
         public static string HashPassword(string password)
         {
             SHA256 sha = SHA256.Create();
@@ -43,37 +41,9 @@ namespace WesternLibraryManagementSystem.Libs
         {
             return HashPassword("Password@123");
         }
+        #endregion
 
-        //public static void ChangeControlEnabled(Form form, bool enabled, params string[] controlName)
-        //{
-        //    foreach (Control ctrl in form.Controls.OfType<Control>().OrderBy(c => c.TabIndex))
-        //    {
-        //        if (ctrl is TextBox tb)
-        //        {
-        //            if (controlName.Length == 0 || controlName.Any(x => x == tb.Name))
-        //                tb.Enabled = enabled;                }
-        //        else if (ctrl is Button btn)
-        //        {
-        //            if (controlName.Length == 0 || controlName.Any(x => x == btn.Name))
-        //                btn.Enabled = enabled;                }
-        //        else if (ctrl is ComboBox cb)
-        //        {
-        //            if (controlName.Length == 0 || controlName.Any(x => x == cb.Name))
-        //                cb.Enabled = enabled;
-        //        }
-        //        else if (ctrl is DateTimePicker dtp)
-        //        {
-        //            if (controlName.Length == 0 || controlName.Any(x => x == dtp.Name))
-        //                dtp.Enabled = enabled;
-        //        }
-        //        else if (ctrl is RadioButton rb)
-        //        {
-        //            if (controlName.Length == 0 || controlName.Any(x => x == rb.Name))
-        //                rb.Enabled = enabled;
-        //        }
-        //    }
-        //}
-
+        #region Controls Related
         public static bool IsEmptyControl(Form form)
         {
             foreach (Control ctrl in form.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
@@ -167,15 +137,19 @@ namespace WesternLibraryManagementSystem.Libs
                 }
             return true;
         }
+        #endregion
 
-        public static void FillComboBox(ComboBox cb, params string[] items)
+        #region Tool
+        public static void FillComboBox(ComboBox cb, bool setSelectedIndex, params string[] items)
         {
             if(items.Length > 0)
                 foreach(string str in items)
                     cb.Items.Add(str);
+            if(setSelectedIndex)
+                cb.SelectedIndex = 0;
         }
 
-        public static string GetDataGridViewSelectedRowData(DataGridView dgv)
+        public static string GetDataGridSelectedRowData(DataGridView dgv)
         {
             StringBuilder row = new StringBuilder();
             for (int i = 0; i < dgv.Columns.Count; i++)
@@ -184,5 +158,49 @@ namespace WesternLibraryManagementSystem.Libs
             }
             return row.ToString();
         }
+        #endregion
+
+        #region Data Validation
+        public static bool IsValidEmail(string str)
+        {
+            // a valid email format: (randomString)@(randomString2).(2-3 characters)
+            Regex regex = new Regex("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+            if (!regex.IsMatch(str))
+            {
+                MessageBox.Show("Please enter a valid email address!", "Invalid Email Address",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
+        }
+        #endregion
+
+        #region Form Related
+        public static bool FormIsOpen(string form)
+        {
+            // check if window has already open
+            var OpenForms = Application.OpenForms.Cast<Form>();
+
+            return OpenForms.Any(x => x.Name == form);
+        }
+
+        public static void DragFormWithControlMouseDown(Form frm, Control ctrl)
+        {
+            ctrl.MouseDown += Panel_MouseDown;
+            void Panel_MouseDown(object sender, MouseEventArgs e)
+            {
+                ReleaseCapture();
+                SendMessage(frm.Handle, 0x112, 0xf012, 0);
+            }
+        }
+
+
+        //Drag Form
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(IntPtr Wnd, int wMsg, int wParam, int lParam);
+        #endregion
     }
 }

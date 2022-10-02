@@ -15,21 +15,6 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -58,6 +43,24 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -81,41 +84,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\DialogAddUpdateBook.cs">
+    <Compile Include="CustomControls\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogDeleteRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DialogAddUpdateBook.Designer.cs">
-      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    <Compile Include="Forms\DialogDeleteRecord.Designer.cs">
+      <DependentUpon>DialogDeleteRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DIalogAddUpdateUser.cs">
+    <Compile Include="Forms\DialogIssueBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DIalogAddUpdateUser.Designer.cs">
-      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    <Compile Include="Forms\DialogIssueBook.Designer.cs">
+      <DependentUpon>DialogIssueBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\DialogAddEditStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\DialogAddEditStudent.Designer.cs">
+      <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBook.cs">
+    <Compile Include="Forms\DialogAddEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBook.Designer.cs">
-      <DependentUpon>FrmBook.cs</DependentUpon>
+    <Compile Include="Forms\DialogAddEditUser.Designer.cs">
+      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBorrowBook.cs">
+    <Compile Include="Forms\DialogReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBorrowBook.Designer.cs">
-      <DependentUpon>FrmBorrowBook.cs</DependentUpon>
+    <Compile Include="Forms\DialogReturnBook.Designer.cs">
+      <DependentUpon>DialogReturnBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmBorrower.cs">
+    <Compile Include="Forms\DialogViewDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBorrower.Designer.cs">
-      <DependentUpon>FrmBorrower.cs</DependentUpon>
+    <Compile Include="Forms\DialogViewDetail.Designer.cs">
+      <DependentUpon>DialogViewDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDashboard.Designer.cs">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
@@ -123,78 +147,162 @@
     <Compile Include="Forms\FrmMainMenu.Designer.cs">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmNotificationToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNotificationToast.Designer.cs">
+      <DependentUpon>FrmNotificationToast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Libs\NotificationToast.cs" />
+    <Compile Include="Temp\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmManageBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageBook.Designer.cs">
+      <DependentUpon>FrmManageBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmBorrowBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBorrowBook.Designer.cs">
+      <DependentUpon>FrmBorrowBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmManageStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageStudent.Designer.cs">
+      <DependentUpon>FrmManageStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmManageUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmManageUser.Designer.cs">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmReturnBook.cs">
+    <Compile Include="Temp\FrmAsyncDataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmReturnBook.Designer.cs">
-      <DependentUpon>FrmReturnBook.cs</DependentUpon>
+    <Compile Include="Temp\FrmAsyncDataGrid.Designer.cs">
+      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmViewBookCategory.cs">
+    <Compile Include="Forms\FrmReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmViewBookCategory.Designer.cs">
-      <DependentUpon>FrmViewBookCategory.cs</DependentUpon>
+    <Compile Include="Forms\FrmReportViewer.Designer.cs">
+      <DependentUpon>FrmReportViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmSQLiteConnection.cs">
+    <Compile Include="Temp\FrmMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmSQLiteConnection.Designer.cs">
+    <Compile Include="Temp\FrmMDI.Designer.cs">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temp\FrmSQLiteConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Temp\FrmSQLiteConnection.Designer.cs">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmUser.cs">
+    <Compile Include="Temp\FrmUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmUser.Designer.cs">
+    <Compile Include="Temp\FrmUser.Designer.cs">
       <DependentUpon>FrmUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\TestingMethod.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TestingMethod.Designer.cs">
-      <DependentUpon>TestingMethod.cs</DependentUpon>
     </Compile>
     <Compile Include="Libs\LibModule.cs" />
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\DialogAddUpdateBook.resx">
-      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    <Compile Include="Temp\UcManageStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Temp\UcManageStudent.Designer.cs">
+      <DependentUpon>UcManageStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Temp\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Temp\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\DialogDeleteRecord.resx">
+      <DependentUpon>DialogDeleteRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DIalogAddUpdateUser.resx">
-      <DependentUpon>DIalogAddUpdateUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DialogIssueBook.resx">
+      <DependentUpon>DialogIssueBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DialogAddEditStudent.resx">
+      <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmBook.resx">
-      <DependentUpon>FrmBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
+      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogReturnBook.resx">
+      <DependentUpon>DialogReturnBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
+      <DependentUpon>FrmBorrowBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDashboard.resx">
+      <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageBook.resx">
+      <DependentUpon>FrmManageBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageStudent.resx">
+      <DependentUpon>FrmManageStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogViewDetail.resx">
+      <DependentUpon>DialogViewDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNotificationToast.resx">
+      <DependentUpon>FrmNotificationToast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RpBook.rdlc" />
+    <EmbeddedResource Include="Reports\RpStudent.rdlc" />
+    <EmbeddedResource Include="Reports\RpUserInfo.rdlc" />
+    <EmbeddedResource Include="Temp\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageUser.resx">
       <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmViewBookCategory.resx">
-      <DependentUpon>FrmViewBookCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
+      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmSQLiteConnection.resx">
+    <EmbeddedResource Include="Forms\FrmReportViewer.resx">
+      <DependentUpon>FrmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmMDI.resx">
+      <DependentUpon>FrmMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\FrmSQLiteConnection.resx">
       <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmUser.resx">
+    <EmbeddedResource Include="Temp\FrmUser.resx">
       <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TestingMethod.resx">
-      <DependentUpon>TestingMethod.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -203,6 +311,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Temp\UcManageStudent.resx">
+      <DependentUpon>UcManageStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Temp\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="LibDataSet.xsc">
+      <DependentUpon>LibDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LibDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LibDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="LibDataSet.xss">
+      <DependentUpon>LibDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -217,25 +342,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\pie_26px.png" />
+    <None Include="Resources\close_16px.png" />
+    <None Include="Resources\maximize_button_16px.png" />
+    <None Include="Resources\subtract_16px.png" />
+    <None Include="Resources\save_26px.png" />
+    <None Include="Resources\cancel_26px.png" />
+    <None Include="Resources\clear_symbol_26px.png" />
+    <None Include="Resources\refresh_26px.png" />
+    <None Include="Resources\search_26px.png" />
+    <None Include="Resources\add_32px.png" />
+    <None Include="Resources\edit_32px.png" />
+    <None Include="Resources\trash_32px.png" />
+    <None Include="Resources\view_32px.png" />
+    <None Include="Resources\filter_20px.png" />
+    <None Include="Resources\print_26px.png" />
+    <None Include="Resources\Tools_32px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
