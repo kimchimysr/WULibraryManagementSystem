@@ -9,9 +9,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WesternLibraryManagement.Forms;
-using WesternLibraryManagementSystem.Libs;
-namespace WesternLibraryManagementSystem.Forms
+using LibraryDBMS.Libs;
+namespace LibraryDBMS.Forms
 {
     public partial class DialogAddUpdateBook : Form
     {

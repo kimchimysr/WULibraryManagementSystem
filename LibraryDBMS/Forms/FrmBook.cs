@@ -10,9 +10,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WesternLibraryManagementSystem.Libs;
+using LibraryDBMS.Libs;
 
-namespace WesternLibraryManagementSystem.Forms
+namespace LibraryDBMS.Forms
 {
     public partial class FrmBook : Form
     {
@@ -64,7 +64,7 @@ namespace WesternLibraryManagementSystem.Forms
                         "Confirmation Delection",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
-                        LibModule.DeleteRecord("tblBook", "bookID", bookID);
+                        LibModule.DeleteRecord("tblBook", "bookID", bookID, Utils.GetDataGridSelectedRowData(dgvBooks));
                         FrmBook_Load(sender, e);
                     }
                     else { FrmBook_Load(sender, e); }
@@ -104,31 +104,31 @@ namespace WesternLibraryManagementSystem.Forms
                         string value = this.txtSearch.Text.Trim();
                         if (searchBy == "BookID")
                         {
-                            LibModule.SearchAndShow("tblBook", "bookID", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "bookID", value, dgvBooks);
                         }
                         else if (searchBy == "ISBN")
                         {
-                            LibModule.SearchAndShow("tblBook", "isbn", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "isbn", value, dgvBooks);
                         }
                         else if (searchBy == "DEWEY")
                         {
-                            LibModule.SearchAndShow("tblBook", "dewey", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "dewey", value, dgvBooks);
                         }
                         else if (searchBy == "Title")
                         {
-                            LibModule.SearchAndShow("tblBook", "title", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "title", value, dgvBooks);
                         }
                         else if (searchBy == "Author")
                         {
-                            LibModule.SearchAndShow("tblBook", "author", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "author", value, dgvBooks);
                         }
                         else if (searchBy == "Publisher")
                         {
-                            LibModule.SearchAndShow("tblBook", "publisher", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "publisher", value, dgvBooks);
                         }
                         else if (searchBy == "Publish Year")
                         {
-                            LibModule.SearchAndShow("tblBook", "publishYear", value, dgvBooks);
+                            LibModule.SearchAndFillDataGrid("tblBook", "publishYear", value, dgvBooks);
                         }
                         else
                         {
@@ -158,9 +158,9 @@ namespace WesternLibraryManagementSystem.Forms
         internal void PopulateDataGridView()
         {
 
-            Utils.FillComboBox(cbbMeanOfSearch, "BookID", "ISBN", "DEWEY", "Title", "Author", "Publisher",
+            Utils.FillComboBox(cbbMeanOfSearch, true, "BookID", "ISBN", "DEWEY", "Title", "Author", "Publisher",
                 "Publish Year");
-            LibModule.FillDataGridView("tblBook", dgvBooks);
+            LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
         }
 
         private void dgvBooks_Click(object sender, EventArgs e)

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WesternLibraryManagementSystem.Libs;
+using LibraryDBMS.Libs;
 
-namespace WesternLibraryManagement.Forms
+namespace LibraryDBMS.Forms
 {
     public partial class FrmViewBookCategory : Form
     {
@@ -34,7 +34,7 @@ namespace WesternLibraryManagement.Forms
         private void FormViewBookCategory_Load(object sender, EventArgs e)
         {
             this.btnCopyToClipboard.Enabled = false;
-            LibModule.FillDataGridView("tblBookCategory",dgvBookCategories);
+            LibModule.FillDataGrid("tblBookCategory",dgvBookCategories, "cateID");
         }
 
         private void dgvBookCategories_Click(object sender, EventArgs e)

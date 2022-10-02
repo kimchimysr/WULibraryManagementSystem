@@ -64,7 +64,7 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnManageBook":
                     ActivateButton(btnManageBook);
-                    OpenChildForm(new FrmManageBook(), pManageBook);
+                    OpenChildForm(new FrmBook(), pManageBook);
                     break;
                 case "btnManageStudent":
                     ActivateButton(btnManageStudent);

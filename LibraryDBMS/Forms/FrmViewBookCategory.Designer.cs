@@ -1,4 +1,4 @@
-﻿namespace WesternLibraryManagement.Forms
+﻿namespace LibraryDBMS.Forms
 {
     partial class FrmViewBookCategory
     {
