@@ -48,10 +48,10 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.pTitleBar = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -217,10 +217,10 @@
             // txtStudentID
             // 
             this.txtStudentID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtStudentID.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentID.Location = new System.Drawing.Point(106, 68);
             this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(266, 27);
+            this.txtStudentID.Size = new System.Drawing.Size(266, 26);
             this.txtStudentID.TabIndex = 1;
             // 
             // txtTel
@@ -303,6 +303,20 @@
             this.pTitleBar.Size = new System.Drawing.Size(372, 45);
             this.pTitleBar.TabIndex = 34;
             // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
+            this.btnClose.Location = new System.Drawing.Point(327, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 45);
+            this.btnClose.TabIndex = 34;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
@@ -329,20 +343,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(378, 3);
             this.panel3.TabIndex = 37;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnClose.Location = new System.Drawing.Point(327, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // DialogAddEditStudent
             // 

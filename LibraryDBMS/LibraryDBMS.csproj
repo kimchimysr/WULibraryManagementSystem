@@ -73,6 +73,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.116.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,8 +85,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\RJComboBox.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="CustomControls\RJToggleButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\DialogDeleteRecord.cs">
       <SubType>Form</SubType>
@@ -123,6 +124,12 @@
     <Compile Include="Forms\DialogViewDetail.Designer.cs">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DialogAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogAbout.Designer.cs">
+      <DependentUpon>DialogAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,11 +154,35 @@
     <Compile Include="Forms\FrmMainMenu.Designer.cs">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNotification.Designer.cs">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmNotificationToast.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmNotificationToast.Designer.cs">
       <DependentUpon>FrmNotificationToast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogSetting.Designer.cs">
+      <DependentUpon>DialogSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogUserAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogUserAccount.Designer.cs">
+      <DependentUpon>DialogUserAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmRecentActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRecentActivity.Designer.cs">
+      <DependentUpon>FrmRecentActivity.cs</DependentUpon>
     </Compile>
     <Compile Include="LibDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -159,6 +190,7 @@
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Libs\NotificationToast.cs" />
+    <Compile Include="Libs\UserSetting.cs" />
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,6 +282,9 @@
     <EmbeddedResource Include="Forms\DialogReturnBook.resx">
       <DependentUpon>DialogReturnBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogAbout.resx">
+      <DependentUpon>DialogAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,10 +309,24 @@
     <EmbeddedResource Include="Forms\DialogViewDetail.resx">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNotification.resx">
+      <DependentUpon>FrmNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNotificationToast.resx">
       <DependentUpon>FrmNotificationToast.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogSetting.resx">
+      <DependentUpon>DialogSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogUserAccount.resx">
+      <DependentUpon>DialogUserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmRecentActivity.resx">
+      <DependentUpon>FrmRecentActivity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RpBook.rdlc" />
+    <EmbeddedResource Include="Reports\RpBorrowBook.rdlc" />
+    <EmbeddedResource Include="Reports\RpOverview.rdlc" />
     <EmbeddedResource Include="Reports\RpStudent.rdlc" />
     <EmbeddedResource Include="Reports\RpUserInfo.rdlc" />
     <EmbeddedResource Include="Temp\Form1.resx">
@@ -342,7 +391,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pie_26px.png" />
     <None Include="Resources\close_16px.png" />
@@ -360,6 +428,35 @@
     <None Include="Resources\filter_20px.png" />
     <None Include="Resources\print_26px.png" />
     <None Include="Resources\Tools_32px.png" />
+    <None Include="Resources\info_52px.png" />
+    <None Include="Resources\male_user_256px.png" />
+    <None Include="Resources\student_male_26px.png" />
+    <None Include="Resources\books_26px.png" />
+    <None Include="Resources\bookmark_26px.png" />
+    <None Include="Resources\user_shield_26px.png" />
+    <None Include="Resources\document_26px.png" />
+    <None Include="Resources\time_machine_26px.png" />
+    <None Include="Resources\notification_26px.png" />
+    <None Include="Resources\male_user_26px.png" />
+    <None Include="Resources\settings_26px.png" />
+    <None Include="Resources\home_26px.png" />
+    <None Include="Resources\collapse_arrow_26px.png" />
+    <None Include="Resources\expand_arrow_26px.png" />
+    <None Include="Resources\logout_26px.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\info_26px.png" />
+    <None Include="Resources\menu_26px.png" />
+    <None Include="Resources\book_78px.png" />
+    <None Include="Resources\stopwatch_78px.png" />
+    <None Include="Resources\borrow_book_78px.png" />
+    <None Include="Resources\return_book_78px.png" />
+    <None Include="Resources\male_user_78px.png" />
+    <None Include="Resources\todo_list_78px.png" />
+    <None Include="Resources\realtime_78px.png" />
+    <None Include="Resources\student_male_78px.png" />
+    <None Include="Resources\typography_78px.png" />
+    <None Include="Resources\expired_78px.png" />
+    <None Include="Resources\Clock_78px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

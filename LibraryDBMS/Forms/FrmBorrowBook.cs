@@ -32,8 +32,9 @@ namespace LibraryDBMS.Forms
 
         private void InitializeValues()
         {
+            Utils.EnableControlDoubleBuffer(dgvBorrowList);
             Utils.FillComboBox(cbStatus, false, "Loaned", "Returned", "Lost");
-            Utils.FillComboBox(cbSearchBy, true, "Book ID", "Student ID", "Title", "Name");
+            Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
             PopulateDataGrid();
         }
 
@@ -48,9 +49,13 @@ namespace LibraryDBMS.Forms
             lblBookLostCount.Text = "Book Lost: " +
                 LibModule.ExecuteScalarQuery
                 ("SELECT COUNT(borrowID) FROM viewBorrowBook WHERE loanStatusName='Lost';");
-            (string due, string overdue) book = LibModule.HasLoanBookDueAndOverdue();
+            (string due, string overdue) book = LibModule.GetLoanBookDueAndOverdue();
             lblBookDueCount.Text = "Book Due: " + book.due;
             lblBookOverdueCount.Text = "Book Overdue: " + book.overdue;
+
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+            btnView.Enabled = false;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -58,15 +63,21 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnPrint":
+                    Utils.PrintPreviewDataGridView("Book Loan List", dgvBorrowList);
+                    break;
                 case "btnSearch":
                     try
                     {
-                        string searchBy = cbSearchBy.SelectedItem.ToString();
-                        string value = txtSearchValue.Text.Trim();
-                        if (value.Length > 0)
+                        if (txtSearchValue.Text.Length > 0)
                         {
+                            string searchBy = cbSearchBy.SelectedItem.ToString();
+                            string value = txtSearchValue.Text.Trim();
                             switch (searchBy)
                             {
+                                case "Borrow ID":
+                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "borrowID", value, dgvBorrowList);
+                                    break;
                                 case "Book ID":
                                     LibModule.SearchAndFillDataGrid("viewBorrowBook", "bookID", value, dgvBorrowList);
                                     break;
@@ -116,13 +127,9 @@ namespace LibraryDBMS.Forms
                     {
                         string id = dgvBorrowList.SelectedRows[0].Cells["borrowID"].Value.ToString();
                         Form dialogReturnBook =
-                            new DialogReturnBook(this, LibModule.GetSingleRecordDB("viewBorrowBook", "borrowID", id));
+                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowBook", "borrowID", id));
                         dialogReturnBook.ShowDialog();
                         CheckBookLoanNotificationChanged();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -140,32 +147,14 @@ namespace LibraryDBMS.Forms
                             CheckBookLoanNotificationChanged();
                         }
                     }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                     break;
                 case "btnView":
-                    try
-                    {
-                        if (dgvBorrowList.SelectedRows[0].Cells[0].Value != null)
-                        {
-                            DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowList, "Borrow Book");
-                            frmViewDetail.ShowDialog();
-                        }
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowList, "Borrow Book");
+                    frmViewDetail.ShowDialog();
                     break;
             }
         }
@@ -193,9 +182,20 @@ namespace LibraryDBMS.Forms
 
         private void CheckBookLoanNotificationChanged()
         {
-            (string bookDue, string bookOverdue) book = LibModule.HasLoanBookDueAndOverdue();
+            // check if there are no book due or overdue then disable the notification in system tray
+            (string bookDue, string bookOverdue) book = LibModule.GetLoanBookDueAndOverdue();
             if (book == ("0", "0") && frmMainMenu.niBookLoan.Visible == true)
                 frmMainMenu.niBookLoan.Visible = false;
+        }
+
+        private void dgvBorrowList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dgvBorrowList.SelectedRows.Count > 0)
+            {
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnView.Enabled = true;
+            }
         }
     }
 }

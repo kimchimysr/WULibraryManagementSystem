@@ -13,14 +13,14 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogAddEditUser : Form
     {
-        private FrmManageUser frmManageUser;
+        private readonly FrmManageUser frmManageUser;
         private DataTable user;
         private bool isEditMode;
 
         public DialogAddEditUser(FrmManageUser frm, DataTable _user = null)
         {
             InitializeComponent();
-            isEditMode = _user != null ? true : false;
+            isEditMode = _user != null; // if null true, else false
             frmManageUser = frm;
             user = _user;
             InitializeValues();
@@ -161,6 +161,11 @@ namespace LibraryDBMS.Forms
             this.Close();
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verify that the pressed key isn't CTRL or any non-numeric digit
@@ -168,11 +173,6 @@ namespace LibraryDBMS.Forms
             {
                 e.Handled = true;
             }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

@@ -276,7 +276,8 @@
             this.Controls.Add(this.btnSearch);
             this.DoubleBuffered = true;
             this.Name = "FrmManageBook";
-            this.Text = "FrmBookRecord";
+            this.Text = "Manage Book";
+            this.Load += new System.EventHandler(this.FrmManageBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

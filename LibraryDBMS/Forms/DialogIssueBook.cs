@@ -23,6 +23,7 @@ namespace LibraryDBMS.Forms
 
         private void InitailizeValues()
         {
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
             txtBorrowID.Text = LibModule.GetAutoID("tblBorrow", "borrowID");
             dtpIssueDate.Value = DateTime.Today;
             dtpDueDate.Value = dtpIssueDate.Value.Date.AddDays(GetDueDate(dtpIssueDate));
@@ -122,6 +123,7 @@ namespace LibraryDBMS.Forms
                         "txtBookID", "txtStudentID", "lblBookAvailability", "dtpIssueDate");
                     break;
                 case "btnCancel":
+                case "btnClose":
                     this.Close();
                     break;
             }

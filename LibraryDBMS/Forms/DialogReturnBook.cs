@@ -62,7 +62,7 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
-                case "btnSaveChanges":
+                case "btnSave":
                     if (IsValidData())
                     {
                         try

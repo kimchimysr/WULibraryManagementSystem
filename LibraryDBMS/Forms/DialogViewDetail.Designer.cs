@@ -149,7 +149,6 @@
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmVIewDetail";
-            this.Load += new System.EventHandler(this.FrmViewDetail_Load);
             this.pTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

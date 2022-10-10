@@ -13,7 +13,7 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogDeleteRecord : Form
     {
-        string record;
+        private readonly string record;
         public DialogDeleteRecord(string _record)
         {
             InitializeComponent();

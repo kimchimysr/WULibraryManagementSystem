@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,10 @@ namespace LibraryDBMS.Forms
             LibModule.FillDataGrid("viewUserInfo", dgvUserList, "userID");
             lblUserCount.Text = "Total User: " + 
                 LibModule.ExecuteScalarQuery("SELECT COUNT(userID) FROM viewUserInfo;");
+
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+            btnActivateDeactivate.Enabled = false;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -38,15 +43,41 @@ namespace LibraryDBMS.Forms
             switch (btn.Name)
             {
                 case "btnPrint":
-                    FrmReportViewer frmReportViewer = new FrmReportViewer("viewUserInfo", 
-                        "WesternLibraryManagementSystem.Reports.RpUserInfo.rdlc", "UserInfo");
-                    frmReportViewer.ShowDialog();
+                    Utils.PrintPreviewDataGridView("User List", dgvUserList);
                     break;
                 case "btnSearch":
-                    Search();
+                    try
+                    {
+                        if (txtSearchValue.Text.Length > 0)
+                        {
+                            string searchBy = cbSearchBy.SelectedItem.ToString();
+                            string value = txtSearchValue.Text.ToString().Trim();
+
+                            if (searchBy == "Username")
+                                LibModule.SearchAndFillDataGrid("viewUserInfo", "username", value, dgvUserList);
+                            else if (searchBy == "Name")
+                                LibModule.SearchNameAndFillDataGrid("viewUserInfo", value, dgvUserList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "btnFilter":
-                    Search(isFilterDates: true);
+                    try
+                    {
+                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
+                        {
+                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                            LibModule.SearchBetweenDateAndFillDataGrid("viewUserInfo", dgvUserList, "dateAdded", fromDate, toDate);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "btnAdd":
                     try
@@ -64,12 +95,8 @@ namespace LibraryDBMS.Forms
                     {
                         string id = dgvUserList.SelectedRows[0].Cells["userID"].Value.ToString();
                         Form frmAddEditUser =
-                            new DialogAddEditUser(this, LibModule.GetSingleRecordDB("viewUserInfo", "userID", id));
+                            new DialogAddEditUser(this, LibModule.GetSingleRecordFromDB("viewUserInfo", "userID", id));
                         frmAddEditUser.ShowDialog();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -83,10 +110,6 @@ namespace LibraryDBMS.Forms
                         if(LibModule.DeleteRecord("tblUser", "userID", userID,
                             Utils.GetDataGridSelectedRowData(dgvUserList)) == true)
                             PopulateDataGrid();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -110,10 +133,6 @@ namespace LibraryDBMS.Forms
                         }
                         PopulateDataGrid();
                     }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
@@ -125,36 +144,13 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void Search(bool isFilterDates = false)
+        private void dgvUserList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
+            if (dgvUserList.SelectedRows.Count > 0)
             {
-                if (isFilterDates)
-                {
-                    if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
-                    {
-                        string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
-                        string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                        LibModule.SearchBetweenDateAndFillDataGrid("viewUserInfo", dgvUserList, "dateAdded", fromDate, toDate);
-                    }
-                }
-                else
-                {
-                    if (txtSearchValue.Text.Length > 0)
-                    {
-                        string searchBy = cbSearchBy.SelectedItem.ToString();
-                        string value = txtSearchValue.Text.ToString().Trim();
-
-                        if (searchBy == "Username")
-                            LibModule.SearchAndFillDataGrid("viewUserInfo", "username", value, dgvUserList);
-                        else if (searchBy == "Name")
-                            LibModule.SearchNameAndFillDataGrid("viewUserInfo", value, dgvUserList);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnActivateDeactivate.Enabled = true;
             }
         }
     }

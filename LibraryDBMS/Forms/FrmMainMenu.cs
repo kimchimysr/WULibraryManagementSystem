@@ -10,15 +10,19 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using LibraryDBMS.Libs;
+using LibraryDBMS.Setting;
+using System.Data.SQLite;
 
 namespace LibraryDBMS.Forms
 {
     public partial class FrmMainMenu : Form
     {
-        FrmLogin frmLogin;
-        public readonly (string username, string roleName) user;
-        public NotifyIcon niBookLoan;
+        public static FrmLogin frmLogin;
+        public (string username, string roleName) user { get; }
+        public NotifyIcon niBookLoan = new NotifyIcon();
+        private UserSetting us = new UserSetting();
 
+        private bool isMenuCollapsed;
         private Size formSize;
         private int borderSize = 3;
 
@@ -30,9 +34,9 @@ namespace LibraryDBMS.Forms
         public FrmMainMenu(FrmLogin frm, (string, string) _user)
         {
             InitializeComponent();
-            InitializeValues();
             frmLogin = frm;
             user = _user;
+            InitializeValues();
         }
 
         private void InitializeValues()
@@ -40,17 +44,26 @@ namespace LibraryDBMS.Forms
             // drag form
             Utils.DragFormWithControlMouseDown(this, pTitleBar);
             // fix flickering
-            int style = NativeWinAPI.GetWindowLong(this.pContainer.Handle, NativeWinAPI.GWL_EXSTYLE);
-            style |= NativeWinAPI.WS_EX_COMPOSITED;
-            NativeWinAPI.SetWindowLong(this.pContainer.Handle, NativeWinAPI.GWL_EXSTYLE, style);
-            OpenChildForm(new FrmHome(), pHome);
+            Utils.FixControlFlickering(pContainer);
+            // open form to start counting uptime
+            OpenChildForm(new FrmDashboard(this), pDashboard);
+            AppliedUserSetting();
             ShowBooksDueAndOverdueNotification();
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void AppliedUserSetting()
         {
-            panelSelected.Visible = false;
-            OpenChildForm(new FrmHome(), pHome);
+            if (us.SetSidebarCollapsed)
+            {
+                isMenuCollapsed = true;
+                CollapseMenu();
+            }
+
+            this.WindowState = us.StartAppInFullscreen == true ? 
+                FormWindowState.Maximized : FormWindowState.Normal;
+            if (us.DefaultStartPage == "Dashboard")
+                OpenChildForm(new FrmDashboard(this), pDashboard);
+            else OpenChildForm(new FrmHome(), pHome);
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -58,9 +71,21 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnMenu":
+                    isMenuCollapsed = isMenuCollapsed != true;
+                    CollapseMenu();
+                    break;
+                case "btnHome":
+                    panelSelected.Visible = false;
+                    OpenChildForm(new FrmHome(), pHome);
+                    break;
+                case "btnHomeCollapsed":
+                    panelSelected.Visible = false;
+                    OpenChildForm(new FrmHome(), pHome);
+                    break;
                 case "btnDashboard":
                     ActivateButton(btnDashboard);
-                    OpenChildForm(new FrmDashboard(), pDashboard);
+                    OpenChildForm(new FrmDashboard(this), pDashboard);
                     break;
                 case "btnManageBook":
                     ActivateButton(btnManageBook);
@@ -82,16 +107,29 @@ namespace LibraryDBMS.Forms
                     ActivateButton(btnManageUser);
                     OpenChildForm(new FrmManageUser(), pManageUser);
                     break;
-                case "btnAccount":
-                    ActivateButton(btnAccount);
-                    //OpenChildForm(new FrmBorrowBook());
+                case "btnRecentActivity":
+                    ActivateButton(btnRecentActivity);
+                    OpenChildForm(new FrmRecentActivity(), pRecentActivity);
                     break;
                 case "btnNotification":
                     ActivateButton(btnNotification);
-                    //OpenUserControl(new UcManageStudent());
+                    OpenChildForm(new FrmNotification(), pNotification);
+                    break;
+                case "btnAccount":
+                    OpenChildFormAsDialog(new DialogUserAccount());
+                    //OpenChildFormAsDialog(new FrmUserAccount(LibModule.GetSingleRecordDB("viewUserInfo", "username", user.username)));
+                    break;
+                case "btnLogout":
+                    DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                        Application.Restart();
                     break;
                 case "btnSetting":
-                    ActivateButton(btnSetting);
+                    OpenChildFormAsDialog(new DialogSetting());
+                    break;
+                case "btnAbout":
+                    OpenChildFormAsDialog(new DialogAbout());
                     break;
                 case "btnMinimize":
                     this.WindowState = FormWindowState.Minimized;
@@ -114,23 +152,30 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void ActivateButton(Button button)
+        private void CollapseMenu()
+        {
+            btnHomeCollapsed.Visible = isMenuCollapsed == true;
+            btnHome.Visible = isMenuCollapsed != true;
+            pSidebar.Width = isMenuCollapsed == true ?
+                pSidebar.MinimumSize.Width : pSidebar.MaximumSize.Width;
+        }
+
+        internal void ActivateButton(Button button)
         {
             panelSelected.Visible = true;
             panelSelected.Height = button.Height;
             panelSelected.Top = button.Top;
         }
 
-        private void OpenChildForm(Form childForm, Panel panel)
+        internal void OpenChildForm(Form childForm, Panel panel)
         {
             //Stopwatch timer = Stopwatch.StartNew();
-            //panel.SuspendLayout();
             if (panel.Controls.Count == 0)
             {
                 childForm.TopLevel = false;
                 childForm.FormBorderStyle = FormBorderStyle.None;
                 childForm.Dock = DockStyle.Fill;
-                childForm.BackColor = panel.BackColor;
+                childForm.BackColor = SystemColors.Control;
                 panel.Controls.Add(childForm);
                 panel.Tag = childForm;
                 childForm.Show();
@@ -141,14 +186,55 @@ namespace LibraryDBMS.Forms
                 panel.Controls[childForm.Name].Refresh();
                 panel.BringToFront();
             }
-            lblMenuTitle.Text = childForm.Text;
-            //panel.ResumeLayout();
+            SetMenuTitleIcon(childForm);
             //MessageBox.Show($"{timer.ElapsedMilliseconds} ms");
+        }
+
+        private void OpenChildFormAsDialog(Form form)
+        {
+            form.ShowDialog();
+        }
+
+        private void SetMenuTitleIcon(Form frm)
+        {
+            switch (frm.Text)
+            {
+                case "Home":
+                    btnMenuTitle.Image = Properties.Resources.home_26px;
+                    break;
+                case "Dashboard":
+                    btnMenuTitle.Image = Properties.Resources.pie_26px;
+                    break;
+                case "Manage Book":
+                    btnMenuTitle.Image = Properties.Resources.books_26px;
+                    break;
+                case "Manage Student":
+                    btnMenuTitle.Image = Properties.Resources.student_male_26px;
+                    break;
+                case "Manage Book Loan/Return":
+                    btnMenuTitle.Image = Properties.Resources.bookmark_26px;
+                    break;
+                case "Reports":
+                    btnMenuTitle.Image = Properties.Resources.document_26px;
+                    break;
+                case "Recent Activity":
+                    btnMenuTitle.Image = Properties.Resources.time_machine_26px;
+                    break;
+                case "Manage User":
+                    btnMenuTitle.Image = Properties.Resources.user_shield_26px;
+                    break;
+                case "Notification":
+                    btnMenuTitle.Image = Properties.Resources.notification_26px;
+                    break;
+            }
+            btnMenuTitle.Text = $"  {frm.Text}";
         }
 
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             //frmLogin.Close();
+
+            // close notification if it existed
             if(niBookLoan.Visible == true)
             {
                 niBookLoan.Icon.Dispose();
@@ -164,9 +250,8 @@ namespace LibraryDBMS.Forms
         #region Windows Popup Notification
         private void ShowBooksDueAndOverdueNotification()
         {
-            niBookLoan = new NotifyIcon();
             niBookLoan.Visible = false;
-            (string bookDue, string bookOverdue) book = LibModule.HasLoanBookDueAndOverdue();
+            (string bookDue, string bookOverdue) book = LibModule.GetLoanBookDueAndOverdue();
             if (book != ("0", "0"))
             {
                 niBookLoan.Icon = SystemIcons.Information;
@@ -185,31 +270,19 @@ namespace LibraryDBMS.Forms
         }
         #endregion
 
-        #region Maximize, Fix Flickering, and Disable Form Border
+        #region Maximize and Disable Form Border
         private void AdjustForm()
         {
             switch (this.WindowState)
             {
                 case FormWindowState.Maximized: //Maximized form (After)
-                    this.Padding = new Padding(8, 8, 8, 0);
+                    this.Padding = new Padding(8, 8, 8, 8);
                     break;
                 case FormWindowState.Normal: //Restored form (After)
                     if (this.Padding.Top != borderSize)
                         this.Padding = new Padding(borderSize);
                     break;
             }
-        }
-
-        internal static class NativeWinAPI
-        {
-            internal static readonly int GWL_EXSTYLE = -20;
-            internal static readonly int WS_EX_COMPOSITED = 0x02000000;
-
-            [DllImport("user32")]
-            internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-            [DllImport("user32")]
-            internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
         }
         
         //Overridden methods

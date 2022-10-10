@@ -125,6 +125,11 @@ namespace LibraryDBMS.Forms
             this.Close();
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Verify that the pressed key isn't CTRL or any non-numeric digit
@@ -132,11 +137,6 @@ namespace LibraryDBMS.Forms
             {
                 e.Handled = true;
             }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

@@ -25,25 +25,20 @@ namespace LibraryDBMS.Forms
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             dgv = _dgv;
             lblHeader.Text = $"View {title}";
+            FillAndResizeForm();
         }
 
-        private void FrmViewDetail_Load(object sender, EventArgs e)
+        private void FillAndResizeForm()
         {
-            try
+            int i = 0;
+            StringBuilder columns = new StringBuilder();
+            for (i = 0; i < dgv.Columns.Count; i++)
             {
-                int i = 0;
-                StringBuilder columns = new StringBuilder();
-                for (i = 0; i < dgv.Columns.Count; i++)
-                {
-                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
-                }
-                lblText.Text = columns.ToString();
-                this.Size = new Size(Width, lblText.Height + 160);
+                columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            lblText.Text = columns.ToString();
+            this.Size = new Size(Width, lblText.Height + 160);
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

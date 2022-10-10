@@ -18,27 +18,24 @@ namespace LibraryDBMS.Forms
         public FrmManageStudent()
         {
             InitializeComponent();
-            // fix flickering
-            typeof(DataGridView).InvokeMember(
-               "DoubleBuffered",
-               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-               null,
-               dgvBorrowerList,
-               new object[] { true });
             InitializeValues();
         }
 
         private void InitializeValues()
         {
+            Utils.EnableControlDoubleBuffer(dgvStudentList);
             Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
             PopulateDataGrid();
         }
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("tblStudent", dgvBorrowerList, "dateAdded");
+            LibModule.FillDataGrid("tblStudent", dgvStudentList, "dateAdded");
             lblCount.Text = "Total Student: " + 
                 LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;");
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+            btnView.Enabled = false;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -46,11 +43,42 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnPrint":
+                    Utils.PrintPreviewDataGridView("Book Loan List", dgvStudentList);
+                    break;
                 case "btnFind":
-                    Search();
+                    try
+                    {
+                        if (txtSearchValue.Text.Length > 0)
+                        {
+                            string searchBy = cbSearchBy.SelectedItem.ToString();
+                            string value = txtSearchValue.Text.ToString().Trim();
+
+                            if (searchBy == "Student ID")
+                                LibModule.SearchAndFillDataGrid("tblStudent", "studentID", value, dgvStudentList);
+                            else if (searchBy == "Name")
+                                LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvStudentList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "btnFilter":
-                    Search(isFilterDates: true);
+                    try
+                    {
+                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
+                        {
+                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                            LibModule.SearchBetweenDateAndFillDataGrid("tblStudent", dgvStudentList, "dateAdded", fromDate, toDate);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "btnAdd":
                     try
@@ -66,14 +94,10 @@ namespace LibraryDBMS.Forms
                 case "btnEdit":
                     try
                     {
-                        string studentID = dgvBorrowerList.SelectedRows[0].Cells["studentID"].Value.ToString();
+                        string studentID = dgvStudentList.SelectedRows[0].Cells["studentID"].Value.ToString();
                         Form frmAddEditUser =
-                            new DialogAddEditStudent(this, LibModule.GetSingleRecordDB("tblStudent", "studentID", studentID));
+                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudent", "studentID", studentID));
                         frmAddEditUser.ShowDialog();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -83,14 +107,10 @@ namespace LibraryDBMS.Forms
                 case "btnDelete":
                     try
                     {
-                        string studentID = dgvBorrowerList.SelectedRows[0].Cells["studentID"].Value.ToString();
+                        string studentID = dgvStudentList.SelectedRows[0].Cells["studentID"].Value.ToString();
                         if (LibModule.DeleteRecord("tblStudent", "studentID", studentID,
-                            Utils.GetDataGridSelectedRowData(dgvBorrowerList)) == true)
+                            Utils.GetDataGridSelectedRowData(dgvStudentList)) == true)
                             PopulateDataGrid();
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -98,22 +118,8 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnView":
-                    try
-                    {
-                        if (dgvBorrowerList.SelectedRows[0].Cells[0].Value != null)
-                        {
-                            DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowerList, "Student");
-                            frmViewDetail.ShowDialog();
-                        }
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        MessageBox.Show("Please select a record!", "No record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvStudentList, "Student");
+                    frmViewDetail.ShowDialog();
                     break;
                 case "btnRefresh":
                     PopulateDataGrid();
@@ -121,36 +127,13 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void Search(bool isFilterDates = false)
+        private void dgvStudentList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            try
+            if (dgvStudentList.SelectedRows.Count > 0)
             {
-                if (isFilterDates)
-                {
-                    if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
-                    {
-                        string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
-                        string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                        LibModule.SearchBetweenDateAndFillDataGrid("tblStudent", dgvBorrowerList, "dateAdded", fromDate, toDate);
-                    }
-                }
-                else
-                {
-                    if (txtSearchValue.Text.Length > 0)
-                    {
-                        string searchBy = cbSearchBy.SelectedItem.ToString();
-                        string value = txtSearchValue.Text.ToString().Trim();
-
-                        if (searchBy == "Student ID")
-                            LibModule.SearchAndFillDataGrid("tblStudent", "studentID", value, dgvBorrowerList);
-                        else if (searchBy == "Name")
-                            LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvBorrowerList);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnView.Enabled = true;
             }
         }
     }

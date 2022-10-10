@@ -60,11 +60,14 @@
             this.lblBookOverdueCount = new System.Windows.Forms.Label();
             this.lblBookLoanCount = new System.Windows.Forms.Label();
             this.lblBookLostCount = new System.Windows.Forms.Label();
+            this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowList)).BeginInit();
+            this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBorrowList
@@ -78,6 +81,8 @@
             this.dgvBorrowList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBorrowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBorrowList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvBorrowList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvBorrowList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -126,10 +131,12 @@
             this.dgvBorrowList.Size = new System.Drawing.Size(1159, 383);
             this.dgvBorrowList.TabIndex = 38;
             this.dgvBorrowList.TabStop = false;
+            this.dgvBorrowList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBorrowList_RowHeaderMouseClick);
             // 
             // borrowID
             // 
             this.borrowID.DataPropertyName = "borrowID";
+            this.borrowID.FillWeight = 89.60574F;
             this.borrowID.HeaderText = "Borrow ID";
             this.borrowID.Name = "borrowID";
             this.borrowID.ReadOnly = true;
@@ -137,6 +144,7 @@
             // bookID
             // 
             this.bookID.DataPropertyName = "bookID";
+            this.bookID.FillWeight = 90.50163F;
             this.bookID.HeaderText = "Book ID";
             this.bookID.Name = "bookID";
             this.bookID.ReadOnly = true;
@@ -145,6 +153,7 @@
             // 
             this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.title.DataPropertyName = "title";
+            this.title.FillWeight = 125.4476F;
             this.title.HeaderText = "Title";
             this.title.Name = "title";
             this.title.ReadOnly = true;
@@ -152,6 +161,7 @@
             // studentID
             // 
             this.studentID.DataPropertyName = "studentID";
+            this.studentID.FillWeight = 89.60835F;
             this.studentID.HeaderText = "Student ID";
             this.studentID.Name = "studentID";
             this.studentID.ReadOnly = true;
@@ -159,14 +169,15 @@
             // fullName
             // 
             this.fullName.DataPropertyName = "fullName";
+            this.fullName.FillWeight = 136.2011F;
             this.fullName.HeaderText = "Full Name";
             this.fullName.Name = "fullName";
             this.fullName.ReadOnly = true;
-            this.fullName.Width = 150;
             // 
             // loanStatusName
             // 
             this.loanStatusName.DataPropertyName = "loanStatusName";
+            this.loanStatusName.FillWeight = 87.81313F;
             this.loanStatusName.HeaderText = "Status";
             this.loanStatusName.Name = "loanStatusName";
             this.loanStatusName.ReadOnly = true;
@@ -174,14 +185,15 @@
             // dateLoan
             // 
             this.dateLoan.DataPropertyName = "dateLoan";
+            this.dateLoan.FillWeight = 105.7344F;
             this.dateLoan.HeaderText = "Date Loan";
             this.dateLoan.Name = "dateLoan";
             this.dateLoan.ReadOnly = true;
-            this.dateLoan.Width = 120;
             // 
             // dateDue
             // 
             this.dateDue.DataPropertyName = "dateDue";
+            this.dateDue.FillWeight = 87.81048F;
             this.dateDue.HeaderText = "Date Due";
             this.dateDue.Name = "dateDue";
             this.dateDue.ReadOnly = true;
@@ -189,14 +201,15 @@
             // dateReturned
             // 
             this.dateReturned.DataPropertyName = "dateReturned";
+            this.dateReturned.FillWeight = 98.56568F;
             this.dateReturned.HeaderText = "Date Returned";
             this.dateReturned.Name = "dateReturned";
             this.dateReturned.ReadOnly = true;
-            this.dateReturned.Width = 110;
             // 
             // overdueFine
             // 
             this.overdueFine.DataPropertyName = "overdueFine";
+            this.overdueFine.FillWeight = 88.71188F;
             this.overdueFine.HeaderText = "Overdue Fine";
             this.overdueFine.Name = "overdueFine";
             this.overdueFine.ReadOnly = true;
@@ -410,19 +423,61 @@
             this.lblBookLostCount.Text = "Book Lost: ";
             this.lblBookLostCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tlpButtonContainer
+            // 
+            this.tlpButtonContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpButtonContainer.ColumnCount = 4;
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.Controls.Add(this.btnAdd, 0, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnDelete, 2, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnView, 3, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnEdit, 1, 0);
+            this.tlpButtonContainer.Location = new System.Drawing.Point(15, 553);
+            this.tlpButtonContainer.Name = "tlpButtonContainer";
+            this.tlpButtonContainer.RowCount = 1;
+            this.tlpButtonContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpButtonContainer.Size = new System.Drawing.Size(1159, 60);
+            this.tlpButtonContainer.TabIndex = 62;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdd.Image = global::LibraryDBMS.Properties.Resources.add_32px;
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 0, 39, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(250, 60);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "  Add";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.Button_Click);
+            // 
             // btnDelete
             // 
-            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Control;
             this.btnDelete.Image = global::LibraryDBMS.Properties.Resources.trash_32px;
-            this.btnDelete.Location = new System.Drawing.Point(621, 553);
+            this.btnDelete.Location = new System.Drawing.Point(606, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(28, 0, 11, 0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(250, 60);
-            this.btnDelete.TabIndex = 65;
+            this.btnDelete.TabIndex = 19;
             this.btnDelete.Text = "  Delete";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -431,18 +486,19 @@
             // 
             // btnView
             // 
-            this.btnView.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
             this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnView.FlatAppearance.BorderSize = 0;
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.SystemColors.Control;
             this.btnView.Image = global::LibraryDBMS.Properties.Resources.view_32px;
-            this.btnView.Location = new System.Drawing.Point(924, 553);
+            this.btnView.Location = new System.Drawing.Point(909, 0);
+            this.btnView.Margin = new System.Windows.Forms.Padding(42, 0, 0, 0);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(250, 60);
-            this.btnView.TabIndex = 64;
+            this.btnView.TabIndex = 18;
             this.btnView.Text = "  View Information";
             this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -451,43 +507,43 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEdit.Image = global::LibraryDBMS.Properties.Resources.edit_32px;
-            this.btnEdit.Location = new System.Drawing.Point(318, 553);
+            this.btnEdit.Location = new System.Drawing.Point(303, 0);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(14, 0, 25, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(250, 60);
-            this.btnEdit.TabIndex = 63;
+            this.btnEdit.TabIndex = 16;
             this.btnEdit.Text = "  Edit";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.Button_Click);
             // 
-            // btnAdd
+            // btnPrint
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAdd.Image = global::LibraryDBMS.Properties.Resources.add_32px;
-            this.btnAdd.Location = new System.Drawing.Point(15, 553);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(250, 60);
-            this.btnAdd.TabIndex = 62;
-            this.btnAdd.Text = "  Add";
-            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.Button_Click);
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrint.Image = global::LibraryDBMS.Properties.Resources.print_26px;
+            this.btnPrint.Location = new System.Drawing.Point(961, 55);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(152, 34);
+            this.btnPrint.TabIndex = 63;
+            this.btnPrint.Text = " Print Preview";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.Button_Click);
             // 
             // FrmBorrowBook
             // 
@@ -495,10 +551,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 661);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnView);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.tlpButtonContainer);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
@@ -521,6 +575,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Book Loan/Return";
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowList)).EndInit();
+            this.tlpButtonContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,9 +610,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn overdueFine;
+        private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

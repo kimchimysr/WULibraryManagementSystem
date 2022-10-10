@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.Data;
 using Microsoft.Reporting.WinForms;
 using LibraryDBMS.Forms;
+using System.Data.Common;
+using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace LibraryDBMS.Libs
 {
@@ -17,6 +20,15 @@ namespace LibraryDBMS.Libs
         private static string connectionString = Properties.Settings.Default.LibDbConnectionString;
         public static SQLiteConnection Conn = new SQLiteConnection(connectionString);
         public static SQLiteCommand Cmd;
+
+        static LibModule()
+        {
+            if (!File.Exists(Environment.CurrentDirectory + "/Database/library.db"))
+            {
+                MessageBox.Show("Cannot locate database file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+        }
 
         public static string GetTableField(string tableName)
         {
@@ -66,9 +78,10 @@ namespace LibraryDBMS.Libs
                 if (Cmd.ExecuteNonQuery() == 1)
                 {
                     if(showMessage)
-                        MessageBox.Show("Record Added!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utils.NotificationToast.Show("success", "Record Added Successfully!");
                     return true;
                 }
+                else Utils.NotificationToast.Show("fail", "Record Cannot Be Added!");
             }
             catch (Exception ex)
             {
@@ -77,8 +90,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return false;
         }
@@ -125,11 +140,7 @@ namespace LibraryDBMS.Libs
                         Utils.NotificationToast.Show("success", "Record Updated Successfully!");
                     return true;
                 }
-                else
-                {
-                    if(showMessage)
-                        Utils.NotificationToast.Show("fail", "Record Cannot Update!");
-                }
+                else Utils.NotificationToast.Show("fail", "Record Cannot Be Updated!");
             }
             catch (Exception ex)
             {
@@ -138,8 +149,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return false;
         }
@@ -157,13 +170,10 @@ namespace LibraryDBMS.Libs
                 {
                     if (Cmd.ExecuteNonQuery() == 1)
                     {
-                        MessageBox.Show("Record Deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utils.NotificationToast.Show("success", "Record Deleted Successfully!");
+                        return true;
                     }
-                    else
-                    {
-                        MessageBox.Show("No Record Has Been Deleted!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    return true;
+                    else Utils.NotificationToast.Show("fail", "Record Cannot Be Deleted!");
                 }
             }
             catch (Exception ex)
@@ -173,8 +183,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return false;
         }
@@ -206,8 +218,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return false;
         }
@@ -230,8 +244,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return str;
         }
@@ -244,8 +260,8 @@ namespace LibraryDBMS.Libs
             {
                 Conn.Open();
                 string query = fieldToSort == null ?
-                    $"SELECT * FROM {tableName};" : 
-                    $"SELECT * FROM {tableName} ORDER BY {fieldToSort} DESC;";
+                    $"SELECT * FROM {tableName} LIMIT 100;" :
+                    $"SELECT * FROM {tableName} ORDER BY {fieldToSort} DESC LIMIT 100;";
                 Cmd = new SQLiteCommand(query, Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
@@ -253,6 +269,10 @@ namespace LibraryDBMS.Libs
                 dgv.AutoGenerateColumns = false;
                 dgv.DataSource = dt;
                 dgv.DataBindingComplete += Dgv_DataBindingComplete;
+                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+                {
+                    dgv.ClearSelection();
+                }
             }
             catch (Exception ex)
             {
@@ -261,15 +281,42 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
-        private static void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        public static void FillDataGrid(string query, DataGridView dgv)
         {
-            DataGridView dgv = sender as DataGridView;
-            dgv.ClearSelection();
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv.AutoGenerateColumns = false;
+                dgv.DataSource = dt;
+                dgv.DataBindingComplete += Dgv_DataBindingComplete;
+                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+                {
+                    dgv.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
+            }
         }
 
         public static void FillComboBox(string tableName, ComboBox comboBox, string displayMember, string valueMember)
@@ -291,25 +338,35 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
         public static void FillReportViewer(string tableName, ReportViewer rpv, string rpPath,
-                    string rpDataSet)
+                    string rpDataSet, Dictionary<string,string> parameters = null)
         {
             try
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand($"SELECT * FROM {tableName};", Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                System.Data.DataSet ds = new System.Data.DataSet();
+                DataSet ds = new DataSet();
                 adapter.Fill(ds);
 
                 rpv.LocalReport.ReportEmbeddedResource = rpPath;
+                if (parameters != null)
+                {
+                    List<ReportParameter> listReportParameter = new List<ReportParameter>();
+                    foreach(var p in parameters)
+                        listReportParameter.Add(new ReportParameter(p.Key, p.Value));
+                    rpv.LocalReport.SetParameters(listReportParameter);
+                }
                 ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
                 rpv.LocalReport.DataSources.Clear();
+                rpv.ResetPageSettings();
                 rpv.LocalReport.DataSources.Add(rds);
             }
             catch (Exception ex)
@@ -318,8 +375,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
@@ -350,8 +409,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
@@ -381,8 +442,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
@@ -409,8 +472,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
@@ -435,8 +500,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
 
@@ -477,14 +544,16 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
         }
         #endregion
 
         #region Tools
-        public static DataTable GetSingleRecordDB(string tableName,
+        public static DataTable GetSingleRecordFromDB(string tableName,
             string conditionFIeldName, string conditionValue)
         {
             DataTable dt = new DataTable();
@@ -503,8 +572,38 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if(Cmd != null)
+                    Cmd.Dispose();
+                if(Conn != null)
+                    Conn.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable GetDataTableFromDB(string tableName, string recordCount = null)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Conn.Open();
+                string query = recordCount == null ?
+                    $"SELECT * FROM {tableName};" :
+                    $"SELECT * FROM {tableName} LIMIT {recordCount};";
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return dt;
         }
@@ -534,8 +633,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             return autoID;
         }
@@ -572,8 +673,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
                 if (showMessage == true && duplicate == true)
                     MessageBox.Show(fieldMessage, $"Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -606,20 +709,22 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             user = (string.Empty, string.Empty);
             return false;
         }
 
-        public static (string,string) HasLoanBookDueAndOverdue()
+        public static (string,string) GetLoanBookDueAndOverdue()
         {
             (string bookDue, string bookOverdue) book = (string.Empty, string.Empty);
-            string query = $"SELECT " +
-                $"COUNT(CASE WHEN date(dateDue)=date('now') AND loanStatusID='1' THEN dateDue END) AS bookDue, " +
-                $"COUNT(CASE WHEN date(dateDue)<date('now') AND loanStatusID='1' THEN dateDue END) AS bookOverdue " +
-                $"FROM tblBorrow;";
+            string query = "SELECT " +
+                "COUNT(CASE WHEN date(dateDue)=date('now') AND loanStatusID='1' THEN dateDue END) AS bookDue, " +
+                "COUNT(CASE WHEN date(dateDue)<date('now') AND loanStatusID='1' THEN dateDue END) AS bookOverdue " +
+                "FROM tblBorrow;";
             try
             {
                 Conn.Open();
@@ -645,8 +750,10 @@ namespace LibraryDBMS.Libs
             }
             finally
             {
-                Cmd.Dispose();
-                Conn.Close();
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
             }
             book = ("0", "0");
             return book;

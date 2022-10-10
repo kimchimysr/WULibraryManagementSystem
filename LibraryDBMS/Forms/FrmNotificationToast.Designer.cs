@@ -30,6 +30,7 @@
         {
             this.lblText = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblText
@@ -37,7 +38,7 @@
             this.lblText.AutoSize = true;
             this.lblText.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblText.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblText.Location = new System.Drawing.Point(12, 27);
+            this.lblText.Location = new System.Drawing.Point(75, 27);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(136, 27);
             this.lblText.TabIndex = 0;
@@ -49,7 +50,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnClose.Location = new System.Drawing.Point(356, -1);
+            this.btnClose.Location = new System.Drawing.Point(397, -1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 35;
@@ -57,15 +58,25 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // NotificationToast
+            // label1
+            // 
+            this.label1.Image = global::LibraryDBMS.Properties.Resources.info_52px;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 53);
+            this.label1.TabIndex = 36;
+            // 
+            // FrmNotificationToast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 80);
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ClientSize = new System.Drawing.Size(440, 80);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NotificationToast";
+            this.Name = "FrmNotificationToast";
             this.Text = "NotificationToast";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -76,5 +87,6 @@
 
         private System.Windows.Forms.Label lblText;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label1;
     }
 }

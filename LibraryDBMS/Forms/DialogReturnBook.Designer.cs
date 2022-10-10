@@ -56,8 +56,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,7 @@
             this.lblName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(6, 101);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(328, 23);
+            this.lblName.Size = new System.Drawing.Size(356, 23);
             this.lblName.TabIndex = 58;
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -100,7 +101,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(6, 43);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(328, 23);
+            this.lblTitle.Size = new System.Drawing.Size(356, 23);
             this.lblTitle.TabIndex = 57;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -342,7 +343,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 488);
+            this.panel1.Size = new System.Drawing.Size(3, 529);
             this.panel1.TabIndex = 105;
             // 
             // panel2
@@ -351,37 +352,37 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(401, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 488);
+            this.panel2.Size = new System.Drawing.Size(3, 529);
             this.panel2.TabIndex = 106;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 533);
+            this.panel3.Location = new System.Drawing.Point(6, 574);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(395, 3);
             this.panel3.TabIndex = 107;
             // 
-            // btnSaveChanges
+            // btnSave
             // 
-            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnSaveChanges.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveChanges.FlatAppearance.BorderSize = 0;
-            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveChanges.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSaveChanges.Image = global::LibraryDBMS.Properties.Resources.save_26px;
-            this.btnSaveChanges.Location = new System.Drawing.Point(17, 459);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(160, 56);
-            this.btnSaveChanges.TabIndex = 108;
-            this.btnSaveChanges.Text = "  Save Changes";
-            this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSaveChanges.UseVisualStyleBackColor = false;
-            this.btnSaveChanges.Click += new System.EventHandler(this.Button_Click);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSave.Image = global::LibraryDBMS.Properties.Resources.save_26px;
+            this.btnSave.Location = new System.Drawing.Point(17, 500);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(160, 56);
+            this.btnSave.TabIndex = 108;
+            this.btnSave.Text = "  Save Changes";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnCancel
             // 
@@ -394,7 +395,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(225, 459);
+            this.btnCancel.Location = new System.Drawing.Point(225, 500);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(160, 56);
             this.btnCancel.TabIndex = 109;
@@ -404,14 +405,26 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.Button_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label12.Location = new System.Drawing.Point(16, 447);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(306, 44);
+            this.label12.TabIndex = 110;
+            this.label12.Text = "Note: \r\n- Each overdue day will be fined 500 Riel";
+            // 
             // DialogReturnBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.ClientSize = new System.Drawing.Size(407, 539);
+            this.ClientSize = new System.Drawing.Size(407, 580);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSaveChanges);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -475,7 +488,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label12;
     }
 }

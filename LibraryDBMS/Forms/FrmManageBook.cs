@@ -17,13 +17,22 @@ namespace LibraryDBMS.Forms
         public FrmManageBook()
         {
             InitializeComponent();
-            LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
+            //LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
             typeof(DataGridView).InvokeMember(
                "DoubleBuffered",
                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
                null,
                dgvBooks,
                new object[] { true });
+        }
+        private void PopulateDataGrid()
+        {
+           LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
+        }
+
+        private void FrmManageBook_Load(object sender, EventArgs e)
+        {
+            PopulateDataGrid();
         }
     }
 }

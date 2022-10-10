@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCount = new System.Windows.Forms.Label();
-            this.dgvBorrowerList = new System.Windows.Forms.DataGridView();
+            this.dgvStudentList = new System.Windows.Forms.DataGridView();
             this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +56,10 @@
             this.btnView = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowerList)).BeginInit();
+            this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPrint = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
+            this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblCount
@@ -71,19 +74,21 @@
             this.lblCount.Text = "Total Student: ";
             this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgvBorrowerList
+            // dgvStudentList
             // 
-            this.dgvBorrowerList.AllowUserToAddRows = false;
-            this.dgvBorrowerList.AllowUserToDeleteRows = false;
-            this.dgvBorrowerList.AllowUserToResizeColumns = false;
-            this.dgvBorrowerList.AllowUserToResizeRows = false;
+            this.dgvStudentList.AllowUserToAddRows = false;
+            this.dgvStudentList.AllowUserToDeleteRows = false;
+            this.dgvStudentList.AllowUserToResizeColumns = false;
+            this.dgvStudentList.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBorrowerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBorrowerList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvStudentList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBorrowerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvBorrowerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvStudentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudentList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvStudentList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,10 +96,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBorrowerList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBorrowerList.ColumnHeadersHeight = 30;
-            this.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvBorrowerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStudentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvStudentList.ColumnHeadersHeight = 30;
+            this.dgvStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStudentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.studentID,
             this.firstName,
             this.lastName,
@@ -109,13 +114,13 @@
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBorrowerList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvBorrowerList.EnableHeadersVisualStyles = false;
-            this.dgvBorrowerList.Location = new System.Drawing.Point(15, 92);
-            this.dgvBorrowerList.MultiSelect = false;
-            this.dgvBorrowerList.Name = "dgvBorrowerList";
-            this.dgvBorrowerList.ReadOnly = true;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvStudentList.EnableHeadersVisualStyles = false;
+            this.dgvStudentList.Location = new System.Drawing.Point(15, 92);
+            this.dgvStudentList.MultiSelect = false;
+            this.dgvStudentList.Name = "dgvStudentList";
+            this.dgvStudentList.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,11 +128,12 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBorrowerList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvBorrowerList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvBorrowerList.Size = new System.Drawing.Size(1159, 383);
-            this.dgvBorrowerList.TabIndex = 20;
-            this.dgvBorrowerList.TabStop = false;
+            this.dgvStudentList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvStudentList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvStudentList.Size = new System.Drawing.Size(1159, 383);
+            this.dgvStudentList.TabIndex = 20;
+            this.dgvStudentList.TabStop = false;
+            this.dgvStudentList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudentList_RowHeaderMouseClick);
             // 
             // studentID
             // 
@@ -303,14 +309,15 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.Control;
             this.btnDelete.Image = global::LibraryDBMS.Properties.Resources.trash_32px;
-            this.btnDelete.Location = new System.Drawing.Point(621, 553);
+            this.btnDelete.Location = new System.Drawing.Point(606, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(28, 0, 11, 0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(250, 60);
             this.btnDelete.TabIndex = 19;
@@ -338,15 +345,16 @@
             // 
             // btnView
             // 
-            this.btnView.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
             this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnView.FlatAppearance.BorderSize = 0;
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnView.ForeColor = System.Drawing.SystemColors.Control;
             this.btnView.Image = global::LibraryDBMS.Properties.Resources.view_32px;
-            this.btnView.Location = new System.Drawing.Point(924, 553);
+            this.btnView.Location = new System.Drawing.Point(909, 0);
+            this.btnView.Margin = new System.Windows.Forms.Padding(42, 0, 0, 0);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(250, 60);
             this.btnView.TabIndex = 18;
@@ -358,15 +366,16 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEdit.Image = global::LibraryDBMS.Properties.Resources.edit_32px;
-            this.btnEdit.Location = new System.Drawing.Point(318, 553);
+            this.btnEdit.Location = new System.Drawing.Point(303, 0);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(14, 0, 25, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(250, 60);
             this.btnEdit.TabIndex = 16;
@@ -378,15 +387,16 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAdd.Image = global::LibraryDBMS.Properties.Resources.add_32px;
-            this.btnAdd.Location = new System.Drawing.Point(15, 553);
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 0, 39, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(250, 60);
             this.btnAdd.TabIndex = 15;
@@ -396,31 +406,69 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.Button_Click);
             // 
+            // tlpButtonContainer
+            // 
+            this.tlpButtonContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpButtonContainer.ColumnCount = 4;
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.Controls.Add(this.btnAdd, 0, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnDelete, 2, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnView, 3, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnEdit, 1, 0);
+            this.tlpButtonContainer.Location = new System.Drawing.Point(15, 553);
+            this.tlpButtonContainer.Name = "tlpButtonContainer";
+            this.tlpButtonContainer.RowCount = 1;
+            this.tlpButtonContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpButtonContainer.Size = new System.Drawing.Size(1159, 60);
+            this.tlpButtonContainer.TabIndex = 24;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrint.Image = global::LibraryDBMS.Properties.Resources.print_26px;
+            this.btnPrint.Location = new System.Drawing.Point(833, 54);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(152, 34);
+            this.btnPrint.TabIndex = 25;
+            this.btnPrint.Text = " Print Preview";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.Button_Click);
+            // 
             // FrmManageStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.tlpButtonContainer);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.cbSearchBy);
-            this.Controls.Add(this.dgvBorrowerList);
+            this.Controls.Add(this.dgvStudentList);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtSearchValue);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnView);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
             this.Name = "FrmManageStudent";
             this.Text = "Manage Student";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowerList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).EndInit();
+            this.tlpButtonContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,7 +477,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblCount;
-        private System.Windows.Forms.DataGridView dgvBorrowerList;
+        private System.Windows.Forms.DataGridView dgvStudentList;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSearchValue;
@@ -452,5 +500,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
         private System.Windows.Forms.ComboBox cbSearchBy;
+        private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

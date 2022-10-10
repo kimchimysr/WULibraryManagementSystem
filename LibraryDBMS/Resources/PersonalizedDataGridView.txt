@@ -8,6 +8,7 @@ ColumnHeadersDefaultCellStyle:
 	BackColor: 33, 33, 33
 	Font: Trebuchet MS, 9.75pt, style=Bold
 	ForeColor: White
+	WrapMode: True
 ColumnHeadersHeight: 30
 DefaultCellStyle:
 	Font: Trebuchet MS, 9.75pt, style=Bold
@@ -26,3 +27,5 @@ MultiSelect: False
 ReadOnly: True
 SelectionMode: RowHeaderSelect
 Anchor: Top, Bottom, Left, Right
+AutoSizeColumnsMode: Fill
+AutoSizeRowsMode: DisplayedCellsExceptHeaders
