@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pTitleBar = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,8 +56,6 @@
             this.lblDOB = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -73,6 +73,29 @@
             this.pTitleBar.Name = "pTitleBar";
             this.pTitleBar.Size = new System.Drawing.Size(763, 45);
             this.pTitleBar.TabIndex = 36;
+            // 
+            // label10
+            // 
+            this.label10.Image = global::LibraryDBMS.Properties.Resources.male_user_26px;
+            this.label10.Location = new System.Drawing.Point(265, 1);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 44);
+            this.label10.TabIndex = 35;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
+            this.btnClose.Location = new System.Drawing.Point(718, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 45);
+            this.btnClose.TabIndex = 34;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblHeader
             // 
@@ -347,29 +370,6 @@
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
             // 
-            // label10
-            // 
-            this.label10.Image = global::LibraryDBMS.Properties.Resources.male_user_26px;
-            this.label10.Location = new System.Drawing.Point(265, 1);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 44);
-            this.label10.TabIndex = 35;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnClose.Location = new System.Drawing.Point(718, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // DialogUserAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,7 +388,7 @@
             this.Name = "DialogUserAccount";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmUserAccount";
+            this.Text = "Dialog User Account";
             this.pTitleBar.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

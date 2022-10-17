@@ -148,7 +148,7 @@
             this.Name = "DialogViewDetail";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmVIewDetail";
+            this.Text = "Dialog View Detail";
             this.pTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

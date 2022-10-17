@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -17,41 +18,30 @@ namespace LibraryDBMS.Forms
         private DataTable user;
         private bool isEditMode;
 
+        private StudentValidator sv;
+
         public DialogAddEditStudent(FrmManageStudent frm, DataTable _user = null)
         {
             InitializeComponent();
             Utils.DragFormWithControlMouseDown(this, lblHeader);
-            isEditMode = _user != null ? true : false;
+            isEditMode = _user != null;
             frmManageStudent = frm;
             user = _user;
             Utils.FillComboBox(cbYear, false, "1", "2", "3", "4");
             if (!isEditMode)
             {
-                this.Text = "Add New Student";
                 lblHeader.Text = "New Student";
+                sv = new StudentValidator(txtStudentID, txtFirstName, txtLastName, cbYear, txtMajor, txtTel);
             }
             else
             {
+                sv = new StudentValidator(null, txtFirstName, txtLastName, cbYear, txtMajor, txtTel);
                 lblHeader.Text = "Edit Student";
-                this.Text = "Edit Student";
                 btnSaveChanges.Size = new Size(355, 56);
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
             }
-        }
-
-        private bool IsValidData()
-        {
-            if (Utils.IsEmptyControl(this))
-                return false;
-            if (!isEditMode)
-            {
-                if (LibModule.CheckIfExist("tblStudent", "studentID", txtStudentID.Text.Trim(),
-                    "Student ID is already exists!"))
-                    return false;
-            }
-            return true;
         }
 
         private void PopulateFields()
@@ -68,9 +58,25 @@ namespace LibraryDBMS.Forms
             txtTel.Text = user.Rows[0]["tel"].ToString();
         }
 
+        private bool HasAnyChanges()
+        {
+            string gender = rbMale.Checked ? "M" : "F";
+            if (user.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
+                user.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
+                user.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
+                user.Rows[0]["gender"].ToString() != gender ||
+                user.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
+                user.Rows[0]["major"].ToString() != txtMajor.Text.Trim() ||
+                user.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
+                return true;
+
+            return false;
+        }
+
+
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            if (IsValidData())
+            if (this.ValidateChildren())
             {
                 try
                 {
@@ -82,7 +88,7 @@ namespace LibraryDBMS.Forms
                     string major = txtMajor.Text.Trim();
                     string telephone = txtTel.Text.Trim();
                     string dateAdded =
-                        !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : this.user.Rows[0]["dateAdded"].ToString().Trim();
+                        !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : user.Rows[0]["dateAdded"].ToString().Trim();
 
                     List<string> borrower = new List<string>
                     {
@@ -102,8 +108,11 @@ namespace LibraryDBMS.Forms
                     }
                     else
                     {
-                        LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
-                            "studentID", studentID, borrower, true);
+                        if (HasAnyChanges())
+                        {
+                            LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
+                                                "studentID", studentID, borrower, true); 
+                        }
                     }
                     frmManageStudent.PopulateDataGrid();
                     this.Close();
@@ -113,6 +122,7 @@ namespace LibraryDBMS.Forms
                     MessageBox.Show(ex.Message);
                 }
             }
+            else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -128,15 +138,6 @@ namespace LibraryDBMS.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verify that the pressed key isn't CTRL or any non-numeric digit
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
         }
     }
 }

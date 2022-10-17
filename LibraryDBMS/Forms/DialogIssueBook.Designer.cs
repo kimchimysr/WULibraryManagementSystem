@@ -414,6 +414,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.ClientSize = new System.Drawing.Size(508, 535);
             this.Controls.Add(this.button2);
@@ -443,7 +444,7 @@
             this.Name = "DialogIssueBook";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DialogAddEditBorrowBook";
+            this.Text = "Dialog Issue Book";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pTitleBar.ResumeLayout(false);

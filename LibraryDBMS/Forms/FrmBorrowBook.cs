@@ -53,6 +53,7 @@ namespace LibraryDBMS.Forms
             lblBookDueCount.Text = "Book Due: " + book.due;
             lblBookOverdueCount.Text = "Book Overdue: " + book.overdue;
 
+            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
@@ -91,6 +92,7 @@ namespace LibraryDBMS.Forms
                                     LibModule.SearchAndFillDataGrid("viewBorrowBook", "fullName", value, dgvBorrowList);
                                     break;
                             }
+                            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -110,6 +112,7 @@ namespace LibraryDBMS.Forms
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
                             LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowBook", dgvBorrowList, "dateLoan", fromDate, toDate);
+                            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)

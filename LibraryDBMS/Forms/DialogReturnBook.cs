@@ -49,7 +49,7 @@ namespace LibraryDBMS.Forms
             lblName.Text = borrow.Rows[0]["fullName"].ToString();
             dtpIssueDate.Value = DateTime.Parse(borrow.Rows[0]["dateLoan"].ToString());
             dtpDueDate.Value = DateTime.Parse(borrow.Rows[0]["dateDue"].ToString());
-            dtpReturnDate.Value = 
+            dtpReturnDate.Value =
                 borrow.Rows[0]["dateReturned"].ToString() != string.Empty ? 
                 DateTime.Parse(borrow.Rows[0]["dateReturned"].ToString()) : DateTime.Today;
             txtFine.Text = borrow.Rows[0]["overdueFine"].ToString() != string.Empty ?

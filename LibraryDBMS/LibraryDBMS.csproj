@@ -37,11 +37,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -83,6 +92,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControls\RJToggleButton.cs">
@@ -112,11 +122,29 @@
     <Compile Include="Forms\DialogAddEditUser.Designer.cs">
       <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DialogResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogResetPassword.Designer.cs">
+      <DependentUpon>DialogResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DialogReturnBook.Designer.cs">
       <DependentUpon>DialogReturnBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogSelectBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogSelectBook.Designer.cs">
+      <DependentUpon>DialogSelectBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogSelectStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogSelectStudent.Designer.cs">
+      <DependentUpon>DialogSelectStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogViewDetail.cs">
       <SubType>Form</SubType>
@@ -184,13 +212,22 @@
     <Compile Include="Forms\FrmRecentActivity.Designer.cs">
       <DependentUpon>FrmRecentActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmSplashScreen.Designer.cs">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Libs\IssueBookValidator.cs" />
     <Compile Include="Libs\NotificationToast.cs" />
+    <Compile Include="Libs\StudentValidator.cs" />
     <Compile Include="Libs\UserSetting.cs" />
+    <Compile Include="Libs\UserValidator.cs" />
     <Compile Include="Temp\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,11 +316,20 @@
     <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
       <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogResetPassword.resx">
+      <DependentUpon>DialogResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReturnBook.resx">
       <DependentUpon>DialogReturnBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogAbout.resx">
       <DependentUpon>DialogAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogSelectBook.resx">
+      <DependentUpon>DialogSelectBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogSelectStudent.resx">
+      <DependentUpon>DialogSelectStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
@@ -323,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmRecentActivity.resx">
       <DependentUpon>FrmRecentActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmSplashScreen.resx">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RpBook.rdlc" />
     <EmbeddedResource Include="Reports\RpBorrowBook.rdlc" />
@@ -457,6 +506,10 @@
     <None Include="Resources\typography_78px.png" />
     <None Include="Resources\expired_78px.png" />
     <None Include="Resources\Clock_78px.png" />
+    <None Include="Resources\data_recovery_26px.png" />
+    <None Include="Resources\data_backup_26px.png" />
+    <None Include="Resources\microsoft_excel_26px.png" />
+    <None Include="Resources\splashscreen.jpg" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace LibraryDBMS.Forms
         private readonly FrmManageUser frmManageUser;
         private DataTable user;
         private bool isEditMode;
+
+        private UserValidator uv;
 
         public DialogAddEditUser(FrmManageUser frm, DataTable _user = null)
         {
@@ -34,6 +37,7 @@ namespace LibraryDBMS.Forms
             {
                 lblHeader.Text = "New User";
                 txtUserID.Text = LibModule.GetAutoID("tblUser", "userID");
+                uv = new UserValidator(txtUsername, txtFirstName, txtLastName, txtAddress, cbRole, txtTelephone, txtEmail); ;
             }
             else
             {
@@ -41,22 +45,8 @@ namespace LibraryDBMS.Forms
                 PopulateFields();
                 btnClear.Visible = false;
                 txtUsername.ReadOnly = true;
+                uv = new UserValidator(null, txtFirstName, txtLastName, txtAddress, cbRole, txtTelephone, txtEmail); ;
             }
-        }
-
-        private bool IsValidData()
-        {
-            if (Utils.IsEmptyControl(this))
-                return false;
-            if (!isEditMode)
-            {
-                if (LibModule.CheckIfExist("tblUser", "username", txtUsername.Text.Trim(),
-                    "Username already exists!"))
-                    return false;
-            }
-            if (!Utils.IsValidEmail(txtEmail.Text.Trim()))
-                return false;
-            return true;
         }
 
         private void PopulateFields()
@@ -76,9 +66,26 @@ namespace LibraryDBMS.Forms
             txtEmail.Text = user.Rows[0]["email"].ToString();
         }
 
+        private bool HasAnyChanges()
+        {
+            string gender = rbMale.Checked ? "M" : "F";
+            if (user.Rows[0]["username"].ToString() != txtUsername.Text.Trim() ||
+                user.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() || 
+                user.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
+                user.Rows[0]["addr"].ToString() != txtAddress.Text.Trim() ||
+                user.Rows[0]["dob"].ToString() != dtpDOB.Text.Trim() ||
+                user.Rows[0]["gender"].ToString() != gender || 
+                user.Rows[0]["roleName"].ToString() != cbRole.Text.Trim() ||
+                user.Rows[0]["tel"].ToString() != txtTelephone.Text.Trim() ||
+                user.Rows[0]["email"].ToString() != txtEmail.Text.Trim())
+                return true;
+
+            return false;
+        }
+
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            if (IsValidData())
+            if (this.ValidateChildren())
             {
                 try
                 {
@@ -132,13 +139,16 @@ namespace LibraryDBMS.Forms
                     }
                     else
                     {
-                        // remove password field because editing password is not allowed
-                        user.Remove(password);
-                        if (LibModule.UpdateRecord("tblUser", LibModule.GetTableField("tblUser"),
-                            "userID", userID, user, true, "password") == true)
+                        if (HasAnyChanges())
                         {
-                            LibModule.UpdateRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
-                            "userID", userID, userRole, false);
+                            // remove password field because editing password is not allowed
+                            user.Remove(password);
+                            if (LibModule.UpdateRecord("tblUser", LibModule.GetTableField("tblUser"),
+                                "userID", userID, user, true, "password") == true)
+                            {
+                                LibModule.UpdateRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
+                                "userID", userID, userRole, false);
+                            } 
                         }
                     }
                     frmManageUser.PopulateDataGrid();
@@ -149,6 +159,7 @@ namespace LibraryDBMS.Forms
                     MessageBox.Show(ex.Message);
                 }
             }
+            else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -164,15 +175,6 @@ namespace LibraryDBMS.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void txtTelephone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Verify that the pressed key isn't CTRL or any non-numeric digit
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
         }
     }
 }

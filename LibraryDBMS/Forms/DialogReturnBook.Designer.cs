@@ -451,7 +451,7 @@
             this.Name = "DialogReturnBook";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DialogReturnBook";
+            this.Text = "Dialog Return Book";
             this.groupBox1.ResumeLayout(false);
             this.pTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);

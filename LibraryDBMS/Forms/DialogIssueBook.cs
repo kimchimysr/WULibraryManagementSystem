@@ -13,7 +13,8 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogIssueBook : Form
     {
-        FrmBorrowBook frmBorrowBook;
+        private FrmBorrowBook frmBorrowBook;
+        private IssueBookValidator ibv;
         public DialogIssueBook(FrmBorrowBook _frmBorrowBook)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace LibraryDBMS.Forms
         private void InitailizeValues()
         {
             Utils.DragFormWithControlMouseDown(this, lblHeader);
+            ibv = new IssueBookValidator(txtStudentID, txtBookID, lblTitle, lblName, lblBookAvailability);
             txtBorrowID.Text = LibModule.GetAutoID("tblBorrow", "borrowID");
             dtpIssueDate.Value = DateTime.Today;
             dtpDueDate.Value = dtpIssueDate.Value.Date.AddDays(GetDueDate(dtpIssueDate));
@@ -37,23 +39,11 @@ namespace LibraryDBMS.Forms
                 case "btnSearchBookID":
                     try
                     {
-                        if (txtBookID.Text.Length > 0)
-                        {
-                            LibModule.SearchAndDisplayLabel("tblBook", "title", "bookID", txtBookID.Text.Trim(), lblTitle);
-                            // check if the book qty > 0
-                            string qty = LibModule.ExecuteScalarQuery
-                                ($"SELECT qty FROM tblBook WHERE bookID='{txtBookID.Text.Trim()}'");
-                            if (int.Parse(qty) > 0)
-                            {
-                                lblBookAvailability.ForeColor = Color.Green;
-                                lblBookAvailability.Text = "Yes";
-                            }
-                            else
-                            {
-                                lblBookAvailability.ForeColor = Color.Red;
-                                lblBookAvailability.Text = "No";
-                            }
-                        }
+                        var dialogSelectBook = new DialogSelectBook();
+                        dialogSelectBook.ShowDialog();
+                        txtBookID.Text = dialogSelectBook.BookID;
+                        dialogSelectBook.Dispose();
+                        txtBookID.Focus();
                     }
                     catch (Exception ex)
                     {
@@ -64,8 +54,11 @@ namespace LibraryDBMS.Forms
                 case "btnSearchStudentID":
                     try
                     {
-                        if (txtStudentID.Text.Length > 0)
-                            LibModule.SearchAndDisplayLabel("tblStudent", "firstName,lastName", "studentID", txtStudentID.Text.Trim(), lblName);
+                        var dialogSelectStudent = new DialogSelectStudent();
+                        dialogSelectStudent.ShowDialog();
+                        txtStudentID.Text = dialogSelectStudent.StudentID;
+                        dialogSelectStudent.Dispose();
+                        txtStudentID.Focus();
                     }
                     catch (Exception ex)
                     {
@@ -76,7 +69,7 @@ namespace LibraryDBMS.Forms
                 case "btnSave":
                     try
                     {
-                        if (IsValidData())
+                        if (this.ValidateChildren() && IsValidData())
                         {
                             string borrowID = txtBorrowID.Text.Trim();
                             string bookID = txtBookID.Text.Trim();
@@ -103,14 +96,15 @@ namespace LibraryDBMS.Forms
                                 overdueFine,
                                 loanStatusID
                             };
-                            if(LibModule.InsertRecord("tblBorrow", LibModule.GetTableField("tblBorrow"), issueBook) == true)
+                            if (LibModule.InsertRecord("tblBorrow", LibModule.GetTableField("tblBorrow"), issueBook) == true)
                             {
                                 // reduce 1 qty of the loaned book
                                 LibModule.ExecuteQuery($"UPDATE tblBook SET qty = qty - 1 WHERE bookID='{bookID}'");
                             }
                             frmBorrowBook.PopulateDataGrid();
                             this.Close();
-                        }                    
+                        }
+                        else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex)
                     {
@@ -131,20 +125,6 @@ namespace LibraryDBMS.Forms
 
         private bool IsValidData()
         {
-            if (Utils.IsEmptyControl(this))
-                return false;
-            if (!LibModule.CheckIfExist("tblBook", "bookID", txtBookID.Text.Trim(), "", false))
-            {
-                MessageBox.Show("Please enter a valid book id!", "Invalid Book ID",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (!LibModule.CheckIfExist("tblStudent", "studentID", txtStudentID.Text.Trim(), "", false))
-            {
-                MessageBox.Show("Please enter a valid student id!", "Invalid Student ID",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
             // check if the student has already loan a book
             // each person can only loan 1 book at a time
             if (LibModule.ExecuteScalarQuery

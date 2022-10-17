@@ -28,11 +28,13 @@ namespace LibraryDBMS.Forms
                 string password = txtPassword.Text.Trim();
                 string hashedPassword = Utils.HashPassword(password);
 
-                if (LibModule.IsValidLoginCredential(username, hashedPassword, out (string,string) user))
+                if (LibModule.IsValidLoginCredential(username, hashedPassword, out DataTable user))
                 {
+                    this.Hide();
+                    var frmSplashScreen = new FrmSplashScreen();
+                    frmSplashScreen.ShowDialog();
                     var frmMainMenu = new FrmMainMenu(this, user);
                     frmMainMenu.Show();
-                    this.Hide();
                 }
                 else
                 {
@@ -45,7 +47,7 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

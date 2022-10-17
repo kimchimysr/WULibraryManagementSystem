@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Setting;
+using System.IO;
 
 namespace LibraryDBMS.Forms
 {
@@ -21,7 +22,6 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             InitializeValues();
         }
-
         private void InitializeValues()
         {
             SuspendLayout();
@@ -29,6 +29,8 @@ namespace LibraryDBMS.Forms
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.FixControlFlickering(this);
             Utils.FillComboBox(cbStartupForm, false ,"Home", "Dashboard");
+            Utils.FillComboBox(cbTable, true, "All", "tblBook", "tblBookCategory", "tblBorrow", "tblLoanStatus",
+                "tblLog", "tblRole", "tblStudent", "tblUser", "tblUserRole", "tblUserLog", "viewOverview");
             AppliedUserSetting();
             ResumeLayout();
         }
@@ -38,6 +40,15 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnExport":
+                    Utils.ExportDatabaseTableToExcel(cbTable.SelectedItem.ToString());
+                    break;
+                case "btnBackup":
+                    Utils.BackupDatabase();
+                    break;
+                case "btnRestore":
+                    Utils.RestoreDatabase();
+                    break;
                 case "btnRestart":
                     if (SettingHasChanged())
                         us.Save();

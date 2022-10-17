@@ -17,13 +17,47 @@ namespace LibraryDBMS.Forms
         {
             InitializeComponent();
             Utils.EnableControlDoubleBuffer(dgvlogList);
-            LibModule.FillDataGrid("tblLog", dgvlogList, "logID");
+            Utils.FillComboBox(cbDay, true, "All", "Today", "Yesterday", "Older");
+            lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
         }
 
         public override void Refresh()
         {
             base.Refresh();
             LibModule.FillDataGrid("tblLog", dgvlogList, "logID");
+            lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
+        }
+
+        private void cbDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDay.SelectedIndex >= 0)
+            {
+                string query = string.Empty;
+                switch (cbDay.SelectedItem.ToString())
+                {
+                    case "All":
+                        LibModule.FillDataGrid("tblLog", dgvlogList, "logID");
+                        break;
+                    case "Today":
+                        query = 
+                            "SELECT * FROM tblLog WHERE DATE(timestamp) = DATE('NOW') ORDER BY timestamp DESC";
+                        LibModule.FillDataGrid(query, dgvlogList);
+                        break;
+                    case "Yesterday":
+                        query =
+                            "SELECT * FROM tblLog WHERE DATE(timestamp) = DATE('NOW', '-1 day') ORDER BY timestamp DESC";
+                        LibModule.FillDataGrid(query, dgvlogList);
+                        break;
+                    case "Older":
+                        query =
+                            "SELECT * FROM tblLog WHERE DATE(timestamp) < DATE('NOW', '-1 day') ORDER BY timestamp DESC";
+                        LibModule.FillDataGrid(query, dgvlogList);
+                        break;
+                    default:
+                        break;
+                }
+                lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
+            }
         }
     }
 }

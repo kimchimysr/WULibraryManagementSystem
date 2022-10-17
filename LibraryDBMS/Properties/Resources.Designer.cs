@@ -163,6 +163,26 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap data_backup_26px {
+            get {
+                object obj = ResourceManager.GetObject("data_backup_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap data_recovery_26px {
+            get {
+                object obj = ResourceManager.GetObject("data_recovery_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap document_26px {
             get {
                 object obj = ResourceManager.GetObject("document_26px", resourceCulture);
@@ -313,6 +333,16 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap microsoft_excel_26px {
+            get {
+                object obj = ResourceManager.GetObject("microsoft_excel_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap notification_26px {
             get {
                 object obj = ResourceManager.GetObject("notification_26px", resourceCulture);
@@ -396,6 +426,16 @@ namespace LibraryDBMS.Properties {
         public static System.Drawing.Bitmap settings_26px {
             get {
                 object obj = ResourceManager.GetObject("settings_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap splashscreen {
+            get {
+                object obj = ResourceManager.GetObject("splashscreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

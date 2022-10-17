@@ -58,6 +58,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.lblRowsCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -445,12 +446,25 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.Button_Click);
             // 
+            // lblRowsCount
+            // 
+            this.lblRowsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRowsCount.AutoSize = true;
+            this.lblRowsCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F);
+            this.lblRowsCount.Location = new System.Drawing.Point(1078, 478);
+            this.lblRowsCount.Name = "lblRowsCount";
+            this.lblRowsCount.Size = new System.Drawing.Size(96, 20);
+            this.lblRowsCount.TabIndex = 26;
+            this.lblRowsCount.Text = "Total Result: ";
+            this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // FrmManageStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lblRowsCount);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.tlpButtonContainer);
             this.Controls.Add(this.dtpToDate);
@@ -502,5 +516,6 @@
         private System.Windows.Forms.ComboBox cbSearchBy;
         private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label lblRowsCount;
     }
 }

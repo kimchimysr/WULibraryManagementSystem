@@ -12,6 +12,7 @@ using LibraryDBMS.Forms;
 using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LibraryDBMS.Libs
 {
@@ -23,7 +24,7 @@ namespace LibraryDBMS.Libs
 
         static LibModule()
         {
-            if (!File.Exists(Environment.CurrentDirectory + "/Database/library.db"))
+            if (!File.Exists(Environment.CurrentDirectory + @"\Database\library.db"))
             {
                 MessageBox.Show("Cannot locate database file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
@@ -41,7 +42,8 @@ namespace LibraryDBMS.Libs
                 ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
                 ("tblUser", "userID,username,password,isActive,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
                 ("tblRole", "roleID,roleName"),
-                ("tblUserRole", "userID,roleID")
+                ("tblUserRole", "userID,roleID"),
+                ("tblUserLog", "userID,username,info")
             };
             int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));
             return dbTables[index].Fields;
@@ -683,9 +685,10 @@ namespace LibraryDBMS.Libs
             return duplicate;
         }
 
-         public static bool IsValidLoginCredential(string username, string password, out (string,string) user)
+        public static bool IsValidLoginCredential(string username, string password, out DataTable user)
         {
-            string query = $"SELECT u.username,r.roleName " +
+            user = new DataTable();
+            string query = $"SELECT u.userID, u.username,r.roleName " +
                 $"FROM tblUser u, tblUserRole ur, tblRole r " +
                 $"WHERE u.username = '{username}' AND u.password = '{password}' " +
                 $"AND u.isActive = 'Yes' AND u.userID = ur.UserID AND r.roleID = ur.roleID;";
@@ -698,7 +701,7 @@ namespace LibraryDBMS.Libs
                 adapter.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    user = (dt.Rows[0]["username"].ToString(), dt.Rows[0]["roleName"].ToString());
+                    user = dt;
                     return true;
                 }
             }
@@ -714,8 +717,25 @@ namespace LibraryDBMS.Libs
                 if (Conn != null)
                     Conn.Close();
             }
-            user = (string.Empty, string.Empty);
             return false;
+        }
+
+        public static string GetUserPassword(string userID)
+        {
+            string query = $"SELECT password FROM tblUser WHERE userID='{userID}';";
+            return ExecuteScalarQuery(query);
+        }
+
+        public static bool ChangeUserPassword(string userID, string password)
+        {
+            string query = $"UPDATE tblUser SET password='{password}' WHERE userID='{userID}'";
+            return ExecuteQuery(query);
+        }
+
+        public static bool IsDefaultAdminAccount(string username, string password)
+        {
+            string query = $"SELECT userID FROM tblUser WHERE username={username} AND password='{password}'";
+            return ExecuteQuery(query);
         }
 
         public static (string,string) GetLoanBookDueAndOverdue()
@@ -759,6 +779,33 @@ namespace LibraryDBMS.Libs
             return book;
         }
 
+        public static void LogTimestampUserLogin(DataTable user)
+        {
+            string userID = user.Rows[0]["userID"].ToString();
+            string username = user.Rows[0]["username"].ToString();
+            string info = $"Logged in at {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            List<string> userLog = new List<string>()
+            {
+                userID,
+                username,
+                info
+            };
+            InsertRecord("tblUserLog", GetTableField("tblUserLog"), userLog, false);
+        }
+
+        public static void LogTimestampUserLogout(DataTable user)
+        {
+            string userID = user.Rows[0]["userID"].ToString();
+            string username = user.Rows[0]["username"].ToString();
+            string info = $"Logged out at {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            List<string> userLog = new List<string>()
+            {
+                userID,
+                username,
+                info
+            };
+            InsertRecord("tblUserLog", GetTableField("tblUserLog"), userLog, false);
+        }
         #endregion
     }
 }

@@ -33,6 +33,7 @@ namespace LibraryDBMS.Forms
             LibModule.FillDataGrid("tblStudent", dgvStudentList, "dateAdded");
             lblCount.Text = "Total Student: " + 
                 LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;");
+            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
@@ -58,6 +59,7 @@ namespace LibraryDBMS.Forms
                                 LibModule.SearchAndFillDataGrid("tblStudent", "studentID", value, dgvStudentList);
                             else if (searchBy == "Name")
                                 LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvStudentList);
+                            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -73,6 +75,7 @@ namespace LibraryDBMS.Forms
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
                             LibModule.SearchBetweenDateAndFillDataGrid("tblStudent", dgvStudentList, "dateAdded", fromDate, toDate);
+                            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)

@@ -1,7 +1,9 @@
-﻿using IWshRuntimeLibrary;
+﻿using ClosedXML.Excel;
+using IWshRuntimeLibrary;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -15,7 +17,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using File = System.IO.File;
 
 namespace LibraryDBMS.Libs
 {
@@ -407,22 +409,137 @@ namespace LibraryDBMS.Libs
             objPPdialog.ShowDialog();
         }
 
-
-        #endregion
-
-        #region Data Validation
-        public static bool IsValidEmail(string str)
+        // Backup&Restore SQLite Database in C#
+        // https://www.codeproject.com/Questions/1213783/Restore-sqlite-database-in-Csharp
+        public static void BackupDatabase()
         {
-            // a valid email format: (randomString)@(randomString2).(2-3 characters)
-            Regex regex = new Regex("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
-            if (!regex.IsMatch(str))
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = $"librarydb_{DateTime.Now.ToString("yyyy_MM_dd")}.bak";
+            try
             {
-                MessageBox.Show("Please enter a valid email address!", "Invalid Email Address",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+                using (var fbd = new FolderBrowserDialog())
+                {
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        string dbPath = Environment.CurrentDirectory + @"\Database\library.db";
+                        string backupDestPath = Path.GetFullPath(sfd.FileName);
 
-            return true;
+                        if (File.Exists(backupDestPath))
+                            File.Delete(backupDestPath);
+                        File.Copy(dbPath, backupDestPath);
+
+                        if (File.Exists(backupDestPath))
+                            MessageBox.Show("Successfully backup database!", "Backup Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else MessageBox.Show("Cannot backup database!", "Backup Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void RestoreDatabase()
+        {
+            MessageBox.Show("Restoring database will overwrite current database, make sure to do backup first!",
+                "Restore Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Database Backup Files (*.bak)|*.bak";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // current database path
+                    string dbPath = Environment.CurrentDirectory + @"\Database\library.db";
+                    string backupPath = Path.GetFullPath(ofd.FileName);
+
+                    string currentDbBackupPath = Path.GetDirectoryName(dbPath) + @"\library.bak";
+
+                    // check if current db exists
+                    if (File.Exists(dbPath))
+                    {
+                        // delete backup of current db if exists
+                        if (File.Exists(currentDbBackupPath))
+                            File.Delete(currentDbBackupPath);
+
+                        // backup current db by rename it to .bak
+                        File.Move(dbPath, currentDbBackupPath);
+                    }
+
+                    // copy backup db to current db location
+                    File.Copy(backupPath, dbPath);
+
+                    if (File.Exists(dbPath))
+                        MessageBox.Show("Successfully restored database!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // How to Export Data from Database To Excel File in c#
+        // https://www.youtube.com/watch?v=ySkUEhNu4t4
+        public static void ExportDatabaseTableToExcel(string table)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+            string fileName = table == "All" ? "database" : table;
+            sfd.FileName = $"{fileName}.xlsx";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    DataTable dt = new DataTable();
+                    XLWorkbook workbook = new XLWorkbook();
+                    if (table == "All")
+                    {
+                        dt = LibModule.GetDataTableFromDB("tblBook");
+                        workbook.Worksheets.Add(dt, "tblBook");
+                        dt = LibModule.GetDataTableFromDB("tblBookCategory");
+                        workbook.Worksheets.Add(dt, "tblBookCategory");
+                        dt = LibModule.GetDataTableFromDB("tblBorrow");
+                        workbook.Worksheets.Add(dt, "tblBorrow");
+                        dt = LibModule.GetDataTableFromDB("tblLoanStatus");
+                        workbook.Worksheets.Add(dt, "tblLoanStatus");
+                        dt = LibModule.GetDataTableFromDB("tblLog");
+                        workbook.Worksheets.Add(dt, "tblLog");
+                        dt = LibModule.GetDataTableFromDB("tblRole");
+                        workbook.Worksheets.Add(dt, "tblRole");
+                        dt = LibModule.GetDataTableFromDB("tblUser");
+                        workbook.Worksheets.Add(dt, "tblUser");
+                        dt = LibModule.GetDataTableFromDB("tblUserRole");
+                        workbook.Worksheets.Add(dt, "tblUserRole");
+                        dt = LibModule.GetDataTableFromDB("tblStudent");
+                        workbook.Worksheets.Add(dt, "tblStudent");
+                        dt = LibModule.GetDataTableFromDB("viewOverview");
+                        workbook.Worksheets.Add(dt, "viewOverview");
+                        workbook.SaveAs(sfd.FileName);
+                    }
+                    else
+                    {
+                        dt = LibModule.GetDataTableFromDB(table);
+                        workbook.Worksheets.Add(dt, table);
+                        workbook.SaveAs(sfd.FileName);
+                    }
+
+                    if (File.Exists(Path.GetFullPath(sfd.FileName)))
+                        MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else MessageBox.Show("Cannot export table!", "Export Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         #endregion
 
@@ -474,7 +591,6 @@ namespace LibraryDBMS.Libs
         #endregion
 
         #region Application
-
         // Add/Remove Startup Folder Shortcut to Your App
         // https://www.codeproject.com/Articles/146757/Add-Remove-Startup-Folder-Shortcut-to-Your-App
         public static void SetApplicationAutorunAtWindowStartup(bool enabled)

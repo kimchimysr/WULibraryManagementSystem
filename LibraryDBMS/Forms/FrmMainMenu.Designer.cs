@@ -597,7 +597,7 @@
             this.MinimumSize = new System.Drawing.Size(1404, 870);
             this.Name = "FrmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmMainMenu";
+            this.Text = "Main Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMenu_FormClosing);
             this.Resize += new System.EventHandler(this.FrmMainMenu_Resize);
             this.pSidebar.ResumeLayout(false);

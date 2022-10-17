@@ -209,7 +209,7 @@
             this.Name = "DialogAbout";
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAbout";
+            this.Text = "Dialog About";
             this.pTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
