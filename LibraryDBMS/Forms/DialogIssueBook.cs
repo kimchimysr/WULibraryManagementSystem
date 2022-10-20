@@ -146,6 +146,11 @@ namespace LibraryDBMS.Forms
 
         private void dtpIssueDate_ValueChanged(object sender, EventArgs e)
         {
+            if (dtpIssueDate.Value > DateTime.Now)
+            {
+                dtpIssueDate.Value = DateTime.Now;
+                return;
+            }
             dtpDueDate.Value = dtpIssueDate.Value.Date.AddDays(GetDueDate(dtpIssueDate));
         }
 

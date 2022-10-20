@@ -74,7 +74,7 @@ namespace LibraryDBMS.Forms
                             string userID = "1";
                             string dateLoan = dtpIssueDate.Text.ToString();
                             string dateDue = dtpDueDate.Text.ToString();
-                            string dateReturned = cbStatus.SelectedItem == "Returned" ?
+                            string dateReturned = cbStatus.SelectedItem.ToString() == "Returned" ?
                                 dtpReturnDate.Text.ToString() : string.Empty;
                             string fine = txtFine.Text.Trim();
                             string status = (cbStatus.SelectedIndex + 1).ToString();
@@ -115,7 +115,7 @@ namespace LibraryDBMS.Forms
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbStatus.SelectedItem == "Returned")
+            if (cbStatus.SelectedItem.ToString() == "Returned")
             {
                 dtpReturnDate.Enabled = true;
                 CalculateFine();

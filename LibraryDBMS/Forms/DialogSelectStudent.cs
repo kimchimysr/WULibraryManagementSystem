@@ -20,6 +20,7 @@ namespace LibraryDBMS.Forms
         {
             InitializeComponent();
             Utils.DragFormWithControlMouseDown(this, lblHeader);
+            Utils.FixControlFlickering(this);
             PopulateDataGrid();
         }
 
