@@ -60,11 +60,12 @@ namespace LibraryDBMS.Forms
                             $"WHERE bookID='{id}';", LibModule.Conn);
                         SQLiteDataAdapter adapter = new SQLiteDataAdapter(LibModule.Cmd);
                         adapter.Fill(dt);
+                        LibModule.Cmd.Dispose();
+                        LibModule.Conn.Close();
                         Form frmAddEupdateBook =
                             new DialogAddUpdateBook(this, dt);
                         frmAddEupdateBook.ShowDialog();
-                        LibModule.Cmd.Dispose();
-                        LibModule.Conn.Close();
+
                         break;
                     }
                     catch (Exception ex)
