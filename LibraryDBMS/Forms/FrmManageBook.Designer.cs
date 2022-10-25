@@ -28,307 +28,552 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.cbbMeanOfSearch = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvBookList = new System.Windows.Forms.DataGridView();
+            this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dewey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cateName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publishYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.other = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.lblRowsCount = new System.Windows.Forms.Label();
+            this.lblBookCount = new System.Windows.Forms.Label();
+            this.lblTitleCount = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.cbSearchBy = new System.Windows.Forms.ComboBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSearchValue = new System.Windows.Forms.TextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).BeginInit();
+            this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnRefresh
+            // dgvBookList
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRefresh.Image = global::LibraryDBMS.Properties.Resources.refresh_26px;
-            this.btnRefresh.Location = new System.Drawing.Point(1031, 43);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(109, 38);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
+            this.dgvBookList.AllowUserToAddRows = false;
+            this.dgvBookList.AllowUserToDeleteRows = false;
+            this.dgvBookList.AllowUserToResizeColumns = false;
+            this.dgvBookList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvBookList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBookList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.dgvBookList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvBookList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvBookList.ColumnHeadersHeight = 30;
+            this.dgvBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookID,
+            this.isbn,
+            this.dewey,
+            this.title,
+            this.author,
+            this.cateName,
+            this.publisher,
+            this.publishYear,
+            this.pages,
+            this.other,
+            this.qry,
+            this.dateAdded});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvBookList.EnableHeadersVisualStyles = false;
+            this.dgvBookList.Location = new System.Drawing.Point(15, 92);
+            this.dgvBookList.MultiSelect = false;
+            this.dgvBookList.Name = "dgvBookList";
+            this.dgvBookList.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvBookList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvBookList.Size = new System.Drawing.Size(1159, 383);
+            this.dgvBookList.TabIndex = 23;
+            this.dgvBookList.TabStop = false;
+            this.dgvBookList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBookList_CellClick);
             // 
-            // cbbMeanOfSearch
+            // bookID
             // 
-            this.cbbMeanOfSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbMeanOfSearch.FormattingEnabled = true;
-            this.cbbMeanOfSearch.Location = new System.Drawing.Point(363, 51);
-            this.cbbMeanOfSearch.Name = "cbbMeanOfSearch";
-            this.cbbMeanOfSearch.Size = new System.Drawing.Size(184, 30);
-            this.cbbMeanOfSearch.TabIndex = 1;
+            this.bookID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bookID.DataPropertyName = "bookID";
+            this.bookID.HeaderText = "Book ID";
+            this.bookID.Name = "bookID";
+            this.bookID.ReadOnly = true;
             // 
-            // label2
+            // isbn
             // 
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(138, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 30);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Search By:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.isbn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.isbn.DataPropertyName = "isbn";
+            this.isbn.HeaderText = "ISBN";
+            this.isbn.Name = "isbn";
+            this.isbn.ReadOnly = true;
             // 
-            // txtSearch
+            // dewey
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(564, 51);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(234, 26);
-            this.txtSearch.TabIndex = 2;
+            this.dewey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dewey.DataPropertyName = "dewey";
+            this.dewey.HeaderText = "DEWEY";
+            this.dewey.Name = "dewey";
+            this.dewey.ReadOnly = true;
             // 
-            // btnSearch
+            // title
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSearch.Image = global::LibraryDBMS.Properties.Resources.search_26px;
-            this.btnSearch.Location = new System.Drawing.Point(804, 43);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(163, 38);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.Button_Click);
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.title.DataPropertyName = "title";
+            this.title.HeaderText = "Title";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
             // 
-            // button6
+            // author
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.button6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.Control;
-            this.button6.Location = new System.Drawing.Point(932, 513);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(250, 60);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "Button 6";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
+            this.author.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.author.DataPropertyName = "author";
+            this.author.HeaderText = "Author";
+            this.author.Name = "author";
+            this.author.ReadOnly = true;
             // 
-            // btnDelete
+            // cateName
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
-            this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnDelete.Image = global::LibraryDBMS.Properties.Resources.trash_32px;
-            this.btnDelete.Location = new System.Drawing.Point(613, 513);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(250, 60);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.Button_Click);
+            this.cateName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cateName.DataPropertyName = "cateName";
+            this.cateName.HeaderText = "Category";
+            this.cateName.Name = "cateName";
+            this.cateName.ReadOnly = true;
             // 
-            // btnEdit
+            // publisher
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEdit.Image = global::LibraryDBMS.Properties.Resources.edit_32px;
-            this.btnEdit.Location = new System.Drawing.Point(297, 513);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(250, 60);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.Button_Click);
+            this.publisher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.publisher.DataPropertyName = "publisher";
+            this.publisher.HeaderText = "Publisher";
+            this.publisher.Name = "publisher";
+            this.publisher.ReadOnly = true;
+            // 
+            // publishYear
+            // 
+            this.publishYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.publishYear.DataPropertyName = "publishYear";
+            this.publishYear.HeaderText = "Year";
+            this.publishYear.Name = "publishYear";
+            this.publishYear.ReadOnly = true;
+            // 
+            // pages
+            // 
+            this.pages.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pages.DataPropertyName = "pages";
+            this.pages.HeaderText = "Pages";
+            this.pages.Name = "pages";
+            this.pages.ReadOnly = true;
+            // 
+            // other
+            // 
+            this.other.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.other.DataPropertyName = "other";
+            this.other.HeaderText = "Other";
+            this.other.Name = "other";
+            this.other.ReadOnly = true;
+            // 
+            // qry
+            // 
+            this.qry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.qry.DataPropertyName = "qty";
+            this.qry.HeaderText = "Qty";
+            this.qry.Name = "qry";
+            this.qry.ReadOnly = true;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dateAdded.DataPropertyName = "dateAdded";
+            this.dateAdded.HeaderText = "Date Added";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            // 
+            // tlpButtonContainer
+            // 
+            this.tlpButtonContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpButtonContainer.ColumnCount = 4;
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonContainer.Controls.Add(this.btnAdd, 0, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnDelete, 2, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnView, 3, 0);
+            this.tlpButtonContainer.Controls.Add(this.btnEdit, 1, 0);
+            this.tlpButtonContainer.Location = new System.Drawing.Point(15, 553);
+            this.tlpButtonContainer.Name = "tlpButtonContainer";
+            this.tlpButtonContainer.RowCount = 1;
+            this.tlpButtonContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpButtonContainer.Size = new System.Drawing.Size(1159, 60);
+            this.tlpButtonContainer.TabIndex = 25;
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.Control;
             this.btnAdd.Image = global::LibraryDBMS.Properties.Resources.add_32px;
-            this.btnAdd.Location = new System.Drawing.Point(16, 513);
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 0, 39, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(250, 60);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = "  Add";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.Button_Click);
             // 
-            // dgvBooks
+            // btnDelete
             // 
-            this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Coumn9,
-            this.Column10,
-            this.Column11,
-            this.Column12});
-            this.dgvBooks.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dgvBooks.Location = new System.Drawing.Point(1, 114);
-            this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.ReadOnly = true;
-            this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBooks.Size = new System.Drawing.Size(1236, 354);
-            this.dgvBooks.TabIndex = 15;
-            this.dgvBooks.Click += new System.EventHandler(this.dgvBooks_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnDelete.Image = global::LibraryDBMS.Properties.Resources.trash_32px;
+            this.btnDelete.Location = new System.Drawing.Point(606, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(28, 0, 11, 0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(250, 60);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "  Delete";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.Button_Click);
             // 
-            // Column1
+            // btnView
             // 
-            this.Column1.DataPropertyName = "bookID";
-            this.Column1.HeaderText = "Book ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.btnView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnView.FlatAppearance.BorderSize = 0;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnView.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnView.Image = global::LibraryDBMS.Properties.Resources.view_32px;
+            this.btnView.Location = new System.Drawing.Point(909, 0);
+            this.btnView.Margin = new System.Windows.Forms.Padding(42, 0, 0, 0);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(250, 60);
+            this.btnView.TabIndex = 18;
+            this.btnView.Text = "  View Information";
+            this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.Click += new System.EventHandler(this.Button_Click);
             // 
-            // Column2
+            // btnEdit
             // 
-            this.Column2.DataPropertyName = "isbn";
-            this.Column2.HeaderText = "ISBN";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEdit.Image = global::LibraryDBMS.Properties.Resources.edit_32px;
+            this.btnEdit.Location = new System.Drawing.Point(303, 0);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(14, 0, 25, 0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(250, 60);
+            this.btnEdit.TabIndex = 16;
+            this.btnEdit.Text = "  Edit";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.Button_Click);
             // 
-            // Column3
+            // lblRowsCount
             // 
-            this.Column3.DataPropertyName = "dewey";
-            this.Column3.HeaderText = "DEWEY";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.lblRowsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRowsCount.AutoSize = true;
+            this.lblRowsCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F);
+            this.lblRowsCount.Location = new System.Drawing.Point(1076, 478);
+            this.lblRowsCount.Name = "lblRowsCount";
+            this.lblRowsCount.Size = new System.Drawing.Size(96, 20);
+            this.lblRowsCount.TabIndex = 28;
+            this.lblRowsCount.Text = "Total Result: ";
+            this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // Column4
+            // lblBookCount
             // 
-            this.Column4.DataPropertyName = "title";
-            this.Column4.HeaderText = "Title";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.lblBookCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBookCount.AutoSize = true;
+            this.lblBookCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookCount.Location = new System.Drawing.Point(11, 478);
+            this.lblBookCount.Name = "lblBookCount";
+            this.lblBookCount.Size = new System.Drawing.Size(95, 20);
+            this.lblBookCount.TabIndex = 27;
+            this.lblBookCount.Text = "Total Books: ";
+            this.lblBookCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column5
+            // lblTitleCount
             // 
-            this.Column5.DataPropertyName = "author";
-            this.Column5.HeaderText = "Author";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.lblTitleCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTitleCount.AutoSize = true;
+            this.lblTitleCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleCount.Location = new System.Drawing.Point(314, 478);
+            this.lblTitleCount.Name = "lblTitleCount";
+            this.lblTitleCount.Size = new System.Drawing.Size(92, 20);
+            this.lblTitleCount.TabIndex = 27;
+            this.lblTitleCount.Text = "Total Titles: ";
+            this.lblTitleCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column6
+            // btnPrint
             // 
-            this.Column6.DataPropertyName = "publisher";
-            this.Column6.HeaderText = "Publisher";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrint.Image = global::LibraryDBMS.Properties.Resources.print_26px;
+            this.btnPrint.Location = new System.Drawing.Point(833, 54);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(152, 34);
+            this.btnPrint.TabIndex = 39;
+            this.btnPrint.Text = " Print Preview";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.Button_Click);
             // 
-            // Column7
+            // dtpToDate
             // 
-            this.Column7.DataPropertyName = "publishYear";
-            this.Column7.HeaderText = "Publish Year";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.dtpToDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpToDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(650, 58);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(98, 26);
+            this.dtpToDate.TabIndex = 37;
             // 
-            // Column8
+            // dtpFromDate
             // 
-            this.Column8.DataPropertyName = "pages";
-            this.Column8.HeaderText = "Pages";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
+            this.dtpFromDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpFromDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFromDate.Location = new System.Drawing.Point(546, 58);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(98, 26);
+            this.dtpFromDate.TabIndex = 38;
             // 
-            // Coumn9
+            // cbSearchBy
             // 
-            this.Coumn9.DataPropertyName = "other";
-            this.Coumn9.HeaderText = "Other";
-            this.Coumn9.Name = "Coumn9";
-            this.Coumn9.ReadOnly = true;
+            this.cbSearchBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.cbSearchBy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbSearchBy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearchBy.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbSearchBy.FormattingEnabled = true;
+            this.cbSearchBy.Location = new System.Drawing.Point(15, 58);
+            this.cbSearchBy.Name = "cbSearchBy";
+            this.cbSearchBy.Size = new System.Drawing.Size(121, 28);
+            this.cbSearchBy.TabIndex = 36;
             // 
-            // Column10
+            // btnFind
             // 
-            this.Column10.DataPropertyName = "qty";
-            this.Column10.HeaderText = "Quantity";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
+            this.btnFind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnFind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFind.FlatAppearance.BorderSize = 0;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFind.Image = global::LibraryDBMS.Properties.Resources.search_26px;
+            this.btnFind.Location = new System.Drawing.Point(301, 54);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(152, 34);
+            this.btnFind.TabIndex = 30;
+            this.btnFind.Text = "Search Record";
+            this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.Button_Click);
             // 
-            // Column11
+            // label3
             // 
-            this.Column11.DataPropertyName = "cateID";
-            this.Column11.HeaderText = "Category ID";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(646, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 22);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "To Date:";
             // 
-            // Column12
+            // label2
             // 
-            this.Column12.DataPropertyName = "dateAdded";
-            this.Column12.HeaderText = "Date Added";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(542, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 22);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "From Date:";
             // 
-            // FrmBook
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(11, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 22);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Search By:";
+            // 
+            // txtSearchValue
+            // 
+            this.txtSearchValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchValue.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchValue.Location = new System.Drawing.Point(140, 58);
+            this.txtSearchValue.Name = "txtSearchValue";
+            this.txtSearchValue.Size = new System.Drawing.Size(155, 26);
+            this.txtSearchValue.TabIndex = 29;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.Image = global::LibraryDBMS.Properties.Resources.filter_20px;
+            this.btnFilter.Location = new System.Drawing.Point(756, 54);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(71, 34);
+            this.btnFilter.TabIndex = 31;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRefresh.Image = global::LibraryDBMS.Properties.Resources.refresh_26px;
+            this.btnRefresh.Location = new System.Drawing.Point(459, 54);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(71, 34);
+            this.btnRefresh.TabIndex = 32;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // FrmManageBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1266, 587);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.cbbMeanOfSearch);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.dtpToDate);
+            this.Controls.Add(this.dtpFromDate);
+            this.Controls.Add(this.cbSearchBy);
+            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dgvBooks);
-            this.Name = "FrmBook";
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtSearchValue);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.lblRowsCount);
+            this.Controls.Add(this.lblTitleCount);
+            this.Controls.Add(this.lblBookCount);
+            this.Controls.Add(this.tlpButtonContainer);
+            this.Controls.Add(this.dgvBookList);
+            this.DoubleBuffered = true;
+            this.Name = "FrmManageBook";
             this.Text = "Book Record";
-            this.Load += new System.EventHandler(this.FrmBook_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).EndInit();
+            this.tlpButtonContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.ComboBox cbbMeanOfSearch;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.DataGridView dgvBookList;
+        private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dgvBooks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Coumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isbn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dewey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cateName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publisher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn publishYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pages;
+        private System.Windows.Forms.DataGridViewTextBoxColumn other;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
+        private System.Windows.Forms.Label lblRowsCount;
+        private System.Windows.Forms.Label lblBookCount;
+        private System.Windows.Forms.Label lblTitleCount;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
+        private System.Windows.Forms.ComboBox cbSearchBy;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtSearchValue;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

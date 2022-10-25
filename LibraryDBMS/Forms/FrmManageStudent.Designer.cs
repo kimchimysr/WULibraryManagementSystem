@@ -134,7 +134,7 @@
             this.dgvStudentList.Size = new System.Drawing.Size(1159, 383);
             this.dgvStudentList.TabIndex = 20;
             this.dgvStudentList.TabStop = false;
-            this.dgvStudentList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudentList_RowHeaderMouseClick);
+            this.dgvStudentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentList_CellClick);
             // 
             // studentID
             // 

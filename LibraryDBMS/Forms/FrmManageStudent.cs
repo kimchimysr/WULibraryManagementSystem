@@ -15,6 +15,7 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmManageStudent : Form
     {
+        private (int rowIndex, string studentID) selected;
         public FrmManageStudent()
         {
             InitializeComponent();
@@ -64,7 +65,8 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnFilter":
@@ -80,7 +82,8 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnAdd":
@@ -91,37 +94,38 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnEdit":
                     try
                     {
-                        string studentID = dgvStudentList.SelectedRows[0].Cells["studentID"].Value.ToString();
                         Form frmAddEditUser =
-                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudent", "studentID", studentID));
+                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudent", "studentID", selected.studentID));
                         frmAddEditUser.ShowDialog();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnDelete":
                     try
                     {
-                        string studentID = dgvStudentList.SelectedRows[0].Cells["studentID"].Value.ToString();
-                        if (LibModule.DeleteRecord("tblStudent", "studentID", studentID,
-                            Utils.GetDataGridSelectedRowData(dgvStudentList)) == true)
+                        if (LibModule.DeleteRecord("tblStudent", "studentID", selected.studentID,
+                            Utils.GetDataGridSelectedRowData(dgvStudentList, selected.rowIndex)) == true)
                             PopulateDataGrid();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnView":
-                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvStudentList, "Student");
+                    Form frmViewDetail = new DialogViewDetail(dgvStudentList, selected.rowIndex, "Student");
                     frmViewDetail.ShowDialog();
                     break;
                 case "btnRefresh":
@@ -130,10 +134,11 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void dgvStudentList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvStudentList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvStudentList.SelectedRows.Count > 0)
+            if (e.RowIndex > -1)
             {
+                selected = (e.RowIndex, dgvStudentList.Rows[e.RowIndex].Cells["studentID"].Value.ToString());
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;

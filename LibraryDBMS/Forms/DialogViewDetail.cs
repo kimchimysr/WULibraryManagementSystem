@@ -14,16 +14,18 @@ namespace LibraryDBMS.Forms
     public partial class DialogViewDetail : Form
     {
         private readonly DataGridView dgv;
+        private readonly int rowIndex;
         public DialogViewDetail()
         {
             InitializeComponent();
         }
 
-        public DialogViewDetail(DataGridView _dgv, string title)
+        public DialogViewDetail(DataGridView _dgv, int _rowIndex, string title)
         {
             InitializeComponent();
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             dgv = _dgv;
+            rowIndex = _rowIndex;
             lblHeader.Text = $"View {title}";
             FillAndResizeForm();
         }
@@ -34,7 +36,7 @@ namespace LibraryDBMS.Forms
             StringBuilder columns = new StringBuilder();
             for (i = 0; i < dgv.Columns.Count; i++)
             {
-                columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
+                columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");
             }
             lblText.Text = columns.ToString();
             this.Size = new Size(Width, lblText.Height + 160);

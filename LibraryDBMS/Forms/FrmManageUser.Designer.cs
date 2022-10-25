@@ -130,6 +130,7 @@
             this.dgvUserList.Size = new System.Drawing.Size(1159, 383);
             this.dgvUserList.TabIndex = 8;
             this.dgvUserList.TabStop = false;
+            this.dgvUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserList_CellClick);
             this.dgvUserList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUserList_RowHeaderMouseClick);
             // 
             // userID

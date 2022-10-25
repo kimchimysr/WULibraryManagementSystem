@@ -132,7 +132,7 @@
             this.dgvBorrowList.Size = new System.Drawing.Size(1159, 383);
             this.dgvBorrowList.TabIndex = 38;
             this.dgvBorrowList.TabStop = false;
-            this.dgvBorrowList.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBorrowList_RowHeaderMouseClick);
+            this.dgvBorrowList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowList_CellClick);
             // 
             // borrowID
             // 

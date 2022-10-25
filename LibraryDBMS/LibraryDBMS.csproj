@@ -98,11 +98,11 @@
     <Compile Include="CustomControls\RJToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\DialogAddUpdateBook.cs">
+    <Compile Include="Forms\DialogAddEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DialogAddUpdateBook.Designer.cs">
-      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    <Compile Include="Forms\DialogAddEditBook.Designer.cs">
+      <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogDeleteRecord.cs">
       <SubType>Form</SubType>
@@ -229,6 +229,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Libs\BookValidator.cs" />
     <Compile Include="Libs\IssueBookValidator.cs" />
     <Compile Include="Libs\NotificationToast.cs" />
     <Compile Include="Libs\StudentValidator.cs" />
@@ -310,8 +311,8 @@
     <Compile Include="Temp\UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\DialogAddUpdateBook.resx">
-      <DependentUpon>DialogAddUpdateBook.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
+      <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogDeleteRecord.resx">
       <DependentUpon>DialogDeleteRecord.cs</DependentUpon>

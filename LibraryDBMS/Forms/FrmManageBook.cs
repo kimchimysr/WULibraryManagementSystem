@@ -18,16 +18,32 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmManageBook : Form
     {
+        private (int rowIndex, string bookID) selected;
         public FrmManageBook()
         {
             InitializeComponent();
-            //LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
-            typeof(DataGridView).InvokeMember(
-               "DoubleBuffered",
-               BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-               null,
-               dgvBooks,
-               new object[] { true });
+            InitailizeValues();
+        }
+
+        private void InitailizeValues()
+        {
+            Utils.EnableControlDoubleBuffer(dgvBookList);
+            Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
+                "Author", "Publisher", "Publish Year");
+            PopulateDataGridView();
+        }
+
+        internal void PopulateDataGridView()
+        {
+            LibModule.FillDataGrid("viewBook", dgvBookList, "bookID");
+            lblBookCount.Text = "Total Books: " +
+                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBook;");
+            lblTitleCount.Text = "Total Titles: " +
+                    LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBook;");
+            lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+            btnEdit.Enabled = false;
+            btnDelete.Enabled = false;
+            btnView.Enabled = false;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -35,10 +51,61 @@ namespace LibraryDBMS.Forms
             Button button = (Button)sender;
             switch (button.Name)
             {
+                case "btnPrint":
+                    Utils.PrintPreviewDataGridView("Books List", dgvBookList);
+                    break;
+                case "btnFind":
+                    try
+                    {
+                        if (txtSearchValue.Text.Length > 0)
+                        {
+                            string searchBy = cbSearchBy.SelectedItem.ToString();
+                            string value = txtSearchValue.Text.ToString().Trim();
+
+                            if (searchBy == "Book ID")
+                                LibModule.SearchAndFillDataGrid("tblBook", "bookID", value, dgvBookList);
+                            else if (searchBy == "ISBN")
+                                LibModule.SearchAndFillDataGrid("tblBook", "isbn", value, dgvBookList);
+                            else if (searchBy == "DEWEY")
+                                LibModule.SearchAndFillDataGrid("tblBook", "dewey", value, dgvBookList);
+                            else if (searchBy == "Title")
+                                LibModule.SearchAndFillDataGrid("tblBook", "title", value, dgvBookList);
+                            else if (searchBy == "Author")
+                                LibModule.SearchAndFillDataGrid("tblBook", "author", value, dgvBookList);
+                            else if (searchBy == "Publisher")
+                                LibModule.SearchAndFillDataGrid("tblBook", "publisher", value, dgvBookList);
+                            else if (searchBy == "Publish Year")
+                                LibModule.SearchAndFillDataGrid("tblBook", "publishYear", value, dgvBookList);
+                            lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                    break;
+                case "btnFilter":
+                    try
+                    {
+                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
+                        {
+                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                            LibModule.SearchBetweenDateAndFillDataGrid("tblBook", dgvBookList, "dateAdded", fromDate, toDate);
+                            lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                    break;
                 case "btnAdd":
                     try
                     {
-                        Form form = new DialogAddUpdateBook(this);
+                        Form form = new DialogAddEditBook(this);
                         form.ShowDialog();
                     }
                     catch (Exception ex)
@@ -48,24 +115,12 @@ namespace LibraryDBMS.Forms
                             MessageBoxIcon.Error);
                     }
                     break;
-
                 case "btnEdit":
                     try
                     {
-                        string id = dgvBooks.SelectedRows[0].Cells["Column1"].Value.ToString();
-                        DataTable dt = new DataTable();
-
-                        LibModule.Conn.Open();
-                        LibModule.Cmd = new SQLiteCommand($"SELECT * FROM tblBook " +
-                            $"WHERE bookID='{id}';", LibModule.Conn);
-                        SQLiteDataAdapter adapter = new SQLiteDataAdapter(LibModule.Cmd);
-                        adapter.Fill(dt);
-                        Form frmAddEupdateBook =
-                            new DialogAddUpdateBook(this, dt);
-                        frmAddEupdateBook.ShowDialog();
-                        LibModule.Cmd.Dispose();
-                        LibModule.Conn.Close();
-                        break;
+                        Form frmAddEditBook =
+                            new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBook", "bookID", selected.bookID));
+                        frmAddEditBook.ShowDialog();
                     }
                     catch (Exception ex)
                     {
@@ -73,119 +128,38 @@ namespace LibraryDBMS.Forms
                             MessageBoxIcon.Error);
                     }
                     break;
-
                 case "btnDelete":
-                    string bookID = dgvBooks.SelectedRows[0].Cells["Column1"].Value.ToString();
-                    //create dialog to check for delete confirmation from user
-                    DialogResult result = MessageBox.Show($"Are your sure you want to Delete the Data From BookID: {bookID}",
-                        "Confirmation Delection", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        LibModule.DeleteRecord("tblBook", "bookID", bookID, Utils.GetDataGridSelectedRowData(dgvBooks));
-                        FrmBook_Load(sender, e);
-                    }
-                    else { FrmBook_Load(sender, e); }
-                    break;
-
-                case "btnSearch":
-                    this.Search();
-                    break;
-
-                case "btnRefresh":
-                    FrmBook_Load(sender, e);
-                    break;
-            }
-        }
-
-        private void FrmBook_Load(object sender, EventArgs e)
-        {
-
-            this.cbbMeanOfSearch.Items.Clear();
-            this.txtSearch.Clear();
-            this.btnEdit.Enabled = false;
-            this.btnDelete.Enabled = false;
-            this.btnAdd.Enabled = true;
-            this.cbbMeanOfSearch.SelectedIndex = -1;
-            this.PopulateDataGridView();
-        }
-        internal DataTable DataTableDataGridViewBook { get; set; }
-        private void Search()
-        {
-            try
-            {
-                if (this.txtSearch.Text.Length > 0)
-                {
                     try
                     {
-                        string searchBy = cbbMeanOfSearch.SelectedItem.ToString();
-                        string value = this.txtSearch.Text.Trim();
-                        if (searchBy == "BookID")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "bookID", value, dgvBooks);
-                        }
-                        else if (searchBy == "ISBN")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "isbn", value, dgvBooks);
-                        }
-                        else if (searchBy == "DEWEY")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "dewey", value, dgvBooks);
-                        }
-                        else if (searchBy == "Title")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "title", value, dgvBooks);
-                        }
-                        else if (searchBy == "Author")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "author", value, dgvBooks);
-                        }
-                        else if (searchBy == "Publisher")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "publisher", value, dgvBooks);
-                        }
-                        else if (searchBy == "Publish Year")
-                        {
-                            LibModule.SearchAndFillDataGrid("tblBook", "publishYear", value, dgvBooks);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please Select something from the combobox", "Warning", MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                        }
-                        
+                        if (LibModule.DeleteRecord("tblBook", "bookID", selected.bookID,
+                            Utils.GetDataGridSelectedRowData(dgvBookList, selected.rowIndex)) == true)
+                            PopulateDataGridView();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
-                            $"{ex.GetType()}", MessageBoxButtons.OK,
+                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
-
-                    
-                }
+                    break;
+                case "btnView":
+                    Form frmViewDetail = new DialogViewDetail(dgvBookList, selected.rowIndex, "Book");
+                    frmViewDetail.ShowDialog();
+                    break;
+                case "btnRefresh":
+                    PopulateDataGridView();
+                    break;
             }
-            catch (Exception ex)
+        }
+
+        private void dgvBookList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
             {
-                MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
-                    $"{ex.GetType()}", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                selected = (e.RowIndex, dgvBookList.Rows[e.RowIndex].Cells["borrowID"].Value.ToString());
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnView.Enabled = true;
             }
-
         }
-        internal void PopulateDataGridView()
-        {
-
-            Utils.FillComboBox(cbbMeanOfSearch, true, "BookID", "ISBN", "DEWEY", "Title", "Author", "Publisher",
-                "Publish Year");
-            LibModule.FillDataGrid("tblBook", dgvBooks, "bookID");
-        }
-
-        private void dgvBooks_Click(object sender, EventArgs e)
-        {
-            this.btnAdd.Enabled = false;
-            this.btnDelete.Enabled = true;
-            this.btnEdit.Enabled = true;
-        }
-
     }
 }

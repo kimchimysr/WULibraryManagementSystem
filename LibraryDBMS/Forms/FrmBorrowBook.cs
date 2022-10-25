@@ -16,6 +16,7 @@ namespace LibraryDBMS.Forms
     public partial class FrmBorrowBook : Form
     {
         private readonly FrmMainMenu frmMainMenu;
+        private (int rowIndex, string borrowID) selected;
 
         public FrmBorrowBook()
         {
@@ -128,9 +129,8 @@ namespace LibraryDBMS.Forms
                 case "btnEdit":
                     try
                     {
-                        string id = dgvBorrowList.SelectedRows[0].Cells["borrowID"].Value.ToString();
                         Form dialogReturnBook =
-                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowBook", "borrowID", id));
+                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowBook", "borrowID", selected.borrowID));
                         dialogReturnBook.ShowDialog();
                         CheckBookLoanNotificationChanged();
                     }
@@ -142,9 +142,8 @@ namespace LibraryDBMS.Forms
                 case "btnDelete":
                     try
                     {
-                        string borrowID = dgvBorrowList.SelectedRows[0].Cells["borrowID"].Value.ToString();
-                        if(LibModule.DeleteRecord("tblBorrow", "borrowID", borrowID,
-                            Utils.GetDataGridSelectedRowData(dgvBorrowList)) == true)
+                        if(LibModule.DeleteRecord("tblBorrow", "borrowID", selected.borrowID,
+                            Utils.GetDataGridSelectedRowData(dgvBorrowList, selected.rowIndex)) == true)
                         {
                             PopulateDataGrid();
                             CheckBookLoanNotificationChanged();
@@ -156,7 +155,7 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnView":
-                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowList, "Borrow Book");
+                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowList, selected.rowIndex, "Borrow Book");
                     frmViewDetail.ShowDialog();
                     break;
             }
@@ -187,14 +186,15 @@ namespace LibraryDBMS.Forms
         {
             // check if there are no book due or overdue then disable the notification in system tray
             (string bookDue, string bookOverdue) book = LibModule.GetLoanBookDueAndOverdue();
-            if (book == ("0", "0") && frmMainMenu.niBookLoan.Visible == true)
+            if (book == ("0", "0") && frmMainMenu.niBookLoan != null)
                 frmMainMenu.niBookLoan.Visible = false;
         }
 
-        private void dgvBorrowList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvBorrowList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvBorrowList.SelectedRows.Count > 0)
+            if (e.RowIndex > -1)
             {
+                selected = (e.RowIndex, dgvBorrowList.Rows[e.RowIndex].Cells["borrowID"].Value.ToString());
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;

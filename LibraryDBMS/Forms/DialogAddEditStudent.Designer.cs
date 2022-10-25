@@ -115,7 +115,7 @@
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnSaveChanges
             // 
@@ -135,7 +135,7 @@
             this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSaveChanges.UseVisualStyleBackColor = false;
-            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            this.btnSaveChanges.Click += new System.EventHandler(this.Button_Click);
             // 
             // label9
             // 
@@ -289,7 +289,7 @@
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.Button_Click);
             // 
             // pTitleBar
             // 
@@ -314,7 +314,7 @@
             this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 34;
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
             // panel1
             // 

@@ -73,71 +73,68 @@ namespace LibraryDBMS.Forms
             return false;
         }
 
-
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            Button btn = sender as Button;
+            switch (btn.Name)
             {
-                try
-                {
-                    string studentID = txtStudentID.Text.Trim();
-                    string firstName = txtFirstName.Text.Trim();
-                    string lastName = txtLastName.Text.Trim();
-                    string gender = rbMale.Checked == true ? "M" : "F";
-                    string year = cbYear.SelectedItem.ToString().Trim();
-                    string major = txtMajor.Text.Trim();
-                    string telephone = txtTel.Text.Trim();
-                    string dateAdded =
-                        !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : user.Rows[0]["dateAdded"].ToString().Trim();
-
-                    List<string> borrower = new List<string>
+                case "btnSaveCHanges":
+                    if (this.ValidateChildren())
                     {
-                        studentID,
-                        firstName,
-                        lastName,
-                        gender,
-                        year,
-                        major,
-                        telephone,
-                        dateAdded
-                    };
-
-                    if (!isEditMode)
-                    {
-                        LibModule.InsertRecord("tblStudent", LibModule.GetTableField("tblStudent"), borrower);
-                    }
-                    else
-                    {
-                        if (HasAnyChanges())
+                        try
                         {
-                            LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
-                                                "studentID", studentID, borrower, true); 
+                            string studentID = txtStudentID.Text.Trim();
+                            string firstName = txtFirstName.Text.Trim();
+                            string lastName = txtLastName.Text.Trim();
+                            string gender = rbMale.Checked == true ? "M" : "F";
+                            string year = cbYear.SelectedItem.ToString().Trim();
+                            string major = txtMajor.Text.Trim();
+                            string telephone = txtTel.Text.Trim();
+                            string dateAdded =
+                                !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : user.Rows[0]["dateAdded"].ToString().Trim();
+
+                            List<string> borrower = new List<string>
+                            {
+                                studentID,
+                                firstName,
+                                lastName,
+                                gender,
+                                year,
+                                major,
+                                telephone,
+                                dateAdded
+                            };
+
+                            if (!isEditMode)
+                            {
+                                LibModule.InsertRecord("tblStudent", LibModule.GetTableField("tblStudent"), borrower);
+                            }
+                            else
+                            {
+                                if (HasAnyChanges())
+                                {
+                                    LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
+                                                        "studentID", studentID, borrower, true);
+                                }
+                            }
+                            frmManageStudent.PopulateDataGrid();
+                            this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
                         }
                     }
-                    frmManageStudent.PopulateDataGrid();
+                    else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case "btnClear":
+                    Utils.DoClearControl(this, false, true, false, false, false);
+                    break;
+                case "btnCancel":
+                case "btnClose":
                     this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    break;
             }
-            else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            Utils.DoClearControl(this, false, true, false, false, false);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

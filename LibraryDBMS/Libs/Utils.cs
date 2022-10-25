@@ -228,6 +228,15 @@ namespace LibraryDBMS.Libs
             }
             return row.ToString();
         }
+        public static string GetDataGridSelectedRowData(DataGridView dgv, int rowIndex)
+        {
+            StringBuilder row = new StringBuilder();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                row.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");
+            }
+            return row.ToString();
+        }
 
         // string extension method
         public static string ToKMString(this string str)

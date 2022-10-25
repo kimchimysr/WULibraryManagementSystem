@@ -83,98 +83,97 @@ namespace LibraryDBMS.Forms
             return false;
         }
 
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            Button btn = (Button)sender;
+            switch (btn.Name)
             {
-                try
-                {
-                    int cbSelectedIndex = cbRole.SelectedIndex;
-                    string userID = txtUserID.Text.Trim();
-                    string username = txtUsername.Text.Trim();
-                    string password = Utils.DefaultHashPassword();
-                    string roleID = (cbSelectedIndex + 1).ToString().Trim();
-                    string isActive =
-                        !isEditMode ? "Yes" : this.user.Rows[0]["isActive"].ToString().Trim();
-                    string firstName = txtFirstName.Text.Trim();
-                    string lastName = txtLastName.Text.Trim();
-                    string gender = rbMale.Checked == true ? "M" : "F";
-                    string dob = dtpDOB.Text.Trim();
-                    string address = txtAddress.Text.Trim();
-                    string telephone = txtTelephone.Text.Trim();
-                    string email = txtEmail.Text.Trim();
-                    string dateAdded =
-                        !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : this.user.Rows[0]["dateAdded"].ToString().Trim();
-
-                    List<string> user = new List<string>
+                case "btnSaveChanges":
+                    if (this.ValidateChildren())
                     {
-                        userID,
-                        username,
-                        password,
-                        isActive,
-                        firstName,
-                        lastName,
-                        gender,
-                        dob,
-                        address,
-                        telephone,
-                        email,
-                        dateAdded
-                    };
-
-                    List<string> userRole = new List<string>
-                    {
-                        userID,
-                        roleID
-                    };
-
-                    if (!isEditMode)
-                    {
-                        if (LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"),
-                            user) == true)
+                        try
                         {
-                            LibModule.InsertRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
-                            userRole, false);
-                        }
-                    }
-                    else
-                    {
-                        if (HasAnyChanges())
-                        {
-                            // remove password field because editing password is not allowed
-                            user.Remove(password);
-                            if (LibModule.UpdateRecord("tblUser", LibModule.GetTableField("tblUser"),
-                                "userID", userID, user, true, "password") == true)
+                            int cbSelectedIndex = cbRole.SelectedIndex;
+                            string userID = txtUserID.Text.Trim();
+                            string username = txtUsername.Text.Trim();
+                            string password = Utils.DefaultHashPassword();
+                            string roleID = (cbSelectedIndex + 1).ToString().Trim();
+                            string isActive =
+                                !isEditMode ? "Yes" : this.user.Rows[0]["isActive"].ToString().Trim();
+                            string firstName = txtFirstName.Text.Trim();
+                            string lastName = txtLastName.Text.Trim();
+                            string gender = rbMale.Checked == true ? "M" : "F";
+                            string dob = dtpDOB.Text.Trim();
+                            string address = txtAddress.Text.Trim();
+                            string telephone = txtTelephone.Text.Trim();
+                            string email = txtEmail.Text.Trim();
+                            string dateAdded =
+                                !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : this.user.Rows[0]["dateAdded"].ToString().Trim();
+
+                            List<string> user = new List<string>
                             {
-                                LibModule.UpdateRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
-                                "userID", userID, userRole, false);
-                            } 
-                        }
+                                userID,
+                                username,
+                                password,
+                                isActive,
+                                firstName,
+                                lastName,
+                                gender,
+                                dob,
+                                address,
+                                telephone,
+                                email,
+                                dateAdded
+                            };
+
+                            List<string> userRole = new List<string>
+                            {
+                                userID,
+                                roleID
+                            };
+
+                            // Add New Book
+                            if (!isEditMode)
+                            {
+                                if (LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"),
+                                    user) == true)
+                                {
+                                    LibModule.InsertRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
+                                    userRole, false);
+                                }
+                            }
+                            else // Edit Book
+                            {
+                                if (HasAnyChanges())
+                                {
+                                    // remove password field because editing password is not allowed
+                                    user.Remove(password);
+                                    if (LibModule.UpdateRecord("tblUser", LibModule.GetTableField("tblUser"),
+                                        "userID", userID, user, true, "password") == true)
+                                    {
+                                        LibModule.UpdateRecord("tblUserRole", LibModule.GetTableField("tblUserRole"),
+                                        "userID", userID, userRole, false);
+                                    }
+                                }
+                            }
+                            frmManageUser.PopulateDataGrid();
+                            this.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
                     }
-                    frmManageUser.PopulateDataGrid();
+                    else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case "btnClear":
+                    Utils.DoClearControl(this, false, true, false, false, false);
+                    break;
+                case "btnCancel":
+                case "btnClose":
                     this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                    break;
             }
-            else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            Utils.DoClearControl(this, false, true, false, false, false);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
