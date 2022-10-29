@@ -219,15 +219,6 @@ namespace LibraryDBMS.Libs
                 cb.SelectedIndex = 0;
         }
 
-        public static string GetDataGridSelectedRowData(DataGridView dgv)
-        {
-            StringBuilder row = new StringBuilder();
-            for (int i = 0; i < dgv.Columns.Count; i++)
-            {
-                row.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.SelectedRows[0].Cells[i].Value}");
-            }
-            return row.ToString();
-        }
         public static string GetDataGridSelectedRowData(DataGridView dgv, int rowIndex)
         {
             StringBuilder row = new StringBuilder();
@@ -542,6 +533,112 @@ namespace LibraryDBMS.Libs
                     if (File.Exists(Path.GetFullPath(sfd.FileName)))
                         MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else MessageBox.Show("Cannot export table!", "Export Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // How to read(import) excel files
+        // https://www.aspsnippets.com/Articles/Read-Import-Excel-file-without-OLEDB-Microsoft-Office-or-Interop-Library-in-C-and-VBNet.aspx
+        public static void ImportExcelDataIntoDatabase()
+        {
+            MessageBox.Show("Import only work with books data in Excel!",
+                        "Import Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel (*.xlsx)|*.xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                int rowCount = 0;
+                try
+                {
+                    string importFilePath = Path.GetFullPath(ofd.FileName);
+
+                    if (File.Exists(importFilePath))
+                    {
+                        // tbBook columns
+                        List<string> colName = new List<string>
+                        {
+                            "bookID", "isbn", "dewey", "title", "author", "publisher", "publishYear", "pages", "other",
+                            "qty", "cateID", "dateAdded",
+                        };
+
+                        //Create a new DataTable.
+                        DataTable dt = new DataTable();
+                        using (XLWorkbook workBook = new XLWorkbook(importFilePath))
+                        {
+                            //Read the first Sheet from Excel file.
+                            IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                            //Loop through the Worksheet rows.
+                            bool firstRow = true;
+                            foreach (IXLRow row in workSheet.Rows())
+                            {
+                                if (row.IsEmpty())
+                                    break;
+                                //Use the first row to add columns to DataTable.
+                                if (firstRow)
+                                {
+                                    foreach (IXLCell cell in row.Cells())
+                                    {
+                                        dt.Columns.Add(cell.Value.ToString());
+                                    }
+
+                                    // Get columns name in excel
+                                    List<string> dtColName = new List<string>();
+                                    foreach (DataColumn col in dt.Columns)
+                                    {
+                                        dtColName.Add(col.ColumnName);
+                                    }
+
+                                    // Compare excel columns and tbkBook columns
+                                    if (!dtColName.SequenceEqual(colName))
+                                    {
+                                        MessageBox.Show("Excel file has wrong format! Cannot import data!", "Import Cancelled",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    firstRow = false;
+                                }
+                                else
+                                {
+                                    //Add rows to DataTable.
+                                    dt.Rows.Add();
+                                    int i = 0;
+                                    foreach (IXLCell cell in row.Cells(1, dt.Columns.Count))
+                                    {
+                                        // L is date cell
+                                        if (cell.Address.ColumnLetter == "L")
+                                        {
+                                            string strDate = cell.Value.ToString();
+                                            DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                            dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
+                                        }
+                                        else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                        i++;
+                                    }
+                                    rowCount++;
+                                }
+                            }
+                        }
+
+                        // Insert rows into database
+                        if (LibModule.BulkInsertRecord(dt))
+                        {
+                            MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot import data into database!", "Import Incomplete",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
                 catch (Exception ex)
                 {
