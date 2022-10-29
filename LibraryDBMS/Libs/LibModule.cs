@@ -13,6 +13,7 @@ using System.Data.Common;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Data.Entity.Core.Common.CommandTrees;
 
 namespace LibraryDBMS.Libs
 {
@@ -96,6 +97,69 @@ namespace LibraryDBMS.Libs
                     Cmd.Dispose();
                 if (Conn != null)
                     Conn.Close();
+            }
+            return false;
+        }
+
+        // Bulk insert using transaction
+        // https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/bulk-insert
+        public static bool BulkInsertRecord(DataTable values)
+        {
+            Conn.Open();
+            Cmd = new SQLiteCommand();
+            Cmd.Connection = Conn;
+            using (var transaction = Conn.BeginTransaction())
+            {
+                try
+                {
+                    Cmd.CommandText =
+                    @"
+                        INSERT OR REPLACE INTO tblBook(bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded)
+                        VALUES ($bookID,$isbn,$dewey,$title,$author,$publisher,$publishYear,$pages,$other,$qty,$cateID,$dateAdded)
+                    ";
+
+                    var parameters = new SQLiteParameter[]
+                    {
+                        new SQLiteParameter("$bookID"),
+                        new SQLiteParameter("$isbn"),
+                        new SQLiteParameter("$dewey"),
+                        new SQLiteParameter("$title"),
+                        new SQLiteParameter("$author"),
+                        new SQLiteParameter("$publisher"),
+                        new SQLiteParameter("$publishYear"),
+                        new SQLiteParameter("$pages"),
+                        new SQLiteParameter("$other"),
+                        new SQLiteParameter("$qty"),
+                        new SQLiteParameter("$cateID"),
+                        new SQLiteParameter("$dateAdded")
+                    };
+                    Cmd.Parameters.AddRange(parameters);
+
+                    // Insert a lot of data
+                    foreach(DataRow row in values.Rows)
+                    {
+                        for (int i = 0; i < values.Columns.Count; i++)
+                        {
+                            parameters[i].Value = row[i].ToString();
+                        }
+                        Cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                    "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (Cmd != null)
+                        Cmd.Dispose();
+                    if (Conn != null)
+                        Conn.Close();
+                }
             }
             return false;
         }

@@ -46,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnBackup = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cbTable = new System.Windows.Forms.ComboBox();
@@ -261,6 +262,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnBackup);
+            this.groupBox2.Controls.Add(this.btnImport);
             this.groupBox2.Controls.Add(this.btnRestore);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(15, 398);
@@ -270,7 +272,7 @@
             this.groupBox2.Size = new System.Drawing.Size(556, 103);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Backup|Restore";
+            this.groupBox2.Text = "Import|Backup|Restore";
             // 
             // btnBackup
             // 
@@ -282,7 +284,7 @@
             this.btnBackup.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnBackup.ForeColor = System.Drawing.SystemColors.Control;
             this.btnBackup.Image = global::LibraryDBMS.Properties.Resources.data_backup_26px;
-            this.btnBackup.Location = new System.Drawing.Point(22, 37);
+            this.btnBackup.Location = new System.Drawing.Point(142, 37);
             this.btnBackup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(114, 40);
@@ -292,6 +294,27 @@
             this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBackup.UseVisualStyleBackColor = false;
             this.btnBackup.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnImport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImport.Image = global::LibraryDBMS.Properties.Resources.import_26px;
+            this.btnImport.Location = new System.Drawing.Point(11, 37);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(125, 40);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = "  Import";
+            this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnRestore
             // 
@@ -303,7 +326,7 @@
             this.btnRestore.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRestore.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRestore.Image = global::LibraryDBMS.Properties.Resources.data_recovery_26px;
-            this.btnRestore.Location = new System.Drawing.Point(142, 37);
+            this.btnRestore.Location = new System.Drawing.Point(263, 37);
             this.btnRestore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(125, 40);
@@ -477,5 +500,6 @@
         private System.Windows.Forms.ComboBox cbTable;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnImport;
     }
 }

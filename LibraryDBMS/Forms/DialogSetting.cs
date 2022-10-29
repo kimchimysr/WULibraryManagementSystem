@@ -40,6 +40,9 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnImport":
+                    Utils.ImportExcelDataIntoDatabase();
+                    break;
                 case "btnExport":
                     Utils.ExportDatabaseTableToExcel(cbTable.SelectedItem.ToString());
                     break;
