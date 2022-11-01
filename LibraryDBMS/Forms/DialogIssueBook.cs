@@ -26,7 +26,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             ibv = new IssueBookValidator(txtStudentID, txtBookID, lblTitle, lblName, lblBookAvailability);
-            txtBorrowID.Text = LibModule.GetAutoID("tblBorrow", "borrowID");
+            txtBorrowID.Text = LibModule.GetAutoID("tblBorrows", "borrowID");
             dtpIssueDate.Value = DateTime.Today;
             dtpDueDate.Value = dtpIssueDate.Value.Date.AddDays(GetDueDate(dtpIssueDate));
         }
@@ -96,10 +96,10 @@ namespace LibraryDBMS.Forms
                                 overdueFine,
                                 loanStatusID
                             };
-                            if (LibModule.InsertRecord("tblBorrow", LibModule.GetTableField("tblBorrow"), issueBook) == true)
+                            if (LibModule.InsertRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), issueBook) == true)
                             {
                                 // reduce 1 qty of the loaned book
-                                LibModule.ExecuteQuery($"UPDATE tblBook SET qty = qty - 1 WHERE bookID='{bookID}'");
+                                LibModule.ExecuteQuery($"UPDATE tblBooks SET qty = qty - 1 WHERE bookID='{bookID}'");
                             }
                             frmBorrowBook.PopulateDataGrid();
                             this.Close();
@@ -128,7 +128,7 @@ namespace LibraryDBMS.Forms
             // check if the student has already loan a book
             // each person can only loan 1 book at a time
             if (LibModule.ExecuteScalarQuery
-                ($"SELECT borrowID FROM tblBorrow WHERE studentID='{txtStudentID.Text.Trim()}' AND loanStatusID='1';") != string.Empty)
+                ($"SELECT borrowID FROM tblBorrows WHERE studentID='{txtStudentID.Text.Trim()}' AND loanStatusID='1';") != string.Empty)
             {
                 MessageBox.Show("Each student can not loan more than 1 book at a time!", "Cannot Loan Book",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

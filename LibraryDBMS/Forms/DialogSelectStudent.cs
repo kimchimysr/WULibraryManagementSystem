@@ -28,7 +28,7 @@ namespace LibraryDBMS.Forms
         {
             string query = 
                 "SELECT studentID,firstName,lastName,year,major " +
-                "FROM tblStudent ORDER BY dateAdded DESC LIMIT 50";
+                "FROM tblStudents ORDER BY dateAdded DESC LIMIT 50";
             LibModule.FillDataGrid(query, dgvStudentList);
             btnSelect.Enabled = false;
         }
@@ -44,7 +44,7 @@ namespace LibraryDBMS.Forms
                         if (txtSearchValue.Text.Length > 0)
                         {
                             string value = txtSearchValue.Text.ToString().Trim();
-                            LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvStudentList);
+                            LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
                         }
                     }
                     catch (Exception ex)

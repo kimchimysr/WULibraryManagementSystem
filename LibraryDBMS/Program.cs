@@ -1,5 +1,4 @@
-﻿using LibraryDBMS.Temp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -33,7 +32,7 @@ namespace LibraryDBMS.Forms
                 }
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FrmLogin());
+                Application.Run(new FrmMainMenu());
             }
         }
     }

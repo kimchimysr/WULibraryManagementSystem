@@ -65,8 +65,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["tblStudent"] != null)) {
                     base.Tables.Add(new tblStudentDataTable(ds.Tables["tblStudent"]));
                 }
-                if ((ds.Tables["viewUserInfo"] != null)) {
-                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["viewUserInfo"]));
+                if ((ds.Tables["tblUser"] != null)) {
+                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["tblUser"]));
                 }
                 if ((ds.Tables["viewBook"] != null)) {
                     base.Tables.Add(new viewBookDataTable(ds.Tables["viewBook"]));
@@ -74,8 +74,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["viewOverview"] != null)) {
                     base.Tables.Add(new viewOverviewDataTable(ds.Tables["viewOverview"]));
                 }
-                if ((ds.Tables["viewBorrowBook"] != null)) {
-                    base.Tables.Add(new viewBorrowBookDataTable(ds.Tables["viewBorrowBook"]));
+                if ((ds.Tables["viewBorrowedBooks"] != null)) {
+                    base.Tables.Add(new viewBorrowBookDataTable(ds.Tables["viewBorrowedBooks"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -109,7 +109,7 @@ namespace LibraryDBMS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public viewUserInfoDataTable viewUserInfo {
+        public viewUserInfoDataTable tblUser {
             get {
                 return this.tableviewUserInfo;
             }
@@ -139,7 +139,7 @@ namespace LibraryDBMS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public viewBorrowBookDataTable viewBorrowBook {
+        public viewBorrowBookDataTable viewBorrowedBooks {
             get {
                 return this.tableviewBorrowBook;
             }
@@ -215,8 +215,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["tblStudent"] != null)) {
                     base.Tables.Add(new tblStudentDataTable(ds.Tables["tblStudent"]));
                 }
-                if ((ds.Tables["viewUserInfo"] != null)) {
-                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["viewUserInfo"]));
+                if ((ds.Tables["tblUser"] != null)) {
+                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["tblUser"]));
                 }
                 if ((ds.Tables["viewBook"] != null)) {
                     base.Tables.Add(new viewBookDataTable(ds.Tables["viewBook"]));
@@ -224,8 +224,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["viewOverview"] != null)) {
                     base.Tables.Add(new viewOverviewDataTable(ds.Tables["viewOverview"]));
                 }
-                if ((ds.Tables["viewBorrowBook"] != null)) {
-                    base.Tables.Add(new viewBorrowBookDataTable(ds.Tables["viewBorrowBook"]));
+                if ((ds.Tables["viewBorrowedBooks"] != null)) {
+                    base.Tables.Add(new viewBorrowBookDataTable(ds.Tables["viewBorrowedBooks"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -266,7 +266,7 @@ namespace LibraryDBMS {
                     this.tabletblStudent.InitVars();
                 }
             }
-            this.tableviewUserInfo = ((viewUserInfoDataTable)(base.Tables["viewUserInfo"]));
+            this.tableviewUserInfo = ((viewUserInfoDataTable)(base.Tables["tblUser"]));
             if ((initTable == true)) {
                 if ((this.tableviewUserInfo != null)) {
                     this.tableviewUserInfo.InitVars();
@@ -284,7 +284,7 @@ namespace LibraryDBMS {
                     this.tableviewOverview.InitVars();
                 }
             }
-            this.tableviewBorrowBook = ((viewBorrowBookDataTable)(base.Tables["viewBorrowBook"]));
+            this.tableviewBorrowBook = ((viewBorrowBookDataTable)(base.Tables["viewBorrowedBooks"]));
             if ((initTable == true)) {
                 if ((this.tableviewBorrowBook != null)) {
                     this.tableviewBorrowBook.InitVars();
@@ -320,7 +320,7 @@ namespace LibraryDBMS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeviewUserInfo() {
+        private bool ShouldSerializetblUser() {
             return false;
         }
         
@@ -338,7 +338,7 @@ namespace LibraryDBMS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeviewBorrowBook() {
+        private bool ShouldSerializeviewBorrowedBooks() {
             return false;
         }
         
@@ -802,7 +802,7 @@ namespace LibraryDBMS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public viewUserInfoDataTable() {
-                this.TableName = "viewUserInfo";
+                this.TableName = "tblUser";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1054,6 +1054,12 @@ namespace LibraryDBMS {
                                 this.columnuserID}, true));
                 this.columnuserID.AllowDBNull = false;
                 this.columnuserID.Unique = true;
+                this.ExtendedProperties.Add("Generator_RowClassName", "viewUserInfoRow");
+                this.ExtendedProperties.Add("Generator_RowEvArgName", "viewUserInfoRowChangeEvent");
+                this.ExtendedProperties.Add("Generator_RowEvHandlerName", "viewUserInfoRowChangeEventHandler");
+                this.ExtendedProperties.Add("Generator_TableClassName", "viewUserInfoDataTable");
+                this.ExtendedProperties.Add("Generator_TableVarName", "tableviewUserInfo");
+                this.ExtendedProperties.Add("Generator_UserTableName", "tblUser");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2095,7 +2101,7 @@ namespace LibraryDBMS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public viewBorrowBookDataTable() {
-                this.TableName = "viewBorrowBook";
+                this.TableName = "viewBorrowedBooks";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2312,6 +2318,12 @@ namespace LibraryDBMS {
                 base.Columns.Add(this.columndateReturned);
                 this.columnoverdueFine = new global::System.Data.DataColumn("overdueFine", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoverdueFine);
+                this.ExtendedProperties.Add("Generator_RowClassName", "viewBorrowBookRow");
+                this.ExtendedProperties.Add("Generator_RowEvArgName", "viewBorrowBookRowChangeEvent");
+                this.ExtendedProperties.Add("Generator_RowEvHandlerName", "viewBorrowBookRowChangeEventHandler");
+                this.ExtendedProperties.Add("Generator_TableClassName", "viewBorrowBookDataTable");
+                this.ExtendedProperties.Add("Generator_TableVarName", "tableviewBorrowBook");
+                this.ExtendedProperties.Add("Generator_UserTableName", "viewBorrowedBooks");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2693,7 +2705,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.usernameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'username\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'username\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2709,7 +2721,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.isActiveColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'isActive\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'isActive\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2725,7 +2737,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.roleNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'roleName\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'roleName\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2741,7 +2753,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.firstNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'firstName\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'firstName\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2757,7 +2769,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.lastNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'lastName\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'lastName\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2773,7 +2785,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.genderColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gender\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'gender\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2789,7 +2801,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.dobColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2805,7 +2817,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.addrColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'addr\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'addr\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2821,7 +2833,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.telColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'tel\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'tel\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2837,7 +2849,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.emailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -2853,7 +2865,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewUserInfo.dateAddedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateAdded\' in table \'viewUserInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateAdded\' in table \'tblUser\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3813,7 +3825,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.borrowIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'borrowID\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'borrowID\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3829,7 +3841,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.bookIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'bookID\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'bookID\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3845,7 +3857,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.titleColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'title\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3861,7 +3873,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.studentIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'studentID\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'studentID\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3877,7 +3889,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.fullNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'fullName\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'fullName\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3893,7 +3905,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.loanStatusNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'loanStatusName\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'loanStatusName\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3909,7 +3921,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.dateLoanColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateLoan\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateLoan\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3925,7 +3937,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.dateDueColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateDue\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateDue\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3941,7 +3953,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.dateReturnedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateReturned\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateReturned\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {
@@ -3957,7 +3969,7 @@ namespace LibraryDBMS {
                         return ((string)(this[this.tableviewBorrowBook.overdueFineColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'overdueFine\' in table \'viewBorrowBook\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'overdueFine\' in table \'viewBorrowedBooks\' is DBNull.", e);
                     }
                 }
                 set {

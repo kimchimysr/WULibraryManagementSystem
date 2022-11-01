@@ -24,7 +24,7 @@ namespace LibraryDBMS
             InitializeComponent();
             overview = LibModule.GetDataTableFromDB("viewOverview");
             Utils.FillComboBox(cbReportsList, false, 
-                "All Students", "All Books", "All Loan Books", "All Users", "Overview");
+                "All Students", "All Books", "All Borrowed Books", "All Users", "Overview");
         }
 
         public FrmReportViewer(FrmMainMenu frm, string tableName, string rpPath, string rpDataSet)
@@ -51,28 +51,28 @@ namespace LibraryDBMS
                     //SetParameters.Add("username", frmMainMenu.user.username);
                     setParameters.Clear();
                     setParameters.Add("username", "admin");
-                    LibModule.FillReportViewer("tblStudent", reportViewer1,
+                    LibModule.FillReportViewer("tblStudents", reportViewer1,
                         "LibraryDBMS.Reports.RpStudent.rdlc", "Student", setParameters);
                     break;
                 case "All Books":
                     setParameters.Clear();
                     setParameters.Add("username", "admin");
                     setParameters.Add("totalBook", overview.Rows[0]["bookCount"].ToString());
-                    LibModule.FillReportViewer("viewBook", reportViewer1,
+                    LibModule.FillReportViewer("viewBooks", reportViewer1,
                         "LibraryDBMS.Reports.RpBook.rdlc", "Book", setParameters);
                     break;
-                case "All Loan Books":
+                case "All Borrowed Books":
                     setParameters.Clear();
                     setParameters.Add("username", "admin");
                     setParameters.Add("bookReturnedCount", overview.Rows[0]["bookReturnCount"].ToString());
                     setParameters.Add("bookLostCount", overview.Rows[0]["bookLostCount"].ToString());
-                    LibModule.FillReportViewer("viewBorrowBook", reportViewer1,
+                    LibModule.FillReportViewer("viewBorrowedBooks", reportViewer1,
                         "LibraryDBMS.Reports.RpBorrowBook.rdlc", "BorrowBook", setParameters);
                     break;
                 case "All Users":
                     setParameters.Clear();
                     setParameters.Add("username", "admin");
-                    LibModule.FillReportViewer("viewUserInfo", reportViewer1,
+                    LibModule.FillReportViewer("tblUser", reportViewer1,
                         "LibraryDBMS.Reports.RpUserInfo.rdlc", "UserInfo", setParameters);
                     break;
                 case "Overview":

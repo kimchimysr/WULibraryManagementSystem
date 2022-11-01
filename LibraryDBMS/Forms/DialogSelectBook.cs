@@ -19,7 +19,7 @@ namespace LibraryDBMS.Forms
 
         private void PopulateDataGrid()
         {
-            string query = "SELECT bookID,title,author,qty FROM tblBook ORDER BY bookID DESC LIMIT 50";
+            string query = "SELECT bookID,title,author,qty FROM tblBooks ORDER BY bookID DESC LIMIT 50";
             LibModule.FillDataGrid(query, dgvBookList);
             btnSelect.Enabled = false;
         }
@@ -35,7 +35,7 @@ namespace LibraryDBMS.Forms
                         if (txtSearchValue.Text.Length > 0)
                         {
                             string value = txtSearchValue.Text.ToString().Trim();
-                            LibModule.SearchAndFillDataGrid("tblBook", "title", value, dgvBookList);
+                            LibModule.SearchAndFillDataGrid("tblBooks", "title", value, dgvBookList);
                         }
                     }
                     catch (Exception ex)

@@ -59,7 +59,7 @@ namespace LibraryDBMS.Forms
             string bookOverdue = book.overdue;
             string bookDueTmr = 
                 LibModule.ExecuteScalarQuery("SELECT COUNT(CASE WHEN date(dateDue)=date('now','+1 day') " +
-                "AND loanStatusID='1' THEN dateDue END) AS bookDueTmr FROM tblBorrow;");
+                "AND loanStatusID='1' THEN dateDue END) AS bookDueTmr FROM tblBorrows;");
             btnBookDue.Text = $"Book Due Today ({(bookDue != "0" ? bookDue : "0")})";
             btnBookDueTmr.Text = $"Book Due Tomorrow ({(bookDueTmr != "0" ? bookDueTmr : "0")})";
             btnBookOverdue.Text = $"Book Overdue ({(bookOverdue != "0" ? bookOverdue : "0")})";
@@ -80,13 +80,13 @@ namespace LibraryDBMS.Forms
             switch (dgv.Name)
             {
                 case "dgvBookDue":
-                    query = "SELECT * FROM viewBorrowBook WHERE date(dateDue)=date('now') AND loanStatusName='Loaned';";
+                    query = "SELECT * FROM viewBorrowedBooks WHERE date(dateDue)=date('now') AND loanStatusName='Borrowed';";
                     break;
                 case "dgvBookDueTmr":
-                    query = "SELECT * FROM viewBorrowBook WHERE date(dateDue)=date('now','+1 day') AND loanStatusName='Loaned';";
+                    query = "SELECT * FROM viewBorrowedBooks WHERE date(dateDue)=date('now','+1 day') AND loanStatusName='Borrowed';";
                     break;
                 case "dgvBookOverdue":
-                    query = "SELECT * FROM viewBorrowBook WHERE date(dateDue)<date('now') AND loanStatusName='Loaned';";
+                    query = "SELECT * FROM viewBorrowedBooks WHERE date(dateDue)<date('now') AND loanStatusName='Borrowed';";
                     break;
             }
             LibModule.FillDataGrid(query, dgv);

@@ -24,7 +24,7 @@ namespace LibraryDBMS.Forms
         public override void Refresh()
         {
             base.Refresh();
-            LibModule.FillDataGrid("tblLog", dgvlogList, "logID");
+            LibModule.FillDataGrid("tblLogs", dgvlogList, "logID");
             lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
         }
 
@@ -36,21 +36,21 @@ namespace LibraryDBMS.Forms
                 switch (cbDay.SelectedItem.ToString())
                 {
                     case "All":
-                        LibModule.FillDataGrid("tblLog", dgvlogList, "logID");
+                        LibModule.FillDataGrid("tblLogs", dgvlogList, "logID");
                         break;
                     case "Today":
                         query = 
-                            "SELECT * FROM tblLog WHERE DATE(timestamp) = DATE('NOW') ORDER BY timestamp DESC";
+                            "SELECT * FROM tblLogs WHERE DATE(timestamp) = DATE('NOW') ORDER BY timestamp DESC";
                         LibModule.FillDataGrid(query, dgvlogList);
                         break;
                     case "Yesterday":
                         query =
-                            "SELECT * FROM tblLog WHERE DATE(timestamp) = DATE('NOW', '-1 day') ORDER BY timestamp DESC";
+                            "SELECT * FROM tblLogs WHERE DATE(timestamp) = DATE('NOW', '-1 day') ORDER BY timestamp DESC";
                         LibModule.FillDataGrid(query, dgvlogList);
                         break;
                     case "Older":
                         query =
-                            "SELECT * FROM tblLog WHERE DATE(timestamp) < DATE('NOW', '-1 day') ORDER BY timestamp DESC";
+                            "SELECT * FROM tblLogs WHERE DATE(timestamp) < DATE('NOW', '-1 day') ORDER BY timestamp DESC";
                         LibModule.FillDataGrid(query, dgvlogList);
                         break;
                     default:

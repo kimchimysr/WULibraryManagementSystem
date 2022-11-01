@@ -41,7 +41,7 @@ namespace LibraryDBMS.Forms
 
         private void PopulateFields()
         {
-            Utils.FillComboBox(cbStatus, false, "Loaned", "Returned", "Lost");
+            Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
             txtBorrowID.Text = borrow.Rows[0]["borrowID"].ToString();
             txtBookID.Text = borrow.Rows[0]["bookID"].ToString();
             txtStudentID.Text = borrow.Rows[0]["studentID"].ToString();
@@ -92,7 +92,7 @@ namespace LibraryDBMS.Forms
                                 dateReturned
                             };
 
-                            LibModule.UpdateRecord("tblBorrow", LibModule.GetTableField("tblBorrow"), "borrowID",
+                            LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
                                 borrowID, updateStatus, true);
                             frmBorrowBook.PopulateDataGrid();
                             this.Close();

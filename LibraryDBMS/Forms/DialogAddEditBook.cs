@@ -43,7 +43,7 @@ namespace LibraryDBMS.Forms
             if (!isEditMode)
             {
                 lblHeader.Text = "New Book";
-                txtBookID.Text = LibModule.GetAutoID("tblBook","bookID");
+                txtBookID.Text = LibModule.GetAutoID("tblBooks","bookID");
                 dtpDateAdded.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
             else
@@ -71,9 +71,9 @@ namespace LibraryDBMS.Forms
 
         private bool IsDuplicatedRecord()
         {
+            
 
-
-            return true;
+            return false;
         }
 
         private void Button_Click(object sender,EventArgs e)
@@ -98,7 +98,7 @@ namespace LibraryDBMS.Forms
                             string Quantity = nudQty.Text.Trim();
                             string CategoryID = 
                                 CalculateCategoryIDFromDEWEYCode(int.Parse(txtDEWEYCode.Text.Substring(0, 3))).ToString();
-                            string DateAdded = DateTime.Now.ToString("dd-MM-yyyy");
+                            string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
                             List<string> book = new List<string>
                             {
@@ -117,12 +117,12 @@ namespace LibraryDBMS.Forms
                             };
                             if (!isEditMode)
                             {
-                                LibModule.InsertRecord("tblBook",LibModule.GetTableField("tblBook"),book);
+                                LibModule.InsertRecord("tblBooks",LibModule.GetTableField("tblBooks"),book);
 
                             }
                             else
                             {
-                                LibModule.UpdateRecord("tblBook", LibModule.GetTableField("tblBook"),"bookID",BookID , book,true);
+                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"),"bookID",BookID , book,true);
                             }
                             frmBook.PopulateDataGridView();
                             this.Close();

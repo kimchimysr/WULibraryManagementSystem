@@ -413,16 +413,15 @@ namespace LibraryDBMS.Libs
         // https://www.codeproject.com/Questions/1213783/Restore-sqlite-database-in-Csharp
         public static void BackupDatabase()
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = $"librarydb_{DateTime.Now.ToString("yyyy_MM_dd")}.bak";
             try
             {
                 using (var fbd = new FolderBrowserDialog())
                 {
                     if (fbd.ShowDialog() == DialogResult.OK)
                     {
+                        string fileName = $"librarydb_{DateTime.Now.ToString("yyyy_MM_dd")}.bak";
                         string dbPath = Environment.CurrentDirectory + @"\Database\library.db";
-                        string backupDestPath = Path.GetFullPath(sfd.FileName);
+                        string backupDestPath = Path.GetFullPath(fbd.SelectedPath) + $@"\{fileName}";
 
                         if (File.Exists(backupDestPath))
                             File.Delete(backupDestPath);
@@ -433,6 +432,11 @@ namespace LibraryDBMS.Libs
                         else MessageBox.Show("Cannot backup database!", "Backup Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Cannot backup to this location! Please try another location!", "Permission Denied",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -501,24 +505,24 @@ namespace LibraryDBMS.Libs
                     XLWorkbook workbook = new XLWorkbook();
                     if (table == "All")
                     {
-                        dt = LibModule.GetDataTableFromDB("tblBook");
-                        workbook.Worksheets.Add(dt, "tblBook");
-                        dt = LibModule.GetDataTableFromDB("tblBookCategory");
-                        workbook.Worksheets.Add(dt, "tblBookCategory");
-                        dt = LibModule.GetDataTableFromDB("tblBorrow");
-                        workbook.Worksheets.Add(dt, "tblBorrow");
+                        dt = LibModule.GetDataTableFromDB("tblBooks");
+                        workbook.Worksheets.Add(dt, "tblBooks");
+                        dt = LibModule.GetDataTableFromDB("tblBookCategories");
+                        workbook.Worksheets.Add(dt, "tblBookCategories");
+                        dt = LibModule.GetDataTableFromDB("tblBorrows");
+                        workbook.Worksheets.Add(dt, "tblBorrows");
                         dt = LibModule.GetDataTableFromDB("tblLoanStatus");
                         workbook.Worksheets.Add(dt, "tblLoanStatus");
-                        dt = LibModule.GetDataTableFromDB("tblLog");
-                        workbook.Worksheets.Add(dt, "tblLog");
+                        dt = LibModule.GetDataTableFromDB("tblLogs");
+                        workbook.Worksheets.Add(dt, "tblLogs");
                         dt = LibModule.GetDataTableFromDB("tblRole");
                         workbook.Worksheets.Add(dt, "tblRole");
                         dt = LibModule.GetDataTableFromDB("tblUser");
                         workbook.Worksheets.Add(dt, "tblUser");
                         dt = LibModule.GetDataTableFromDB("tblUserRole");
                         workbook.Worksheets.Add(dt, "tblUserRole");
-                        dt = LibModule.GetDataTableFromDB("tblStudent");
-                        workbook.Worksheets.Add(dt, "tblStudent");
+                        dt = LibModule.GetDataTableFromDB("tblStudents");
+                        workbook.Worksheets.Add(dt, "tblStudents");
                         dt = LibModule.GetDataTableFromDB("viewOverview");
                         workbook.Worksheets.Add(dt, "viewOverview");
                         workbook.SaveAs(sfd.FileName);

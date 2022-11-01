@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvStudentList = new System.Windows.Forms.DataGridView();
-            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
@@ -59,6 +51,14 @@
             this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblRowsCount = new System.Windows.Forms.Label();
+            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -81,23 +81,23 @@
             this.dgvStudentList.AllowUserToDeleteRows = false;
             this.dgvStudentList.AllowUserToResizeColumns = false;
             this.dgvStudentList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvStudentList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvStudentList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvStudentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvStudentList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvStudentList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvStudentList.ColumnHeadersHeight = 30;
             this.dgvStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvStudentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -109,96 +109,32 @@
             this.major,
             this.tel,
             this.dateAdded});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvStudentList.EnableHeadersVisualStyles = false;
             this.dgvStudentList.Location = new System.Drawing.Point(15, 92);
             this.dgvStudentList.MultiSelect = false;
             this.dgvStudentList.Name = "dgvStudentList";
             this.dgvStudentList.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStudentList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudentList.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvStudentList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvStudentList.Size = new System.Drawing.Size(1159, 383);
             this.dgvStudentList.TabIndex = 20;
             this.dgvStudentList.TabStop = false;
             this.dgvStudentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentList_CellClick);
-            // 
-            // studentID
-            // 
-            this.studentID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.studentID.DataPropertyName = "studentID";
-            this.studentID.HeaderText = "Student ID";
-            this.studentID.Name = "studentID";
-            this.studentID.ReadOnly = true;
-            // 
-            // firstName
-            // 
-            this.firstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstName.DataPropertyName = "firstName";
-            this.firstName.HeaderText = "First Name";
-            this.firstName.Name = "firstName";
-            this.firstName.ReadOnly = true;
-            // 
-            // lastName
-            // 
-            this.lastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastName.DataPropertyName = "lastName";
-            this.lastName.HeaderText = "Last Name";
-            this.lastName.Name = "lastName";
-            this.lastName.ReadOnly = true;
-            // 
-            // gender
-            // 
-            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gender.DataPropertyName = "gender";
-            this.gender.HeaderText = "Gender";
-            this.gender.Name = "gender";
-            this.gender.ReadOnly = true;
-            // 
-            // year
-            // 
-            this.year.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.year.DataPropertyName = "year";
-            this.year.HeaderText = "Year";
-            this.year.Name = "year";
-            this.year.ReadOnly = true;
-            // 
-            // major
-            // 
-            this.major.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.major.DataPropertyName = "major";
-            this.major.HeaderText = "Major";
-            this.major.Name = "major";
-            this.major.ReadOnly = true;
-            // 
-            // tel
-            // 
-            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tel.DataPropertyName = "tel";
-            this.tel.HeaderText = "Telephone";
-            this.tel.Name = "tel";
-            this.tel.ReadOnly = true;
-            // 
-            // dateAdded
-            // 
-            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateAdded.DataPropertyName = "dateAdded";
-            this.dateAdded.HeaderText = "Date Added";
-            this.dateAdded.Name = "dateAdded";
-            this.dateAdded.ReadOnly = true;
             // 
             // label10
             // 
@@ -449,14 +385,83 @@
             // lblRowsCount
             // 
             this.lblRowsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRowsCount.AutoSize = true;
             this.lblRowsCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F);
-            this.lblRowsCount.Location = new System.Drawing.Point(1078, 478);
+            this.lblRowsCount.Location = new System.Drawing.Point(992, 478);
             this.lblRowsCount.Name = "lblRowsCount";
-            this.lblRowsCount.Size = new System.Drawing.Size(96, 20);
+            this.lblRowsCount.Size = new System.Drawing.Size(180, 20);
             this.lblRowsCount.TabIndex = 26;
             this.lblRowsCount.Text = "Total Result: ";
             this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // studentID
+            // 
+            this.studentID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.studentID.DataPropertyName = "studentID";
+            this.studentID.HeaderText = "Student ID";
+            this.studentID.Name = "studentID";
+            this.studentID.ReadOnly = true;
+            this.studentID.Width = 96;
+            // 
+            // firstName
+            // 
+            this.firstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstName.DataPropertyName = "firstName";
+            this.firstName.HeaderText = "First Name";
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            this.lastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastName.DataPropertyName = "lastName";
+            this.lastName.HeaderText = "Last Name";
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
+            // 
+            // gender
+            // 
+            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gender.DataPropertyName = "gender";
+            this.gender.HeaderText = "Gender";
+            this.gender.Name = "gender";
+            this.gender.ReadOnly = true;
+            this.gender.Width = 77;
+            // 
+            // year
+            // 
+            this.year.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.year.DataPropertyName = "year";
+            this.year.HeaderText = "Year";
+            this.year.Name = "year";
+            this.year.ReadOnly = true;
+            this.year.Width = 60;
+            // 
+            // major
+            // 
+            this.major.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.major.DataPropertyName = "major";
+            this.major.HeaderText = "Major";
+            this.major.Name = "major";
+            this.major.ReadOnly = true;
+            this.major.Width = 67;
+            // 
+            // tel
+            // 
+            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tel.DataPropertyName = "tel";
+            this.tel.HeaderText = "Telephone";
+            this.tel.Name = "tel";
+            this.tel.ReadOnly = true;
+            this.tel.Width = 95;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dateAdded.DataPropertyName = "dateAdded";
+            this.dateAdded.HeaderText = "Date Added";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            this.dateAdded.Width = 101;
             // 
             // FrmManageStudent
             // 
@@ -505,6 +510,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ComboBox cbSearchBy;
+        private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label lblRowsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn studentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
@@ -513,9 +522,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn major;
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
-        private System.Windows.Forms.ComboBox cbSearchBy;
-        private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.Label lblRowsCount;
     }
 }

@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
-using LibraryDBMS.Forms;
 using System.Runtime.DesignerServices;
 
 namespace LibraryDBMS.Forms
@@ -34,26 +33,25 @@ namespace LibraryDBMS.Forms
         private void InitializeValues()
         {
             Utils.EnableControlDoubleBuffer(dgvBorrowList);
-            Utils.FillComboBox(cbStatus, false, "Loaned", "Returned", "Lost");
+            Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
             Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
             PopulateDataGrid();
         }
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("viewBorrowBook", dgvBorrowList, "borrowID");
+            LibModule.FillDataGrid("viewBorrowedBooks", dgvBorrowList, "borrowID");
             lblRecordCount.Text = "Total Record: " +
-                LibModule.ExecuteScalarQuery("SELECT COUNT(borrowID) FROM viewBorrowBook;");
+                LibModule.ExecuteScalarQuery("SELECT COUNT(borrowID) FROM viewBorrowedBooks;");
             lblBookLoanCount.Text = "Book Loan: " +
                 LibModule.ExecuteScalarQuery
-                ("SELECT COUNT(borrowID) FROM viewBorrowBook WHERE loanStatusName='Loaned';");
+                ("SELECT COUNT(borrowID) FROM viewBorrowedBooks WHERE loanStatusName='Borrowed';");
             lblBookLostCount.Text = "Book Lost: " +
                 LibModule.ExecuteScalarQuery
-                ("SELECT COUNT(borrowID) FROM viewBorrowBook WHERE loanStatusName='Lost';");
+                ("SELECT COUNT(borrowID) FROM viewBorrowedBooks WHERE loanStatusName='Lost';");
             (string due, string overdue) book = LibModule.GetLoanBookDueAndOverdue();
             lblBookDueCount.Text = "Book Due: " + book.due;
             lblBookOverdueCount.Text = "Book Overdue: " + book.overdue;
-
             lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -78,19 +76,19 @@ namespace LibraryDBMS.Forms
                             switch (searchBy)
                             {
                                 case "Borrow ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "borrowID", value, dgvBorrowList);
+                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "borrowID", value, dgvBorrowList);
                                     break;
                                 case "Book ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "bookID", value, dgvBorrowList);
+                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "bookID", value, dgvBorrowList);
                                     break;
                                 case "Student ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "studentID", value, dgvBorrowList);
+                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "studentID", value, dgvBorrowList);
                                     break;
                                 case "Title":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "title", value, dgvBorrowList);
+                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "title", value, dgvBorrowList);
                                     break;
                                 case "Name":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowBook", "fullName", value, dgvBorrowList);
+                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "fullName", value, dgvBorrowList);
                                     break;
                             }
                             lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
@@ -112,7 +110,7 @@ namespace LibraryDBMS.Forms
                         {
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowBook", dgvBorrowList, "dateLoan", fromDate, toDate);
+                            LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowedBooks", dgvBorrowList, "dateLoan", fromDate, toDate);
                             lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
                         }
                     }
@@ -130,7 +128,7 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         Form dialogReturnBook =
-                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowBook", "borrowID", selected.borrowID));
+                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
                         dialogReturnBook.ShowDialog();
                         CheckBookLoanNotificationChanged();
                     }
@@ -142,7 +140,7 @@ namespace LibraryDBMS.Forms
                 case "btnDelete":
                     try
                     {
-                        if(LibModule.DeleteRecord("tblBorrow", "borrowID", selected.borrowID,
+                        if(LibModule.DeleteRecord("tblBorrows", "borrowID", selected.borrowID,
                             Utils.GetDataGridSelectedRowData(dgvBorrowList, selected.rowIndex)) == true)
                         {
                             PopulateDataGrid();
@@ -167,18 +165,19 @@ namespace LibraryDBMS.Forms
             {
                 switch (cbStatus.SelectedItem.ToString())
                 {
-                    case "Loaned":
-                        LibModule.FilterByColumn("viewBorrowBook", dgvBorrowList, "loanStatusName", "Loaned");
+                    case "Borrowed":
+                        LibModule.FilterByColumn("viewBorrowedBooks", dgvBorrowList, "loanStatusName", "Borrowed");
                         break;
                     case "Returned":
-                        LibModule.FilterByColumn("viewBorrowBook", dgvBorrowList, "loanStatusName", "Returned");
+                        LibModule.FilterByColumn("viewBorrowedBooks", dgvBorrowList, "loanStatusName", "Returned");
                         break;
                     case "Lost":
-                        LibModule.FilterByColumn("viewBorrowBook", dgvBorrowList, "loanStatusName", "Lost");
+                        LibModule.FilterByColumn("viewBorrowedBooks", dgvBorrowList, "loanStatusName", "Lost");
                         break;
                     default:
                         break;
-                } 
+                }
+                lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
             }
         }
 

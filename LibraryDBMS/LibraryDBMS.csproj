@@ -122,18 +122,6 @@
     <Compile Include="Forms\DialogAddEditStudent.Designer.cs">
       <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DialogAddEditUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DialogAddEditUser.Designer.cs">
-      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DialogResetPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DialogResetPassword.Designer.cs">
-      <DependentUpon>DialogResetPassword.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\DialogReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,12 +163,6 @@
     </Compile>
     <Compile Include="Forms\FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
@@ -235,12 +217,6 @@
     <Compile Include="Libs\StudentValidator.cs" />
     <Compile Include="Libs\UserSetting.cs" />
     <Compile Include="Libs\UserValidator.cs" />
-    <Compile Include="Temp\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmManageBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,58 +235,16 @@
     <Compile Include="Forms\FrmManageStudent.Designer.cs">
       <DependentUpon>FrmManageStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmManageUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmManageUser.Designer.cs">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Temp\FrmAsyncDataGrid.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\FrmAsyncDataGrid.Designer.cs">
-      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmReportViewer.Designer.cs">
       <DependentUpon>FrmReportViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Temp\FrmMDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\FrmMDI.Designer.cs">
-      <DependentUpon>FrmMDI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Temp\FrmSQLiteConnection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\FrmSQLiteConnection.Designer.cs">
-      <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Temp\FrmUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Temp\FrmUser.Designer.cs">
-      <DependentUpon>FrmUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Libs\LibModule.cs" />
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Temp\UcManageStudent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Temp\UcManageStudent.Designer.cs">
-      <DependentUpon>UcManageStudent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Temp\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Temp\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,12 +256,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogAddEditStudent.resx">
       <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
-      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DialogResetPassword.resx">
-      <DependentUpon>DialogResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogReturnBook.resx">
       <DependentUpon>DialogReturnBook.cs</DependentUpon>
@@ -349,9 +277,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
@@ -388,26 +313,8 @@
     <EmbeddedResource Include="Reports\RpOverview.rdlc" />
     <EmbeddedResource Include="Reports\RpStudent.rdlc" />
     <EmbeddedResource Include="Reports\RpUserInfo.rdlc" />
-    <EmbeddedResource Include="Temp\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmManageUser.resx">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
-      <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmReportViewer.resx">
       <DependentUpon>FrmReportViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmMDI.resx">
-      <DependentUpon>FrmMDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmSQLiteConnection.resx">
-      <DependentUpon>FrmSQLiteConnection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\FrmUser.resx">
-      <DependentUpon>FrmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -419,12 +326,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Temp\UcManageStudent.resx">
-      <DependentUpon>UcManageStudent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Temp\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="LibDataSet.xsc">
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </None>

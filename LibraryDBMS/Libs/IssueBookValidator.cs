@@ -40,7 +40,7 @@ namespace LibraryDBMS.Libs
                 e.Cancel = true;
                 return;
             }
-            string studentExists = LibModule.ExecuteScalarQuery($"SELECT studentID FROM tblStudent WHERE studentID='{studentID.Text.Trim()}';");
+            string studentExists = LibModule.ExecuteScalarQuery($"SELECT studentID FROM tblStudents WHERE studentID='{studentID.Text.Trim()}';");
             if (string.IsNullOrEmpty(studentExists))
             {
                 ep.SetError(studentID, "Student ID doesn't exists!");
@@ -49,7 +49,7 @@ namespace LibraryDBMS.Libs
             else
             {
                 string query = $"SELECT firstName || ' ' || lastName AS fullName " +
-                    $"FROM tblStudent WHERE studentID='{studentID.Text.Trim()}';";
+                    $"FROM tblStudents WHERE studentID='{studentID.Text.Trim()}';";
                 lblName.Text = LibModule.ExecuteScalarQuery(query);
                 ep.SetError(studentID, null);
             }
@@ -65,7 +65,7 @@ namespace LibraryDBMS.Libs
                 e.Cancel = true;
                 return;
             }
-            string bookExists = LibModule.ExecuteScalarQuery($"SELECT bookID FROM tblBook WHERE bookID='{bookID.Text.Trim()}';");
+            string bookExists = LibModule.ExecuteScalarQuery($"SELECT bookID FROM tblBooks WHERE bookID='{bookID.Text.Trim()}';");
             if (string.IsNullOrEmpty(bookExists))
             {
                 ep.SetError(bookID, "Book ID doesn't exists!");
@@ -73,11 +73,11 @@ namespace LibraryDBMS.Libs
             }
             else
             {
-                string query = $"SELECT title FROM tblBook WHERE bookID='{bookID.Text.Trim()}';";
+                string query = $"SELECT title FROM tblBooks WHERE bookID='{bookID.Text.Trim()}';";
                 lblTitle.Text = LibModule.ExecuteScalarQuery(query);
                 // check if the book qty > 0
                 string qty = LibModule.ExecuteScalarQuery
-                    ($"SELECT qty FROM tblBook WHERE bookID='{bookID.Text.Trim()}';");
+                    ($"SELECT qty FROM tblBooks WHERE bookID='{bookID.Text.Trim()}';");
                 if (int.Parse(qty) > 0)
                 {
                     lblBookAvailability.ForeColor = Color.Green;

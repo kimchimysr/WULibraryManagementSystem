@@ -31,9 +31,9 @@ namespace LibraryDBMS.Forms
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("tblStudent", dgvStudentList, "dateAdded");
+            LibModule.FillDataGrid("tblStudents", dgvStudentList, "dateAdded");
             lblCount.Text = "Total Student: " + 
-                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudent;");
+                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;");
             lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
@@ -57,9 +57,9 @@ namespace LibraryDBMS.Forms
                             string value = txtSearchValue.Text.ToString().Trim();
 
                             if (searchBy == "Student ID")
-                                LibModule.SearchAndFillDataGrid("tblStudent", "studentID", value, dgvStudentList);
+                                LibModule.SearchAndFillDataGrid("tblStudents", "studentID", value, dgvStudentList);
                             else if (searchBy == "Name")
-                                LibModule.SearchNameAndFillDataGrid("tblStudent", value, dgvStudentList);
+                                LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
                             lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
                         }
                     }
@@ -76,7 +76,7 @@ namespace LibraryDBMS.Forms
                         {
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("tblStudent", dgvStudentList, "dateAdded", fromDate, toDate);
+                            LibModule.SearchBetweenDateAndFillDataGrid("tblStudents", dgvStudentList, "dateAdded", fromDate, toDate);
                             lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
                         }
                     }
@@ -102,7 +102,7 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         Form frmAddEditUser =
-                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudent", "studentID", selected.studentID));
+                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
                         frmAddEditUser.ShowDialog();
                     }
                     catch (Exception ex)
@@ -114,7 +114,7 @@ namespace LibraryDBMS.Forms
                 case "btnDelete":
                     try
                     {
-                        if (LibModule.DeleteRecord("tblStudent", "studentID", selected.studentID,
+                        if (LibModule.DeleteRecord("tblStudents", "studentID", selected.studentID,
                             Utils.GetDataGridSelectedRowData(dgvStudentList, selected.rowIndex)) == true)
                             PopulateDataGrid();
                     }

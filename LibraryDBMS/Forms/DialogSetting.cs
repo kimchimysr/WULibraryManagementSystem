@@ -29,8 +29,8 @@ namespace LibraryDBMS.Forms
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.FixControlFlickering(this);
             Utils.FillComboBox(cbStartupForm, false ,"Home", "Dashboard");
-            Utils.FillComboBox(cbTable, true, "All", "tblBook", "tblBookCategory", "tblBorrow", "tblLoanStatus",
-                "tblLog", "tblRole", "tblStudent", "tblUser", "tblUserRole", "tblUserLog", "viewOverview");
+            Utils.FillComboBox(cbTable, true, "All", "tblBooks", "tblBookCategories", "tblBorrows", "tblLoanStatus",
+                "tblLogs", "tblRole", "tblStudents", "tblUser", "tblUserRole", "tblUserLogs", "viewOverview");
             AppliedUserSetting();
             ResumeLayout();
         }

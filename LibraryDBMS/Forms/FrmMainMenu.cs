@@ -17,8 +17,7 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmMainMenu : Form
     {
-        public static FrmLogin frmLogin;
-        public DataTable user { get; }
+        public DataTable user { get; set; }
         public NotifyIcon niBookLoan = new NotifyIcon();
         private UserSetting us = new UserSetting();
 
@@ -31,22 +30,18 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             InitializeValues();
         }
-        public FrmMainMenu(FrmLogin frm, DataTable _user)
-        {
-            InitializeComponent();
-            frmLogin = frm;
-            user = _user;
-            ResetPasswordIfPasswordIsDefauilt();
-            InitializeValues();
-        }
 
         private void InitializeValues()
         {
+            // load splash screen
+            var frmSplashScreen = new FrmSplashScreen();
+            frmSplashScreen.ShowDialog();
             // drag form
             Utils.DragFormWithControlMouseDown(this, pTitleBar);
             // fix flickering
             Utils.FixControlFlickering(pContainer);
-            ConfigUserPrivilege();
+            // get user information
+            user = LibModule.GetDataTableFromDB("tblUser");
             // open form to start counting uptime
             OpenChildForm(new FrmDashboard(this), pDashboard);
             AppliedUserSetting();
@@ -65,7 +60,10 @@ namespace LibraryDBMS.Forms
             this.WindowState = us.StartAppInFullscreen == true ? 
                 FormWindowState.Maximized : FormWindowState.Normal;
             if (us.DefaultStartPage == "Dashboard")
+            {
+                ActivateButton(btnDashboard);
                 OpenChildForm(new FrmDashboard(this), pDashboard);
+            }
             else OpenChildForm(new FrmHome(), pHome);
         }
 
@@ -106,10 +104,6 @@ namespace LibraryDBMS.Forms
                     ActivateButton(btnReport);
                     OpenChildForm(new FrmReportViewer(), pReport);
                     break;
-                case "btnManageUser":
-                    ActivateButton(btnManageUser);
-                    OpenChildForm(new FrmManageUser(), pManageUser);
-                    break;
                 case "btnRecentActivity":
                     ActivateButton(btnRecentActivity);
                     OpenChildForm(new FrmRecentActivity(), pRecentActivity);
@@ -119,8 +113,7 @@ namespace LibraryDBMS.Forms
                     OpenChildForm(new FrmNotification(), pNotification);
                     break;
                 case "btnAccount":
-                    OpenChildFormAsDialog(new DialogUserAccount());
-                    //OpenChildFormAsDialog(new FrmUserAccount(LibModule.GetSingleRecordDB("viewUserInfo", "userID", user.username)));
+                    OpenChildFormAsDialog(new DialogUserAccount(user));
                     break;
                 case "btnLogout":
                     DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation",
@@ -237,28 +230,8 @@ namespace LibraryDBMS.Forms
             btnMenuTitle.Text = $"  {frm.Text}";
         }
 
-        private void ResetPasswordIfPasswordIsDefauilt()
-        {
-            string userID = user.Rows[0]["userID"].ToString();
-            string password = LibModule.GetUserPassword(userID);
-            if (password == Utils.DefaultHashPassword())
-            {
-                var dialogResetPassword = new DialogResetPassword(user);
-                dialogResetPassword.ShowDialog();
-            }
-        }
-
-        private void ConfigUserPrivilege()
-        {
-            string userRole = user.Rows[0]["roleName"].ToString();
-            if (userRole != "Admin")
-                btnManageUser.Visible = false;
-        }
-
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //frmLogin.Close();
-
             // close notification if it existed
             if(niBookLoan.Visible == true)
             {

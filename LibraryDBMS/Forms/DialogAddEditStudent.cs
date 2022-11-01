@@ -107,13 +107,13 @@ namespace LibraryDBMS.Forms
 
                             if (!isEditMode)
                             {
-                                LibModule.InsertRecord("tblStudent", LibModule.GetTableField("tblStudent"), borrower);
+                                LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
                             }
                             else
                             {
                                 if (HasAnyChanges())
                                 {
-                                    LibModule.UpdateRecord("tblStudent", LibModule.GetTableField("tblStudent"),
+                                    LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
                                                         "studentID", studentID, borrower, true);
                                 }
                             }

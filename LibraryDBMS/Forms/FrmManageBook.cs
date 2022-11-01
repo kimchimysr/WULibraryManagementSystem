@@ -35,13 +35,12 @@ namespace LibraryDBMS.Forms
 
         internal void PopulateDataGridView()
         {
-            LibModule.FillDataGrid("viewBook", dgvBookList, "bookID");
+            LibModule.FillDataGrid("viewBooks", dgvBookList, "bookID");
             lblBookCount.Text = "Total Books: " +
-                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBook;");
+                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBooks;");
             lblTitleCount.Text = "Total Titles: " +
-                    LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBook;");
+                    LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;");
             lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
-            btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
         }
@@ -63,19 +62,19 @@ namespace LibraryDBMS.Forms
                             string value = txtSearchValue.Text.ToString().Trim();
 
                             if (searchBy == "Book ID")
-                                LibModule.SearchAndFillDataGrid("tblBook", "bookID", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "bookID", value, dgvBookList);
                             else if (searchBy == "ISBN")
-                                LibModule.SearchAndFillDataGrid("tblBook", "isbn", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "isbn", value, dgvBookList);
                             else if (searchBy == "DEWEY")
-                                LibModule.SearchAndFillDataGrid("tblBook", "dewey", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "dewey", value, dgvBookList);
                             else if (searchBy == "Title")
-                                LibModule.SearchAndFillDataGrid("tblBook", "title", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "title", value, dgvBookList);
                             else if (searchBy == "Author")
-                                LibModule.SearchAndFillDataGrid("tblBook", "author", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "author", value, dgvBookList);
                             else if (searchBy == "Publisher")
-                                LibModule.SearchAndFillDataGrid("tblBook", "publisher", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "publisher", value, dgvBookList);
                             else if (searchBy == "Publish Year")
-                                LibModule.SearchAndFillDataGrid("tblBook", "publishYear", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList);
                             lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
                         }
                     }
@@ -92,7 +91,7 @@ namespace LibraryDBMS.Forms
                         {
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("tblBook", dgvBookList, "dateAdded", fromDate, toDate);
+                            LibModule.SearchBetweenDateAndFillDataGrid("viewBooks", dgvBookList, "dateAdded", fromDate, toDate);
                             lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
                         }
                     }
@@ -119,7 +118,7 @@ namespace LibraryDBMS.Forms
                     try
                     {
                         Form frmAddEditBook =
-                            new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBook", "bookID", selected.bookID));
+                            new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
                         frmAddEditBook.ShowDialog();
                     }
                     catch (Exception ex)
@@ -131,7 +130,7 @@ namespace LibraryDBMS.Forms
                 case "btnDelete":
                     try
                     {
-                        if (LibModule.DeleteRecord("tblBook", "bookID", selected.bookID,
+                        if (LibModule.DeleteRecord("tblBooks", "bookID", selected.bookID,
                             Utils.GetDataGridSelectedRowData(dgvBookList, selected.rowIndex)) == true)
                             PopulateDataGridView();
                     }
@@ -155,7 +154,7 @@ namespace LibraryDBMS.Forms
         {
             if (e.RowIndex > -1)
             {
-                selected = (e.RowIndex, dgvBookList.Rows[e.RowIndex].Cells["borrowID"].Value.ToString());
+                selected = (e.RowIndex, dgvBookList.Rows[e.RowIndex].Cells["bookID"].Value.ToString());
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;

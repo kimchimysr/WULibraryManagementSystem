@@ -26,7 +26,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="viewUserInfo" msprop:Generator_RowEvHandlerName="viewUserInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="viewUserInfoRowDeleted" msprop:Generator_RowDeletingName="viewUserInfoRowDeleting" msprop:Generator_RowEvArgName="viewUserInfoRowChangeEvent" msprop:Generator_TablePropName="viewUserInfo" msprop:Generator_RowChangedName="viewUserInfoRowChanged" msprop:Generator_UserTableName="viewUserInfo" msprop:Generator_RowChangingName="viewUserInfoRowChanging" msprop:Generator_RowClassName="viewUserInfoRow" msprop:Generator_TableClassName="viewUserInfoDataTable" msprop:Generator_TableVarName="tableviewUserInfo">
+        <xs:element name="tblUser" msprop:Generator_RowEvHandlerName="viewUserInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="viewUserInfoRowDeleted" msprop:Generator_RowDeletingName="viewUserInfoRowDeleting" msprop:Generator_RowEvArgName="viewUserInfoRowChangeEvent" msprop:Generator_TablePropName="tblUser" msprop:Generator_RowChangedName="viewUserInfoRowChanged" msprop:Generator_UserTableName="tblUser" msprop:Generator_RowChangingName="viewUserInfoRowChanging" msprop:Generator_RowClassName="viewUserInfoRow" msprop:Generator_TableClassName="viewUserInfoDataTable" msprop:Generator_TableVarName="tableviewUserInfo">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="userID" msprop:Generator_ColumnPropNameInTable="userIDColumn" msprop:Generator_ColumnPropNameInRow="userID" msprop:Generator_UserColumnName="userID" msprop:Generator_ColumnVarNameInTable="columnuserID" type="xs:string" />
@@ -84,7 +84,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="viewBorrowBook" msprop:Generator_RowEvHandlerName="viewBorrowBookRowChangeEventHandler" msprop:Generator_RowDeletedName="viewBorrowBookRowDeleted" msprop:Generator_RowDeletingName="viewBorrowBookRowDeleting" msprop:Generator_RowEvArgName="viewBorrowBookRowChangeEvent" msprop:Generator_TablePropName="viewBorrowBook" msprop:Generator_RowChangedName="viewBorrowBookRowChanged" msprop:Generator_RowChangingName="viewBorrowBookRowChanging" msprop:Generator_TableClassName="viewBorrowBookDataTable" msprop:Generator_RowClassName="viewBorrowBookRow" msprop:Generator_TableVarName="tableviewBorrowBook" msprop:Generator_UserTableName="viewBorrowBook">
+        <xs:element name="viewBorrowedBooks" msprop:Generator_RowEvHandlerName="viewBorrowBookRowChangeEventHandler" msprop:Generator_RowDeletedName="viewBorrowBookRowDeleted" msprop:Generator_RowDeletingName="viewBorrowBookRowDeleting" msprop:Generator_RowEvArgName="viewBorrowBookRowChangeEvent" msprop:Generator_TablePropName="viewBorrowedBooks" msprop:Generator_RowChangedName="viewBorrowBookRowChanged" msprop:Generator_RowChangingName="viewBorrowBookRowChanging" msprop:Generator_TableClassName="viewBorrowBookDataTable" msprop:Generator_RowClassName="viewBorrowBookRow" msprop:Generator_TableVarName="tableviewBorrowBook" msprop:Generator_UserTableName="viewBorrowedBooks">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="borrowID" msprop:Generator_ColumnPropNameInRow="borrowID" msprop:Generator_ColumnPropNameInTable="borrowIDColumn" msprop:Generator_ColumnVarNameInTable="columnborrowID" msprop:Generator_UserColumnName="borrowID" type="xs:string" minOccurs="0" />
@@ -107,7 +107,7 @@
       <xs:field xpath="mstns:studentID" />
     </xs:unique>
     <xs:unique name="viewUserInfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:viewUserInfo" />
+      <xs:selector xpath=".//mstns:tblUser" />
       <xs:field xpath="mstns:userID" />
     </xs:unique>
     <xs:unique name="viewBook_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">

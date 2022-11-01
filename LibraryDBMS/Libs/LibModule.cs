@@ -37,14 +37,12 @@ namespace LibraryDBMS.Libs
             List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
             {
                 ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
-                ("tblBookCate", "cateID,cateName"),
-                ("tblStudent", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
+                ("tblBookCategories", "cateID,cateName"),
+                ("tblStudents", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
-                ("tblBorrow", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                ("tblUser", "userID,username,password,isActive,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
-                ("tblRole", "roleID,roleName"),
-                ("tblUserRole", "userID,roleID"),
-                ("tblUserLog", "userID,username,info")
+                ("tblBorrows", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
+                ("tblUser", "userID,username,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
+                ("tblUserLogs", "username,info")
             };
             int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));
             return dbTables[index].Fields;
@@ -749,66 +747,13 @@ namespace LibraryDBMS.Libs
             return duplicate;
         }
 
-        public static bool IsValidLoginCredential(string username, string password, out DataTable user)
-        {
-            user = new DataTable();
-            string query = $"SELECT u.userID, u.username,r.roleName " +
-                $"FROM tblUser u, tblUserRole ur, tblRole r " +
-                $"WHERE u.username = '{username}' AND u.password = '{password}' " +
-                $"AND u.isActive = 'Yes' AND u.userID = ur.UserID AND r.roleID = ur.roleID;";
-            try
-            {
-                Conn.Open();
-                Cmd = new SQLiteCommand(query, Conn);
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    user = dt;
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (Cmd != null)
-                    Cmd.Dispose();
-                if (Conn != null)
-                    Conn.Close();
-            }
-            return false;
-        }
-
-        public static string GetUserPassword(string userID)
-        {
-            string query = $"SELECT password FROM tblUser WHERE userID='{userID}';";
-            return ExecuteScalarQuery(query);
-        }
-
-        public static bool ChangeUserPassword(string userID, string password)
-        {
-            string query = $"UPDATE tblUser SET password='{password}' WHERE userID='{userID}'";
-            return ExecuteQuery(query);
-        }
-
-        public static bool IsDefaultAdminAccount(string username, string password)
-        {
-            string query = $"SELECT userID FROM tblUser WHERE username={username} AND password='{password}'";
-            return ExecuteQuery(query);
-        }
-
         public static (string,string) GetLoanBookDueAndOverdue()
         {
             (string bookDue, string bookOverdue) book = (string.Empty, string.Empty);
             string query = "SELECT " +
                 "COUNT(CASE WHEN date(dateDue)=date('now') AND loanStatusID='1' THEN dateDue END) AS bookDue, " +
                 "COUNT(CASE WHEN date(dateDue)<date('now') AND loanStatusID='1' THEN dateDue END) AS bookOverdue " +
-                "FROM tblBorrow;";
+                "FROM tblBorrows;";
             try
             {
                 Conn.Open();
@@ -845,30 +790,26 @@ namespace LibraryDBMS.Libs
 
         public static void LogTimestampUserLogin(DataTable user)
         {
-            string userID = user.Rows[0]["userID"].ToString();
             string username = user.Rows[0]["username"].ToString();
             string info = $"Logged in at {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             List<string> userLog = new List<string>()
             {
-                userID,
                 username,
                 info
             };
-            InsertRecord("tblUserLog", GetTableField("tblUserLog"), userLog, false);
+            InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
         }
 
         public static void LogTimestampUserLogout(DataTable user)
         {
-            string userID = user.Rows[0]["userID"].ToString();
             string username = user.Rows[0]["username"].ToString();
-            string info = $"Logged out at {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            string info = $"Logged out at {DateTime.Now:yyyy-MM-dd hh:mm:ss}";
             List<string> userLog = new List<string>()
             {
-                userID,
                 username,
                 info
             };
-            InsertRecord("tblUserLog", GetTableField("tblUserLog"), userLog, false);
+            InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
         }
         #endregion
     }

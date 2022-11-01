@@ -42,13 +42,13 @@ namespace LibraryDBMS.Forms
             lblStudentCount.Text = overview.Rows[0]["studentCount"].ToString().ToKMString();
             lblBookLoanCount.Text = overview.Rows[0]["bookLoanCount"].ToString().ToKMString();
             lblBookReturnCount.Text = overview.Rows[0]["bookReturnCount"].ToString().ToKMString();
-            //lblUsername.Text = frmMainMenu.user.username;
-            //lblRole.Text = frmMainMenu.user.roleName;
+            lblUsername.Text = frmMainMenu.user.Rows[0]["username"].ToString();
+            lblRole.Text = frmMainMenu.user.Rows[0]["roleName"].ToString();
             (string due, string overdue) book = LibModule.GetLoanBookDueAndOverdue();
             lblBookDue.Text = book.due.ToKMString();
             lblBookOverdueCount.Text = book.overdue.ToKMString();
             lblActivityCount.Text = 
-                LibModule.ExecuteScalarQuery("SELECT COUNT(logID) FROM tblLog WHERE DATE(timestamp)=DATE('NOW');");
+                LibModule.ExecuteScalarQuery("SELECT COUNT(logID) FROM tblLogs WHERE DATE(timestamp)=DATE('NOW');");
             
             #region set pie chart data
             //reset your chart series and legends
@@ -99,36 +99,45 @@ namespace LibraryDBMS.Forms
             InitializeValues();
         }
 
-        private void Label_Click(object sender, EventArgs e)
+        private void Control_Click(object sender, EventArgs e)
         {
-            Label lbl = sender as Label;
-            switch (lbl.Name)
+            Control ctrl = sender as Control;
+            switch (ctrl.Name)
             {
                 case "lblBooks":
                 case "lblTitles":
+                case "pBooks":
+                case "pTitles":
                     frmMainMenu.ActivateButton(frmMainMenu.btnManageBook);
                     frmMainMenu.OpenChildForm(new FrmManageBook(), frmMainMenu.pManageBook);
                     break;
-                case "lblBooksLoan":
-                case "lblBooksReturn":
+                case "lblBorrowedBooks":
+                case "lblReturnedBooks":
+                case "pBorrowedBooks":
+                case "pReturnedBooks":
                     frmMainMenu.ActivateButton(frmMainMenu.btnBookLoanReturn);
                     frmMainMenu.OpenChildForm(new FrmBorrowBook(), frmMainMenu.pBookLoanReturn);
                     break;
                 case "lblBooksDueToday":
-                case "lblBooksOverdue":
+                case "lblOverdueBooks":
+                case "pDueTodayBooks":
+                case "pOverdueBooks":
                     frmMainMenu.ActivateButton(frmMainMenu.btnNotification);
                     frmMainMenu.OpenChildForm(new FrmNotification(), frmMainMenu.pNotification);
                     break;
                 case "lblStudents":
+                case "pStudents":
                     frmMainMenu.ActivateButton(frmMainMenu.btnManageStudent);
                     frmMainMenu.OpenChildForm(new FrmManageStudent(), frmMainMenu.pManageStudent);
                     break;
                 case "lblTodayActivities":
+                case "pActivities":
                     frmMainMenu.ActivateButton(frmMainMenu.btnRecentActivity);
                     frmMainMenu.OpenChildForm(new FrmRecentActivity(), frmMainMenu.pRecentActivity);
                     break;
                 case "lblCurrentUser":
-                    var dialogUserAccount = new DialogUserAccount();
+                case "pCurrentUser":
+                    var dialogUserAccount = new DialogUserAccount(frmMainMenu.user);
                     dialogUserAccount.Show();
                     break;
             }

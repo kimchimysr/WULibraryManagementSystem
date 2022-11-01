@@ -28,67 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel18 = new System.Windows.Forms.Panel();
+            this.pStudents = new System.Windows.Forms.Panel();
             this.lblStudentCount = new System.Windows.Forms.Label();
             this.lblStudents = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.pActivities = new System.Windows.Forms.Panel();
             this.lblActivityCount = new System.Windows.Forms.Label();
             this.lblTodayActivities = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pCurrentUser = new System.Windows.Forms.Panel();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pBooks = new System.Windows.Forms.Panel();
             this.lblBooks = new System.Windows.Forms.Label();
             this.lblBookCount = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.chartBookBySubject = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.pUptime = new System.Windows.Forms.Panel();
             this.lblUpTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pTitles = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.lblBookTitleCount = new System.Windows.Forms.Label();
             this.lblTitles = new System.Windows.Forms.Label();
-            this.panel14 = new System.Windows.Forms.Panel();
+            this.pDueTodayBooks = new System.Windows.Forms.Panel();
             this.lblBookDue = new System.Windows.Forms.Label();
             this.lblBooksDueToday = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.panel16 = new System.Windows.Forms.Panel();
+            this.pOverdueBooks = new System.Windows.Forms.Panel();
             this.lblBookOverdueCount = new System.Windows.Forms.Label();
-            this.lblBooksOverdue = new System.Windows.Forms.Label();
+            this.lblOverdueBooks = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pReturnedBooks = new System.Windows.Forms.Panel();
             this.lblBookReturnCount = new System.Windows.Forms.Label();
-            this.lblBooksReturn = new System.Windows.Forms.Label();
+            this.lblReturnedBooks = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pBorrowedBooks = new System.Windows.Forms.Panel();
             this.lblBookLoanCount = new System.Windows.Forms.Label();
-            this.lblBooksLoan = new System.Windows.Forms.Label();
+            this.lblBorrowedBooks = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel18.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pStudents.SuspendLayout();
+            this.pActivities.SuspendLayout();
+            this.pCurrentUser.SuspendLayout();
+            this.pBooks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartBookBySubject)).BeginInit();
-            this.panel10.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pUptime.SuspendLayout();
+            this.pTitles.SuspendLayout();
+            this.pDueTodayBooks.SuspendLayout();
+            this.pOverdueBooks.SuspendLayout();
+            this.pReturnedBooks.SuspendLayout();
+            this.pBorrowedBooks.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,17 +108,17 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.panel18, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel7, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel6, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pStudents, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pActivities, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pCurrentUser, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pBooks, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.chartBookBySubject, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel10, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel14, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel16, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pUptime, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pTitles, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pDueTodayBooks, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pOverdueBooks, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pReturnedBooks, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pBorrowedBooks, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -132,18 +132,20 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1151, 678);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // panel18
+            // pStudents
             // 
-            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel18.Controls.Add(this.lblStudentCount);
-            this.panel18.Controls.Add(this.lblStudents);
-            this.panel18.Controls.Add(this.button4);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(10, 179);
-            this.panel18.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(259, 150);
-            this.panel18.TabIndex = 7;
+            this.pStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pStudents.Controls.Add(this.lblStudentCount);
+            this.pStudents.Controls.Add(this.lblStudents);
+            this.pStudents.Controls.Add(this.button4);
+            this.pStudents.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pStudents.Location = new System.Drawing.Point(10, 179);
+            this.pStudents.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
+            this.pStudents.Name = "pStudents";
+            this.pStudents.Size = new System.Drawing.Size(259, 150);
+            this.pStudents.TabIndex = 7;
+            this.pStudents.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblStudentCount
             // 
@@ -168,7 +170,7 @@
             this.lblStudents.Size = new System.Drawing.Size(92, 27);
             this.lblStudents.TabIndex = 3;
             this.lblStudents.Text = "Students";
-            this.lblStudents.Click += new System.EventHandler(this.Label_Click);
+            this.lblStudents.Click += new System.EventHandler(this.Control_Click);
             // 
             // button4
             // 
@@ -186,18 +188,20 @@
             this.button4.TabIndex = 5;
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // panel7
+            // pActivities
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel7.Controls.Add(this.lblActivityCount);
-            this.panel7.Controls.Add(this.lblTodayActivities);
-            this.panel7.Controls.Add(this.button8);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(880, 179);
-            this.panel7.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(262, 150);
-            this.panel7.TabIndex = 6;
+            this.pActivities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pActivities.Controls.Add(this.lblActivityCount);
+            this.pActivities.Controls.Add(this.lblTodayActivities);
+            this.pActivities.Controls.Add(this.button8);
+            this.pActivities.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pActivities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pActivities.Location = new System.Drawing.Point(880, 179);
+            this.pActivities.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
+            this.pActivities.Name = "pActivities";
+            this.pActivities.Size = new System.Drawing.Size(262, 150);
+            this.pActivities.TabIndex = 6;
+            this.pActivities.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblActivityCount
             // 
@@ -222,7 +226,7 @@
             this.lblTodayActivities.Size = new System.Drawing.Size(157, 27);
             this.lblTodayActivities.TabIndex = 1;
             this.lblTodayActivities.Text = "Today Activities";
-            this.lblTodayActivities.Click += new System.EventHandler(this.Label_Click);
+            this.lblTodayActivities.Click += new System.EventHandler(this.Control_Click);
             // 
             // button8
             // 
@@ -240,19 +244,21 @@
             this.button8.TabIndex = 4;
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // panel6
+            // pCurrentUser
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel6.Controls.Add(this.lblRole);
-            this.panel6.Controls.Add(this.lblUsername);
-            this.panel6.Controls.Add(this.lblCurrentUser);
-            this.panel6.Controls.Add(this.button9);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(880, 348);
-            this.panel6.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(262, 150);
-            this.panel6.TabIndex = 5;
+            this.pCurrentUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pCurrentUser.Controls.Add(this.lblRole);
+            this.pCurrentUser.Controls.Add(this.lblUsername);
+            this.pCurrentUser.Controls.Add(this.lblCurrentUser);
+            this.pCurrentUser.Controls.Add(this.button9);
+            this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pCurrentUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pCurrentUser.Location = new System.Drawing.Point(880, 348);
+            this.pCurrentUser.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
+            this.pCurrentUser.Name = "pCurrentUser";
+            this.pCurrentUser.Size = new System.Drawing.Size(262, 150);
+            this.pCurrentUser.TabIndex = 5;
+            this.pCurrentUser.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblRole
             // 
@@ -289,7 +295,7 @@
             this.lblCurrentUser.Size = new System.Drawing.Size(133, 27);
             this.lblCurrentUser.TabIndex = 3;
             this.lblCurrentUser.Text = "Current User";
-            this.lblCurrentUser.Click += new System.EventHandler(this.Label_Click);
+            this.lblCurrentUser.Click += new System.EventHandler(this.Control_Click);
             // 
             // button9
             // 
@@ -307,18 +313,20 @@
             this.button9.TabIndex = 5;
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // pBooks
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel2.Controls.Add(this.lblBooks);
-            this.panel2.Controls.Add(this.lblBookCount);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(259, 150);
-            this.panel2.TabIndex = 0;
+            this.pBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pBooks.Controls.Add(this.lblBooks);
+            this.pBooks.Controls.Add(this.lblBookCount);
+            this.pBooks.Controls.Add(this.button1);
+            this.pBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pBooks.Location = new System.Drawing.Point(10, 10);
+            this.pBooks.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
+            this.pBooks.Name = "pBooks";
+            this.pBooks.Size = new System.Drawing.Size(259, 150);
+            this.pBooks.TabIndex = 0;
+            this.pBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBooks
             // 
@@ -331,7 +339,7 @@
             this.lblBooks.Size = new System.Drawing.Size(66, 27);
             this.lblBooks.TabIndex = 1;
             this.lblBooks.Text = "Books";
-            this.lblBooks.Click += new System.EventHandler(this.Label_Click);
+            this.lblBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookCount
             // 
@@ -363,41 +371,42 @@
             // 
             // chartBookBySubject
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartBookBySubject.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartBookBySubject.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel1.SetColumnSpan(this.chartBookBySubject, 2);
             this.chartBookBySubject.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartBookBySubject.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.chartBookBySubject.Legends.Add(legend2);
             this.chartBookBySubject.Location = new System.Drawing.Point(302, 179);
             this.chartBookBySubject.Margin = new System.Windows.Forms.Padding(15, 10, 14, 11);
             this.chartBookBySubject.Name = "chartBookBySubject";
             this.tableLayoutPanel1.SetRowSpan(this.chartBookBySubject, 3);
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartBookBySubject.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartBookBySubject.Series.Add(series2);
             this.chartBookBySubject.Size = new System.Drawing.Size(545, 488);
             this.chartBookBySubject.TabIndex = 1;
             this.chartBookBySubject.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "Books Count by Subject";
-            this.chartBookBySubject.Titles.Add(title1);
+            title2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Title1";
+            title2.Text = "Books Count by Subject";
+            this.chartBookBySubject.Titles.Add(title2);
             // 
-            // panel10
+            // pUptime
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel10.Controls.Add(this.lblUpTime);
-            this.panel10.Controls.Add(this.label8);
-            this.panel10.Controls.Add(this.button10);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(880, 517);
-            this.panel10.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(262, 152);
-            this.panel10.TabIndex = 4;
+            this.pUptime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pUptime.Controls.Add(this.lblUpTime);
+            this.pUptime.Controls.Add(this.label8);
+            this.pUptime.Controls.Add(this.button10);
+            this.pUptime.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pUptime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pUptime.Location = new System.Drawing.Point(880, 517);
+            this.pUptime.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
+            this.pUptime.Name = "pUptime";
+            this.pUptime.Size = new System.Drawing.Size(262, 152);
+            this.pUptime.TabIndex = 4;
             // 
             // lblUpTime
             // 
@@ -438,18 +447,20 @@
             this.button10.TabIndex = 5;
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // pTitles
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.lblBookTitleCount);
-            this.panel3.Controls.Add(this.lblTitles);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(300, 10);
-            this.panel3.Margin = new System.Windows.Forms.Padding(13, 10, 12, 9);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(262, 150);
-            this.panel3.TabIndex = 0;
+            this.pTitles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pTitles.Controls.Add(this.button5);
+            this.pTitles.Controls.Add(this.lblBookTitleCount);
+            this.pTitles.Controls.Add(this.lblTitles);
+            this.pTitles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pTitles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pTitles.Location = new System.Drawing.Point(300, 10);
+            this.pTitles.Margin = new System.Windows.Forms.Padding(13, 10, 12, 9);
+            this.pTitles.Name = "pTitles";
+            this.pTitles.Size = new System.Drawing.Size(262, 150);
+            this.pTitles.TabIndex = 0;
+            this.pTitles.Click += new System.EventHandler(this.Control_Click);
             // 
             // button5
             // 
@@ -490,20 +501,22 @@
             this.lblTitles.Size = new System.Drawing.Size(63, 27);
             this.lblTitles.TabIndex = 3;
             this.lblTitles.Text = "Titles";
-            this.lblTitles.Click += new System.EventHandler(this.Label_Click);
+            this.lblTitles.Click += new System.EventHandler(this.Control_Click);
             // 
-            // panel14
+            // pDueTodayBooks
             // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel14.Controls.Add(this.lblBookDue);
-            this.panel14.Controls.Add(this.lblBooksDueToday);
-            this.panel14.Controls.Add(this.button6);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(587, 10);
-            this.panel14.Margin = new System.Windows.Forms.Padding(13, 10, 12, 9);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(262, 150);
-            this.panel14.TabIndex = 0;
+            this.pDueTodayBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pDueTodayBooks.Controls.Add(this.lblBookDue);
+            this.pDueTodayBooks.Controls.Add(this.lblBooksDueToday);
+            this.pDueTodayBooks.Controls.Add(this.button6);
+            this.pDueTodayBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pDueTodayBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pDueTodayBooks.Location = new System.Drawing.Point(587, 10);
+            this.pDueTodayBooks.Margin = new System.Windows.Forms.Padding(13, 10, 12, 9);
+            this.pDueTodayBooks.Name = "pDueTodayBooks";
+            this.pDueTodayBooks.Size = new System.Drawing.Size(262, 150);
+            this.pDueTodayBooks.TabIndex = 0;
+            this.pDueTodayBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookDue
             // 
@@ -528,7 +541,7 @@
             this.lblBooksDueToday.Size = new System.Drawing.Size(166, 27);
             this.lblBooksDueToday.TabIndex = 1;
             this.lblBooksDueToday.Text = "Books Due Today";
-            this.lblBooksDueToday.Click += new System.EventHandler(this.Label_Click);
+            this.lblBooksDueToday.Click += new System.EventHandler(this.Control_Click);
             // 
             // button6
             // 
@@ -546,18 +559,20 @@
             this.button6.TabIndex = 4;
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // panel16
+            // pOverdueBooks
             // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel16.Controls.Add(this.lblBookOverdueCount);
-            this.panel16.Controls.Add(this.lblBooksOverdue);
-            this.panel16.Controls.Add(this.button7);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(880, 10);
-            this.panel16.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(262, 150);
-            this.panel16.TabIndex = 0;
+            this.pOverdueBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pOverdueBooks.Controls.Add(this.lblBookOverdueCount);
+            this.pOverdueBooks.Controls.Add(this.lblOverdueBooks);
+            this.pOverdueBooks.Controls.Add(this.button7);
+            this.pOverdueBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pOverdueBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pOverdueBooks.Location = new System.Drawing.Point(880, 10);
+            this.pOverdueBooks.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
+            this.pOverdueBooks.Name = "pOverdueBooks";
+            this.pOverdueBooks.Size = new System.Drawing.Size(262, 150);
+            this.pOverdueBooks.TabIndex = 0;
+            this.pOverdueBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookOverdueCount
             // 
@@ -571,18 +586,18 @@
             this.lblBookOverdueCount.Text = "00";
             this.lblBookOverdueCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBooksOverdue
+            // lblOverdueBooks
             // 
-            this.lblBooksOverdue.AutoSize = true;
-            this.lblBooksOverdue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBooksOverdue.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBooksOverdue.ForeColor = System.Drawing.Color.White;
-            this.lblBooksOverdue.Location = new System.Drawing.Point(3, 7);
-            this.lblBooksOverdue.Name = "lblBooksOverdue";
-            this.lblBooksOverdue.Size = new System.Drawing.Size(151, 27);
-            this.lblBooksOverdue.TabIndex = 1;
-            this.lblBooksOverdue.Text = "Books Overdue";
-            this.lblBooksOverdue.Click += new System.EventHandler(this.Label_Click);
+            this.lblOverdueBooks.AutoSize = true;
+            this.lblOverdueBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblOverdueBooks.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOverdueBooks.ForeColor = System.Drawing.Color.White;
+            this.lblOverdueBooks.Location = new System.Drawing.Point(3, 7);
+            this.lblOverdueBooks.Name = "lblOverdueBooks";
+            this.lblOverdueBooks.Size = new System.Drawing.Size(151, 27);
+            this.lblOverdueBooks.TabIndex = 1;
+            this.lblOverdueBooks.Text = "Overdue Books";
+            this.lblOverdueBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // button7
             // 
@@ -600,18 +615,20 @@
             this.button7.TabIndex = 4;
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // panel5
+            // pReturnedBooks
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel5.Controls.Add(this.lblBookReturnCount);
-            this.panel5.Controls.Add(this.lblBooksReturn);
-            this.panel5.Controls.Add(this.button3);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(10, 517);
-            this.panel5.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(259, 152);
-            this.panel5.TabIndex = 0;
+            this.pReturnedBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pReturnedBooks.Controls.Add(this.lblBookReturnCount);
+            this.pReturnedBooks.Controls.Add(this.lblReturnedBooks);
+            this.pReturnedBooks.Controls.Add(this.button3);
+            this.pReturnedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pReturnedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pReturnedBooks.Location = new System.Drawing.Point(10, 517);
+            this.pReturnedBooks.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
+            this.pReturnedBooks.Name = "pReturnedBooks";
+            this.pReturnedBooks.Size = new System.Drawing.Size(259, 152);
+            this.pReturnedBooks.TabIndex = 0;
+            this.pReturnedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookReturnCount
             // 
@@ -625,18 +642,18 @@
             this.lblBookReturnCount.Text = "00";
             this.lblBookReturnCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBooksReturn
+            // lblReturnedBooks
             // 
-            this.lblBooksReturn.AutoSize = true;
-            this.lblBooksReturn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBooksReturn.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBooksReturn.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBooksReturn.Location = new System.Drawing.Point(2, 5);
-            this.lblBooksReturn.Name = "lblBooksReturn";
-            this.lblBooksReturn.Size = new System.Drawing.Size(133, 27);
-            this.lblBooksReturn.TabIndex = 3;
-            this.lblBooksReturn.Text = "Books Return";
-            this.lblBooksReturn.Click += new System.EventHandler(this.Label_Click);
+            this.lblReturnedBooks.AutoSize = true;
+            this.lblReturnedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblReturnedBooks.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReturnedBooks.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblReturnedBooks.Location = new System.Drawing.Point(2, 5);
+            this.lblReturnedBooks.Name = "lblReturnedBooks";
+            this.lblReturnedBooks.Size = new System.Drawing.Size(156, 27);
+            this.lblReturnedBooks.TabIndex = 3;
+            this.lblReturnedBooks.Text = "Returned Books";
+            this.lblReturnedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // button3
             // 
@@ -654,18 +671,20 @@
             this.button3.TabIndex = 5;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // pBorrowedBooks
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.panel4.Controls.Add(this.lblBookLoanCount);
-            this.panel4.Controls.Add(this.lblBooksLoan);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(10, 348);
-            this.panel4.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(259, 150);
-            this.panel4.TabIndex = 0;
+            this.pBorrowedBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.pBorrowedBooks.Controls.Add(this.lblBookLoanCount);
+            this.pBorrowedBooks.Controls.Add(this.lblBorrowedBooks);
+            this.pBorrowedBooks.Controls.Add(this.button2);
+            this.pBorrowedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pBorrowedBooks.Location = new System.Drawing.Point(10, 348);
+            this.pBorrowedBooks.Margin = new System.Windows.Forms.Padding(10, 10, 18, 9);
+            this.pBorrowedBooks.Name = "pBorrowedBooks";
+            this.pBorrowedBooks.Size = new System.Drawing.Size(259, 150);
+            this.pBorrowedBooks.TabIndex = 0;
+            this.pBorrowedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookLoanCount
             // 
@@ -679,18 +698,18 @@
             this.lblBookLoanCount.Text = "00";
             this.lblBookLoanCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBooksLoan
+            // lblBorrowedBooks
             // 
-            this.lblBooksLoan.AutoSize = true;
-            this.lblBooksLoan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblBooksLoan.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBooksLoan.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblBooksLoan.Location = new System.Drawing.Point(2, 5);
-            this.lblBooksLoan.Name = "lblBooksLoan";
-            this.lblBooksLoan.Size = new System.Drawing.Size(116, 27);
-            this.lblBooksLoan.TabIndex = 3;
-            this.lblBooksLoan.Text = "Books Loan";
-            this.lblBooksLoan.Click += new System.EventHandler(this.Label_Click);
+            this.lblBorrowedBooks.AutoSize = true;
+            this.lblBorrowedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblBorrowedBooks.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBorrowedBooks.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblBorrowedBooks.Location = new System.Drawing.Point(2, 5);
+            this.lblBorrowedBooks.Name = "lblBorrowedBooks";
+            this.lblBorrowedBooks.Size = new System.Drawing.Size(163, 27);
+            this.lblBorrowedBooks.TabIndex = 3;
+            this.lblBorrowedBooks.Text = "Borrowed Books";
+            this.lblBorrowedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
             // button2
             // 
@@ -719,27 +738,27 @@
             this.Text = "Dashboard";
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pStudents.ResumeLayout(false);
+            this.pStudents.PerformLayout();
+            this.pActivities.ResumeLayout(false);
+            this.pActivities.PerformLayout();
+            this.pCurrentUser.ResumeLayout(false);
+            this.pCurrentUser.PerformLayout();
+            this.pBooks.ResumeLayout(false);
+            this.pBooks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartBookBySubject)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pUptime.ResumeLayout(false);
+            this.pUptime.PerformLayout();
+            this.pTitles.ResumeLayout(false);
+            this.pTitles.PerformLayout();
+            this.pDueTodayBooks.ResumeLayout(false);
+            this.pDueTodayBooks.PerformLayout();
+            this.pOverdueBooks.ResumeLayout(false);
+            this.pOverdueBooks.PerformLayout();
+            this.pReturnedBooks.ResumeLayout(false);
+            this.pReturnedBooks.PerformLayout();
+            this.pBorrowedBooks.ResumeLayout(false);
+            this.pBorrowedBooks.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -747,20 +766,20 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pReturnedBooks;
+        private System.Windows.Forms.Panel pBorrowedBooks;
+        private System.Windows.Forms.Panel pTitles;
+        private System.Windows.Forms.Panel pBooks;
         private System.Windows.Forms.Label lblBookCount;
-        private System.Windows.Forms.Label lblBooksReturn;
-        private System.Windows.Forms.Label lblBooksLoan;
+        private System.Windows.Forms.Label lblReturnedBooks;
+        private System.Windows.Forms.Label lblBorrowedBooks;
         private System.Windows.Forms.Label lblTitles;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartBookBySubject;
-        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel pDueTodayBooks;
         private System.Windows.Forms.Label lblBooksDueToday;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Label lblBooksOverdue;
-        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel pOverdueBooks;
+        private System.Windows.Forms.Label lblOverdueBooks;
+        private System.Windows.Forms.Panel pUptime;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
@@ -777,16 +796,16 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblBookReturnCount;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel pActivities;
         private System.Windows.Forms.Label lblActivityCount;
         private System.Windows.Forms.Label lblTodayActivities;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel pCurrentUser;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblCurrentUser;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Panel pStudents;
         private System.Windows.Forms.Label lblStudentCount;
         private System.Windows.Forms.Label lblStudents;
         private System.Windows.Forms.Button button4;
