@@ -43,6 +43,14 @@
             this.flpContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.pBookDue = new System.Windows.Forms.Panel();
             this.dgvBookDue = new System.Windows.Forms.DataGridView();
+            this.borrowID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loanStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBookDue = new System.Windows.Forms.Button();
             this.pBookDueTmr = new System.Windows.Forms.Panel();
             this.dgvBookDueTmr = new System.Windows.Forms.DataGridView();
@@ -66,14 +74,6 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBookOverdue = new System.Windows.Forms.Button();
-            this.borrowID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loanStatusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateLoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpContainer.SuspendLayout();
             this.pBookDue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookDue)).BeginInit();
@@ -145,11 +145,11 @@
             this.dateDue});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookDue.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookDue.EnableHeadersVisualStyles = false;
             this.dgvBookDue.Location = new System.Drawing.Point(3, 35);
@@ -168,6 +168,70 @@
             this.dgvBookDue.Size = new System.Drawing.Size(1139, 262);
             this.dgvBookDue.TabIndex = 39;
             this.dgvBookDue.TabStop = false;
+            // 
+            // borrowID
+            // 
+            this.borrowID.DataPropertyName = "borrowID";
+            this.borrowID.HeaderText = "Borrow ID";
+            this.borrowID.Name = "borrowID";
+            this.borrowID.ReadOnly = true;
+            this.borrowID.Width = 92;
+            // 
+            // bookID
+            // 
+            this.bookID.DataPropertyName = "bookID";
+            this.bookID.HeaderText = "Book ID";
+            this.bookID.Name = "bookID";
+            this.bookID.ReadOnly = true;
+            this.bookID.Width = 77;
+            // 
+            // title
+            // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.title.DataPropertyName = "title";
+            this.title.HeaderText = "Title";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // studentID
+            // 
+            this.studentID.DataPropertyName = "studentID";
+            this.studentID.HeaderText = "Student ID";
+            this.studentID.Name = "studentID";
+            this.studentID.ReadOnly = true;
+            this.studentID.Width = 96;
+            // 
+            // fullName
+            // 
+            this.fullName.DataPropertyName = "fullName";
+            this.fullName.HeaderText = "Full Name";
+            this.fullName.Name = "fullName";
+            this.fullName.ReadOnly = true;
+            this.fullName.Width = 93;
+            // 
+            // loanStatusName
+            // 
+            this.loanStatusName.DataPropertyName = "loanStatusName";
+            this.loanStatusName.HeaderText = "Status";
+            this.loanStatusName.Name = "loanStatusName";
+            this.loanStatusName.ReadOnly = true;
+            this.loanStatusName.Width = 70;
+            // 
+            // dateLoan
+            // 
+            this.dateLoan.DataPropertyName = "dateLoan";
+            this.dateLoan.HeaderText = "Date Loan";
+            this.dateLoan.Name = "dateLoan";
+            this.dateLoan.ReadOnly = true;
+            this.dateLoan.Width = 92;
+            // 
+            // dateDue
+            // 
+            this.dateDue.DataPropertyName = "dateDue";
+            this.dateDue.HeaderText = "Date Due";
+            this.dateDue.Name = "dateDue";
+            this.dateDue.ReadOnly = true;
+            this.dateDue.Width = 86;
             // 
             // btnBookDue
             // 
@@ -235,11 +299,11 @@
             this.dataGridViewTextBoxColumn18});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookDueTmr.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvBookDueTmr.EnableHeadersVisualStyles = false;
             this.dgvBookDueTmr.Location = new System.Drawing.Point(3, 35);
@@ -389,11 +453,11 @@
             this.dataGridViewTextBoxColumn8});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBookOverdue.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvBookOverdue.EnableHeadersVisualStyles = false;
             this.dgvBookOverdue.Location = new System.Drawing.Point(3, 35);
@@ -496,70 +560,6 @@
             this.btnBookOverdue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBookOverdue.UseVisualStyleBackColor = false;
             this.btnBookOverdue.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // borrowID
-            // 
-            this.borrowID.DataPropertyName = "borrowID";
-            this.borrowID.HeaderText = "Borrow ID";
-            this.borrowID.Name = "borrowID";
-            this.borrowID.ReadOnly = true;
-            this.borrowID.Width = 92;
-            // 
-            // bookID
-            // 
-            this.bookID.DataPropertyName = "bookID";
-            this.bookID.HeaderText = "Book ID";
-            this.bookID.Name = "bookID";
-            this.bookID.ReadOnly = true;
-            this.bookID.Width = 77;
-            // 
-            // title
-            // 
-            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.title.DataPropertyName = "title";
-            this.title.HeaderText = "Title";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // studentID
-            // 
-            this.studentID.DataPropertyName = "studentID";
-            this.studentID.HeaderText = "Student ID";
-            this.studentID.Name = "studentID";
-            this.studentID.ReadOnly = true;
-            this.studentID.Width = 96;
-            // 
-            // fullName
-            // 
-            this.fullName.DataPropertyName = "fullName";
-            this.fullName.HeaderText = "Full Name";
-            this.fullName.Name = "fullName";
-            this.fullName.ReadOnly = true;
-            this.fullName.Width = 93;
-            // 
-            // loanStatusName
-            // 
-            this.loanStatusName.DataPropertyName = "loanStatusName";
-            this.loanStatusName.HeaderText = "Status";
-            this.loanStatusName.Name = "loanStatusName";
-            this.loanStatusName.ReadOnly = true;
-            this.loanStatusName.Width = 70;
-            // 
-            // dateLoan
-            // 
-            this.dateLoan.DataPropertyName = "dateLoan";
-            this.dateLoan.HeaderText = "Date Loan";
-            this.dateLoan.Name = "dateLoan";
-            this.dateLoan.ReadOnly = true;
-            this.dateLoan.Width = 92;
-            // 
-            // dateDue
-            // 
-            this.dateDue.DataPropertyName = "dateDue";
-            this.dateDue.HeaderText = "Date Due";
-            this.dateDue.Name = "dateDue";
-            this.dateDue.ReadOnly = true;
-            this.dateDue.Width = 86;
             // 
             // FrmNotification
             // 

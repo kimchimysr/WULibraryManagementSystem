@@ -255,16 +255,25 @@ namespace LibraryDBMS.Forms
                 niBookLoan.Icon = SystemIcons.Information;
                 niBookLoan.Visible = true;
                 niBookLoan.BalloonTipClicked += Notication_BalloonTipClicked;
-                niBookLoan.ShowBalloonTip(10000, "Loan Book Notification",
+                niBookLoan.ShowBalloonTip(10000, "Borrowed Books Notification",
                     $"Due Today: {book.bookDue} book(s)\nOverdue: {book.bookOverdue} book(s)",
                     ToolTipIcon.Info);
+                niBookLoan.Text = "Borrowed Books Notification";
+                niBookLoan.Click += NiBookLoan_Click;
             }
-        }
 
-        private void Notication_BalloonTipClicked(object sender, EventArgs e)
-        {
-            ActivateButton(btnBookLoanReturn);
-            OpenChildForm(new FrmBorrowBook(), pBookLoanReturn);
+            void NiBookLoan_Click(object sender, EventArgs e)
+            {
+                ActivateButton(btnNotification);
+                OpenChildForm(new FrmNotification(), pNotification);
+            }
+
+            void Notication_BalloonTipClicked(object sender, EventArgs e)
+            {
+                ActivateButton(btnNotification);
+                OpenChildForm(new FrmNotification(), pNotification);
+            }
+
         }
         #endregion
 
