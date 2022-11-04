@@ -15,18 +15,18 @@ namespace LibraryDBMS.Forms
     public partial class DialogAddEditStudent : Form
     {
         private FrmManageStudent frmManageStudent;
-        private DataTable user;
+        private DataTable student;
         private bool isEditMode;
 
         private StudentValidator sv;
 
-        public DialogAddEditStudent(FrmManageStudent frm, DataTable _user = null)
+        public DialogAddEditStudent(FrmManageStudent frm, DataTable _student = null)
         {
             InitializeComponent();
             Utils.DragFormWithControlMouseDown(this, lblHeader);
-            isEditMode = _user != null;
+            isEditMode = _student != null;
             frmManageStudent = frm;
-            user = _user;
+            student = _student;
             Utils.FillComboBox(cbYear, false, "1", "2", "3", "4");
             if (!isEditMode)
             {
@@ -37,7 +37,7 @@ namespace LibraryDBMS.Forms
             {
                 sv = new StudentValidator(null, txtFirstName, txtLastName, cbYear, txtMajor, txtTel);
                 lblHeader.Text = "Edit Student";
-                btnSaveChanges.Size = new Size(355, 56);
+                btnSaveChanges.Size = new Size(365, 56);
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
@@ -47,27 +47,28 @@ namespace LibraryDBMS.Forms
         private void PopulateFields()
         {
             // populate field using datatable user when isEditMode is true
-            txtStudentID.Text = user.Rows[0]["studentID"].ToString();
-            txtFirstName.Text = user.Rows[0]["firstName"].ToString();
-            txtLastName.Text = user.Rows[0]["lastName"].ToString();
-            if (user.Rows[0]["gender"].ToString().Equals("M"))
+            txtStudentID.Text = student.Rows[0]["studentID"].ToString();
+            txtFirstName.Text = student.Rows[0]["firstName"].ToString();
+            txtLastName.Text = student.Rows[0]["lastName"].ToString();
+            if (student.Rows[0]["gender"].ToString().Equals("M"))
                 rbMale.Checked = true;
             else rbFemale.Checked = true;
-            cbYear.SelectedItem = user.Rows[0]["year"].ToString();
-            txtMajor.Text = user.Rows[0]["major"].ToString();
-            txtTel.Text = user.Rows[0]["tel"].ToString();
+            cbYear.SelectedItem = student.Rows[0]["year"].ToString();
+            txtMajor.Text = student.Rows[0]["major"].ToString();
+            txtTel.Text = student.Rows[0]["tel"].ToString();
+            dtpDateAdded.Text = student.Rows[0]["dateAdded"].ToString();
         }
 
         private bool HasAnyChanges()
         {
             string gender = rbMale.Checked ? "M" : "F";
-            if (user.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
-                user.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
-                user.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
-                user.Rows[0]["gender"].ToString() != gender ||
-                user.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
-                user.Rows[0]["major"].ToString() != txtMajor.Text.Trim() ||
-                user.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
+            if (student.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
+                student.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
+                student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
+                student.Rows[0]["gender"].ToString() != gender ||
+                student.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
+                student.Rows[0]["major"].ToString() != txtMajor.Text.Trim() ||
+                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
                 return true;
 
             return false;
@@ -78,7 +79,7 @@ namespace LibraryDBMS.Forms
             Button btn = sender as Button;
             switch (btn.Name)
             {
-                case "btnSaveCHanges":
+                case "btnSaveChanges":
                     if (this.ValidateChildren())
                     {
                         try
@@ -90,8 +91,7 @@ namespace LibraryDBMS.Forms
                             string year = cbYear.SelectedItem.ToString().Trim();
                             string major = txtMajor.Text.Trim();
                             string telephone = txtTel.Text.Trim();
-                            string dateAdded =
-                                !isEditMode ? DateTime.Now.ToString("yyyy-MM-dd") : user.Rows[0]["dateAdded"].ToString().Trim();
+                            string dateAdded = dtpDateAdded.Text.Trim();
 
                             List<string> borrower = new List<string>
                             {
@@ -115,9 +115,9 @@ namespace LibraryDBMS.Forms
                                 {
                                     LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
                                                         "studentID", studentID, borrower, true);
+                                    frmManageStudent.PopulateDataGrid();
                                 }
                             }
-                            frmManageStudent.PopulateDataGrid();
                             this.Close();
                         }
                         catch (Exception ex)

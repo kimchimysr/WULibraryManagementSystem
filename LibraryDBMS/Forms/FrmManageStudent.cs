@@ -15,10 +15,12 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmManageStudent : Form
     {
+        private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string studentID) selected;
-        public FrmManageStudent()
+        public FrmManageStudent(FrmMainMenu _frmMainMenu)
         {
             InitializeComponent();
+            frmMainMenu = _frmMainMenu;
             InitializeValues();
         }
 
@@ -46,7 +48,9 @@ namespace LibraryDBMS.Forms
             switch (btn.Name)
             {
                 case "btnPrint":
+                    Utils.BlurEffect.Blur(frmMainMenu);
                     Utils.PrintPreviewDataGridView("Book Loan List", dgvStudentList);
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnFind":
                     try
@@ -65,7 +69,7 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
@@ -82,51 +86,53 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnAdd":
                     try
                     {
-                        Form frmAddEditUser = new DialogAddEditStudent(this);
-                        frmAddEditUser.ShowDialog();
+                        var frmAddEditUser = new DialogAddEditStudent(this);
+                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditUser, frmMainMenu);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnEdit":
                     try
                     {
-                        Form frmAddEditUser =
+                        var frmAddEditUser =
                             new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
-                        frmAddEditUser.ShowDialog();
+                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditUser, frmMainMenu);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnDelete":
                     try
                     {
+                        Utils.BlurEffect.Blur(frmMainMenu);
                         if (LibModule.DeleteRecord("tblStudents", "studentID", selected.studentID,
                             Utils.GetDataGridSelectedRowData(dgvStudentList, selected.rowIndex)) == true)
                             PopulateDataGrid();
+                        Utils.BlurEffect.UnBlur();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnView":
-                    Form frmViewDetail = new DialogViewDetail(dgvStudentList, selected.rowIndex, "Student");
-                    frmViewDetail.ShowDialog();
+                    var frmViewDetail = new DialogViewDetail(dgvStudentList, selected.rowIndex, "Student");
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmViewDetail, frmMainMenu);
                     break;
                 case "btnRefresh":
                     PopulateDataGrid();

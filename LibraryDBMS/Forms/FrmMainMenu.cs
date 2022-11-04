@@ -90,11 +90,11 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnManageBook":
                     ActivateButton(btnManageBook);
-                    OpenChildForm(new FrmManageBook(), pManageBook);
+                    OpenChildForm(new FrmManageBook(this), pManageBook);
                     break;
                 case "btnManageStudent":
                     ActivateButton(btnManageStudent);
-                    OpenChildForm(new FrmManageStudent(), pManageStudent);
+                    OpenChildForm(new FrmManageStudent(this), pManageStudent);
                     break;
                 case "btnBookLoanReturn":
                     ActivateButton(btnBookLoanReturn);
@@ -192,7 +192,7 @@ namespace LibraryDBMS.Forms
 
         private void OpenChildFormAsDialog(Form form)
         {
-            form.ShowDialog();
+            Utils.BlurEffect.ShowDialogWithBlurEffect(form, this);
         }
 
         private void SetMenuTitleIcon(Form frm)

@@ -109,14 +109,14 @@ namespace LibraryDBMS.Forms
                 case "pBooks":
                 case "pTitles":
                     frmMainMenu.ActivateButton(frmMainMenu.btnManageBook);
-                    frmMainMenu.OpenChildForm(new FrmManageBook(), frmMainMenu.pManageBook);
+                    frmMainMenu.OpenChildForm(new FrmManageBook(frmMainMenu), frmMainMenu.pManageBook);
                     break;
                 case "lblBorrowedBooks":
                 case "lblReturnedBooks":
                 case "pBorrowedBooks":
                 case "pReturnedBooks":
                     frmMainMenu.ActivateButton(frmMainMenu.btnBookLoanReturn);
-                    frmMainMenu.OpenChildForm(new FrmBorrowBook(), frmMainMenu.pBookLoanReturn);
+                    frmMainMenu.OpenChildForm(new FrmBorrowBook(frmMainMenu), frmMainMenu.pBookLoanReturn);
                     break;
                 case "lblBooksDueToday":
                 case "lblOverdueBooks":
@@ -128,7 +128,7 @@ namespace LibraryDBMS.Forms
                 case "lblStudents":
                 case "pStudents":
                     frmMainMenu.ActivateButton(frmMainMenu.btnManageStudent);
-                    frmMainMenu.OpenChildForm(new FrmManageStudent(), frmMainMenu.pManageStudent);
+                    frmMainMenu.OpenChildForm(new FrmManageStudent(frmMainMenu), frmMainMenu.pManageStudent);
                     break;
                 case "lblTodayActivities":
                 case "pActivities":
@@ -138,7 +138,7 @@ namespace LibraryDBMS.Forms
                 case "lblCurrentUser":
                 case "pCurrentUser":
                     var dialogUserAccount = new DialogUserAccount(frmMainMenu.user);
-                    dialogUserAccount.Show();
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogUserAccount, frmMainMenu);
                     break;
             }
         }
