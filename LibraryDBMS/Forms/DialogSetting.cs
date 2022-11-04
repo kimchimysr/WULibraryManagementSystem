@@ -57,7 +57,10 @@ namespace LibraryDBMS.Forms
                         us.Save();
                     DialogResult result = MessageBox.Show("Do you want to restart the application?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result == DialogResult.Yes)
+                    {
                         Application.Restart();
+                        Environment.Exit(0);
+                    }
                     break;
                 case "btnCancel":
                 case "btnClose":
