@@ -40,8 +40,8 @@ namespace LibraryDBMS.Libs
                 ("tblBookCategories", "cateID,cateName"),
                 ("tblStudents", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
-                ("tblBorrows", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                ("tblUser", "userID,username,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
+                ("tblBorrows", "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
+                ("tblUser", "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
                 ("tblUserLogs", "username,info")
             };
             int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));

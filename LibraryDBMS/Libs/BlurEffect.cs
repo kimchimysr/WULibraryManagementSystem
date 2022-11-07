@@ -16,6 +16,8 @@ namespace LibraryDBMS.Libs
 {
     public partial class Utils
     {
+        // C# - Pop up Form with Fade Background in Windows Forms Application
+        // https://youtu.be/jB8q__utFwA
         public class BlurEffect
         {
             static private FrmBlurScreen blur;
