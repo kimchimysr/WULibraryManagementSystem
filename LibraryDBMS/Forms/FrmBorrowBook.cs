@@ -18,6 +18,9 @@ namespace LibraryDBMS.Forms
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string borrowID) selected;
 
+
+        private List<int> defaultDataGridViewColumnWidth = new List<int>();
+
         public FrmBorrowBook()
         {
             InitializeComponent();
@@ -31,12 +34,34 @@ namespace LibraryDBMS.Forms
             frmMainMenu = frm;
         }
 
+        internal void getCurrentWidthOfDataGridView()
+        {
+            for(int i=0; i < dgvBorrowList.ColumnCount; i++)
+            {
+                defaultDataGridViewColumnWidth.Add(dgvBorrowList.Columns[i].Width);
+            }
+        }
+        internal void setDefaultDataGridViewColumnWidth()
+        {
+            int num = 0;
+            foreach(int width in defaultDataGridViewColumnWidth)
+            {
+                dgvBorrowList.Columns[num].Width = width;
+                num++;
+                if(num == dgvBorrowList.ColumnCount)
+                {
+                    break;
+                }
+            }
+        }   
+
         private void InitializeValues()
         {
             Utils.EnableControlDoubleBuffer(dgvBorrowList);
             Utils.FillComboBox(cbStatus, false, "Loaned", "Returned", "Lost");
             Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
             PopulateDataGrid();
+            getCurrentWidthOfDataGridView();
         }
 
         internal void PopulateDataGrid()
@@ -58,6 +83,13 @@ namespace LibraryDBMS.Forms
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            btnSearch.Enabled = false ;
+            btnPrint.Enabled = true ;
+            txtSearchValue.Clear();
+            cbSearchBy.SelectedIndex = 0;
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value= DateTime.Today;
+            setDefaultDataGridViewColumnWidth();
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -100,6 +132,17 @@ namespace LibraryDBMS.Forms
                     {
                         MessageBox.Show(ex.Message);
                     }
+                    finally
+                    {
+                        if(dgvBorrowList.RowCount == 0)
+                        {
+                            this.btnPrint.Enabled = false;
+                        }
+                        else
+                        {
+                            this.btnPrint.Enabled = true;
+                        }
+                    }
                     break;
                 case "btnRefresh":
                     cbStatus.SelectedIndex = -1;
@@ -119,6 +162,17 @@ namespace LibraryDBMS.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        if (dgvBorrowList.RowCount == 0)
+                        {
+                            this.btnPrint.Enabled = false;
+                        }
+                        else
+                        {
+                            this.btnPrint.Enabled = true;
+                        }
                     }
                     break;
                 case "btnAdd":
@@ -178,7 +232,15 @@ namespace LibraryDBMS.Forms
                         break;
                     default:
                         break;
-                } 
+                }
+                if(dgvBorrowList.RowCount == 0)
+                {
+                    this.btnPrint.Enabled = false;
+                }
+                else
+                {
+                    this.btnPrint.Enabled = true;
+                }
             }
         }
 
@@ -194,11 +256,35 @@ namespace LibraryDBMS.Forms
         {
             if (e.RowIndex > -1)
             {
+                int num = 0;
                 selected = (e.RowIndex, dgvBorrowList.Rows[e.RowIndex].Cells["borrowID"].Value.ToString());
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;
+                foreach (int width in defaultDataGridViewColumnWidth)
+                {
+                    if (num == e.ColumnIndex)
+                    {
+                        dgvBorrowList.AutoResizeColumn(e.ColumnIndex);
+                    }
+                    else
+                    {
+                        if (num == dgvBorrowList.ColumnCount) { break; }
+                    }
+                    num++;
+                    if (num == 12) { break; }
+                }
             }
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnSearch);
+        }
+
+        private void dgvBorrowList_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+
         }
     }
 }

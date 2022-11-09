@@ -20,7 +20,7 @@ namespace LibraryDBMS.Libs
         private ComboBox role;
         private TextBox tel;
         private TextBox email;
-
+        
         public UserValidator(TextBox username, TextBox fName, TextBox lName, TextBox address, 
             ComboBox role, TextBox tel, TextBox email)
         {

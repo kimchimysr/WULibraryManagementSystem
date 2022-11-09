@@ -38,11 +38,6 @@ namespace LibraryDBMS.Temp
                     frmManageBookLoanReturn.MdiParent = this;
                     frmManageBookLoanReturn.Show();
                     break;
-                case "ManageUser":
-                    var frmManageUser = new FrmManageUser();
-                    frmManageUser.MdiParent = this;
-                    frmManageUser.Show();
-                    break;
                 case "Report":
                     var frmReport = new FrmReportViewer();
                     frmReport.MdiParent = this;

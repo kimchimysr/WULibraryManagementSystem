@@ -17,8 +17,6 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmMainMenu : Form
     {
-        public static FrmLogin frmLogin;
-        public DataTable user { get; }
         public NotifyIcon niBookLoan = new NotifyIcon();
         private UserSetting us = new UserSetting();
 
@@ -31,14 +29,6 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             InitializeValues();
         }
-        public FrmMainMenu(FrmLogin frm, DataTable _user)
-        {
-            InitializeComponent();
-            frmLogin = frm;
-            user = _user;
-            ResetPasswordIfPasswordIsDefauilt();
-            InitializeValues();
-        }
 
         private void InitializeValues()
         {
@@ -46,28 +36,13 @@ namespace LibraryDBMS.Forms
             Utils.DragFormWithControlMouseDown(this, pTitleBar);
             // fix flickering
             Utils.FixControlFlickering(pContainer);
-            ConfigUserPrivilege();
+            /*ConfigUserPrivilege();*/
             // open form to start counting uptime
             OpenChildForm(new FrmDashboard(this), pDashboard);
-            AppliedUserSetting();
-            LibModule.LogTimestampUserLogin(user);
             ShowBooksDueAndOverdueNotification();
         }
 
-        private void AppliedUserSetting()
-        {
-            if (us.SetSidebarCollapsed)
-            {
-                isMenuCollapsed = true;
-                CollapseMenu();
-            }
-
-            this.WindowState = us.StartAppInFullscreen == true ? 
-                FormWindowState.Maximized : FormWindowState.Normal;
-            if (us.DefaultStartPage == "Dashboard")
-                OpenChildForm(new FrmDashboard(this), pDashboard);
-            else OpenChildForm(new FrmHome(), pHome);
-        }
+        
 
         private void Button_Click(object sender, EventArgs e)
         {
@@ -106,10 +81,6 @@ namespace LibraryDBMS.Forms
                     ActivateButton(btnReport);
                     OpenChildForm(new FrmReportViewer(), pReport);
                     break;
-                case "btnManageUser":
-                    ActivateButton(btnManageUser);
-                    OpenChildForm(new FrmManageUser(), pManageUser);
-                    break;
                 case "btnRecentActivity":
                     ActivateButton(btnRecentActivity);
                     OpenChildForm(new FrmRecentActivity(), pRecentActivity);
@@ -117,19 +88,6 @@ namespace LibraryDBMS.Forms
                 case "btnNotification":
                     ActivateButton(btnNotification);
                     OpenChildForm(new FrmNotification(), pNotification);
-                    break;
-                case "btnAccount":
-                    OpenChildFormAsDialog(new DialogUserAccount());
-                    //OpenChildFormAsDialog(new FrmUserAccount(LibModule.GetSingleRecordDB("viewUserInfo", "userID", user.username)));
-                    break;
-                case "btnLogout":
-                    DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        LibModule.LogTimestampUserLogout(user);
-                        Application.Restart();
-                    }
                     break;
                 case "btnSetting":
                     OpenChildFormAsDialog(new DialogSetting());
@@ -153,7 +111,6 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnExit":
-                    LibModule.LogTimestampUserLogout(user);
                     Application.Exit();
                     break;
             }
@@ -237,7 +194,7 @@ namespace LibraryDBMS.Forms
             btnMenuTitle.Text = $"  {frm.Text}";
         }
 
-        private void ResetPasswordIfPasswordIsDefauilt()
+        /*private void ResetPasswordIfPasswordIsDefauilt()
         {
             string userID = user.Rows[0]["userID"].ToString();
             string password = LibModule.GetUserPassword(userID);
@@ -246,14 +203,14 @@ namespace LibraryDBMS.Forms
                 var dialogResetPassword = new DialogResetPassword(user);
                 dialogResetPassword.ShowDialog();
             }
-        }
+        }*/
 
-        private void ConfigUserPrivilege()
+        /*private void ConfigUserPrivilege()
         {
             string userRole = user.Rows[0]["roleName"].ToString();
             if (userRole != "Admin")
                 btnManageUser.Visible = false;
-        }
+        }*/
 
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {

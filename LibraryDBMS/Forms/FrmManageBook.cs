@@ -1,17 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Office.Word;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -19,6 +8,7 @@ namespace LibraryDBMS.Forms
     public partial class FrmManageBook : Form
     {
         private (int rowIndex, string bookID) selected;
+        internal List<int> defaultDataGridViewColumnWidth = new List<int>(12);
         public FrmManageBook()
         {
             InitializeComponent();
@@ -30,8 +20,28 @@ namespace LibraryDBMS.Forms
             Utils.EnableControlDoubleBuffer(dgvBookList);
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
+            getCurrentDataGridColumnWidth();
             PopulateDataGridView();
         }
+        //get current datagrid column width
+        internal void getCurrentDataGridColumnWidth()
+        {
+            for (int i = 0; i < dgvBookList.Columns.Count; i++)
+            {
+                defaultDataGridViewColumnWidth.Add(dgvBookList.Columns[i].Width);
+            }
+        }
+        internal void setDefaultDataGridColumnWidth()
+        {
+            int num = 0;
+            foreach(int width in defaultDataGridViewColumnWidth)
+            {
+                dgvBookList.Columns[num].Width = width;
+                num++;
+                if (num == 12) { break; }
+            }
+        }
+
 
         internal void PopulateDataGridView()
         {
@@ -41,9 +51,16 @@ namespace LibraryDBMS.Forms
             lblTitleCount.Text = "Total Titles: " +
                     LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBook;");
             lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+            cbSearchBy.SelectedIndex = 0;
+            btnPrint.Enabled = true;
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            txtSearchValue.Clear();
+            btnFind.Enabled = false;
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value = DateTime.Today;
+            setDefaultDataGridColumnWidth();
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -84,6 +101,17 @@ namespace LibraryDBMS.Forms
                         MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
+                    finally
+                    {
+                        if (dgvBookList.RowCount == 0)
+                        {
+                            this.btnPrint.Enabled = false;
+                        }
+                        else
+                        {
+                            this.btnPrint.Enabled = true;
+                        }
+                    }
                     break;
                 case "btnFilter":
                     try
@@ -100,6 +128,17 @@ namespace LibraryDBMS.Forms
                     {
                         MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (dgvBookList.RowCount == 0)
+                        {
+                            this.btnPrint.Enabled = false;
+                        }
+                        else
+                        {
+                            this.btnPrint.Enabled = true;
+                        }
                     }
                     break;
                 case "btnAdd":
@@ -150,16 +189,34 @@ namespace LibraryDBMS.Forms
                     break;
             }
         }
-
         private void dgvBookList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
-                selected = (e.RowIndex, dgvBookList.Rows[e.RowIndex].Cells["borrowID"].Value.ToString());
+                selected = (e.RowIndex, dgvBookList.Rows[e.RowIndex].Cells["bookID"].Value.ToString());
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;
+                int num = 0;
+                foreach (int width in defaultDataGridViewColumnWidth)
+                {
+                    if(num == e.ColumnIndex)
+                    {
+                        dgvBookList.AutoResizeColumn(e.ColumnIndex);
+                    }
+                    else
+                    {
+                        dgvBookList.Columns[num].Width = width;
+                    }
+                    num++;
+                    if (num == 12) { break; }
+                }
             }
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnFind);
         }
     }
 }

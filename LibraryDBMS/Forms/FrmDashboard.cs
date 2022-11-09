@@ -127,10 +127,6 @@ namespace LibraryDBMS.Forms
                     frmMainMenu.ActivateButton(frmMainMenu.btnRecentActivity);
                     frmMainMenu.OpenChildForm(new FrmRecentActivity(), frmMainMenu.pRecentActivity);
                     break;
-                case "lblCurrentUser":
-                    var dialogUserAccount = new DialogUserAccount();
-                    dialogUserAccount.Show();
-                    break;
             }
         }
 

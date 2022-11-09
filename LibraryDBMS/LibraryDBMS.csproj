@@ -122,12 +122,6 @@
     <Compile Include="Forms\DialogAddEditStudent.Designer.cs">
       <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DialogAddEditUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DialogAddEditUser.Designer.cs">
-      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\DialogResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,12 +170,6 @@
     <Compile Include="Forms\FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +193,6 @@
     </Compile>
     <Compile Include="Forms\DialogSetting.Designer.cs">
       <DependentUpon>DialogSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DialogUserAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DialogUserAccount.Designer.cs">
-      <DependentUpon>DialogUserAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmRecentActivity.cs">
       <SubType>Form</SubType>
@@ -258,12 +240,6 @@
     </Compile>
     <Compile Include="Forms\FrmManageStudent.Designer.cs">
       <DependentUpon>FrmManageStudent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmManageUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmManageUser.Designer.cs">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Temp\FrmAsyncDataGrid.cs">
       <SubType>Form</SubType>
@@ -323,9 +299,6 @@
     <EmbeddedResource Include="Forms\DialogAddEditStudent.resx">
       <DependentUpon>DialogAddEditStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
-      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogResetPassword.resx">
       <DependentUpon>DialogResetPassword.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,9 +323,6 @@
     <EmbeddedResource Include="Forms\FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,9 +344,6 @@
     <EmbeddedResource Include="Forms\DialogSetting.resx">
       <DependentUpon>DialogSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DialogUserAccount.resx">
-      <DependentUpon>DialogUserAccount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmRecentActivity.resx">
       <DependentUpon>FrmRecentActivity.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,9 +357,6 @@
     <EmbeddedResource Include="Reports\RpUserInfo.rdlc" />
     <EmbeddedResource Include="Temp\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmManageUser.resx">
-      <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Temp\FrmAsyncDataGrid.resx">
       <DependentUpon>FrmAsyncDataGrid.cs</DependentUpon>

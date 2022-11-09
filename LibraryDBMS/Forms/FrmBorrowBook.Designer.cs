@@ -82,8 +82,6 @@
             this.dgvBorrowList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBorrowList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBorrowList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dgvBorrowList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvBorrowList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -133,6 +131,7 @@
             this.dgvBorrowList.TabIndex = 38;
             this.dgvBorrowList.TabStop = false;
             this.dgvBorrowList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowList_CellClick);
+            this.dgvBorrowList.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvBorrowList_RowsRemoved);
             // 
             // borrowID
             // 
@@ -149,6 +148,7 @@
             this.bookID.HeaderText = "Book ID";
             this.bookID.Name = "bookID";
             this.bookID.ReadOnly = true;
+            this.bookID.Width = 101;
             // 
             // title
             // 
@@ -174,6 +174,7 @@
             this.fullName.HeaderText = "Full Name";
             this.fullName.Name = "fullName";
             this.fullName.ReadOnly = true;
+            this.fullName.Width = 152;
             // 
             // loanStatusName
             // 
@@ -182,6 +183,7 @@
             this.loanStatusName.HeaderText = "Status";
             this.loanStatusName.Name = "loanStatusName";
             this.loanStatusName.ReadOnly = true;
+            this.loanStatusName.Width = 97;
             // 
             // dateLoan
             // 
@@ -190,6 +192,7 @@
             this.dateLoan.HeaderText = "Date Loan";
             this.dateLoan.Name = "dateLoan";
             this.dateLoan.ReadOnly = true;
+            this.dateLoan.Width = 118;
             // 
             // dateDue
             // 
@@ -198,6 +201,7 @@
             this.dateDue.HeaderText = "Date Due";
             this.dateDue.Name = "dateDue";
             this.dateDue.ReadOnly = true;
+            this.dateDue.Width = 98;
             // 
             // dateReturned
             // 
@@ -206,6 +210,7 @@
             this.dateReturned.HeaderText = "Date Returned";
             this.dateReturned.Name = "dateReturned";
             this.dateReturned.ReadOnly = true;
+            this.dateReturned.Width = 111;
             // 
             // overdueFine
             // 
@@ -214,6 +219,7 @@
             this.overdueFine.HeaderText = "Overdue Fine";
             this.overdueFine.Name = "overdueFine";
             this.overdueFine.ReadOnly = true;
+            this.overdueFine.Width = 98;
             // 
             // label4
             // 
@@ -328,6 +334,7 @@
             this.txtSearchValue.Name = "txtSearchValue";
             this.txtSearchValue.Size = new System.Drawing.Size(155, 26);
             this.txtSearchValue.TabIndex = 51;
+            this.txtSearchValue.TextChanged += new System.EventHandler(this.txtSearchValue_TextChanged);
             // 
             // btnFilter
             // 

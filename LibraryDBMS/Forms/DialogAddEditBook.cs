@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 namespace LibraryDBMS.Forms
@@ -21,9 +13,6 @@ namespace LibraryDBMS.Forms
         private bool isEditMode;
         private BookValidator bv;
 
-        private int cateIDFromDEWEYCode { get; set; }
-        private string DEWEYCode { get; set; }
-        private int firstThreeDigitsOfDEWEYCode { get; set; }
         #endregion
 
         #region Method We write
@@ -71,9 +60,7 @@ namespace LibraryDBMS.Forms
 
         private bool IsDuplicatedRecord()
         {
-
-
-            return true;
+            return false;
         }
 
         private void Button_Click(object sender,EventArgs e)
@@ -98,7 +85,7 @@ namespace LibraryDBMS.Forms
                             string Quantity = nudQty.Text.Trim();
                             string CategoryID = 
                                 CalculateCategoryIDFromDEWEYCode(int.Parse(txtDEWEYCode.Text.Substring(0, 3))).ToString();
-                            string DateAdded = DateTime.Now.ToString("dd-MM-yyyy");
+                            string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
                             List<string> book = new List<string>
                             {
