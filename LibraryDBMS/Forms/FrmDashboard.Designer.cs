@@ -267,9 +267,9 @@
             this.lblRole.ForeColor = System.Drawing.Color.White;
             this.lblRole.Location = new System.Drawing.Point(12, 74);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(150, 60);
+            this.lblRole.Size = new System.Drawing.Size(154, 60);
             this.lblRole.TabIndex = 4;
-            this.lblRole.Text = "Role";
+            this.lblRole.Text = "Anything";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblUsername
@@ -281,7 +281,7 @@
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(150, 60);
             this.lblUsername.TabIndex = 4;
-            this.lblUsername.Text = "Name";
+            this.lblUsername.Text = "You";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCurrentUser

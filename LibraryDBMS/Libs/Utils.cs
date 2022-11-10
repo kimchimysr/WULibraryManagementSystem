@@ -207,6 +207,34 @@ namespace LibraryDBMS.Libs
                     child.Resize += (s, e) => sizeFill();
             }
         }
+        /// <summary>
+        /// Modified Search Button by getting amount of character of the textbox with Textboxtextchanged 
+        /// Would Recomment use if when we set searchButton.Enabled = false when initializing form
+        /// When call this method, make sure you use sender for getting object from Textchanged method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="searchTextBox"></param>
+        public static void searchButtonTextChanged(object sender,Button searchButton)
+        {
+            try
+            {
+                TextBox textBox = (TextBox)sender;
+                if (textBox.Text.Length > 0)
+                {
+                    searchButton.Enabled = true;
+                }
+                else
+                {
+                    searchButton.Enabled = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+        }
         #endregion
 
         #region Tool

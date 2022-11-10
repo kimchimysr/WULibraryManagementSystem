@@ -38,6 +38,11 @@ namespace LibraryDBMS.Forms
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            btnFind.Enabled = false;
+            txtSearchValue.Clear();
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value = DateTime.Today;
+            cbSearchBy.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -143,6 +148,11 @@ namespace LibraryDBMS.Forms
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;
             }
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnFind);
         }
     }
 }
