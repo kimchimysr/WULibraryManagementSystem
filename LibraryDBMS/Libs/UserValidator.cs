@@ -55,17 +55,6 @@ namespace LibraryDBMS.Libs
                 ep.SetError(username, "Username is required!");
                 e.Cancel = true;
             }
-            else if (username.Text.Length <= 4)
-            {
-                ep.SetError(username, "Username must be longer than 4 letters!");
-                e.Cancel = true;
-            }
-            else if (LibModule.CheckIfExist("tblUser", "username", username.Text.Trim(),
-                "Username already exists!", false))
-            {
-                ep.SetError(username, "Username is already exists!");
-                e.Cancel = true;
-            }
             else
             {
                 ep.SetError(username, null);

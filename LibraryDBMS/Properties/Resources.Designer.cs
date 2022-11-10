@@ -73,6 +73,16 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap add_user_male_26px {
+            get {
+                object obj = ResourceManager.GetObject("add_user_male_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap book_78px {
             get {
                 object obj = ResourceManager.GetObject("book_78px", resourceCulture);

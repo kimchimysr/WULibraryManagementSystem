@@ -36,6 +36,12 @@ namespace LibraryDBMS.Forms
             // load splash screen
             var frmSplashScreen = new FrmSplashScreen();
             frmSplashScreen.ShowDialog();
+            // show user registration dialog if application launch for the first time
+            if (IsFirstTimeApplicationLaunch())
+            {
+                var dialogUserRegistration = new DialogUserRegistration();
+                dialogUserRegistration.ShowDialog();
+            }
             // drag form
             Utils.DragFormWithControlMouseDown(this, pTitleBar);
             // fix flickering
@@ -47,6 +53,15 @@ namespace LibraryDBMS.Forms
             AppliedUserSetting();
             LibModule.LogTimestampUserLogin(user);
             ShowBooksDueAndOverdueNotification();
+        }
+
+        private bool IsFirstTimeApplicationLaunch()
+        {
+            string query = "SELECT userID FROM tblUser;";
+            if (!string.IsNullOrEmpty(LibModule.ExecuteScalarQuery(query)))
+                return false;
+
+            return true;
         }
 
         private void AppliedUserSetting()

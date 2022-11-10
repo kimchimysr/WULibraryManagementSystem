@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using System.Data;
 using Microsoft.Reporting.WinForms;
 using LibraryDBMS.Forms;
-using System.Data.Common;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Data.Entity.Core.Common.CommandTrees;
 
 namespace LibraryDBMS.Libs
 {
@@ -36,12 +30,12 @@ namespace LibraryDBMS.Libs
         {
             List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
             {
-                ("tblBook", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
+                ("tblBooks", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 ("tblBookCategories", "cateID,cateName"),
                 ("tblStudents", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
-                ("tblBorrows", "borrowID,bookID,studentID,userID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                ("tblUser", "userID,username,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
+                ("tblBorrows", "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
+                ("tblUser", "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
                 ("tblUserLogs", "username,info")
             };
             int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));

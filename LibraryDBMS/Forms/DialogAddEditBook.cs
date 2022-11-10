@@ -20,10 +20,6 @@ namespace LibraryDBMS.Forms
         private DataTable book;
         private bool isEditMode;
         private BookValidator bv;
-
-        private int cateIDFromDEWEYCode { get; set; }
-        private string DEWEYCode { get; set; }
-        private int firstThreeDigitsOfDEWEYCode { get; set; }
         #endregion
 
         #region Method We write
@@ -39,18 +35,19 @@ namespace LibraryDBMS.Forms
         private void InitializeValues()
         {
             Utils.DragFormWithControlMouseDown(this, lblHeader);
-            bv = new BookValidator(txtISBN, txtDEWEYCode, txtTitle, txtAuthor, txtPublisher, txtYear, nudPages, nudQty);
             if (!isEditMode)
             {
                 lblHeader.Text = "New Book";
                 txtBookID.Text = LibModule.GetAutoID("tblBooks","bookID");
                 dtpDateAdded.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                bv = new BookValidator(txtISBN, txtDEWEYCode, txtTitle, txtAuthor, txtPublisher, txtYear, nudPages, nudQty);
             }
             else
             {
                 lblHeader.Text = "Edit Book";
                 PopulateFields();
                 btnClear.Visible = false;
+                bv = new BookValidator(txtISBN, txtDEWEYCode, txtTitle, txtAuthor, txtPublisher, txtYear, nudPages, null);
             }
         }
 
@@ -117,12 +114,12 @@ namespace LibraryDBMS.Forms
                             };
                             if (!isEditMode)
                             {
-                                LibModule.InsertRecord("tblBooks",LibModule.GetTableField("tblBooks"),book);
+                                LibModule.InsertRecord("tblBooks",LibModule.GetTableField("tblBooks"), book);
 
                             }
                             else
                             {
-                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"),"bookID",BookID , book,true);
+                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID , book, true);
                             }
                             frmBook.PopulateDataGridView();
                             this.Close();

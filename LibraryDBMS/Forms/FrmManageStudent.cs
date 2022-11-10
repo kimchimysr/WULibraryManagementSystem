@@ -28,6 +28,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.EnableControlDoubleBuffer(dgvStudentList);
             Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvStudentList);
             PopulateDataGrid();
         }
 
@@ -36,7 +37,7 @@ namespace LibraryDBMS.Forms
             LibModule.FillDataGrid("tblStudents", dgvStudentList, "dateAdded");
             lblCount.Text = "Total Student: " + 
                 LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;");
-            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
+            lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
@@ -57,7 +58,7 @@ namespace LibraryDBMS.Forms
                     Utils.PrintPreviewDataGridView("Book Loan List", dgvStudentList);
                     Utils.BlurEffect.UnBlur();
                     break;
-                case "btnFind":
+                case "btnSearch":
                     try
                     {
                         if (txtSearchValue.Text.Length > 0)
@@ -69,7 +70,7 @@ namespace LibraryDBMS.Forms
                                 LibModule.SearchAndFillDataGrid("tblStudents", "studentID", value, dgvStudentList);
                             else if (searchBy == "Name")
                                 LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
-                            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
+                            lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -143,6 +144,7 @@ namespace LibraryDBMS.Forms
                     PopulateDataGrid();
                     break;
             }
+            btnPrint.Enabled = dgvStudentList.RowCount > 0 ? true : false;
         }
 
         private void dgvStudentList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -158,7 +160,7 @@ namespace LibraryDBMS.Forms
 
         private void txtSearchValue_TextChanged(object sender, EventArgs e)
         {
-            Utils.searchButtonTextChanged(sender, btnFind);
+            Utils.searchButtonTextChanged(sender, btnSearch);
         }
     }
 }

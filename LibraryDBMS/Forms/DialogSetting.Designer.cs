@@ -164,6 +164,7 @@
             // tbSidebarCollapse
             // 
             this.tbSidebarCollapse.AutoSize = true;
+            this.tbSidebarCollapse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbSidebarCollapse.Location = new System.Drawing.Point(343, 144);
             this.tbSidebarCollapse.MinimumSize = new System.Drawing.Size(45, 22);
             this.tbSidebarCollapse.Name = "tbSidebarCollapse";
@@ -178,6 +179,7 @@
             // tbAutoStartup
             // 
             this.tbAutoStartup.AutoSize = true;
+            this.tbAutoStartup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbAutoStartup.Location = new System.Drawing.Point(343, 111);
             this.tbAutoStartup.MinimumSize = new System.Drawing.Size(45, 22);
             this.tbAutoStartup.Name = "tbAutoStartup";
@@ -192,6 +194,7 @@
             // tbStartInFullscreen
             // 
             this.tbStartInFullscreen.AutoSize = true;
+            this.tbStartInFullscreen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbStartInFullscreen.Location = new System.Drawing.Point(343, 77);
             this.tbStartInFullscreen.MinimumSize = new System.Drawing.Size(45, 22);
             this.tbStartInFullscreen.Name = "tbStartInFullscreen";
@@ -206,6 +209,7 @@
             // cbStartupForm
             // 
             this.cbStartupForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.cbStartupForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbStartupForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStartupForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbStartupForm.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -357,6 +361,7 @@
             // cbTable
             // 
             this.cbTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.cbTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTable.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
