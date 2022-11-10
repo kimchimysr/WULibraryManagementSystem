@@ -322,7 +322,6 @@
             this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 34;
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblHeader
             // 

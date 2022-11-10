@@ -39,10 +39,11 @@ namespace LibraryDBMS.Forms
                 case "btnSearchBookID":
                     try
                     {
-                        var dialogSelectBook = new DialogSelectBook();
-                        dialogSelectBook.ShowDialog();
-                        txtBookID.Text = dialogSelectBook.BookID;
-                        dialogSelectBook.Dispose();
+                        using (var dialogSelectBook = new DialogSelectBook())
+                        {
+                            if(dialogSelectBook.ShowDialog() == DialogResult.OK)
+                                txtBookID.Text = dialogSelectBook.BookID;
+                        }
                         txtBookID.Focus();
                     }
                     catch (Exception ex)
@@ -54,10 +55,11 @@ namespace LibraryDBMS.Forms
                 case "btnSearchStudentID":
                     try
                     {
-                        var dialogSelectStudent = new DialogSelectStudent();
-                        dialogSelectStudent.ShowDialog();
-                        txtStudentID.Text = dialogSelectStudent.StudentID;
-                        dialogSelectStudent.Dispose();
+                        using (var dialogSelectStudent = new DialogSelectStudent())
+                        {
+                            if(dialogSelectStudent.ShowDialog() == DialogResult.OK)
+                                txtStudentID.Text = dialogSelectStudent.StudentID;
+                        }
                         txtStudentID.Focus();
                     }
                     catch (Exception ex)

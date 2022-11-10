@@ -11,17 +11,18 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Office.Word;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
 {
     public partial class FrmManageBook : Form
     {
+        private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string bookID) selected;
-        public FrmManageBook()
+        public FrmManageBook(FrmMainMenu _frmMainMenu)
         {
             InitializeComponent();
+            frmMainMenu = _frmMainMenu;
             InitailizeValues();
         }
 
@@ -41,6 +42,7 @@ namespace LibraryDBMS.Forms
             lblTitleCount.Text = "Total Titles: " +
                     LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;");
             lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+            btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
         }
@@ -51,7 +53,9 @@ namespace LibraryDBMS.Forms
             switch (button.Name)
             {
                 case "btnPrint":
+                    Utils.BlurEffect.Blur(frmMainMenu);
                     Utils.PrintPreviewDataGridView("Books List", dgvBookList);
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnFind":
                     try
@@ -80,7 +84,7 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
@@ -97,52 +101,53 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnAdd":
                     try
                     {
-                        Form form = new DialogAddEditBook(this);
-                        form.ShowDialog();
+                        var dialogAddEditBook = new DialogAddEditBook(this);
+                        Utils.BlurEffect.ShowDialogWithBlurEffect(dialogAddEditBook, frmMainMenu);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
-                            $"{ex.GetType()}", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnEdit":
                     try
                     {
-                        Form frmAddEditBook =
+                        var frmAddEditBook =
                             new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
-                        frmAddEditBook.ShowDialog();
+                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditBook, frmMainMenu);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnDelete":
                     try
                     {
+                        Utils.BlurEffect.Blur(frmMainMenu);
                         if (LibModule.DeleteRecord("tblBooks", "bookID", selected.bookID,
                             Utils.GetDataGridSelectedRowData(dgvBookList, selected.rowIndex)) == true)
                             PopulateDataGridView();
+                        Utils.BlurEffect.UnBlur();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
                     break;
                 case "btnView":
-                    Form frmViewDetail = new DialogViewDetail(dgvBookList, selected.rowIndex, "Book");
-                    frmViewDetail.ShowDialog();
+                    var frmViewDetail = new DialogViewDetail(dgvBookList, selected.rowIndex, "Book");
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmViewDetail, frmMainMenu);
                     break;
                 case "btnRefresh":
                     PopulateDataGridView();

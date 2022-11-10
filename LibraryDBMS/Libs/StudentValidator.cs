@@ -48,7 +48,7 @@ namespace LibraryDBMS.Libs
                 ep.SetError(studentID, "Student ID is required!");
                 e.Cancel = true;
             }
-            else if (LibModule.CheckIfExist("tblStudent", "studentID", studentID.Text.Trim(),
+            else if (LibModule.CheckIfExist("tblStudents", "studentID", studentID.Text.Trim(),
                     "Student ID is already exists!", false))
             {
                 ep.SetError(studentID, "Student ID is already exists!");

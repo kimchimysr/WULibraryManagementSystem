@@ -57,10 +57,9 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnSelect":
                     StudentID = dgvStudentList.SelectedRows[0].Cells["studentID"].Value.ToString();
-                    this.Hide();
                     break;
                 case "btnClose":
-                    this.Hide();
+                    this.Close();
                     break;
             }
         }

@@ -39,6 +39,25 @@ namespace LibraryDBMS.Forms
             return true;
         }
 
+        private bool HasAnyChanges()
+        {
+            if (borrow.Rows[0]["loanStatusName"].ToString() != cbStatus.Text.Trim())
+                return true;
+
+            if (string.IsNullOrEmpty(borrow.Rows[0]["dateReturned"].ToString()))
+            {
+                if (borrow.Rows[0]["loanStatusName"].ToString() != cbStatus.Text.Trim())
+                    return true;
+            }
+            else
+            {
+                if (borrow.Rows[0]["dateReturned"].ToString() != dtpReturnDate.Text.Trim())
+                    return true;
+            }
+
+            return false;
+        }
+
         private void PopulateFields()
         {
             Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
@@ -91,10 +110,12 @@ namespace LibraryDBMS.Forms
                                 status,
                                 dateReturned
                             };
-
-                            LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
-                                borrowID, updateStatus, true);
-                            frmBorrowBook.PopulateDataGrid();
+                            if (HasAnyChanges())
+                            {
+                                LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
+                                    borrowID, updateStatus, true);
+                                frmBorrowBook.PopulateDataGrid();
+                            }
                             this.Close();
                         }
                         catch (Exception ex)
@@ -104,6 +125,8 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnCancel":
+                case "btnClose":
+                    this.Close();
                     break;
             }
         }
@@ -145,11 +168,6 @@ namespace LibraryDBMS.Forms
             return ndays - 2 * nsaturdays
                    - (dtStart.DayOfWeek == DayOfWeek.Sunday ? 1 : 0)
                    + (dtEnd.DayOfWeek == DayOfWeek.Saturday ? 1 : 0) - 1;
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

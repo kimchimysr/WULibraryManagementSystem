@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
-using System.Runtime.DesignerServices;
 
 namespace LibraryDBMS.Forms
 {
@@ -64,7 +63,9 @@ namespace LibraryDBMS.Forms
             switch (btn.Name)
             {
                 case "btnPrint":
+                    Utils.BlurEffect.Blur(frmMainMenu);
                     Utils.PrintPreviewDataGridView("Book Loan List", dgvBorrowList);
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":
                     try
@@ -96,7 +97,8 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnRefresh":
@@ -116,45 +118,50 @@ namespace LibraryDBMS.Forms
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnAdd":
-                    DialogIssueBook dialogIssueBook = new DialogIssueBook(this);
-                    dialogIssueBook.ShowDialog();
+                    var dialogIssueBook = new DialogIssueBook(this);
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogIssueBook, frmMainMenu);
                     CheckBookLoanNotificationChanged();
                     break;
                 case "btnEdit":
                     try
                     {
-                        Form dialogReturnBook =
+                        var dialogReturnBook =
                             new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
-                        dialogReturnBook.ShowDialog();
+                        Utils.BlurEffect.ShowDialogWithBlurEffect(dialogReturnBook, frmMainMenu);
                         CheckBookLoanNotificationChanged();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnDelete":
                     try
                     {
+                        Utils.BlurEffect.Blur(frmMainMenu);
                         if(LibModule.DeleteRecord("tblBorrows", "borrowID", selected.borrowID,
                             Utils.GetDataGridSelectedRowData(dgvBorrowList, selected.rowIndex)) == true)
                         {
                             PopulateDataGrid();
                             CheckBookLoanNotificationChanged();
                         }
+                        Utils.BlurEffect.UnBlur();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
                     break;
                 case "btnView":
-                    DialogViewDetail frmViewDetail = new DialogViewDetail(dgvBorrowList, selected.rowIndex, "Borrow Book");
-                    frmViewDetail.ShowDialog();
+                    var frmViewDetail = new DialogViewDetail(dgvBorrowList, selected.rowIndex, "Borrow Book");
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmViewDetail, frmMainMenu);
                     break;
             }
         }

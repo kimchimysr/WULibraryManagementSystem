@@ -139,6 +139,7 @@
             // 
             this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             this.btnSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSelect.FlatAppearance.BorderSize = 0;
             this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelect.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

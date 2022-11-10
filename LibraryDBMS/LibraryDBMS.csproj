@@ -26,6 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -152,6 +153,12 @@
     <Compile Include="Forms\DialogAbout.Designer.cs">
       <DependentUpon>DialogAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmBlurScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmBlurScreen.Designer.cs">
+      <DependentUpon>FrmBlurScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LibDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Libs\BlurEffect.cs" />
     <Compile Include="Libs\BookValidator.cs" />
     <Compile Include="Libs\IssueBookValidator.cs" />
     <Compile Include="Libs\NotificationToast.cs" />
@@ -268,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogSelectStudent.resx">
       <DependentUpon>DialogSelectStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmBlurScreen.resx">
+      <DependentUpon>FrmBlurScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmBorrowBook.resx">
       <DependentUpon>FrmBorrowBook.cs</DependentUpon>
