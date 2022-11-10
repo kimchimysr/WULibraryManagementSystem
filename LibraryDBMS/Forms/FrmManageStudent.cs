@@ -41,7 +41,7 @@ namespace LibraryDBMS.Forms
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
-            btnFind.Enabled = false;
+            btnSearch.Enabled = false;
             txtSearchValue.Clear();
             dtpFromDate.Value = DateTime.Today;
             dtpToDate.Value = DateTime.Today;

@@ -38,8 +38,6 @@ namespace LibraryDBMS.Forms
             if (progressBar1.Value == progressBar1.Maximum)
             {
                 timer.Stop();
-                var frmMainMenu = new FrmMainMenu();
-                frmMainMenu.ShowDialog();
                 this.Close();
             }
             else progressBar1.Value += 2;
