@@ -15,7 +15,6 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using File = System.IO.File;
 
@@ -207,6 +206,75 @@ namespace LibraryDBMS.Libs
                     child.Resize += (s, e) => sizeFill();
             }
         }
+
+        /// <summary>
+        /// Modified Search Button by getting amount of character of the textbox with Textboxtextchanged 
+        /// Would Recomment use if when we set searchButton.Enabled = false when initializing form
+        /// When call this method, make sure you use sender for getting object from Textchanged method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="searchTextBox"></param>
+        public static void searchButtonTextChanged(object sender, Button searchButton)
+        {
+            try
+            {
+                TextBox textBox = (TextBox)sender;
+                if (textBox.Text.Length > 0)
+                {
+                    searchButton.Enabled = true;
+                }
+                else
+                {
+                    searchButton.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
+        }
+
+        public static void AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(DataGridView dgv)
+        {
+            dgv.DataBindingComplete += Dgv_DataBindingComplete;
+            dgv.Resize += Dgv_Resize;
+
+            void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+            {
+                AutoSizeColumns();
+            }
+
+            void Dgv_Resize(object sender, EventArgs e)
+            {
+                AutoSizeColumns();
+            }
+
+            void AutoSizeColumns()
+            {
+                dgv.SuspendLayout();
+                // set all columns auto size to fit contents
+                foreach (DataGridViewColumn column in dgv.Columns)
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                int columnsWidth = dgv.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + dgv.RowHeadersWidth;
+
+                // if all columns combined width less than dgv width, then set autosizemode to fill for every columns
+                if (columnsWidth < dgv.Width)
+                {
+                    foreach (DataGridViewColumn column in dgv.Columns)
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                    // make sure that every columns show all of contents
+                    for (int i = 0; dgv.Columns.Count > i; i++)
+                    {
+                        dgv.AutoResizeColumn(i);
+                    }
+                }
+                dgv.ResumeLayout();
+            }
+        }
+
         #endregion
 
         #region Tool

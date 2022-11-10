@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 
@@ -34,6 +27,7 @@ namespace LibraryDBMS.Forms
             Utils.EnableControlDoubleBuffer(dgvBorrowList);
             Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
             Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBorrowList);
             PopulateDataGrid();
         }
 
@@ -51,10 +45,14 @@ namespace LibraryDBMS.Forms
             (string due, string overdue) book = LibModule.GetLoanBookDueAndOverdue();
             lblBookDueCount.Text = "Book Due: " + book.due;
             lblBookOverdueCount.Text = "Book Overdue: " + book.overdue;
-            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
+            lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            txtSearchValue.Clear();
+            btnSearch.Enabled = false;
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value = DateTime.Today;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -92,7 +90,7 @@ namespace LibraryDBMS.Forms
                                     LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "fullName", value, dgvBorrowList);
                                     break;
                             }
-                            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
+                            lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -164,6 +162,7 @@ namespace LibraryDBMS.Forms
                     Utils.BlurEffect.ShowDialogWithBlurEffect(frmViewDetail, frmMainMenu);
                     break;
             }
+            btnPrint.Enabled = dgvBorrowList.RowCount > 0 ? true : false;
         }
 
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,6 +204,11 @@ namespace LibraryDBMS.Forms
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;
             }
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnSearch);
         }
     }
 }

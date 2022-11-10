@@ -31,6 +31,7 @@ namespace LibraryDBMS.Forms
             Utils.EnableControlDoubleBuffer(dgvBookList);
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);
             PopulateDataGridView();
         }
 
@@ -41,10 +42,14 @@ namespace LibraryDBMS.Forms
                     LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBooks;");
             lblTitleCount.Text = "Total Titles: " +
                     LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;");
-            lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+            lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            txtSearchValue.Clear();
+            btnSearch.Enabled = false;
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value = DateTime.Today;
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace LibraryDBMS.Forms
                     Utils.PrintPreviewDataGridView("Books List", dgvBookList);
                     Utils.BlurEffect.UnBlur();
                     break;
-                case "btnFind":
+                case "btnSearch":
                     try
                     {
                         if (txtSearchValue.Text.Length > 0)
@@ -79,7 +84,7 @@ namespace LibraryDBMS.Forms
                                 LibModule.SearchAndFillDataGrid("viewBooks", "publisher", value, dgvBookList);
                             else if (searchBy == "Publish Year")
                                 LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList);
-                            lblRowsCount.Text = $"Total Result: {dgvBookList.Rows.Count}";
+                            lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -153,6 +158,7 @@ namespace LibraryDBMS.Forms
                     PopulateDataGridView();
                     break;
             }
+            btnPrint.Enabled = dgvBookList.Rows.Count > 0 ? true : false;
         }
 
         private void dgvBookList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -164,6 +170,11 @@ namespace LibraryDBMS.Forms
                 btnDelete.Enabled = true;
                 btnView.Enabled = true;
             }
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnSearch);
         }
     }
 }

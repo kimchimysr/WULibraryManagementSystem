@@ -41,7 +41,8 @@ namespace LibraryDBMS.Libs
             this.publishYear.Validating += PublishYear_Validating;
             this.publishYear.KeyPress += PublishYear_KeyPress;
             this.pages.Validating += Pages_Validating;
-            this.quantity.Validating += Quantity_Validating;
+            if(quantity != null)
+                this.quantity.Validating += Quantity_Validating;
         }
 
         private void PublishYear_KeyPress(object sender, KeyPressEventArgs e)
