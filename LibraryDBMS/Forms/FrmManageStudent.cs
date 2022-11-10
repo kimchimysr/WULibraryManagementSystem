@@ -41,10 +41,11 @@ namespace LibraryDBMS.Forms
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnView.Enabled = false;
+            btnFind.Enabled = false;
             txtSearchValue.Clear();
-            btnSearch.Enabled = false;
             dtpFromDate.Value = DateTime.Today;
             dtpToDate.Value = DateTime.Today;
+            cbSearchBy.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, EventArgs e)

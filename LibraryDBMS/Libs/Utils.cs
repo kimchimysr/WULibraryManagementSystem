@@ -206,7 +206,7 @@ namespace LibraryDBMS.Libs
                     child.Resize += (s, e) => sizeFill();
             }
         }
-
+        
         /// <summary>
         /// Modified Search Button by getting amount of character of the textbox with Textboxtextchanged 
         /// Would Recomment use if when we set searchButton.Enabled = false when initializing form
@@ -215,6 +215,7 @@ namespace LibraryDBMS.Libs
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="searchTextBox"></param>
+
         public static void searchButtonTextChanged(object sender, Button searchButton)
         {
             try
@@ -229,6 +230,7 @@ namespace LibraryDBMS.Libs
                     searchButton.Enabled = false;
                 }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
@@ -274,7 +276,6 @@ namespace LibraryDBMS.Libs
                 dgv.ResumeLayout();
             }
         }
-
         #endregion
 
         #region Tool

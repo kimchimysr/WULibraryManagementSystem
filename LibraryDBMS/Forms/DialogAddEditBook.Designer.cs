@@ -390,11 +390,6 @@
             this.nudQty.Name = "nudQty";
             this.nudQty.Size = new System.Drawing.Size(161, 26);
             this.nudQty.TabIndex = 48;
-            this.nudQty.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // nudPages
             // 
@@ -413,11 +408,6 @@
             this.nudPages.Name = "nudPages";
             this.nudPages.Size = new System.Drawing.Size(161, 26);
             this.nudPages.TabIndex = 49;
-            this.nudPages.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // DialogAddEditBook
             // 
