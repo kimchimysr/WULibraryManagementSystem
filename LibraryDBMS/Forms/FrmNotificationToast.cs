@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryDBMS.Libs;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,6 +11,7 @@ namespace LibraryDBMS.Forms
         public FrmNotificationToast(string condition, string message)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             SetTypeOfNotification(condition, message);
             InitializeValues();
         }

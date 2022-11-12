@@ -1,6 +1,5 @@
 ﻿using LibraryDBMS.Libs;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -12,6 +11,7 @@ namespace LibraryDBMS.Forms
         public DialogSelectBook()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.FixControlFlickering(this);
             PopulateDataGrid();

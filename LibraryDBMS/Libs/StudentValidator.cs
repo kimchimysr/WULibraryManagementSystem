@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace LibraryDBMS.Libs
 {
@@ -48,8 +43,7 @@ namespace LibraryDBMS.Libs
                 ep.SetError(studentID, "Student ID is required!");
                 e.Cancel = true;
             }
-            else if (LibModule.CheckIfExist("tblStudents", "studentID", studentID.Text.Trim(),
-                    "Student ID is already exists!", false))
+            else if (LibModule.CheckIfExist("tblStudents", "studentID", studentID.Text.Trim(), false))
             {
                 ep.SetError(studentID, "Student ID is already exists!");
                 e.Cancel = true;

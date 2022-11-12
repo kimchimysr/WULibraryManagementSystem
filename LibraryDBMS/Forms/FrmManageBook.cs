@@ -1,15 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 
@@ -22,6 +11,7 @@ namespace LibraryDBMS.Forms
         public FrmManageBook(FrmMainMenu _frmMainMenu)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             frmMainMenu = _frmMainMenu;
             InitailizeValues();
         }
@@ -71,7 +61,7 @@ namespace LibraryDBMS.Forms
                             string value = txtSearchValue.Text.ToString().Trim();
 
                             if (searchBy == "Book ID")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "bookID", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "bookID", value, dgvBookList, false);
                             else if (searchBy == "ISBN")
                                 LibModule.SearchAndFillDataGrid("viewBooks", "isbn", value, dgvBookList);
                             else if (searchBy == "DEWEY")
@@ -83,7 +73,7 @@ namespace LibraryDBMS.Forms
                             else if (searchBy == "Publisher")
                                 LibModule.SearchAndFillDataGrid("viewBooks", "publisher", value, dgvBookList);
                             else if (searchBy == "Publish Year")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList);
+                                LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList, false);
                             lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
                         }
                     }

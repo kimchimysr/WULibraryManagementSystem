@@ -9,6 +9,7 @@ namespace LibraryDBMS.Forms
         public FrmNotification()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.AutoSizeChildrenInFlowLayoutPanel(flpContainer);
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookDue);
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookDueTmr);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryDBMS.Libs;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace LibraryDBMS.Forms
         public FrmBlurScreen(FrmMainMenu mainMenu)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Normal;
             StartPosition = FormStartPosition.Manual;

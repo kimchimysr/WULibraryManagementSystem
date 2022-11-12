@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
 using LibraryDBMS.Libs;
 using LibraryDBMS.Setting;
-using System.Data.SQLite;
 
 namespace LibraryDBMS.Forms
 {
@@ -28,6 +20,7 @@ namespace LibraryDBMS.Forms
         public FrmMainMenu()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             InitializeValues();
         }
 
@@ -171,6 +164,7 @@ namespace LibraryDBMS.Forms
         {
             btnHomeCollapsed.Visible = isMenuCollapsed == true;
             btnHome.Visible = isMenuCollapsed != true;
+            pHomeBorder.Visible = isMenuCollapsed != true;
             pSidebar.Width = isMenuCollapsed == true ?
                 pSidebar.MinimumSize.Width : pSidebar.MaximumSize.Width;
         }

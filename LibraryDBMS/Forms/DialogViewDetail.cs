@@ -1,12 +1,7 @@
 ﻿using LibraryDBMS.Libs;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -23,6 +18,7 @@ namespace LibraryDBMS.Forms
         public DialogViewDetail(DataGridView _dgv, int _rowIndex, string title)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             dgv = _dgv;
             rowIndex = _rowIndex;

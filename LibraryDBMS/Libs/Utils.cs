@@ -14,7 +14,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using File = System.IO.File;
 
@@ -51,42 +50,6 @@ namespace LibraryDBMS.Libs
         #endregion
 
         #region Controls Related
-        public static bool IsEmptyControl(Form form)
-        {
-            foreach (Control ctrl in form.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
-            {
-                if (ctrl is TextBox)
-                {
-                    if (ctrl.TabIndex != 0) //Optional TextBox
-                        if (string.IsNullOrEmpty(ctrl.Text.Trim()))
-                        {
-                            MessageBox.Show("Empty TextBox field(s)!", "Empty Field",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return true;
-                        }
-                }
-                if (ctrl is ComboBox)
-                {
-                    if (string.IsNullOrEmpty(ctrl.Text))
-                    {
-                        MessageBox.Show("Please select items in ComboBox(s)!", "Empty ComboBox",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return true;
-                    }
-                }
-                if (ctrl is NumericUpDown)
-                {
-                    if (string.IsNullOrEmpty(ctrl.Text))
-                    {
-                        MessageBox.Show("Empty NumericUpDown field(s)!", "Empty NumericUpDown",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         public static bool DoClearControl(Form frm, bool textboxCond, bool labelCond, bool comboboxCond,
                                     bool numCond, bool dtpCond, params string[] controlname)
         {
@@ -309,8 +272,35 @@ namespace LibraryDBMS.Libs
 
         // Printing of DataGridView
         // https://www.codeproject.com/Articles/28046/Printing-of-DataGridView
-        public static void PrintPreviewDataGridView(string title, DataGridView dgv)
+        public static void PrintPreviewDataGridView(string title, DataGridView dgvo)
         {
+            // clone main dgv to new dgv
+            DataGridView dgv = new DataGridView();
+            if (dgv.Columns.Count == 0)
+            {
+                foreach (DataGridViewColumn col in dgvo.Columns)
+                    dgv.Columns.Add(col.Clone() as DataGridViewColumn);
+            }
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < dgvo.Rows.Count; i++)
+            {
+                dr = (DataGridViewRow)dgvo.Rows[i].Clone();
+                int index = 0;
+                foreach (DataGridViewCell cell in dgvo.Rows[i].Cells)
+                {
+                    dr.Cells[index].Value = cell.Value;
+                    index++;
+                }
+                dgv.Rows.Add(dr);
+            }
+            dgv.AllowUserToAddRows = false;
+            dgv.Font = new Font("Calibri",10, FontStyle.Regular);
+            // Wrap contents
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            foreach (DataGridViewColumn col in dgv.Columns)
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             StringFormat strFormat = new StringFormat(); ; //Used to format the grid rows.
             ArrayList arrColumnLefts = new ArrayList();//Used to save left coordinates of columns
             ArrayList arrColumnWidths = new ArrayList();//Used to save column widths
@@ -357,13 +347,12 @@ namespace LibraryDBMS.Libs
                 try
                 {
                     //Set the left margin
-                    int iLeftMargin = e.MarginBounds.Left;
+                    int iLeftMargin = 25;//e.MarginBounds.Left;
                     //Set the top margin
-                    int iTopMargin = e.MarginBounds.Top;
+                    int iTopMargin = 50;//e.MarginBounds.Top;
                     //Whether more pages have to print or not
                     bool bMorePagesToPrint = false;
                     int iTmpWidth = 0;
-
                     //For the first page to print set the cell width and header height
                     if (bFirstPage)
                     {
@@ -371,7 +360,7 @@ namespace LibraryDBMS.Libs
                         {
                             iTmpWidth = (int)(Math.Floor((double)((double)GridCol.Width /
                                            (double)iTotalWidth * (double)iTotalWidth *
-                                           ((double)e.MarginBounds.Width / (double)iTotalWidth))));
+                                           (((double)e.MarginBounds.Width + 150) / (double)iTotalWidth))));
 
                             iHeaderHeight = (int)(e.Graphics.MeasureString(GridCol.HeaderText,
                                         GridCol.InheritedStyle.Font, iTmpWidth).Height) + 11;
@@ -387,7 +376,7 @@ namespace LibraryDBMS.Libs
                     {
                         DataGridViewRow GridRow = dgv.Rows[iRow];
                         //Set the cell height
-                        iCellHeight = GridRow.Height + 5;
+                        iCellHeight = GridRow.Height + 20;
                         int iCount = 0;
                         //Check whether the current page settings allo more rows to print
                         if (iTopMargin + iCellHeight >= e.MarginBounds.Height + e.MarginBounds.Top)
@@ -403,7 +392,7 @@ namespace LibraryDBMS.Libs
                             {
                                 //Draw Header
                                 e.Graphics.DrawString(title, new Font(dgv.Font, FontStyle.Bold),
-                                        Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
+                                        Brushes.Black, e.MarginBounds.Left, iTopMargin -
                                         e.Graphics.MeasureString(title, new Font(dgv.Font,
                                         FontStyle.Bold), e.MarginBounds.Width).Height - 13);
 
@@ -412,12 +401,12 @@ namespace LibraryDBMS.Libs
                                 e.Graphics.DrawString(strDate, new Font(dgv.Font, FontStyle.Bold),
                                         Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
                                         e.Graphics.MeasureString(strDate, new Font(dgv.Font,
-                                        FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top -
+                                        FontStyle.Bold), e.MarginBounds.Width).Width), iTopMargin -
                                         e.Graphics.MeasureString(title, new Font(new Font(dgv.Font,
                                         FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height - 13);
 
                                 //Draw Columns                 
-                                iTopMargin = e.MarginBounds.Top;
+                                iTopMargin = 50;//e.MarginBounds.Top;
                                 foreach (DataGridViewColumn GridCol in dgv.Columns)
                                 {
                                     e.Graphics.FillRectangle(new SolidBrush(Color.LightGray),
@@ -458,6 +447,11 @@ namespace LibraryDBMS.Libs
                         iRow++;
                         iTopMargin += iCellHeight;
                     }
+                    //Draw Footer
+                    e.Graphics.DrawString("Western University", new Font(dgv.Font, FontStyle.Regular),
+                            Brushes.Black, e.MarginBounds.Left, iTopMargin -
+                            e.Graphics.MeasureString("Western University", new Font(dgv.Font,
+                            FontStyle.Bold), e.MarginBounds.Width).Height + 40);
 
                     //If more lines exist, print another page.
                     if (bMorePagesToPrint)
@@ -723,12 +717,9 @@ namespace LibraryDBMS.Libs
         #endregion
 
         #region Form Related
-        public static bool FormIsOpen(string form)
+        public static void SetFormIcon(Form frm)
         {
-            // check if window has already open
-            var OpenForms = Application.OpenForms.Cast<Form>();
-
-            return OpenForms.Any(x => x.Name == form);
+            frm.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         public static void DragFormWithControlMouseDown(Form frm, Control ctrl)

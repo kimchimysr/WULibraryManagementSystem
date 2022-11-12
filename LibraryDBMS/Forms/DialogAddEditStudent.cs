@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClosedXML.Excel;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -23,6 +18,7 @@ namespace LibraryDBMS.Forms
         public DialogAddEditStudent(FrmManageStudent frm, DataTable _student = null)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             isEditMode = _student != null;
             frmManageStudent = frm;

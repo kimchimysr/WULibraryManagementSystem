@@ -1,13 +1,6 @@
 ﻿using LibraryDBMS.Libs;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -21,12 +14,13 @@ namespace LibraryDBMS.Forms
             "Loading assets...",
             "Connecting to SQLite database...",
             "Fetching data from database...",
-            "All done...",
-            "Starting Library Management System..."
+            "Starting Library Management System...",
+            "All done..."
         };
         public FrmSplashScreen()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.FixControlFlickering(panel1);
             timer.Interval = 60;
             timer.Tick += Timer_Tick;

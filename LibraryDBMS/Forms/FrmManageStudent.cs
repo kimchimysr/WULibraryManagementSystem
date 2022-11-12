@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 
@@ -20,6 +11,7 @@ namespace LibraryDBMS.Forms
         public FrmManageStudent(FrmMainMenu _frmMainMenu)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             frmMainMenu = _frmMainMenu;
             InitializeValues();
         }

@@ -18,6 +18,7 @@ namespace LibraryDBMS.Forms
         public FrmBorrowBook(FrmMainMenu frm)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             InitializeValues();
             frmMainMenu = frm;
         }

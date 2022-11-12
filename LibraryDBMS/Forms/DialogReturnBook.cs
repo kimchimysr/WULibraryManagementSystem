@@ -1,15 +1,7 @@
-﻿using LibraryDBMS.Forms;
-using LibraryDBMS.Libs;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
+﻿using LibraryDBMS.Libs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -21,6 +13,7 @@ namespace LibraryDBMS.Forms
         public DialogReturnBook(FrmBorrowBook frm, DataTable _borrow)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             frmBorrowBook = frm;
             borrow = _borrow;

@@ -19,6 +19,7 @@ namespace LibraryDBMS.Forms
         public DialogSelectStudent()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.FixControlFlickering(this);
             PopulateDataGrid();

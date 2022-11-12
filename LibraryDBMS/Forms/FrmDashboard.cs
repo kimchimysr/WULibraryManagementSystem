@@ -1,13 +1,8 @@
 ﻿using LibraryDBMS.Libs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -23,6 +18,7 @@ namespace LibraryDBMS.Forms
         public FrmDashboard(FrmMainMenu frm)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             startTime = DateTime.Now;
             upTime.Tick += UpTime_Tick;
             upTime.Start();

@@ -1,12 +1,6 @@
 ﻿using LibraryDBMS.Libs;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -17,6 +11,7 @@ namespace LibraryDBMS.Forms
         public DialogDeleteRecord(string _record)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             record = _record;
             lblText.Text = record;

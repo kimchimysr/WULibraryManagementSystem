@@ -377,32 +377,6 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static void FillComboBox(string tableName, ComboBox comboBox, string displayMember, string valueMember)
-        {
-            try
-            {
-                Conn.Open();
-                Cmd = new SQLiteCommand($"SELECT * FROM {tableName}", Conn);
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                comboBox.DisplayMember = displayMember;
-                comboBox.ValueMember = valueMember;
-                comboBox.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
-            finally
-            {
-                if (Cmd != null)
-                    Cmd.Dispose();
-                if (Conn != null)
-                    Conn.Close();
-            }
-        }
-
         public static void FillReportViewer(string tableName, ReportViewer rpv, string rpPath,
                     string rpDataSet, Dictionary<string,string> parameters = null)
         {
@@ -444,11 +418,13 @@ namespace LibraryDBMS.Libs
 
         #region Search
         public static void SearchAndFillDataGrid(string tableName, string conditionField, string conditionValue,
-            DataGridView dgv)
+            DataGridView dgv, bool useWildcard = true)
         {
-                string query = $"SELECT * FROM {tableName} " +
+                string query = useWildcard == true ? $"SELECT * FROM {tableName} " +
                         $"WHERE {conditionField}='{conditionValue}' " +
-                        $"OR {conditionField} LIKE '%{conditionValue}%' ";
+                        $"OR {conditionField} LIKE '{conditionValue}%' " :
+                        $"SELECT * FROM {tableName} " +
+                        $"WHERE {conditionField}='{conditionValue}' ";
             try
             {
                 Conn.Open();
@@ -478,9 +454,7 @@ namespace LibraryDBMS.Libs
             DataGridView dgv)
         {
             string query = $"SELECT * FROM {tableName} " +
-                    $"WHERE firstName='{conditionValue}' " +
-                    $"OR lastName LIKE '%{conditionValue}%' " +
-                    $"OR firstName || lastName LIKE '%{conditionValue}%'" +
+                    $"WHERE firstName || lastName LIKE '%{conditionValue}%'" +
                     $"OR firstName || ' ' || lastName LIKE '%{conditionValue}%'";
             try
             {
@@ -550,50 +524,6 @@ namespace LibraryDBMS.Libs
                 dgv.AutoGenerateColumns = false;
                 dgv.DataSource = dt;
                 dgv.ClearSelection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
-                    $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (Cmd != null)
-                    Cmd.Dispose();
-                if (Conn != null)
-                    Conn.Close();
-            }
-        }
-
-        public static void SearchAndDisplayLabel(string tableName, string fieldNames, string conditionField,
-            string conditionValue, Label disLabel)
-        {
-            try
-            {
-                disLabel.Text = string.Empty;
-                List<string> fields = new List<string>();
-                fields.AddRange(fieldNames.Split(','));
-                StringBuilder selectFields = new StringBuilder();
-                foreach (string field in fields)
-                {
-                    if (field == fields.Last())
-                        selectFields.Append($"{field}");
-                    else selectFields.Append($"{field},");
-                }
-                Conn.Open();
-                string query = $"Select {selectFields} From {tableName} Where {conditionField}='{conditionValue}';";
-                Cmd = new SQLiteCommand(query, Conn);
-                using (SQLiteDataReader reader = Cmd.ExecuteReader(CommandBehavior.SingleRow))
-                {
-                    if (reader.HasRows)
-                        while (reader.Read())
-                        {
-                            if(fields.Count > 1)
-                                disLabel.Text = reader[fields[0]].ToString()+" "+ reader[fields[1]].ToString();
-                            else disLabel.Text = reader[fields[0]].ToString();
-                        }
-                    else disLabel.Text = null;
-                }
             }
             catch (Exception ex)
             {
@@ -700,7 +630,7 @@ namespace LibraryDBMS.Libs
         }
 
         public static bool CheckIfExist(string tableName, string fieldName, string checkDuplicateValue,
-                string fieldMessage, bool showMessage = true)
+            bool showMessage = true)
         {
             bool duplicate = false;
             string query = $"SELECT {fieldName} FROM {tableName};";
@@ -736,7 +666,7 @@ namespace LibraryDBMS.Libs
                 if (Conn != null)
                     Conn.Close();
                 if (showMessage == true && duplicate == true)
-                    MessageBox.Show(fieldMessage, $"Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Record already exists!", $"Duplicate Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return duplicate;
         }

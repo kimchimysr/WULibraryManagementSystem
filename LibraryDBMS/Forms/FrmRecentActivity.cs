@@ -1,12 +1,5 @@
 ﻿using LibraryDBMS.Libs;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -16,6 +9,7 @@ namespace LibraryDBMS.Forms
         public FrmRecentActivity()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             Utils.EnableControlDoubleBuffer(dgvlogList);
             Utils.FillComboBox(cbDay, true, "All", "Today", "Yesterday", "Older");
             lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";

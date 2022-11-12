@@ -11,12 +11,11 @@ namespace LibraryDBMS.Forms
         public DialogUserAccount()
         {
             InitializeComponent();
-            Utils.DragFormWithControlMouseDown(this, lblHeader);
-            Utils.FixControlFlickering(this);
         }
         public DialogUserAccount(DataTable _user)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             user = _user;
             InitializeValues();
         }
@@ -25,6 +24,7 @@ namespace LibraryDBMS.Forms
         {
             SuspendLayout();
             Utils.DragFormWithControlMouseDown(this, lblHeader);
+            Utils.FixControlFlickering(this);
             PopulateFields();
             ResumeLayout();
         }

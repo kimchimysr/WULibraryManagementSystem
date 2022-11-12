@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pStudents = new System.Windows.Forms.Panel();
@@ -248,9 +248,9 @@
             // 
             this.pCurrentUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pCurrentUser.Controls.Add(this.lblRole);
-            this.pCurrentUser.Controls.Add(this.lblUsername);
             this.pCurrentUser.Controls.Add(this.lblCurrentUser);
             this.pCurrentUser.Controls.Add(this.button9);
+            this.pCurrentUser.Controls.Add(this.lblUsername);
             this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pCurrentUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pCurrentUser.Location = new System.Drawing.Point(880, 348);
@@ -263,7 +263,7 @@
             // lblRole
             // 
             this.lblRole.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblRole.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRole.ForeColor = System.Drawing.Color.White;
             this.lblRole.Location = new System.Drawing.Point(12, 74);
             this.lblRole.Name = "lblRole";
@@ -275,11 +275,11 @@
             // lblUsername
             // 
             this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.ForeColor = System.Drawing.Color.White;
             this.lblUsername.Location = new System.Drawing.Point(12, 32);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(150, 60);
+            this.lblUsername.Size = new System.Drawing.Size(247, 60);
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "You";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -371,28 +371,28 @@
             // 
             // chartBookBySubject
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartBookBySubject.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chartBookBySubject.ChartAreas.Add(chartArea1);
             this.tableLayoutPanel1.SetColumnSpan(this.chartBookBySubject, 2);
             this.chartBookBySubject.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartBookBySubject.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chartBookBySubject.Legends.Add(legend1);
             this.chartBookBySubject.Location = new System.Drawing.Point(302, 179);
             this.chartBookBySubject.Margin = new System.Windows.Forms.Padding(15, 10, 14, 11);
             this.chartBookBySubject.Name = "chartBookBySubject";
             this.tableLayoutPanel1.SetRowSpan(this.chartBookBySubject, 3);
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartBookBySubject.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartBookBySubject.Series.Add(series1);
             this.chartBookBySubject.Size = new System.Drawing.Size(545, 488);
             this.chartBookBySubject.TabIndex = 1;
             this.chartBookBySubject.Text = "chart1";
-            title2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "Title1";
-            title2.Text = "Books Count by Subject";
-            this.chartBookBySubject.Titles.Add(title2);
+            title1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Books Count by Subject";
+            this.chartBookBySubject.Titles.Add(title1);
             // 
             // pUptime
             // 

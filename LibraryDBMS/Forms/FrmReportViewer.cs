@@ -1,16 +1,10 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 using LibraryDBMS.Forms;
-using System.Drawing.Printing;
 
 namespace LibraryDBMS
 {
@@ -22,16 +16,10 @@ namespace LibraryDBMS
         public FrmReportViewer()
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             overview = LibModule.GetDataTableFromDB("viewOverview");
             Utils.FillComboBox(cbReportsList, false, 
                 "All Students", "All Books", "All Borrowed Books", "All Users", "Overview");
-        }
-
-        public FrmReportViewer(FrmMainMenu frm, string tableName, string rpPath, string rpDataSet)
-        {
-            InitializeComponent();
-            frmMainMenu = frm;
-            LibModule.FillReportViewer(tableName, reportViewer1, rpPath, rpDataSet);
         }
 
         private void FrmReportViewer_Load(object sender, EventArgs e)

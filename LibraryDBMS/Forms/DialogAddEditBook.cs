@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 namespace LibraryDBMS.Forms
@@ -26,6 +18,7 @@ namespace LibraryDBMS.Forms
         public DialogAddEditBook(FrmManageBook formOpenFromFrmBook,DataTable dataTableUser = null)
         {
             InitializeComponent();
+            Utils.SetFormIcon(this);
             isEditMode = dataTableUser != null;
             frmBook = formOpenFromFrmBook; 
             book = dataTableUser;
@@ -68,7 +61,14 @@ namespace LibraryDBMS.Forms
 
         private bool IsDuplicatedRecord()
         {
-            
+            string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,pages,other FROM tblBooks " +
+                $"WHERE isbn='{txtISBN.Text.Trim()}' AND dewey='{txtDEWEYCode.Text.Trim()}' " +
+                $"AND title='{txtTitle.Text.Trim()}' AND author='{txtAuthor.Text.Trim()}' " +
+                $"AND publisher='{txtPublisher.Text.Trim()}' AND publishYear='{txtYear.Text.Trim()}' " +
+                $"AND pages='{nudPages.Text}' AND other='{txtOthers.Text.Trim()}';";
+
+            if (!string.IsNullOrEmpty(LibModule.ExecuteScalarQuery(query)))
+                return true;
 
             return false;
         }
