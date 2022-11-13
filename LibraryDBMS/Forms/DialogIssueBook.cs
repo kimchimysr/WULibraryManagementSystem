@@ -7,9 +7,9 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogIssueBook : Form
     {
-        private FrmBorrowBook frmBorrowBook;
+        private FrmManageBorrowBook frmBorrowBook;
         private IssueBookValidator ibv;
-        public DialogIssueBook(FrmBorrowBook _frmBorrowBook)
+        public DialogIssueBook(FrmManageBorrowBook _frmBorrowBook)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);

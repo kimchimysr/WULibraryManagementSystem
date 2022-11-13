@@ -4,18 +4,18 @@ using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
 {
-    public partial class FrmBorrowBook : Form
+    public partial class FrmManageBorrowBook : Form
     {
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string borrowID) selected;
 
-        public FrmBorrowBook()
+        public FrmManageBorrowBook()
         {
             InitializeComponent();
             InitializeValues();
         }
         
-        public FrmBorrowBook(FrmMainMenu frm)
+        public FrmManageBorrowBook(FrmMainMenu frm)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
@@ -210,6 +210,17 @@ namespace LibraryDBMS.Forms
         private void txtSearchValue_TextChanged(object sender, EventArgs e)
         {
             Utils.searchButtonTextChanged(sender, btnSearch);
+        }
+
+        private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtSearchValue.Text.Length > 0 && e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+                // disable beep sounde
+                //e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

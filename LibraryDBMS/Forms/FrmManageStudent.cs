@@ -154,5 +154,16 @@ namespace LibraryDBMS.Forms
         {
             Utils.searchButtonTextChanged(sender, btnSearch);
         }
+
+        private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtSearchValue.Text.Length > 0 && e.KeyCode == Keys.Enter)
+            {
+                btnSearch.PerformClick();
+                // disable beep sounde
+                //e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

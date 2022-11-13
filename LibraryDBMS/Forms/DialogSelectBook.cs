@@ -14,11 +14,15 @@ namespace LibraryDBMS.Forms
             Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.FixControlFlickering(this);
+            Utils.EnableControlDoubleBuffer(dgvBookList);
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);
             PopulateDataGrid();
         }
 
         private void PopulateDataGrid()
         {
+            txtSearchValue.Clear();
+            btnFind.Enabled = false;
             string query = "SELECT bookID,title,author,qty FROM tblBooks ORDER BY bookID DESC LIMIT 50";
             LibModule.FillDataGrid(query, dgvBookList);
             btnSelect.Enabled = false;
@@ -59,6 +63,22 @@ namespace LibraryDBMS.Forms
         {
             if (dgvBookList.SelectedRows.Count > 0)
                 btnSelect.Enabled = true;
+        }
+
+        private void txtSearchValue_TextChanged(object sender, EventArgs e)
+        {
+            Utils.searchButtonTextChanged(sender, btnFind);
+        }
+
+        private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (txtSearchValue.Text.Length > 0 && e.KeyCode == Keys.Enter)
+            {
+                btnFind.PerformClick();
+                // disable beep sounde
+                //e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

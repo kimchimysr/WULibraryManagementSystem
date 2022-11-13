@@ -91,7 +91,7 @@
             this.txtISBN.Location = new System.Drawing.Point(150, 115);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(361, 26);
-            this.txtISBN.TabIndex = 3;
+            this.txtISBN.TabIndex = 2;
             // 
             // label2
             // 
@@ -109,7 +109,7 @@
             this.txtDEWEYCode.Location = new System.Drawing.Point(150, 163);
             this.txtDEWEYCode.Name = "txtDEWEYCode";
             this.txtDEWEYCode.Size = new System.Drawing.Size(361, 26);
-            this.txtDEWEYCode.TabIndex = 5;
+            this.txtDEWEYCode.TabIndex = 3;
             // 
             // label3
             // 
@@ -127,7 +127,7 @@
             this.txtTitle.Location = new System.Drawing.Point(150, 211);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(361, 26);
-            this.txtTitle.TabIndex = 7;
+            this.txtTitle.TabIndex = 4;
             // 
             // label4
             // 
@@ -145,7 +145,7 @@
             this.txtAuthor.Location = new System.Drawing.Point(150, 259);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(361, 26);
-            this.txtAuthor.TabIndex = 9;
+            this.txtAuthor.TabIndex = 5;
             // 
             // label5
             // 
@@ -163,7 +163,7 @@
             this.txtPublisher.Location = new System.Drawing.Point(150, 307);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(361, 26);
-            this.txtPublisher.TabIndex = 11;
+            this.txtPublisher.TabIndex = 6;
             // 
             // label6
             // 
@@ -192,7 +192,7 @@
             this.txtOthers.Multiline = true;
             this.txtOthers.Name = "txtOthers";
             this.txtOthers.Size = new System.Drawing.Size(161, 82);
-            this.txtOthers.TabIndex = 0;
+            this.txtOthers.TabIndex = 10;
             // 
             // label9
             // 
@@ -230,7 +230,7 @@
             this.txtYear.Location = new System.Drawing.Point(645, 67);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(161, 26);
-            this.txtYear.TabIndex = 31;
+            this.txtYear.TabIndex = 7;
             // 
             // pTitleBar
             // 
@@ -253,7 +253,7 @@
             this.btnClose.Location = new System.Drawing.Point(787, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -309,8 +309,8 @@
             this.btnClear.Location = new System.Drawing.Point(321, 355);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(200, 56);
-            this.btnClear.TabIndex = 45;
-            this.btnClear.Text = "  Clear";
+            this.btnClear.TabIndex = 12;
+            this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = false;
@@ -330,8 +330,8 @@
             this.btnCancel.Location = new System.Drawing.Point(606, 355);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(200, 56);
-            this.btnCancel.TabIndex = 46;
-            this.btnCancel.Text = "  Cancel";
+            this.btnCancel.TabIndex = 13;
+            this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -350,8 +350,8 @@
             this.btnSaveChanges.Location = new System.Drawing.Point(36, 355);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(200, 56);
-            this.btnSaveChanges.TabIndex = 44;
-            this.btnSaveChanges.Text = "  Save Changes";
+            this.btnSaveChanges.TabIndex = 11;
+            this.btnSaveChanges.Text = "  &Save Changes";
             this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSaveChanges.UseVisualStyleBackColor = false;
@@ -366,7 +366,8 @@
             this.dtpDateAdded.Location = new System.Drawing.Point(645, 308);
             this.dtpDateAdded.Name = "dtpDateAdded";
             this.dtpDateAdded.Size = new System.Drawing.Size(161, 25);
-            this.dtpDateAdded.TabIndex = 47;
+            this.dtpDateAdded.TabIndex = 0;
+            this.dtpDateAdded.TabStop = false;
             // 
             // label12
             // 
@@ -389,7 +390,7 @@
             0});
             this.nudQty.Name = "nudQty";
             this.nudQty.Size = new System.Drawing.Size(161, 26);
-            this.nudQty.TabIndex = 48;
+            this.nudQty.TabIndex = 9;
             // 
             // nudPages
             // 
@@ -407,13 +408,15 @@
             0});
             this.nudPages.Name = "nudPages";
             this.nudPages.Size = new System.Drawing.Size(161, 26);
-            this.nudPages.TabIndex = 49;
+            this.nudPages.TabIndex = 8;
             // 
             // DialogAddEditBook
             // 
+            this.AcceptButton = this.btnSaveChanges;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(838, 429);
             this.Controls.Add(this.nudPages);
             this.Controls.Add(this.nudQty);

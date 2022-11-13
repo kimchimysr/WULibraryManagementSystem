@@ -12,7 +12,7 @@ namespace LibraryDBMS.Forms
             Utils.SetFormIcon(this);
             Utils.EnableControlDoubleBuffer(dgvlogList);
             Utils.FillComboBox(cbDay, true, "All", "Today", "Yesterday", "Older");
-            lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
+            lblRowsCount.Text = $"Display Result: {dgvlogList.Rows.Count}";
         }
 
         public override void Refresh()

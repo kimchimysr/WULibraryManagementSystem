@@ -93,7 +93,8 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -292,7 +293,7 @@
             this.btnBackup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(114, 40);
-            this.btnBackup.TabIndex = 7;
+            this.btnBackup.TabIndex = 8;
             this.btnBackup.Text = "  Backup";
             this.btnBackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -313,7 +314,7 @@
             this.btnImport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(125, 40);
-            this.btnImport.TabIndex = 8;
+            this.btnImport.TabIndex = 7;
             this.btnImport.Text = "  Import";
             this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -334,7 +335,7 @@
             this.btnRestore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(125, 40);
-            this.btnRestore.TabIndex = 8;
+            this.btnRestore.TabIndex = 9;
             this.btnRestore.Text = "  Restore";
             this.btnRestore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -419,8 +420,8 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(172, 62);
-            this.btnCancel.TabIndex = 10;
-            this.btnCancel.Text = "  Close";
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -440,8 +441,8 @@
             this.btnRestart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(172, 62);
-            this.btnRestart.TabIndex = 9;
-            this.btnRestart.Text = "  Restart";
+            this.btnRestart.TabIndex = 10;
+            this.btnRestart.Text = "  &Restart";
             this.btnRestart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRestart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRestart.UseVisualStyleBackColor = false;
@@ -449,8 +450,10 @@
             // 
             // DialogSetting
             // 
+            this.AcceptButton = this.btnCancel;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(586, 608);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

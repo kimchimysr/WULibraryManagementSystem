@@ -35,7 +35,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNo = new System.Windows.Forms.Button();
             this.lblText = new System.Windows.Forms.Label();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +89,7 @@
             this.btnClose.Location = new System.Drawing.Point(505, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -119,26 +119,26 @@
             this.btnOk.Location = new System.Drawing.Point(28, 116);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(200, 50);
-            this.btnOk.TabIndex = 43;
+            this.btnOk.TabIndex = 1;
             this.btnOk.Text = "Yes";
             this.btnOk.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnNo
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(340, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 50);
-            this.button1.TabIndex = 43;
-            this.button1.Text = "No";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnNo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.btnNo.FlatAppearance.BorderSize = 0;
+            this.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNo.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnNo.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNo.Location = new System.Drawing.Point(340, 116);
+            this.btnNo.Name = "btnNo";
+            this.btnNo.Size = new System.Drawing.Size(200, 50);
+            this.btnNo.TabIndex = 2;
+            this.btnNo.Text = "No";
+            this.btnNo.UseVisualStyleBackColor = false;
             // 
             // lblText
             // 
@@ -153,13 +153,15 @@
             // 
             // DialogDeleteRecord
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.CancelButton = this.btnNo;
             this.ClientSize = new System.Drawing.Size(562, 181);
             this.Controls.Add(this.lblText);
             this.Controls.Add(this.pTitleBar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnNo);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -184,7 +186,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNo;
         private System.Windows.Forms.Label lblText;
     }
 }

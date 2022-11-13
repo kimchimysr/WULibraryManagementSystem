@@ -112,7 +112,7 @@ namespace LibraryDBMS.Forms
                 case "pBorrowedBooks":
                 case "pReturnedBooks":
                     frmMainMenu.ActivateButton(frmMainMenu.btnBookLoanReturn);
-                    frmMainMenu.OpenChildForm(new FrmBorrowBook(frmMainMenu), frmMainMenu.pBookLoanReturn);
+                    frmMainMenu.OpenChildForm(new FrmManageBorrowBook(frmMainMenu), frmMainMenu.pBookLoanReturn);
                     break;
                 case "lblBooksDueToday":
                 case "lblOverdueBooks":
