@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace LibraryDBMS.Libs
 {
@@ -151,14 +152,18 @@ namespace LibraryDBMS.Libs
                 ep.SetError(dewey, "DEWEY is required!");
                 e.Cancel = true;
             }
-            else if (!int.TryParse(dewey.Text.Substring(0, 3), out int i))
+            else if (dewey.Text.Length > 0)
             {
-                ep.SetError(dewey, "DEWEY is not valid!");
-                e.Cancel = true;
-            }
-            else
-            {
-                ep.SetError(dewey, null);
+                Regex pattern = new Regex(@"^([1-9][0-9]{0,2}|[1-9][0-9]{0,2}\.[0-9]{1,2}) [A-Z]{1,3}$");
+                if (pattern.IsMatch(dewey.Text))
+                {
+                    ep.SetError(dewey, null);
+                }
+                else
+                {
+                    ep.SetError(dewey, "DEWEY is not valid!");
+                    e.Cancel = true;
+                }
             }
         }
 
@@ -169,14 +174,19 @@ namespace LibraryDBMS.Libs
                 ep.SetError(isbn, "ISBN is required!");
                 e.Cancel = true;
             }
-            else if(isbn.Text.Length < 12)
+            else if(isbn.Text.Length > 0)
             {
-                ep.SetError(isbn, "ISBN is not valid!");
-                e.Cancel = true;
-            }
-            else
-            {
-                ep.SetError(isbn, null);
+                // 1234-1234-12 or 1234-1234-1234-1
+                Regex pattern = new Regex(@"^\d{4}-\d{4}-(\d{2}|\d{4}-\d)$");
+                if (pattern.IsMatch(isbn.Text))
+                {
+                    ep.SetError(isbn, null);
+                }
+                else
+                {
+                    ep.SetError(isbn, "ISBN is not valid!");
+                    e.Cancel = true;
+                }
             }
         }
     }
