@@ -125,7 +125,7 @@
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpDueDate.Size = new System.Drawing.Size(257, 25);
-            this.dtpDueDate.TabIndex = 96;
+            this.dtpDueDate.TabIndex = 0;
             this.dtpDueDate.TabStop = false;
             this.dtpDueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             // 
@@ -148,7 +148,8 @@
             this.dtpIssueDate.Location = new System.Drawing.Point(128, 293);
             this.dtpIssueDate.Name = "dtpIssueDate";
             this.dtpIssueDate.Size = new System.Drawing.Size(257, 25);
-            this.dtpIssueDate.TabIndex = 87;
+            this.dtpIssueDate.TabIndex = 0;
+            this.dtpIssueDate.TabStop = false;
             this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             // 
             // label5
@@ -178,7 +179,7 @@
             this.txtBorrowID.Name = "txtBorrowID";
             this.txtBorrowID.ReadOnly = true;
             this.txtBorrowID.Size = new System.Drawing.Size(257, 26);
-            this.txtBorrowID.TabIndex = 82;
+            this.txtBorrowID.TabIndex = 0;
             this.txtBorrowID.TabStop = false;
             // 
             // label4
@@ -201,7 +202,6 @@
             this.dtpReturnDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpReturnDate.Size = new System.Drawing.Size(257, 25);
             this.dtpReturnDate.TabIndex = 2;
-            this.dtpReturnDate.TabStop = false;
             this.dtpReturnDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             this.dtpReturnDate.ValueChanged += new System.EventHandler(this.dtpReturnDate_ValueChanged);
             // 
@@ -212,7 +212,7 @@
             this.txtFine.Name = "txtFine";
             this.txtFine.ReadOnly = true;
             this.txtFine.Size = new System.Drawing.Size(208, 26);
-            this.txtFine.TabIndex = 3;
+            this.txtFine.TabIndex = 0;
             this.txtFine.TabStop = false;
             // 
             // label6
@@ -277,7 +277,8 @@
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.ReadOnly = true;
             this.txtBookID.Size = new System.Drawing.Size(257, 26);
-            this.txtBookID.TabIndex = 100;
+            this.txtBookID.TabIndex = 0;
+            this.txtBookID.TabStop = false;
             // 
             // label11
             // 
@@ -296,7 +297,8 @@
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.ReadOnly = true;
             this.txtStudentID.Size = new System.Drawing.Size(257, 26);
-            this.txtStudentID.TabIndex = 101;
+            this.txtStudentID.TabIndex = 0;
+            this.txtStudentID.TabStop = false;
             // 
             // pTitleBar
             // 
@@ -320,7 +322,8 @@
             this.btnClose.Location = new System.Drawing.Point(356, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
             this.btnClose.UseVisualStyleBackColor = false;
             // 
             // lblHeader
@@ -376,8 +379,8 @@
             this.btnSave.Location = new System.Drawing.Point(17, 500);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(160, 56);
-            this.btnSave.TabIndex = 108;
-            this.btnSave.Text = "  Save Changes";
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "  &Save Changes";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -397,8 +400,8 @@
             this.btnCancel.Location = new System.Drawing.Point(225, 500);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(160, 56);
-            this.btnCancel.TabIndex = 109;
-            this.btnCancel.Text = "  Cancel";
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;

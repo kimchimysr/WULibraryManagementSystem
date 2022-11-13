@@ -1,6 +1,6 @@
 ﻿namespace LibraryDBMS.Forms
 {
-    partial class FrmBorrowBook
+    partial class FrmManageBorrowBook
     {
         /// <summary>
         /// Required designer variable.
@@ -252,7 +252,7 @@
             this.dtpToDate.Location = new System.Drawing.Point(780, 59);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(98, 26);
-            this.dtpToDate.TabIndex = 59;
+            this.dtpToDate.TabIndex = 7;
             // 
             // dtpFromDate
             // 
@@ -262,7 +262,7 @@
             this.dtpFromDate.Location = new System.Drawing.Point(676, 59);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(98, 26);
-            this.dtpFromDate.TabIndex = 60;
+            this.dtpFromDate.TabIndex = 6;
             // 
             // cbSearchBy
             // 
@@ -276,7 +276,7 @@
             this.cbSearchBy.Location = new System.Drawing.Point(142, 58);
             this.cbSearchBy.Name = "cbSearchBy";
             this.cbSearchBy.Size = new System.Drawing.Size(121, 28);
-            this.cbSearchBy.TabIndex = 58;
+            this.cbSearchBy.TabIndex = 2;
             // 
             // btnSearch
             // 
@@ -290,7 +290,7 @@
             this.btnSearch.Location = new System.Drawing.Point(430, 55);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(152, 34);
-            this.btnSearch.TabIndex = 52;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search Record";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -334,8 +334,9 @@
             this.txtSearchValue.Location = new System.Drawing.Point(269, 59);
             this.txtSearchValue.Name = "txtSearchValue";
             this.txtSearchValue.Size = new System.Drawing.Size(155, 26);
-            this.txtSearchValue.TabIndex = 51;
+            this.txtSearchValue.TabIndex = 3;
             this.txtSearchValue.TextChanged += new System.EventHandler(this.txtSearchValue_TextChanged);
+            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
             // 
             // btnFilter
             // 
@@ -349,7 +350,7 @@
             this.btnFilter.Location = new System.Drawing.Point(884, 55);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(71, 34);
-            this.btnFilter.TabIndex = 53;
+            this.btnFilter.TabIndex = 8;
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -365,7 +366,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(588, 55);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(71, 34);
-            this.btnRefresh.TabIndex = 54;
+            this.btnRefresh.TabIndex = 5;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -381,7 +382,7 @@
             this.cbStatus.Location = new System.Drawing.Point(15, 58);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(121, 28);
-            this.cbStatus.TabIndex = 61;
+            this.cbStatus.TabIndex = 1;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
             // 
             // lblBookDueCount
@@ -466,8 +467,8 @@
             this.btnAdd.Margin = new System.Windows.Forms.Padding(0, 0, 39, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(250, 60);
-            this.btnAdd.TabIndex = 15;
-            this.btnAdd.Text = "  Add";
+            this.btnAdd.TabIndex = 10;
+            this.btnAdd.Text = "  &Add";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -486,8 +487,8 @@
             this.btnDelete.Margin = new System.Windows.Forms.Padding(28, 0, 11, 0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(250, 60);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "  Delete";
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "  &Delete";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -507,8 +508,8 @@
             this.btnView.Margin = new System.Windows.Forms.Padding(42, 0, 0, 0);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(250, 60);
-            this.btnView.TabIndex = 18;
-            this.btnView.Text = "  View Information";
+            this.btnView.TabIndex = 13;
+            this.btnView.Text = "  &View Information";
             this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnView.UseVisualStyleBackColor = false;
@@ -528,8 +529,8 @@
             this.btnEdit.Margin = new System.Windows.Forms.Padding(14, 0, 25, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(250, 60);
-            this.btnEdit.TabIndex = 16;
-            this.btnEdit.Text = "  Edit";
+            this.btnEdit.TabIndex = 11;
+            this.btnEdit.Text = "  &Edit";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -547,7 +548,7 @@
             this.btnPrint.Location = new System.Drawing.Point(961, 55);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(152, 34);
-            this.btnPrint.TabIndex = 63;
+            this.btnPrint.TabIndex = 9;
             this.btnPrint.Text = " Print Preview";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -565,7 +566,7 @@
             this.lblRowsCount.Text = "Display Result: ";
             this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // FrmBorrowBook
+            // FrmManageBorrowBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -592,7 +593,7 @@
             this.Controls.Add(this.lblRecordCount);
             this.Controls.Add(this.dgvBorrowList);
             this.Controls.Add(this.label4);
-            this.Name = "FrmBorrowBook";
+            this.Name = "FrmManageBorrowBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Book Loan/Return";
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowList)).EndInit();

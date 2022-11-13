@@ -106,7 +106,7 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnBookLoanReturn":
                     ActivateButton(btnBookLoanReturn);
-                    OpenChildForm(new FrmBorrowBook(this), pBookLoanReturn);
+                    OpenChildForm(new FrmManageBorrowBook(this), pBookLoanReturn);
                     break;
                 case "btnReport":
                     ActivateButton(btnReport);
@@ -122,15 +122,6 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnAccount":
                     OpenChildFormAsDialog(new DialogUserAccount(user));
-                    break;
-                case "btnLogout":
-                    DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        LibModule.LogTimestampUserLogout(user);
-                        Application.Restart();
-                    }
                     break;
                 case "btnSetting":
                     OpenChildFormAsDialog(new DialogSetting());
@@ -154,8 +145,12 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnExit":
-                    LibModule.LogTimestampUserLogout(user);
-                    Application.Exit();
+                    DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        LibModule.LogTimestampUserLogout(user);
+                        Application.Exit();
+                    }
                     break;
             }
         }

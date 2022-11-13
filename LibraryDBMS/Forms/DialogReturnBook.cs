@@ -8,9 +8,9 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogReturnBook : Form
     {
-        private readonly FrmBorrowBook frmBorrowBook;
+        private readonly FrmManageBorrowBook frmBorrowBook;
         private readonly DataTable borrow;
-        public DialogReturnBook(FrmBorrowBook frm, DataTable _borrow)
+        public DialogReturnBook(FrmManageBorrowBook frm, DataTable _borrow)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);

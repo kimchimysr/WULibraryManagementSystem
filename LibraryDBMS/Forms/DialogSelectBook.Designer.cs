@@ -63,9 +63,8 @@
             this.dgvBookList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBookList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            this.dgvBookList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvBookList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvBookList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
@@ -149,7 +148,9 @@
             this.txtSearchValue.Location = new System.Drawing.Point(145, 58);
             this.txtSearchValue.Name = "txtSearchValue";
             this.txtSearchValue.Size = new System.Drawing.Size(405, 26);
-            this.txtSearchValue.TabIndex = 22;
+            this.txtSearchValue.TabIndex = 1;
+            this.txtSearchValue.TextChanged += new System.EventHandler(this.txtSearchValue_TextChanged);
+            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
             // 
             // label10
             // 
@@ -173,7 +174,7 @@
             this.btnFind.Location = new System.Drawing.Point(556, 54);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(152, 34);
-            this.btnFind.TabIndex = 24;
+            this.btnFind.TabIndex = 2;
             this.btnFind.Text = "Search Title";
             this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFind.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -193,8 +194,8 @@
             this.btnSelect.Margin = new System.Windows.Forms.Padding(0, 0, 39, 0);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(250, 60);
-            this.btnSelect.TabIndex = 25;
-            this.btnSelect.Text = "  Select";
+            this.btnSelect.TabIndex = 4;
+            this.btnSelect.Text = "  &Select";
             this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSelect.UseVisualStyleBackColor = false;
             this.btnSelect.Click += new System.EventHandler(this.Button_Click);
@@ -248,7 +249,8 @@
             this.btnClose.Location = new System.Drawing.Point(743, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -277,7 +279,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(714, 54);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(71, 34);
-            this.btnRefresh.TabIndex = 113;
+            this.btnRefresh.TabIndex = 3;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
             // 

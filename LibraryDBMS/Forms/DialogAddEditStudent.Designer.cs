@@ -110,7 +110,7 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(365, 56);
             this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "  Cancel";
+            this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -130,7 +130,7 @@
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(160, 56);
             this.btnSaveChanges.TabIndex = 9;
-            this.btnSaveChanges.Text = "  Save Changes";
+            this.btnSaveChanges.Text = "  &Save Changes";
             this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSaveChanges.UseVisualStyleBackColor = false;
@@ -244,7 +244,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(132, 99);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(266, 26);
-            this.txtFirstName.TabIndex = 1;
+            this.txtFirstName.TabIndex = 2;
             // 
             // lblHeader
             // 
@@ -272,7 +272,7 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(160, 56);
             this.btnClear.TabIndex = 10;
-            this.btnClear.Text = "  Clear";
+            this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = false;
@@ -299,7 +299,7 @@
             this.btnClose.Location = new System.Drawing.Point(369, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 0;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
@@ -349,7 +349,8 @@
             this.dtpDateAdded.Location = new System.Drawing.Point(132, 295);
             this.dtpDateAdded.Name = "dtpDateAdded";
             this.dtpDateAdded.Size = new System.Drawing.Size(266, 25);
-            this.dtpDateAdded.TabIndex = 48;
+            this.dtpDateAdded.TabIndex = 9;
+            this.dtpDateAdded.TabStop = false;
             // 
             // DialogAddEditStudent
             // 
