@@ -239,6 +239,21 @@ namespace LibraryDBMS.Libs
                 dgv.ResumeLayout();
             }
         }
+
+        public static void ToolTipOnControlMouseHover(string text, Control ctrl)
+        {
+            ToolTip tip = new ToolTip()
+            {
+                ShowAlways = true,
+                InitialDelay = 10
+
+            };
+            ctrl.MouseHover += Ctrl_MouseHover;
+            void Ctrl_MouseHover(object sender, EventArgs e)
+            {
+                tip.Show(text, ctrl);
+            }
+        }
         #endregion
 
         #region Tool
