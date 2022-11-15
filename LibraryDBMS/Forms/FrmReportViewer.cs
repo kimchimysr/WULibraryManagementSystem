@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
-using LibraryDBMS.Forms;
 
 namespace LibraryDBMS
 {
     public partial class FrmReportViewer : Form
     {
-        private readonly FrmMainMenu frmMainMenu;
         private DataTable overview;
         private Dictionary<string, string> setParameters = new Dictionary<string, string>();
         public FrmReportViewer()

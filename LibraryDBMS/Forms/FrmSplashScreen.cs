@@ -19,6 +19,7 @@ namespace LibraryDBMS.Forms
         };
         public FrmSplashScreen()
         {
+            Utils.CopyDatabaseToLocalUserAppDataFolder();
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.FixControlFlickering(panel1);

@@ -410,6 +410,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\library.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\pie_26px.png" />
     <None Include="Resources\close_16px.png" />
     <None Include="Resources\maximize_button_16px.png" />
