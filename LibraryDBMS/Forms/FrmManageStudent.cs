@@ -21,6 +21,12 @@ namespace LibraryDBMS.Forms
             Utils.EnableControlDoubleBuffer(dgvStudentList);
             Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvStudentList);
+            Utils.ToolTipOnControlMouseHover
+                ("Shortcuts Combination Key:" +
+                 "\n* Add Button (Alt + A)" +
+                 "\n* Edit Button (Alt + E)" +
+                 "\n* Delete Button (Alt + D)" +
+                 "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGrid();
         }
 

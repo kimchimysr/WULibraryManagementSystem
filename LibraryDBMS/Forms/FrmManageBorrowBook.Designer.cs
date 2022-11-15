@@ -67,6 +67,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblRowsCount = new System.Windows.Forms.Label();
+            this.pShortcuts = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -566,12 +567,24 @@
             this.lblRowsCount.Text = "Display Result: ";
             this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pShortcuts
+            // 
+            this.pShortcuts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.pShortcuts.BackgroundImage = global::LibraryDBMS.Properties.Resources.info_26px;
+            this.pShortcuts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pShortcuts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pShortcuts.Location = new System.Drawing.Point(1119, 55);
+            this.pShortcuts.Name = "pShortcuts";
+            this.pShortcuts.Size = new System.Drawing.Size(33, 34);
+            this.pShortcuts.TabIndex = 65;
+            // 
             // FrmManageBorrowBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.pShortcuts);
             this.Controls.Add(this.lblRowsCount);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.tlpButtonContainer);
@@ -639,5 +652,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn overdueFine;
+        private System.Windows.Forms.Panel pShortcuts;
     }
 }

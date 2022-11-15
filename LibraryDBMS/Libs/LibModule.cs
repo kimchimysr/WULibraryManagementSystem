@@ -13,13 +13,17 @@ namespace LibraryDBMS.Libs
 {
     public static class LibModule
     {
-        private static string connectionString = Properties.Settings.Default.LibDbConnectionString;
-        public static SQLiteConnection Conn = new SQLiteConnection(connectionString);
+        private static string connectionString;
+        public static SQLiteConnection Conn;
         public static SQLiteCommand Cmd;
 
         static LibModule()
         {
-            if (!File.Exists(Environment.CurrentDirectory + @"\Database\library.db"))
+            // sqlite connection string format: data source=databasePath; Version=3; Foreign Keys=True;
+            connectionString = $@"Data Source={Utils.databasePath}; Version=3; Foreign Keys=True;";
+            Conn = new SQLiteConnection(connectionString);
+
+            if (!File.Exists(Utils.databasePath))
             {
                 MessageBox.Show("Cannot locate database file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(0);
@@ -233,6 +237,16 @@ namespace LibraryDBMS.Libs
                     }
                     else Utils.NotificationToast.Show("fail", "Record Cannot Be Deleted!");
                 }
+            }
+            catch (SQLiteException ex)
+            {
+                SQLiteErrorCode errorCode = (SQLiteErrorCode)ex.ErrorCode;
+                if (errorCode == SQLiteErrorCode.Constraint)
+                {
+                    MessageBox.Show("Record already has relationship with other table! Cannot delete!", "Foreign Key Constraint Falied",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             catch (Exception ex)
             {

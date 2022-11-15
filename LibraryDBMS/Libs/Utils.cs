@@ -21,6 +21,10 @@ namespace LibraryDBMS.Libs
 {
     public static partial class Utils
     {
+        // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database\library.db
+        public static string databasePath =
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                @"WesternLibraryManagementSystem\Database\library.db");
         #region Security
         public static string HashPassword(string password)
         {
@@ -237,6 +241,21 @@ namespace LibraryDBMS.Libs
                     }
                 }
                 dgv.ResumeLayout();
+            }
+        }
+
+        public static void ToolTipOnControlMouseHover(string text, Control ctrl)
+        {
+            ToolTip tip = new ToolTip()
+            {
+                ShowAlways = true,
+                InitialDelay = 10
+
+            };
+            ctrl.MouseHover += Ctrl_MouseHover;
+            void Ctrl_MouseHover(object sender, EventArgs e)
+            {
+                tip.Show(text, ctrl);
             }
         }
         #endregion
@@ -483,7 +502,7 @@ namespace LibraryDBMS.Libs
                     if (fbd.ShowDialog() == DialogResult.OK)
                     {
                         string fileName = $"librarydb_{DateTime.Now.ToString("yyyy_MM_dd")}.bak";
-                        string dbPath = Environment.CurrentDirectory + @"\Database\library.db";
+                        string dbPath = databasePath;
                         string backupDestPath = Path.GetFullPath(fbd.SelectedPath) + $@"\{fileName}";
 
                         if (File.Exists(backupDestPath))
@@ -520,7 +539,7 @@ namespace LibraryDBMS.Libs
                 try
                 {
                     // current database path
-                    string dbPath = Environment.CurrentDirectory + @"\Database\library.db";
+                    string dbPath = databasePath;
                     string backupPath = Path.GetFullPath(ofd.FileName);
 
                     string currentDbBackupPath = Path.GetDirectoryName(dbPath) + @"\library.bak";
@@ -713,6 +732,40 @@ namespace LibraryDBMS.Libs
                         $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public static void CopyDatabaseToLocalUserAppDataFolder()
+        {
+            // C:\Users\[curentUser]\AppData\Roaming
+            string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
+            string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+            // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
+            string databaseFile = Path.Combine(databaseFolder, "library.db");
+            // projectPath\Resources\library.db
+            string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");
+
+            // check if the destination folder is already exist if not, create directory
+            if (!Directory.Exists(databaseFolder))
+                Directory.CreateDirectory(databaseFolder);
+
+            // check if database file already exist 
+            if (!File.Exists(databaseFile))
+            {
+                File.Copy(defaultDatabase, databaseFile);
+            }
+            //else
+            //{
+            //    // check if default database newer than current database
+            //    if (File.GetLastWriteTime(defaultDatabase) > File.GetLastWriteTime(databaseFile))
+            //    {
+            //        // backup current database before copy latest default database
+            //        File.Move(databaseFile, Path.Combine(databaseFolder, "library.bak"));
+
+            //        // copy latest default database
+            //        File.Copy(defaultDatabase, databaseFile, true);
+            //    }
+            //}
         }
         #endregion
 

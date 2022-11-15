@@ -22,6 +22,12 @@ namespace LibraryDBMS.Forms
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);
+            Utils.ToolTipOnControlMouseHover
+                ("Shortcuts Combination Key:" +
+                 "\n* Add Button (Alt + A)" +
+                 "\n* Edit Button (Alt + E)" +
+                 "\n* Delete Button (Alt + D)" +
+                 "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGridView();
         }
 

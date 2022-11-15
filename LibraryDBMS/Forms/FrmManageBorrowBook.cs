@@ -29,6 +29,12 @@ namespace LibraryDBMS.Forms
             Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
             Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBorrowList);
+            Utils.ToolTipOnControlMouseHover
+                ("Shortcuts Combination Key:" +
+                 "\n* Add Button (Alt + A)" +
+                 "\n* Edit Button (Alt + E)" +
+                 "\n* Delete Button (Alt + D)" +
+                 "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGrid();
         }
 

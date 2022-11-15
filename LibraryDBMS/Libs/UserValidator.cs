@@ -111,7 +111,7 @@ namespace LibraryDBMS.Libs
         private void Email_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // a valid email format: (randomString)@(randomString2).(2-3 characters)
-            Regex regex = new Regex("[a-z0-9]+@[a-z]+\\.[a-z]{2,3}");
+            Regex regex = new Regex("^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$");
             if (string.IsNullOrEmpty(email.Text))
             {
                 ep.SetError(email, "Email is required!");
