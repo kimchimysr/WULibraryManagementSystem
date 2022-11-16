@@ -110,7 +110,7 @@ namespace LibraryDBMS.Libs
                 {
                     Cmd.CommandText =
                     @"
-                        INSERT OR REPLACE INTO tblBook(bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded)
+                        INSERT OR REPLACE INTO tblBooks(bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded)
                         VALUES ($bookID,$isbn,$dewey,$title,$author,$publisher,$publishYear,$pages,$other,$qty,$cateID,$dateAdded)
                     ";
 
@@ -240,6 +240,7 @@ namespace LibraryDBMS.Libs
             }
             catch (SQLiteException ex)
             {
+                Utils.BlurEffect.UnBlur();
                 SQLiteErrorCode errorCode = (SQLiteErrorCode)ex.ErrorCode;
                 if (errorCode == SQLiteErrorCode.Constraint)
                 {
@@ -250,6 +251,7 @@ namespace LibraryDBMS.Libs
             }
             catch (Exception ex)
             {
+                Utils.BlurEffect.UnBlur();
                 MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
                 "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

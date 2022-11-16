@@ -154,7 +154,8 @@ namespace LibraryDBMS.Libs
             }
             else if (dewey.Text.Length > 0)
             {
-                Regex pattern = new Regex(@"^([1-9][0-9]{0,2}|[1-9][0-9]{0,2}\.[0-9]{1,2}) [A-Z]{1,3}$");
+                // format: 1 ABC to 123.123 ABC
+                Regex pattern = new Regex(@"^([1-9][0-9]{0,2}|[1-9][0-9]{0,2}\.[0-9]{1,3}) [A-Z]{1,3}$");
                 if (pattern.IsMatch(dewey.Text))
                 {
                     ep.SetError(dewey, null);

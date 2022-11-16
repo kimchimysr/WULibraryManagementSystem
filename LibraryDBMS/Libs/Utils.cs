@@ -481,6 +481,7 @@ namespace LibraryDBMS.Libs
                 }
                 catch (Exception exc)
                 {
+                    BlurEffect.UnBlur();
                     MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -697,14 +698,15 @@ namespace LibraryDBMS.Libs
                                     int i = 0;
                                     foreach (IXLCell cell in row.Cells(1, dt.Columns.Count))
                                     {
-                                        // L is date cell
-                                        if (cell.Address.ColumnLetter == "L")
-                                        {
-                                            string strDate = cell.Value.ToString();
-                                            DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                                            dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
-                                        }
-                                        else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                        //// L is date cell
+                                        //if (cell.Address.ColumnLetter == "L")
+                                        //{
+                                        //    string strDate = cell.Value.ToString();
+                                        //    DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                        //    dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
+                                        //}
+                                        //else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                        dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
                                         i++;
                                     }
                                     rowCount++;
@@ -713,6 +715,7 @@ namespace LibraryDBMS.Libs
                         }
 
                         // Insert rows into database
+                        Cursor.Current = Cursors.WaitCursor;
                         if (LibModule.BulkInsertRecord(dt))
                         {
                             MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
@@ -723,6 +726,7 @@ namespace LibraryDBMS.Libs
                             MessageBox.Show("Cannot import data into database!", "Import Incomplete",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        Cursor.Current = Cursors.Default;
                     }
 
                 }

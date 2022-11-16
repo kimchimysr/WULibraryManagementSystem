@@ -159,6 +159,8 @@ namespace LibraryDBMS.Forms
         private void txtSearchValue_TextChanged(object sender, EventArgs e)
         {
             Utils.searchButtonTextChanged(sender, btnSearch);
+            if (txtSearchValue.Text.Length == 0)
+                btnRefresh.PerformClick();
         }
 
         private void txtSearchValue_KeyDown(object sender, KeyEventArgs e)
