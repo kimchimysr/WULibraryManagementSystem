@@ -104,6 +104,7 @@ namespace LibraryDBMS.Forms
                             if (!isEditMode)
                             {
                                 LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
+                                frmManageStudent.PopulateDataGrid();
                             }
                             else
                             {

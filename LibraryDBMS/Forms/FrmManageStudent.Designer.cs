@@ -499,7 +499,7 @@
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnRefresh);
             this.Name = "FrmManageStudent";
-            this.Text = "Manage Student";
+            this.Text = "Manage Students";
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).EndInit();
             this.tlpButtonContainer.ResumeLayout(false);
             this.ResumeLayout(false);

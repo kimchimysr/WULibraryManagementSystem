@@ -608,7 +608,7 @@
             this.Controls.Add(this.label4);
             this.Name = "FrmManageBorrowBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manage Book Loan/Return";
+            this.Text = "Manage Borrow/Return Books";
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowList)).EndInit();
             this.tlpButtonContainer.ResumeLayout(false);
             this.ResumeLayout(false);

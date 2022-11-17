@@ -23,7 +23,7 @@ namespace LibraryDBMS.Forms
             Utils.FixControlFlickering(this);
             Utils.FillComboBox(cbStartupForm, false ,"Home", "Dashboard");
             Utils.FillComboBox(cbTable, true, "All", "tblBooks", "tblBookCategories", "tblBorrows", "tblLoanStatus",
-                "tblLogs", "tblRole", "tblStudents", "tblUser", "tblUserRole", "tblUserLogs", "viewOverview");
+                "tblLogs", "tblStudents", "tblUser", "tblUserLogs", "viewOverview");
             AppliedUserSetting();
             ResumeLayout();
         }

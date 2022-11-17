@@ -598,12 +598,8 @@ namespace LibraryDBMS.Libs
                         workbook.Worksheets.Add(dt, "tblLoanStatus");
                         dt = LibModule.GetDataTableFromDB("tblLogs");
                         workbook.Worksheets.Add(dt, "tblLogs");
-                        dt = LibModule.GetDataTableFromDB("tblRole");
-                        workbook.Worksheets.Add(dt, "tblRole");
                         dt = LibModule.GetDataTableFromDB("tblUser");
                         workbook.Worksheets.Add(dt, "tblUser");
-                        dt = LibModule.GetDataTableFromDB("tblUserRole");
-                        workbook.Worksheets.Add(dt, "tblUserRole");
                         dt = LibModule.GetDataTableFromDB("tblStudents");
                         workbook.Worksheets.Add(dt, "tblStudents");
                         dt = LibModule.GetDataTableFromDB("viewOverview");

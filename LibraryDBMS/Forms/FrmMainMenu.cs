@@ -209,13 +209,13 @@ namespace LibraryDBMS.Forms
                 case "Dashboard":
                     btnMenuTitle.Image = Properties.Resources.pie_26px;
                     break;
-                case "Manage Book":
+                case "Manage Books":
                     btnMenuTitle.Image = Properties.Resources.books_26px;
                     break;
-                case "Manage Student":
+                case "Manage Students":
                     btnMenuTitle.Image = Properties.Resources.student_male_26px;
                     break;
-                case "Manage Book Loan/Return":
+                case "Manage Borrow/Return Books":
                     btnMenuTitle.Image = Properties.Resources.bookmark_26px;
                     break;
                 case "Reports":
@@ -223,9 +223,6 @@ namespace LibraryDBMS.Forms
                     break;
                 case "Recent Activity":
                     btnMenuTitle.Image = Properties.Resources.time_machine_26px;
-                    break;
-                case "Manage User":
-                    btnMenuTitle.Image = Properties.Resources.user_shield_26px;
                     break;
                 case "Notification":
                     btnMenuTitle.Image = Properties.Resources.notification_26px;

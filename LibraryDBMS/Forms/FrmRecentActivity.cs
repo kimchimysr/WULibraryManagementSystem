@@ -11,6 +11,7 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.EnableControlDoubleBuffer(dgvlogList);
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvlogList);
             Utils.FillComboBox(cbDay, true, "All", "Today", "Yesterday", "Older");
             lblRowsCount.Text = $"Display Result: {dgvlogList.Rows.Count}";
         }

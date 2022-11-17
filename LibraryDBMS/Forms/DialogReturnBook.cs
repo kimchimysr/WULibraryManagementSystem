@@ -82,8 +82,6 @@ namespace LibraryDBMS.Forms
                             string borrowID = txtBorrowID.Text.Trim();
                             string bookID = txtBookID.Text.Trim();
                             string studentID = txtStudentID.Text.Trim();
-                            // need to modify later
-                            string userID = "1";
                             string dateLoan = dtpIssueDate.Text.ToString();
                             string dateDue = dtpDueDate.Text.ToString();
                             string dateReturned = cbStatus.SelectedItem.ToString() == "Returned" ?
@@ -95,7 +93,6 @@ namespace LibraryDBMS.Forms
                                 borrowID,
                                 bookID,
                                 studentID,
-                                userID,
                                 dateLoan,
                                 dateDue,
                                 dateReturned,

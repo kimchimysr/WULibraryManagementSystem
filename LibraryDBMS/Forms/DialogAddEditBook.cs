@@ -59,6 +59,22 @@ namespace LibraryDBMS.Forms
             this.dtpDateAdded.Text = book.Rows[0]["dateAdded"].ToString();
         }
 
+        private bool HasAnyChanges()
+        {
+            if (book.Rows[0]["isbn"].ToString() != txtISBN.Text.Trim() || 
+                book.Rows[0]["dewey"].ToString() != txtDEWEYCode.Text.Trim() || 
+                book.Rows[0]["title"].ToString() != txtTitle.Text.Trim() || 
+                book.Rows[0]["author"].ToString() != txtAuthor.Text.Trim() || 
+                book.Rows[0]["publisher"].ToString() != txtPublisher.Text.Trim() || 
+                book.Rows[0]["publishYear"].ToString() != txtYear.Text.Trim() || 
+                book.Rows[0]["pages"].ToString() != nudPages.Text.Trim() || 
+                book.Rows[0]["qty"].ToString() != nudQty.Text.Trim() || 
+                book.Rows[0]["other"].ToString() != txtOthers.Text.Trim())
+                return true;
+
+            return false;
+        }
+
         private bool IsDuplicatedRecord()
         {
             string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,pages,other FROM tblBooks " +
@@ -79,7 +95,7 @@ namespace LibraryDBMS.Forms
             switch (button.Name)
             {
                 case "btnSaveChanges":
-                    if (this.ValidateChildren() && !IsDuplicatedRecord())
+                    if (this.ValidateChildren())
                     {
                         try
                         {
@@ -114,14 +130,20 @@ namespace LibraryDBMS.Forms
                             };
                             if (!isEditMode)
                             {
-                                LibModule.InsertRecord("tblBooks",LibModule.GetTableField("tblBooks"), book);
-
+                                if (!IsDuplicatedRecord())
+                                {
+                                    LibModule.InsertRecord("tblBooks", LibModule.GetTableField("tblBooks"), book);
+                                    frmBook.PopulateDataGridView();
+                                }
                             }
                             else
                             {
-                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID , book, true);
+                                if (HasAnyChanges())
+                                {
+                                    LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID , book, true);
+                                    frmBook.PopulateDataGridView();
+                                }
                             }
-                            frmBook.PopulateDataGridView();
                             this.Close();
                         }
                         catch(Exception ex)
