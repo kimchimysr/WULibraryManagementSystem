@@ -28,6 +28,7 @@ namespace LibraryDBMS.Forms
                  "\n* Delete Button (Alt + D)" +
                  "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGrid();
+            btnPrint.Enabled = dgvStudentList.RowCount > 0 ? true : false;
         }
 
         internal void PopulateDataGrid()

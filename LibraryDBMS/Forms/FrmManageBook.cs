@@ -29,6 +29,7 @@ namespace LibraryDBMS.Forms
                  "\n* Delete Button (Alt + D)" +
                  "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGridView();
+            btnPrint.Enabled = dgvBookList.Rows.Count > 0 ? true : false;
         }
 
         internal void PopulateDataGridView()
