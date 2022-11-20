@@ -132,6 +132,7 @@
             this.dgvBorrowList.TabIndex = 38;
             this.dgvBorrowList.TabStop = false;
             this.dgvBorrowList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowList_CellClick);
+            this.dgvBorrowList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvBorrowList_CellFormatting);
             // 
             // borrowID
             // 

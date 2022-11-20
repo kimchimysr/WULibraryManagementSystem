@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogAddEditBook));
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookID = new System.Windows.Forms.TextBox();
-            this.txtISBN = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtDEWEYCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -60,6 +58,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.nudQty = new System.Windows.Forms.NumericUpDown();
             this.nudPages = new System.Windows.Forms.NumericUpDown();
+            this.txtISBN = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPages)).BeginInit();
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 65);
+            this.label1.Location = new System.Drawing.Point(32, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 31);
             this.label1.TabIndex = 0;
@@ -79,42 +79,24 @@
             // 
             this.txtBookID.Enabled = false;
             this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBookID.Location = new System.Drawing.Point(150, 67);
+            this.txtBookID.Location = new System.Drawing.Point(150, 66);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.ReadOnly = true;
             this.txtBookID.Size = new System.Drawing.Size(361, 26);
             this.txtBookID.TabIndex = 1;
             // 
-            // txtISBN
-            // 
-            this.txtISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtISBN.Location = new System.Drawing.Point(150, 115);
-            this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(361, 26);
-            this.txtISBN.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 31);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "ISBN:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // txtDEWEYCode
             // 
             this.txtDEWEYCode.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDEWEYCode.Location = new System.Drawing.Point(150, 163);
+            this.txtDEWEYCode.Location = new System.Drawing.Point(150, 115);
             this.txtDEWEYCode.Name = "txtDEWEYCode";
             this.txtDEWEYCode.Size = new System.Drawing.Size(361, 26);
-            this.txtDEWEYCode.TabIndex = 3;
+            this.txtDEWEYCode.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 161);
+            this.label3.Location = new System.Drawing.Point(32, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 31);
             this.label3.TabIndex = 4;
@@ -124,15 +106,15 @@
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(150, 211);
+            this.txtTitle.Location = new System.Drawing.Point(150, 163);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(361, 26);
-            this.txtTitle.TabIndex = 4;
+            this.txtTitle.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 209);
+            this.label4.Location = new System.Drawing.Point(32, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 31);
             this.label4.TabIndex = 6;
@@ -142,15 +124,15 @@
             // txtAuthor
             // 
             this.txtAuthor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAuthor.Location = new System.Drawing.Point(150, 259);
+            this.txtAuthor.Location = new System.Drawing.Point(150, 211);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(361, 26);
-            this.txtAuthor.TabIndex = 5;
+            this.txtAuthor.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 257);
+            this.label5.Location = new System.Drawing.Point(32, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 31);
             this.label5.TabIndex = 8;
@@ -160,15 +142,15 @@
             // txtPublisher
             // 
             this.txtPublisher.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPublisher.Location = new System.Drawing.Point(150, 307);
+            this.txtPublisher.Location = new System.Drawing.Point(150, 259);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(361, 26);
-            this.txtPublisher.TabIndex = 6;
+            this.txtPublisher.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(32, 305);
+            this.label6.Location = new System.Drawing.Point(32, 257);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 31);
             this.label6.TabIndex = 10;
@@ -410,6 +392,24 @@
             this.nudPages.Size = new System.Drawing.Size(161, 26);
             this.nudPages.TabIndex = 8;
             // 
+            // txtISBN
+            // 
+            this.txtISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtISBN.Location = new System.Drawing.Point(150, 310);
+            this.txtISBN.Name = "txtISBN";
+            this.txtISBN.Size = new System.Drawing.Size(361, 26);
+            this.txtISBN.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(32, 308);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 31);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "ISBN:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // DialogAddEditBook
             // 
             this.AcceptButton = this.btnSaveChanges;
@@ -418,6 +418,8 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(838, 429);
+            this.Controls.Add(this.txtISBN);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.nudPages);
             this.Controls.Add(this.nudQty);
             this.Controls.Add(this.dtpDateAdded);
@@ -443,8 +445,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtDEWEYCode);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtISBN);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -466,8 +466,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBookID;
-        private System.Windows.Forms.TextBox txtISBN;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDEWEYCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTitle;
@@ -495,5 +493,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown nudQty;
         private System.Windows.Forms.NumericUpDown nudPages;
+        private System.Windows.Forms.TextBox txtISBN;
+        private System.Windows.Forms.Label label2;
     }
 }

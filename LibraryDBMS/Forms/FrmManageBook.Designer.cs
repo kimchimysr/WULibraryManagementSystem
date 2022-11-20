@@ -33,18 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBookList = new System.Windows.Forms.DataGridView();
-            this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dewey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cateName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.publishYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pages = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.other = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qry = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -65,6 +53,18 @@
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.pShortcuts = new System.Windows.Forms.Panel();
+            this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dewey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cateName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isbn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.publishYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pages = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.other = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -95,16 +95,16 @@
             this.dgvBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.bookID,
-            this.isbn,
             this.dewey,
             this.title,
             this.author,
-            this.cateName,
             this.publisher,
+            this.cateName,
+            this.isbn,
             this.publishYear,
             this.pages,
-            this.other,
             this.qry,
+            this.other,
             this.dateAdded});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -132,114 +132,6 @@
             this.dgvBookList.TabIndex = 23;
             this.dgvBookList.TabStop = false;
             this.dgvBookList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBookList_CellClick);
-            // 
-            // bookID
-            // 
-            this.bookID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.bookID.DataPropertyName = "bookID";
-            this.bookID.HeaderText = "Book ID";
-            this.bookID.Name = "bookID";
-            this.bookID.ReadOnly = true;
-            this.bookID.Width = 77;
-            // 
-            // isbn
-            // 
-            this.isbn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isbn.DataPropertyName = "isbn";
-            this.isbn.HeaderText = "ISBN";
-            this.isbn.Name = "isbn";
-            this.isbn.ReadOnly = true;
-            this.isbn.Width = 60;
-            // 
-            // dewey
-            // 
-            this.dewey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dewey.DataPropertyName = "dewey";
-            this.dewey.HeaderText = "DEWEY";
-            this.dewey.Name = "dewey";
-            this.dewey.ReadOnly = true;
-            this.dewey.Width = 75;
-            // 
-            // title
-            // 
-            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.title.DataPropertyName = "title";
-            this.title.HeaderText = "Title";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            this.title.Width = 60;
-            // 
-            // author
-            // 
-            this.author.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.author.DataPropertyName = "author";
-            this.author.HeaderText = "Author";
-            this.author.Name = "author";
-            this.author.ReadOnly = true;
-            this.author.Width = 74;
-            // 
-            // cateName
-            // 
-            this.cateName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cateName.DataPropertyName = "cateName";
-            this.cateName.HeaderText = "Category";
-            this.cateName.Name = "cateName";
-            this.cateName.ReadOnly = true;
-            this.cateName.Width = 86;
-            // 
-            // publisher
-            // 
-            this.publisher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.publisher.DataPropertyName = "publisher";
-            this.publisher.HeaderText = "Publisher";
-            this.publisher.Name = "publisher";
-            this.publisher.ReadOnly = true;
-            this.publisher.Width = 91;
-            // 
-            // publishYear
-            // 
-            this.publishYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.publishYear.DataPropertyName = "publishYear";
-            this.publishYear.HeaderText = "Year";
-            this.publishYear.Name = "publishYear";
-            this.publishYear.ReadOnly = true;
-            this.publishYear.Width = 60;
-            // 
-            // pages
-            // 
-            this.pages.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.pages.DataPropertyName = "pages";
-            this.pages.HeaderText = "Pages";
-            this.pages.Name = "pages";
-            this.pages.ReadOnly = true;
-            this.pages.Width = 66;
-            // 
-            // other
-            // 
-            this.other.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.other.DataPropertyName = "other";
-            this.other.HeaderText = "Other";
-            this.other.Name = "other";
-            this.other.ReadOnly = true;
-            this.other.Width = 67;
-            // 
-            // qry
-            // 
-            this.qry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.qry.DataPropertyName = "qty";
-            this.qry.HeaderText = "Qty";
-            this.qry.Name = "qry";
-            this.qry.ReadOnly = true;
-            this.qry.Width = 53;
-            // 
-            // dateAdded
-            // 
-            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dateAdded.DataPropertyName = "dateAdded";
-            this.dateAdded.HeaderText = "Date Added";
-            this.dateAdded.Name = "dateAdded";
-            this.dateAdded.ReadOnly = true;
-            this.dateAdded.Width = 101;
             // 
             // tlpButtonContainer
             // 
@@ -535,6 +427,114 @@
             this.pShortcuts.Size = new System.Drawing.Size(33, 34);
             this.pShortcuts.TabIndex = 36;
             // 
+            // bookID
+            // 
+            this.bookID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.bookID.DataPropertyName = "bookID";
+            this.bookID.HeaderText = "Book ID";
+            this.bookID.Name = "bookID";
+            this.bookID.ReadOnly = true;
+            this.bookID.Width = 77;
+            // 
+            // dewey
+            // 
+            this.dewey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dewey.DataPropertyName = "dewey";
+            this.dewey.HeaderText = "DEWEY";
+            this.dewey.Name = "dewey";
+            this.dewey.ReadOnly = true;
+            this.dewey.Width = 75;
+            // 
+            // title
+            // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.title.DataPropertyName = "title";
+            this.title.HeaderText = "Title";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            this.title.Width = 60;
+            // 
+            // author
+            // 
+            this.author.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.author.DataPropertyName = "author";
+            this.author.HeaderText = "Author";
+            this.author.Name = "author";
+            this.author.ReadOnly = true;
+            this.author.Width = 74;
+            // 
+            // publisher
+            // 
+            this.publisher.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.publisher.DataPropertyName = "publisher";
+            this.publisher.HeaderText = "Publisher";
+            this.publisher.Name = "publisher";
+            this.publisher.ReadOnly = true;
+            this.publisher.Width = 91;
+            // 
+            // cateName
+            // 
+            this.cateName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cateName.DataPropertyName = "cateName";
+            this.cateName.HeaderText = "Category";
+            this.cateName.Name = "cateName";
+            this.cateName.ReadOnly = true;
+            this.cateName.Width = 86;
+            // 
+            // isbn
+            // 
+            this.isbn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isbn.DataPropertyName = "isbn";
+            this.isbn.HeaderText = "ISBN";
+            this.isbn.Name = "isbn";
+            this.isbn.ReadOnly = true;
+            this.isbn.Width = 60;
+            // 
+            // publishYear
+            // 
+            this.publishYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.publishYear.DataPropertyName = "publishYear";
+            this.publishYear.HeaderText = "Year";
+            this.publishYear.Name = "publishYear";
+            this.publishYear.ReadOnly = true;
+            this.publishYear.Width = 60;
+            // 
+            // pages
+            // 
+            this.pages.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.pages.DataPropertyName = "pages";
+            this.pages.HeaderText = "Pages";
+            this.pages.Name = "pages";
+            this.pages.ReadOnly = true;
+            this.pages.Width = 66;
+            // 
+            // qry
+            // 
+            this.qry.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.qry.DataPropertyName = "qty";
+            this.qry.HeaderText = "Qty";
+            this.qry.Name = "qry";
+            this.qry.ReadOnly = true;
+            this.qry.Width = 53;
+            // 
+            // other
+            // 
+            this.other.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.other.DataPropertyName = "other";
+            this.other.HeaderText = "Other";
+            this.other.Name = "other";
+            this.other.ReadOnly = true;
+            this.other.Width = 67;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dateAdded.DataPropertyName = "dateAdded";
+            this.dateAdded.HeaderText = "Date Added";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            this.dateAdded.Width = 101;
+            // 
             // FrmManageBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,18 +588,18 @@
         private System.Windows.Forms.TextBox txtSearchValue;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Panel pShortcuts;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isbn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dewey;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cateName;
         private System.Windows.Forms.DataGridViewTextBoxColumn publisher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cateName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isbn;
         private System.Windows.Forms.DataGridViewTextBoxColumn publishYear;
         private System.Windows.Forms.DataGridViewTextBoxColumn pages;
-        private System.Windows.Forms.DataGridViewTextBoxColumn other;
         private System.Windows.Forms.DataGridViewTextBoxColumn qry;
+        private System.Windows.Forms.DataGridViewTextBoxColumn other;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
-        private System.Windows.Forms.Panel pShortcuts;
     }
 }

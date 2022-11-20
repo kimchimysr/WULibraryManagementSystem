@@ -8,6 +8,8 @@ namespace LibraryDBMS.Forms
     {
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string bookID) selected;
+
+
         public FrmManageBook(FrmMainMenu _frmMainMenu)
         {
             InitializeComponent();
@@ -45,10 +47,8 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             txtSearchValue.Clear();
             btnSearch.Enabled = false;
-            dtpFromDate.Value = DateTime.Today;
-            dtpToDate.Value = DateTime.Today;
+            Utils.setFromDateAYearFromNow(dtpFromDate,dtpToDate);
         }
-
         private void Button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;

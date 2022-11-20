@@ -179,9 +179,6 @@ namespace LibraryDBMS.Libs
         /// Would Recomment use if when we set searchButton.Enabled = false when initializing form
         /// When call this method, make sure you use sender for getting object from Textchanged method
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <param name="searchTextBox"></param>
 
         public static void searchButtonTextChanged(object sender, Button searchButton)
         {
@@ -258,6 +255,15 @@ namespace LibraryDBMS.Libs
                 tip.Show(text, ctrl);
             }
         }
+        /// <summary>
+        /// Set The Datepicker a year before the present date when the form was initializing By calling the FromDatepicker and ToDatePicker
+        /// </summary>
+        public static void setFromDateAYearFromNow(DateTimePicker dtpFromDate, DateTimePicker dtpToDate)
+        {
+            dtpToDate.Value = DateTime.Now;
+            dtpFromDate.Value = dtpToDate.Value.AddYears(-1);
+        }
+
         #endregion
 
         #region Tool

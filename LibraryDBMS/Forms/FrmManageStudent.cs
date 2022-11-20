@@ -42,9 +42,7 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             btnSearch.Enabled = false;
             txtSearchValue.Clear();
-            dtpFromDate.Value = DateTime.Today;
-            dtpToDate.Value = DateTime.Today;
-            cbSearchBy.SelectedIndex = 0;
+            Utils.setFromDateAYearFromNow(dtpFromDate, dtpToDate);
         }
 
         private void Button_Click(object sender, EventArgs e)

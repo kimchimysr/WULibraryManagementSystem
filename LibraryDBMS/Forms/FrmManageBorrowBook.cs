@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
+using Color = System.Drawing.Color;
 
 namespace LibraryDBMS.Forms
 {
@@ -8,6 +9,7 @@ namespace LibraryDBMS.Forms
     {
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string borrowID) selected;
+        Color redColor = Color.FromArgb(238, 70, 70);
 
         public FrmManageBorrowBook()
         {
@@ -59,8 +61,7 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             txtSearchValue.Clear();
             btnSearch.Enabled = false;
-            dtpFromDate.Value = DateTime.Today;
-            dtpToDate.Value = DateTime.Today;
+            Utils.setFromDateAYearFromNow(dtpFromDate,dtpToDate);
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -229,6 +230,28 @@ namespace LibraryDBMS.Forms
                 // disable beep sounde
                 //e.Handled = true;
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        // format datagrid event. Check this link below for more info 
+        // https://www.aspsnippets.com/Articles/Change-DataGridView-Cell-Color-based-on-condition-in-Windows-Application-using-C-and-VBNet.aspx
+        private void dgvBorrowList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 && e.Value != null)
+            {
+                string loanStatus = e.Value.ToString();
+                if (loanStatus == "Borrowed")
+                {
+                    e.CellStyle.BackColor = Color.Yellow;
+                }
+                else if (loanStatus == "Returned")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = redColor;
+                }
             }
         }
     }
