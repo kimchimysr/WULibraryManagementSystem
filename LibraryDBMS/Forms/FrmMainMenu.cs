@@ -251,6 +251,7 @@ namespace LibraryDBMS.Forms
         {
             niBookLoan.Visible = false;
             (string bookDue, string bookOverdue) book = LibModule.GetLoanBookDueAndOverdue();
+            ShowNotificationBadge(book);
             if (book != ("0", "0"))
             {
                 niBookLoan.Icon = SystemIcons.Information;
@@ -275,6 +276,17 @@ namespace LibraryDBMS.Forms
                 OpenChildForm(new FrmNotification(), pNotification);
             }
 
+        }
+
+        internal void ShowNotificationBadge((string due, string overdue) book)
+        {
+            if (book != ("0", "0"))
+            {
+                int bookCount = int.Parse(book.due) + int.Parse(book.overdue);
+                lblNotificationBadge.Text = bookCount > 99 ? "99" : $"{bookCount}";
+                lblNotificationBadge.Visible = true;
+            }
+            else lblNotificationBadge.Visible = false;
         }
         #endregion
 

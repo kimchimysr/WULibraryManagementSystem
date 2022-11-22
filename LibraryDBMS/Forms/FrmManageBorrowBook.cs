@@ -9,7 +9,6 @@ namespace LibraryDBMS.Forms
     {
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string borrowID) selected;
-        Color redColor = Color.FromArgb(238, 70, 70);
 
         public FrmManageBorrowBook()
         {
@@ -61,7 +60,7 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             txtSearchValue.Clear();
             btnSearch.Enabled = false;
-            Utils.setFromDateAYearFromNow(dtpFromDate,dtpToDate);
+            Utils.SetFromDateAYearFromNow(dtpFromDate,dtpToDate);
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -202,6 +201,8 @@ namespace LibraryDBMS.Forms
             (string bookDue, string bookOverdue) book = LibModule.GetLoanBookDueAndOverdue();
             if (book == ("0", "0") && frmMainMenu.niBookLoan != null)
                 frmMainMenu.niBookLoan.Visible = false;
+
+            frmMainMenu.ShowNotificationBadge(book);
         }
 
         private void dgvBorrowList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -242,15 +243,15 @@ namespace LibraryDBMS.Forms
                 string loanStatus = e.Value.ToString();
                 if (loanStatus == "Borrowed")
                 {
-                    e.CellStyle.BackColor = Color.Yellow;
+                    e.CellStyle.BackColor = Color.FromArgb(255, 235, 0); // yellow
                 }
                 else if (loanStatus == "Returned")
                 {
-                    e.CellStyle.BackColor = Color.LightGreen;
+                    e.CellStyle.BackColor = Color.FromArgb(144, 238, 145); // green
                 }
                 else
                 {
-                    e.CellStyle.BackColor = redColor;
+                    e.CellStyle.BackColor = Color.FromArgb(255, 73, 109); // red
                 }
             }
         }

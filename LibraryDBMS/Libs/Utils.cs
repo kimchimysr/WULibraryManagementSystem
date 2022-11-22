@@ -247,7 +247,6 @@ namespace LibraryDBMS.Libs
             {
                 ShowAlways = true,
                 InitialDelay = 10
-
             };
             ctrl.MouseHover += Ctrl_MouseHover;
             void Ctrl_MouseHover(object sender, EventArgs e)
@@ -258,7 +257,7 @@ namespace LibraryDBMS.Libs
         /// <summary>
         /// Set The Datepicker a year before the present date when the form was initializing By calling the FromDatepicker and ToDatePicker
         /// </summary>
-        public static void setFromDateAYearFromNow(DateTimePicker dtpFromDate, DateTimePicker dtpToDate)
+        public static void SetFromDateAYearFromNow(DateTimePicker dtpFromDate, DateTimePicker dtpToDate)
         {
             dtpToDate.Value = DateTime.Now;
             dtpFromDate.Value = dtpToDate.Value.AddYears(-1);

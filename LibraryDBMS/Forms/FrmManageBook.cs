@@ -47,7 +47,7 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             txtSearchValue.Clear();
             btnSearch.Enabled = false;
-            Utils.setFromDateAYearFromNow(dtpFromDate,dtpToDate);
+            Utils.SetFromDateAYearFromNow(dtpFromDate,dtpToDate);
         }
         private void Button_Click(object sender, EventArgs e)
         {

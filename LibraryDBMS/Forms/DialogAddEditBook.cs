@@ -77,13 +77,23 @@ namespace LibraryDBMS.Forms
 
         private bool IsDuplicatedRecord()
         {
-            string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,pages,other FROM tblBooks " +
-                $"WHERE isbn='{txtISBN.Text.Trim()}' AND dewey='{txtDEWEYCode.Text.Trim()}' " +
-                $"AND title='{txtTitle.Text.Trim()}' AND author='{txtAuthor.Text.Trim()}' " +
-                $"AND publisher='{txtPublisher.Text.Trim()}' AND publishYear='{txtYear.Text.Trim()}' " +
-                $"AND pages='{nudPages.Text}' AND other='{txtOthers.Text.Trim()}';";
+            string isbn = txtISBN.Text.Trim();
+            string dewey = txtDEWEYCode.Text.Trim();
+            string title = txtTitle.Text.Trim();
+            string author = txtAuthor.Text.Trim();
+            string publisher = txtPublisher.Text.Trim();
+            string year = txtYear.Text.Trim();
+            string pages = nudPages.Text;
+            string other = txtOthers.Text.Trim();
 
-            if (!string.IsNullOrEmpty(LibModule.ExecuteScalarQuery(query)))
+            string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,pages,other FROM tblBooks " +
+                $"WHERE isbn=@val1 AND dewey=@val2 " +
+                $"AND title=@val3 AND author=@val4 " +
+                $"AND publisher=@val5 AND publishYear=@val6 " +
+                $"AND pages=@val7 AND other=@val8;";
+
+            if (!string.IsNullOrEmpty(LibModule.ExecuteScalarQueryWithSQLiteParameters
+                (query, "@val", isbn, dewey, title, author, publisher, year, pages, other)))
                 return true;
 
             return false;

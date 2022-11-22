@@ -61,6 +61,7 @@
             this.pNotification = new System.Windows.Forms.Panel();
             this.pContainer = new System.Windows.Forms.Panel();
             this.pRecentActivity = new System.Windows.Forms.Panel();
+            this.lblNotificationBadge = new System.Windows.Forms.Label();
             this.pSidebar.SuspendLayout();
             this.pHomeBorder.SuspendLayout();
             this.pTitleBar.SuspendLayout();
@@ -71,6 +72,7 @@
             // pSidebar
             // 
             this.pSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.pSidebar.Controls.Add(this.lblNotificationBadge);
             this.pSidebar.Controls.Add(this.btnHomeCollapsed);
             this.pSidebar.Controls.Add(this.panelSelected);
             this.pSidebar.Controls.Add(this.btnDashboard);
@@ -565,6 +567,19 @@
             this.pRecentActivity.Size = new System.Drawing.Size(1174, 756);
             this.pRecentActivity.TabIndex = 11;
             // 
+            // lblNotificationBadge
+            // 
+            this.lblNotificationBadge.AutoSize = true;
+            this.lblNotificationBadge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
+            this.lblNotificationBadge.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotificationBadge.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblNotificationBadge.Location = new System.Drawing.Point(29, 483);
+            this.lblNotificationBadge.Name = "lblNotificationBadge";
+            this.lblNotificationBadge.Size = new System.Drawing.Size(16, 18);
+            this.lblNotificationBadge.TabIndex = 2;
+            this.lblNotificationBadge.Text = "0";
+            this.lblNotificationBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -579,6 +594,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMenu_FormClosing);
             this.Resize += new System.EventHandler(this.FrmMainMenu_Resize);
             this.pSidebar.ResumeLayout(false);
+            this.pSidebar.PerformLayout();
             this.pHomeBorder.ResumeLayout(false);
             this.pTitleBar.ResumeLayout(false);
             this.pHeader.ResumeLayout(false);
@@ -622,5 +638,6 @@
         internal System.Windows.Forms.Panel pRecentActivity;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Panel pHomeBorder;
+        internal System.Windows.Forms.Label lblNotificationBadge;
     }
 }

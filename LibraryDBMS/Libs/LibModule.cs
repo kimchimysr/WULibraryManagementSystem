@@ -183,7 +183,7 @@ namespace LibraryDBMS.Libs
                     setFieldsValue.Append($"{field}=@val{index++},");
                 }
             }
-            string query = $"UPDATE {tableName} SET {setFieldsValue} WHERE {conditionFIeldName}='{conditionValue}';";
+            string query = $"UPDATE {tableName} SET {setFieldsValue} WHERE {conditionFIeldName}=@condVal;";
             try
             {
                 index = 1;
@@ -195,7 +195,7 @@ namespace LibraryDBMS.Libs
                 {
                     Cmd.Parameters.AddWithValue($"@val{index++}", val);
                 }
-
+                Cmd.Parameters.AddWithValue("@condVal", conditionValue);
                 if (Cmd.ExecuteNonQuery() == 1)
                 {
                     if (showMessage)
@@ -222,11 +222,12 @@ namespace LibraryDBMS.Libs
         public static bool DeleteRecord(string tableName, string conditionFieldName, string conditionValue,
             string record)
         {
-            string query = $"DELETE FROM {tableName} WHERE {conditionFieldName}='{conditionValue}';";
+            string query = $"DELETE FROM {tableName} WHERE {conditionFieldName}=@condVal;";
             try
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
+                Cmd.Parameters.AddWithValue("@condVal", conditionValue);
                 Form dialogDeleteRecord = new DialogDeleteRecord(record);
                 if (dialogDeleteRecord.ShowDialog() == DialogResult.Yes)
                 {
@@ -310,6 +311,34 @@ namespace LibraryDBMS.Libs
                 Cmd = new SQLiteCommand(query, Conn);
                 var result = Cmd.ExecuteScalar();
                 if(result != null)
+                    str = result.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            finally
+            {
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
+            }
+            return str;
+        }
+
+        public static string ExecuteScalarQueryWithSQLiteParameters(string query, string paramSign, params string[] values)
+        {
+            string str = string.Empty;
+            int i = 1;
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                foreach (string paramValue in values)
+                    Cmd.Parameters.AddWithValue($"{paramSign}{i++}", paramValue);
+                var result = Cmd.ExecuteScalar();
+                if (result != null)
                     str = result.ToString();
             }
             catch (Exception ex)
@@ -437,14 +466,17 @@ namespace LibraryDBMS.Libs
             DataGridView dgv, bool useWildcard = true)
         {
                 string query = useWildcard == true ? $"SELECT * FROM {tableName} " +
-                        $"WHERE {conditionField}='{conditionValue}' " +
-                        $"OR {conditionField} LIKE '{conditionValue}%' " :
+                        $"WHERE {conditionField}=@val1 " +
+                        $"OR {conditionField} LIKE @val2 " :
                         $"SELECT * FROM {tableName} " +
-                        $"WHERE {conditionField}='{conditionValue}' ";
+                        $"WHERE {conditionField}=@val1 ";
             try
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
+                Cmd.Parameters.AddWithValue("@val1", conditionValue);
+                if (useWildcard)
+                    Cmd.Parameters.AddWithValue("@val2", conditionValue + "%");
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -470,12 +502,13 @@ namespace LibraryDBMS.Libs
             DataGridView dgv)
         {
             string query = $"SELECT * FROM {tableName} " +
-                    $"WHERE firstName || lastName LIKE '%{conditionValue}%'" +
-                    $"OR firstName || ' ' || lastName LIKE '%{conditionValue}%'";
+                    $"WHERE firstName || lastName LIKE @val1 " +
+                    $"OR firstName || ' ' || lastName LIKE @val1";
             try
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
+                Cmd.Parameters.AddWithValue("@val1", "%" + conditionValue + "%");
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -565,7 +598,8 @@ namespace LibraryDBMS.Libs
             {
                 Conn.Open();
                 Cmd = new SQLiteCommand($"SELECT * FROM {tableName} " +
-                    $"WHERE {conditionFIeldName}='{conditionValue}';", Conn);
+                    $"WHERE {conditionFIeldName}=@val1;", Conn);
+                Cmd.Parameters.AddWithValue("@val1", conditionValue);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 adapter.Fill(dt);
             }
