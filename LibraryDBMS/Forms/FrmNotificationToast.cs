@@ -24,8 +24,8 @@ namespace LibraryDBMS.Forms
             // Pop doesn't need to be shown in task bar
             ShowInTaskbar = false;
             Rectangle workingArea = Screen.GetWorkingArea(this);
-            this.Location = new Point(workingArea.Right - (Size.Width + 15),
-                                      workingArea.Bottom - (Size.Height + 15));
+            this.Location = new Point(workingArea.Right - (Size.Width),
+                                      workingArea.Bottom - (Size.Height));
             // Create and run timer for animation
             timer = new Timer();
             timer.Interval = (3000);
