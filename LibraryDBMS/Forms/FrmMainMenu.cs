@@ -124,7 +124,7 @@ namespace LibraryDBMS.Forms
                     OpenChildFormAsDialog(new DialogUserAccount(user));
                     break;
                 case "btnSetting":
-                    OpenChildFormAsDialog(new DialogSetting());
+                    OpenChildFormAsDialog(new DialogSetting(user));
                     break;
                 case "btnAbout":
                     OpenChildFormAsDialog(new DialogAbout());

@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Libs
@@ -50,16 +51,16 @@ namespace LibraryDBMS.Libs
 
         private void Isbn_KeyDown(object sender, KeyEventArgs e)
         {
-            // https://social.msdn.microsoft.com/Forums/vstudio/en-US/6cd13bf6-1cd6-4702-bcdd-fd15b7529aca/insert-quotquot-for-every-5-characters-in-a-text-box?forum=csharpgeneral
-            string text = isbn.Text;
-            if(e.KeyCode != Keys.Back)
-            {
-                if (text.Replace("-", "").Length % 4 == 0 && text.Length != 0 && text.Substring(text.Length - 1) != "-")
-                {
-                    isbn.Text += "-";
-                    isbn.SelectionStart = isbn.TextLength;
-                }
-            }
+            //// https://social.msdn.microsoft.com/Forums/vstudio/en-US/6cd13bf6-1cd6-4702-bcdd-fd15b7529aca/insert-quotquot-for-every-5-characters-in-a-text-box?forum=csharpgeneral
+            //string text = isbn.Text;
+            //if(e.KeyCode != Keys.Back)
+            //{
+            //    if (text.Replace("-", "").Length % 4 == 0 && text.Length != 0 && text.Substring(text.Length - 1) != "-")
+            //    {
+            //        isbn.Text += "-";
+            //        isbn.SelectionStart = isbn.TextLength;
+            //    }
+            //}
         }
 
         private void Quantity_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -155,7 +156,7 @@ namespace LibraryDBMS.Libs
             else if (dewey.Text.Length > 0)
             {
                 // format: 1 ABC to 123.123 ABC
-                Regex pattern = new Regex(@"^([1-9][0-9]{0,2}|[1-9][0-9]{0,2}\.[0-9]{1,3}) [A-Z]{1,3}$");
+                Regex pattern = new Regex(@"^(\d{3}|\d{3}\.[0-9]{1,3}) [A-Z]{3}$");
                 if (pattern.IsMatch(dewey.Text))
                 {
                     ep.SetError(dewey, null);
@@ -177,10 +178,17 @@ namespace LibraryDBMS.Libs
             }
             else if(isbn.Text.Length > 0)
             {
-                // 1234-1234-12 or 1234-1234-1234-1
-                Regex pattern = new Regex(@"^\d{4}-\d{4}-(\d{2}|\d{4}-\d)$");
+                // 12-34-1-234-12 (digit atleast 10) or 12-34-12-34-1234-1 (digit atleast 13)
+                Regex pattern = new Regex(@"^-*(\d-*){10}|^-*(\d-*){13}$");
                 if (pattern.IsMatch(isbn.Text))
                 {
+                    StringBuilder sb = new StringBuilder();
+                    foreach (char c in isbn.Text)
+                        if (char.IsDigit(c))
+                            sb.Append(c);
+                    // for every 4 characters, add -
+                    string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
+                    isbn.Text = newIsbn;
                     ep.SetError(isbn, null);
                 }
                 else
