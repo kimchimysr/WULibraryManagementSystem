@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pTitleBar = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,19 +43,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbTable = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnLoginHistory = new System.Windows.Forms.Button();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbTable = new System.Windows.Forms.ComboBox();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pTitleBar
@@ -72,31 +76,6 @@
             this.pTitleBar.Name = "pTitleBar";
             this.pTitleBar.Size = new System.Drawing.Size(580, 45);
             this.pTitleBar.TabIndex = 36;
-            // 
-            // label10
-            // 
-            this.label10.Image = global::LibraryDBMS.Properties.Resources.settings_26px;
-            this.label10.Location = new System.Drawing.Point(151, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 44);
-            this.label10.TabIndex = 36;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnClose.Location = new System.Drawing.Point(535, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 45);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.TabStop = false;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
             // lblHeader
             // 
@@ -117,7 +96,7 @@
             this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 557);
+            this.panel1.Size = new System.Drawing.Size(3, 621);
             this.panel1.TabIndex = 37;
             // 
             // panel2
@@ -127,14 +106,14 @@
             this.panel2.Location = new System.Drawing.Point(580, 48);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 557);
+            this.panel2.Size = new System.Drawing.Size(3, 621);
             this.panel2.TabIndex = 38;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 601);
+            this.panel3.Location = new System.Drawing.Point(6, 665);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(574, 4);
@@ -270,7 +249,7 @@
             this.groupBox2.Controls.Add(this.btnImport);
             this.groupBox2.Controls.Add(this.btnRestore);
             this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(15, 398);
+            this.groupBox2.Location = new System.Drawing.Point(15, 384);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -278,6 +257,137 @@
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Import|Backup|Restore";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.cbTable);
+            this.groupBox3.Controls.Add(this.btnExport);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(15, 273);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(556, 103);
+            this.groupBox3.TabIndex = 42;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Export to Excel (.xlsx)";
+            // 
+            // cbTable
+            // 
+            this.cbTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.cbTable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbTable.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTable.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbTable.FormattingEnabled = true;
+            this.cbTable.Location = new System.Drawing.Point(133, 47);
+            this.cbTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbTable.Name = "cbTable";
+            this.cbTable.Size = new System.Drawing.Size(204, 28);
+            this.cbTable.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 50);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 22);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Select Table:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnLoginHistory);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(15, 495);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Size = new System.Drawing.Size(556, 78);
+            this.groupBox4.TabIndex = 42;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Login History";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(18, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(187, 22);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Check user login history:";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
+            this.btnCancel.Location = new System.Drawing.Point(399, 592);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(172, 62);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "  &Cancel";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnExport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnExport.Image = global::LibraryDBMS.Properties.Resources.microsoft_excel_26px;
+            this.btnExport.Location = new System.Drawing.Point(384, 41);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(163, 40);
+            this.btnExport.TabIndex = 6;
+            this.btnExport.Text = "  Export to Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnLoginHistory
+            // 
+            this.btnLoginHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnLoginHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoginHistory.FlatAppearance.BorderSize = 0;
+            this.btnLoginHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoginHistory.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnLoginHistory.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnLoginHistory.Image = global::LibraryDBMS.Properties.Resources.time_machine_26px;
+            this.btnLoginHistory.Location = new System.Drawing.Point(384, 24);
+            this.btnLoginHistory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLoginHistory.Name = "btnLoginHistory";
+            this.btnLoginHistory.Size = new System.Drawing.Size(163, 40);
+            this.btnLoginHistory.TabIndex = 9;
+            this.btnLoginHistory.Text = "  Login History";
+            this.btnLoginHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoginHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLoginHistory.UseVisualStyleBackColor = false;
+            this.btnLoginHistory.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnBackup
             // 
@@ -342,91 +452,6 @@
             this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.Button_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.cbTable);
-            this.groupBox3.Controls.Add(this.btnExport);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(15, 280);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(556, 103);
-            this.groupBox3.TabIndex = 42;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Export to Excel (.xlsx)";
-            // 
-            // cbTable
-            // 
-            this.cbTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.cbTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTable.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTable.ForeColor = System.Drawing.SystemColors.Control;
-            this.cbTable.FormattingEnabled = true;
-            this.cbTable.Location = new System.Drawing.Point(133, 47);
-            this.cbTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbTable.Name = "cbTable";
-            this.cbTable.Size = new System.Drawing.Size(204, 28);
-            this.cbTable.TabIndex = 5;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
-            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExport.FlatAppearance.BorderSize = 0;
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnExport.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnExport.Image = global::LibraryDBMS.Properties.Resources.microsoft_excel_26px;
-            this.btnExport.Location = new System.Drawing.Point(384, 41);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(163, 40);
-            this.btnExport.TabIndex = 6;
-            this.btnExport.Text = "  Export to Excel";
-            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 50);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 22);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Select Table:";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(399, 528);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(172, 62);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "  &Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.Button_Click);
-            // 
             // btnRestart
             // 
             this.btnRestart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -437,7 +462,7 @@
             this.btnRestart.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestart.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRestart.Image = global::LibraryDBMS.Properties.Resources.refresh_26px;
-            this.btnRestart.Location = new System.Drawing.Point(15, 528);
+            this.btnRestart.Location = new System.Drawing.Point(15, 592);
             this.btnRestart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(172, 62);
@@ -448,14 +473,40 @@
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.Button_Click);
             // 
+            // label10
+            // 
+            this.label10.Image = global::LibraryDBMS.Properties.Resources.settings_26px;
+            this.label10.Location = new System.Drawing.Point(151, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 44);
+            this.label10.TabIndex = 36;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
+            this.btnClose.Location = new System.Drawing.Point(535, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 45);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.TabStop = false;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.Button_Click);
+            // 
             // DialogSetting
             // 
             this.AcceptButton = this.btnCancel;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(586, 608);
+            this.ClientSize = new System.Drawing.Size(586, 672);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
@@ -477,6 +528,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -509,5 +562,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnLoginHistory;
+        private System.Windows.Forms.Label label4;
     }
 }

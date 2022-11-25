@@ -48,6 +48,10 @@ namespace LibraryDBMS.Forms
                 case "btnRestore":
                     Utils.RestoreDatabase();
                     break;
+                case "btnLoginHistory":
+                    var dialogLoginHistory = new DialogLoginHistory();
+                    dialogLoginHistory.ShowDialog();
+                    break;
                 case "btnRestart":
                     if (SettingHasChanged())
                         us.Save();

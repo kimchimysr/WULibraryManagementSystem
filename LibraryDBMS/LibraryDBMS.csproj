@@ -123,6 +123,12 @@
     <Compile Include="Forms\DialogAddEditBook.Designer.cs">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DialogLoginHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogLoginHistory.Designer.cs">
+      <DependentUpon>DialogLoginHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogUserRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogLoginHistory.resx">
+      <DependentUpon>DialogLoginHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogUserRegistration.resx">
       <DependentUpon>DialogUserRegistration.cs</DependentUpon>

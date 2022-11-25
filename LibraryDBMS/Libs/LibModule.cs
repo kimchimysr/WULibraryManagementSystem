@@ -40,7 +40,7 @@ namespace LibraryDBMS.Libs
                 ("tblLoanStatus", "loanStatusID,loanStatusName"),
                 ("tblBorrows", "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
                 ("tblUser", "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
-                ("tblUserLogs", "username,info")
+                ("tblUserLogs", "username,info,dateTime")
             };
             int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));
             return dbTables[index].Fields;
@@ -765,11 +765,13 @@ namespace LibraryDBMS.Libs
         public static void LogTimestampUserLogin(DataTable user)
         {
             string username = user.Rows[0]["username"].ToString();
-            string info = $"Logged in at {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            string info = $"Logged in";
+            string dateTime = $"{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             List<string> userLog = new List<string>()
             {
                 username,
-                info
+                info,
+                dateTime
             };
             InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
         }
@@ -777,11 +779,13 @@ namespace LibraryDBMS.Libs
         public static void LogTimestampUserLogout(DataTable user)
         {
             string username = user.Rows[0]["username"].ToString();
-            string info = $"Logged out at {DateTime.Now:yyyy-MM-dd hh:mm:ss}";
+            string info = $"Logged out";
+            string dateTime = $"{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             List<string> userLog = new List<string>()
             {
                 username,
-                info
+                info,
+                dateTime
             };
             InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
         }
