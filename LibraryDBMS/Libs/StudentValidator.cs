@@ -9,10 +9,10 @@ namespace LibraryDBMS.Libs
         private TextBox fName;
         private TextBox lName;
         private ComboBox year;
-        private TextBox major;
+        private ComboBox major;
         private TextBox tel;
 
-        public StudentValidator(TextBox studentID, TextBox fName, TextBox lName, ComboBox year, TextBox major, TextBox tel)
+        public StudentValidator(TextBox studentID, TextBox fName, TextBox lName, ComboBox year, ComboBox major, TextBox tel)
         {
             this.ep.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             if (studentID != null)

@@ -263,6 +263,37 @@ namespace LibraryDBMS.Libs
             dtpFromDate.Value = dtpToDate.Value.AddYears(-1);
         }
 
+        public static void EnableControlAutoComplete(Control ctl, DataTable dt)
+        {
+            if (ctl is ComboBox cb)
+            {
+                var collection = new AutoCompleteStringCollection();
+                cb.Items.Clear();
+                if(dt != null)
+                    if(dt.Rows.Count > 0)
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            string value = row[0].ToString();
+                            collection.Add(value);
+                            cb.Items.Add(value);
+                        }
+                cb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cb.AutoCompleteCustomSource = collection;
+                cb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+            else if (ctl is TextBox tb)
+            {
+                var collection = new AutoCompleteStringCollection();
+                if (dt != null)
+                    if (dt.Rows.Count > 0)
+                        foreach (DataRow row in dt.Rows)
+                            collection.Add(row[0].ToString());
+                tb.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                tb.AutoCompleteCustomSource = collection;
+                tb.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+        }
+
         #endregion
 
         #region Tool
