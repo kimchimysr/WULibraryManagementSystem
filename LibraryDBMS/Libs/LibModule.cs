@@ -459,6 +459,43 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        public static void FillReportViewerWithQuery(string query, ReportViewer rpv, string rpPath,
+                    string rpDataSet, Dictionary<string,string> parameters = null)
+        {
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                rpv.LocalReport.ReportEmbeddedResource = rpPath;
+                if (parameters != null)
+                {
+                    List<ReportParameter> listReportParameter = new List<ReportParameter>();
+                    foreach(var p in parameters)
+                        listReportParameter.Add(new ReportParameter(p.Key, p.Value));
+                    rpv.LocalReport.SetParameters(listReportParameter);
+                }
+                ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
+                rpv.LocalReport.DataSources.Clear();
+                rpv.ResetPageSettings();
+                rpv.LocalReport.DataSources.Add(rds);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+            finally
+            {
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
+            }
+        }
+
         #endregion
 
         #region Search

@@ -89,9 +89,9 @@
             this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIssueDate.Location = new System.Drawing.Point(180, 465);
+            this.dtpIssueDate.Location = new System.Drawing.Point(147, 465);
             this.dtpIssueDate.Name = "dtpIssueDate";
-            this.dtpIssueDate.Size = new System.Drawing.Size(172, 25);
+            this.dtpIssueDate.Size = new System.Drawing.Size(205, 25);
             this.dtpIssueDate.TabIndex = 5;
             this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             this.dtpIssueDate.ValueChanged += new System.EventHandler(this.dtpIssueDate_ValueChanged);
@@ -125,10 +125,10 @@
             this.dtpDueDate.Enabled = false;
             this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(180, 497);
+            this.dtpDueDate.Location = new System.Drawing.Point(147, 497);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtpDueDate.Size = new System.Drawing.Size(172, 25);
+            this.dtpDueDate.Size = new System.Drawing.Size(205, 25);
             this.dtpDueDate.TabIndex = 0;
             this.dtpDueDate.TabStop = false;
             this.dtpDueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
