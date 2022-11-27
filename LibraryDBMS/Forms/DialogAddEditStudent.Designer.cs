@@ -352,7 +352,7 @@
             this.cbMajor.Location = new System.Drawing.Point(132, 231);
             this.cbMajor.Name = "cbMajor";
             this.cbMajor.Size = new System.Drawing.Size(266, 28);
-            this.cbMajor.TabIndex = 38;
+            this.cbMajor.TabIndex = 7;
             // 
             // DialogAddEditStudent
             // 

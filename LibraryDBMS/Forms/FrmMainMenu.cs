@@ -40,7 +40,7 @@ namespace LibraryDBMS.Forms
             // fix flickering
             Utils.FixControlFlickering(pContainer);
             // get user information
-            user = LibModule.GetDataTableFromDB("tblUser");
+            user = LibModule.GetDataTableFromDBWithTableName("tblUser");
             // open form to start counting uptime
             OpenChildForm(new FrmDashboard(this), pDashboard);
             AppliedUserSetting();

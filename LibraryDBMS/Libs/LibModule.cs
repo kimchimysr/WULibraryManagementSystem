@@ -618,7 +618,7 @@ namespace LibraryDBMS.Libs
             return dt;
         }
 
-        public static DataTable GetDataTableFromDB(string tableName, string recordCount = null)
+        public static DataTable GetDataTableFromDBWithTableName(string tableName, string recordCount = null)
         {
             DataTable dt = new DataTable();
             try
@@ -627,6 +627,31 @@ namespace LibraryDBMS.Libs
                 string query = recordCount == null ?
                     $"SELECT * FROM {tableName};" :
                     $"SELECT * FROM {tableName} LIMIT {recordCount};";
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (Cmd != null)
+                    Cmd.Dispose();
+                if (Conn != null)
+                    Conn.Close();
+            }
+            return dt;
+        }
+
+        public static DataTable GetDataTableFromDBWithQuery(string query)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Conn.Open();
                 Cmd = new SQLiteCommand(query, Conn);
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
                 adapter.Fill(dt);

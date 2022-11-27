@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Libs
@@ -11,8 +13,11 @@ namespace LibraryDBMS.Libs
         private Label lblTitle;
         private Label lblName;
         private Label lblBookAvailability;
+        private Label lblStudentStatus;
+        private Label lblBorrowedTitle;
 
-        public IssueBookValidator(TextBox studentID, TextBox bookID, Label lblTitle, Label lblName, Label lblBookAvailability)
+        public IssueBookValidator(TextBox studentID, TextBox bookID, Label lblTitle, Label lblName, Label lblBookAvailability
+            , Label lblStudentStatus, Label lblBorrowedTitle)
         {
             ep.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             this.studentID = studentID;
@@ -20,6 +25,8 @@ namespace LibraryDBMS.Libs
             this.lblTitle = lblTitle;
             this.lblName = lblName;
             this.lblBookAvailability = lblBookAvailability;
+            this.lblStudentStatus = lblStudentStatus;
+            this.lblBorrowedTitle = lblBorrowedTitle;
             this.studentID.Validating += StudentID_Validating;
             this.studentID.KeyPress += ID_KeyPress;
             this.bookID.Validating += BookID_Validating;
@@ -28,7 +35,9 @@ namespace LibraryDBMS.Libs
 
         private void StudentID_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            lblName.Text = "";
+            lblStudentStatus.Text = "Student Status: ";
+            lblBorrowedTitle.Text = "Last Borrowed Title: ";
+            lblName.Text = "Student Name: ";
             if (string.IsNullOrEmpty(studentID.Text))
             {
                 ep.SetError(studentID, "Student ID is required!");
@@ -43,16 +52,29 @@ namespace LibraryDBMS.Libs
             }
             else
             {
-                string query = $"SELECT firstName || ' ' || lastName AS fullName " +
-                    $"FROM tblStudents WHERE studentID='{studentID.Text.Trim()}';";
-                lblName.Text = LibModule.ExecuteScalarQuery(query);
+                string query = 
+                    $"SELECT fullName,title,loanStatusName FROM viewBorrowedBooks " +
+                    $"WHERE studentID = '{studentID.Text.Trim()}' ORDER BY borrowID DESC LIMIT 1;";
+                DataTable result = LibModule.GetDataTableFromDBWithQuery(query);
+                if (result.Rows.Count > 0)
+                {
+                    if (result.Rows[0]["loanStatusName"].ToString() == "Borrowed")
+                        lblStudentStatus.Text += "Currently borrowing 1 book";
+                    else if (result.Rows[0]["loanStatusName"].ToString() == "Returned")
+                        lblStudentStatus.Text += "Returned last borrowed book";
+                    else if (result.Rows[0]["loanStatusName"].ToString() == "Lost")
+                        lblStudentStatus.Text += "Lost last borrowed book";
+                    lblBorrowedTitle.Text += result.Rows[0]["title"].ToString();
+                    lblName.Text += result.Rows[0]["fullName"].ToString();
+                }
+
                 ep.SetError(studentID, null);
             }
         }
 
         private void BookID_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            lblTitle.Text = "";
+            lblTitle.Text = "Book Title: ";
             lblBookAvailability.Text = "";
             if (string.IsNullOrEmpty(bookID.Text))
             {
@@ -69,7 +91,7 @@ namespace LibraryDBMS.Libs
             else
             {
                 string query = $"SELECT title FROM tblBooks WHERE bookID='{bookID.Text.Trim()}';";
-                lblTitle.Text = LibModule.ExecuteScalarQuery(query);
+                lblTitle.Text += LibModule.ExecuteScalarQuery(query);
                 // check if the book qty > 0
                 string qty = LibModule.ExecuteScalarQuery
                     ($"SELECT qty FROM tblBooks WHERE bookID='{bookID.Text.Trim()}';");

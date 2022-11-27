@@ -624,27 +624,27 @@ namespace LibraryDBMS.Libs
                     XLWorkbook workbook = new XLWorkbook();
                     if (table == "All")
                     {
-                        dt = LibModule.GetDataTableFromDB("tblBooks");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblBooks");
                         workbook.Worksheets.Add(dt, "tblBooks");
-                        dt = LibModule.GetDataTableFromDB("tblBookCategories");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblBookCategories");
                         workbook.Worksheets.Add(dt, "tblBookCategories");
-                        dt = LibModule.GetDataTableFromDB("tblBorrows");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblBorrows");
                         workbook.Worksheets.Add(dt, "tblBorrows");
-                        dt = LibModule.GetDataTableFromDB("tblLoanStatus");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblLoanStatus");
                         workbook.Worksheets.Add(dt, "tblLoanStatus");
-                        dt = LibModule.GetDataTableFromDB("tblLogs");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblLogs");
                         workbook.Worksheets.Add(dt, "tblLogs");
-                        dt = LibModule.GetDataTableFromDB("tblUser");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblUser");
                         workbook.Worksheets.Add(dt, "tblUser");
-                        dt = LibModule.GetDataTableFromDB("tblStudents");
+                        dt = LibModule.GetDataTableFromDBWithTableName("tblStudents");
                         workbook.Worksheets.Add(dt, "tblStudents");
-                        dt = LibModule.GetDataTableFromDB("viewOverview");
+                        dt = LibModule.GetDataTableFromDBWithTableName("viewOverview");
                         workbook.Worksheets.Add(dt, "viewOverview");
                         workbook.SaveAs(sfd.FileName);
                     }
                     else
                     {
-                        dt = LibModule.GetDataTableFromDB(table);
+                        dt = LibModule.GetDataTableFromDBWithTableName(table);
                         workbook.Worksheets.Add(dt, table);
                         workbook.SaveAs(sfd.FileName);
                     }

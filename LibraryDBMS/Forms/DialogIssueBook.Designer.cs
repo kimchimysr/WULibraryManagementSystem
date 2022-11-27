@@ -42,10 +42,8 @@
             this.btnSearchBookID = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBookID = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
+            this.lblStudentStatus = new System.Windows.Forms.Label();
+            this.lblBorrowedTitle = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pTitleBar = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -57,8 +55,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblStudentName = new System.Windows.Forms.Label();
+            this.lblBookTitle = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pTitleBar.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label9
@@ -83,10 +85,11 @@
             // 
             // dtpIssueDate
             // 
+            this.dtpIssueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIssueDate.Location = new System.Drawing.Point(180, 345);
+            this.dtpIssueDate.Location = new System.Drawing.Point(180, 465);
             this.dtpIssueDate.Name = "dtpIssueDate";
             this.dtpIssueDate.Size = new System.Drawing.Size(172, 25);
             this.dtpIssueDate.TabIndex = 5;
@@ -95,9 +98,10 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 345);
+            this.label5.Location = new System.Drawing.Point(14, 465);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 22);
             this.label5.TabIndex = 54;
@@ -105,9 +109,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 377);
+            this.label1.Location = new System.Drawing.Point(14, 497);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 22);
             this.label1.TabIndex = 54;
@@ -115,11 +120,12 @@
             // 
             // dtpDueDate
             // 
+            this.dtpDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpDueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpDueDate.Enabled = false;
             this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(180, 377);
+            this.dtpDueDate.Location = new System.Drawing.Point(180, 497);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpDueDate.Size = new System.Drawing.Size(172, 25);
@@ -147,9 +153,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 313);
+            this.label4.Location = new System.Drawing.Point(14, 433);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 22);
             this.label4.TabIndex = 50;
@@ -157,10 +164,11 @@
             // 
             // lblBookAvailability
             // 
+            this.lblBookAvailability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBookAvailability.AutoSize = true;
             this.lblBookAvailability.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBookAvailability.ForeColor = System.Drawing.Color.Green;
-            this.lblBookAvailability.Location = new System.Drawing.Point(154, 313);
+            this.lblBookAvailability.Location = new System.Drawing.Point(154, 433);
             this.lblBookAvailability.Name = "lblBookAvailability";
             this.lblBookAvailability.Size = new System.Drawing.Size(0, 22);
             this.lblBookAvailability.TabIndex = 50;
@@ -215,61 +223,41 @@
             this.txtBookID.Size = new System.Drawing.Size(248, 26);
             this.txtBookID.TabIndex = 1;
             // 
-            // label8
+            // lblStudentStatus
             // 
-            this.label8.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 23);
-            this.label8.TabIndex = 57;
-            this.label8.Text = "Book Title:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblStudentStatus.AutoSize = true;
+            this.lblStudentStatus.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentStatus.Location = new System.Drawing.Point(6, 32);
+            this.lblStudentStatus.MaximumSize = new System.Drawing.Size(468, 0);
+            this.lblStudentStatus.Name = "lblStudentStatus";
+            this.lblStudentStatus.Size = new System.Drawing.Size(120, 16);
+            this.lblStudentStatus.TabIndex = 57;
+            this.lblStudentStatus.Text = "Student Status: ";
+            this.lblStudentStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblTitle
+            // lblBorrowedTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(97, 35);
-            this.lblTitle.MaximumSize = new System.Drawing.Size(377, 43);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(0, 16);
-            this.lblTitle.TabIndex = 57;
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 23);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "Student Name:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(124, 78);
-            this.lblName.MaximumSize = new System.Drawing.Size(350, 35);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 16);
-            this.lblName.TabIndex = 58;
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblBorrowedTitle.AutoSize = true;
+            this.lblBorrowedTitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBorrowedTitle.Location = new System.Drawing.Point(6, 75);
+            this.lblBorrowedTitle.MaximumSize = new System.Drawing.Size(468, 0);
+            this.lblBorrowedTitle.Name = "lblBorrowedTitle";
+            this.lblBorrowedTitle.Size = new System.Drawing.Size(146, 16);
+            this.lblBorrowedTitle.TabIndex = 59;
+            this.lblBorrowedTitle.Text = "Last Borrowed Title: ";
+            this.lblBorrowedTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.lblTitle);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.lblBorrowedTitle);
+            this.groupBox1.Controls.Add(this.lblStudentStatus);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(15, 171);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(480, 127);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Information";
+            this.groupBox1.Text = "History";
             // 
             // pTitleBar
             // 
@@ -317,7 +305,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 484);
+            this.panel1.Size = new System.Drawing.Size(3, 604);
             this.panel1.TabIndex = 106;
             // 
             // panel2
@@ -326,16 +314,16 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(502, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 484);
+            this.panel2.Size = new System.Drawing.Size(3, 604);
             this.panel2.TabIndex = 107;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 529);
+            this.panel3.Location = new System.Drawing.Point(6, 642);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(496, 3);
+            this.panel3.Size = new System.Drawing.Size(496, 10);
             this.panel3.TabIndex = 108;
             // 
             // btnSave
@@ -348,7 +336,7 @@
             this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSave.Image = global::LibraryDBMS.Properties.Resources.save_26px;
-            this.btnSave.Location = new System.Drawing.Point(18, 470);
+            this.btnSave.Location = new System.Drawing.Point(18, 590);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 50);
             this.btnSave.TabIndex = 6;
@@ -369,7 +357,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(342, 470);
+            this.btnCancel.Location = new System.Drawing.Point(342, 590);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
             this.btnCancel.TabIndex = 8;
@@ -389,7 +377,7 @@
             this.button2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Image = global::LibraryDBMS.Properties.Resources.clear_symbol_26px;
-            this.button2.Location = new System.Drawing.Point(180, 470);
+            this.button2.Location = new System.Drawing.Point(180, 590);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 50);
             this.button2.TabIndex = 7;
@@ -401,15 +389,52 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(14, 401);
+            this.label6.Location = new System.Drawing.Point(14, 521);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(293, 66);
+            this.label6.Size = new System.Drawing.Size(327, 66);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Note: \r\n- Each person can loan 1 book at a time\r\n- Book can be loaned up to 1 wee" +
-    "k";
+            this.label6.Text = "Note: \r\n- Each person can only loan 1 book at a time\r\n- Book can be loaned up to " +
+    "1 week";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblStudentName);
+            this.groupBox2.Controls.Add(this.lblBookTitle);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(15, 304);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(480, 127);
+            this.groupBox2.TabIndex = 79;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "New Loan";
+            // 
+            // lblStudentName
+            // 
+            this.lblStudentName.AutoSize = true;
+            this.lblStudentName.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentName.Location = new System.Drawing.Point(6, 75);
+            this.lblStudentName.MaximumSize = new System.Drawing.Size(468, 0);
+            this.lblStudentName.Name = "lblStudentName";
+            this.lblStudentName.Size = new System.Drawing.Size(112, 16);
+            this.lblStudentName.TabIndex = 59;
+            this.lblStudentName.Text = "Student Name: ";
+            this.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblBookTitle
+            // 
+            this.lblBookTitle.AutoSize = true;
+            this.lblBookTitle.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookTitle.Location = new System.Drawing.Point(6, 32);
+            this.lblBookTitle.MaximumSize = new System.Drawing.Size(468, 0);
+            this.lblBookTitle.Name = "lblBookTitle";
+            this.lblBookTitle.Size = new System.Drawing.Size(83, 16);
+            this.lblBookTitle.TabIndex = 57;
+            this.lblBookTitle.Text = "Book Title: ";
+            this.lblBookTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DialogIssueBook
             // 
@@ -419,7 +444,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(508, 535);
+            this.ClientSize = new System.Drawing.Size(508, 655);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -430,6 +455,7 @@
             this.Controls.Add(this.btnSearchBookID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBookID);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSearchStudentID);
             this.Controls.Add(this.dtpDueDate);
@@ -451,6 +477,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pTitleBar.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,10 +499,8 @@
         private System.Windows.Forms.Button btnSearchBookID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBookID;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblStudentStatus;
+        private System.Windows.Forms.Label lblBorrowedTitle;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel pTitleBar;
         private System.Windows.Forms.Button btnClose;
@@ -486,5 +512,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblStudentName;
+        private System.Windows.Forms.Label lblBookTitle;
     }
 }

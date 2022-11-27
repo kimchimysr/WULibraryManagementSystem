@@ -43,26 +43,7 @@ namespace LibraryDBMS.Forms
 
         private void EnableAutoCompleteOnComboBoxMajor()
         {
-            DataTable majorDt = new DataTable();//LibModule.GetDataTableFromDB("viewStudentMajors");
-            majorDt.Columns.Add("major");
-            majorDt.Rows.Add("ABC");
-            majorDt.Rows.Add("ADC");
-            majorDt.Rows.Add("ABC");
-            majorDt.Rows.Add("NNBC");
-            majorDt.Rows.Add("DASDC");
-            majorDt.Rows.Add("ASDGC");
-            majorDt.Rows.Add("ZXCZBC");
-            majorDt.Rows.Add("BCVSD");
-            majorDt.Rows.Add("HGWEQ");
-            majorDt.Rows.Add("Asafakls");
-            majorDt.Rows.Add("ABasdC");
-            majorDt.Rows.Add("ABjfghC");
-            majorDt.Rows.Add("AB4cvberC");
-            majorDt.Rows.Add("AtweterC");
-            majorDt.Rows.Add("AwerhdrtrrC");
-            majorDt.Rows.Add("AB4ertsdgwe4erterC");
-            majorDt.Rows.Add("AB4ertsdgwe4ersdterC");
-            majorDt.Rows.Add("AB4ertsdgwe4wererterC");
+            DataTable majorDt = LibModule.GetDataTableFromDBWithTableName("viewStudentMajors");
             Utils.EnableControlAutoComplete(cbMajor, majorDt);
         }
 
