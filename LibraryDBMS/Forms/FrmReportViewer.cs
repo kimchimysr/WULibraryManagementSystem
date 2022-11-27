@@ -15,7 +15,7 @@ namespace LibraryDBMS
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
-            overview = LibModule.GetDataTableFromDB("viewOverview");
+            overview = LibModule.GetDataTableFromDBWithTableName("viewOverview");
             Utils.FillComboBox(cbReportsList, false, 
                 "All Students", "All Books", "All Borrowed Books", "All Users", "Overview");
         }
@@ -77,7 +77,7 @@ namespace LibraryDBMS
         {
             cbReportsList.SelectedIndex = -1;
             reportViewer1.Clear();
-            overview = LibModule.GetDataTableFromDB("viewOverview");
+            overview = LibModule.GetDataTableFromDBWithTableName("viewOverview");
         }
     }
 }

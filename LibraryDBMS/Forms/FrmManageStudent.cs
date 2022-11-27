@@ -84,7 +84,7 @@ namespace LibraryDBMS.Forms
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
                             LibModule.SearchBetweenDateAndFillDataGrid("tblStudents", dgvStudentList, "dateAdded", fromDate, toDate);
-                            lblRowsCount.Text = $"Total Result: {dgvStudentList.Rows.Count}";
+                            lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)

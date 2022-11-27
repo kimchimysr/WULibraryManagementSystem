@@ -119,7 +119,7 @@ namespace LibraryDBMS.Forms
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
                             LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowedBooks", dgvBorrowList, "dateLoan", fromDate, toDate);
-                            lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
+                            lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
                         }
                     }
                     catch (Exception ex)
@@ -191,7 +191,7 @@ namespace LibraryDBMS.Forms
                     default:
                         break;
                 }
-                lblRowsCount.Text = $"Total Result: {dgvBorrowList.Rows.Count}";
+                lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
             }
         }
 

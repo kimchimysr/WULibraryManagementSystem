@@ -20,7 +20,7 @@ namespace LibraryDBMS.Forms
         {
             base.Refresh();
             LibModule.FillDataGrid("tblLogs", dgvlogList, "logID");
-            lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
+            lblRowsCount.Text = $"Display Result: {dgvlogList.Rows.Count}";
         }
 
         private void cbDay_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace LibraryDBMS.Forms
                     default:
                         break;
                 }
-                lblRowsCount.Text = $"Total Result: {dgvlogList.Rows.Count}";
+                lblRowsCount.Text = $"Display Result: {dgvlogList.Rows.Count}";
             }
         }
     }

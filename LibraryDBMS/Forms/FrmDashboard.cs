@@ -32,7 +32,7 @@ namespace LibraryDBMS.Forms
         
         private void InitializeValues()
         {
-            overview = LibModule.GetDataTableFromDB("viewOverview");
+            overview = LibModule.GetDataTableFromDBWithTableName("viewOverview");
             lblBookCount.Text = overview.Rows[0]["bookCount"].ToString().ToKMString();
             lblBookTitleCount.Text = overview.Rows[0]["bookTitleCount"].ToString().ToKMString();
             lblStudentCount.Text = overview.Rows[0]["studentCount"].ToString().ToKMString();

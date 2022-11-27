@@ -24,20 +24,27 @@ namespace LibraryDBMS.Forms
             frmManageStudent = frm;
             student = _student;
             Utils.FillComboBox(cbYear, false, "1", "2", "3", "4");
+            EnableAutoCompleteOnComboBoxMajor();
             if (!isEditMode)
             {
                 lblHeader.Text = "New Student";
-                sv = new StudentValidator(txtStudentID, txtFirstName, txtLastName, cbYear, txtMajor, txtTel);
+                sv = new StudentValidator(txtStudentID, txtFirstName, txtLastName, cbYear, cbMajor, txtTel);
             }
             else
             {
-                sv = new StudentValidator(null, txtFirstName, txtLastName, cbYear, txtMajor, txtTel);
+                sv = new StudentValidator(null, txtFirstName, txtLastName, cbYear, cbMajor, txtTel);
                 lblHeader.Text = "Edit Student";
                 btnSaveChanges.Size = new Size(365, 56);
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
             }
+        }
+
+        private void EnableAutoCompleteOnComboBoxMajor()
+        {
+            DataTable majorDt = LibModule.GetDataTableFromDBWithTableName("viewStudentMajors");
+            Utils.EnableControlAutoComplete(cbMajor, majorDt);
         }
 
         private void PopulateFields()
@@ -50,7 +57,7 @@ namespace LibraryDBMS.Forms
                 rbMale.Checked = true;
             else rbFemale.Checked = true;
             cbYear.SelectedItem = student.Rows[0]["year"].ToString();
-            txtMajor.Text = student.Rows[0]["major"].ToString();
+            cbMajor.Text = student.Rows[0]["major"].ToString();
             txtTel.Text = student.Rows[0]["tel"].ToString();
             dtpDateAdded.Text = student.Rows[0]["dateAdded"].ToString();
         }
@@ -63,7 +70,7 @@ namespace LibraryDBMS.Forms
                 student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
                 student.Rows[0]["gender"].ToString() != gender ||
                 student.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
-                student.Rows[0]["major"].ToString() != txtMajor.Text.Trim() ||
+                student.Rows[0]["major"].ToString() != cbMajor.Text.Trim() ||
                 student.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
                 return true;
 
@@ -85,7 +92,7 @@ namespace LibraryDBMS.Forms
                             string lastName = txtLastName.Text.Trim();
                             string gender = rbMale.Checked == true ? "M" : "F";
                             string year = cbYear.SelectedItem.ToString().Trim();
-                            string major = txtMajor.Text.Trim();
+                            string major = cbMajor.Text.Trim();
                             string telephone = txtTel.Text.Trim();
                             string dateAdded = dtpDateAdded.Text.Trim();
 

@@ -20,7 +20,8 @@ namespace LibraryDBMS.Forms
         private void InitailizeValues()
         {
             Utils.DragFormWithControlMouseDown(this, lblHeader);
-            ibv = new IssueBookValidator(txtStudentID, txtBookID, lblTitle, lblName, lblBookAvailability);
+            ibv = new IssueBookValidator(txtStudentID, txtBookID, lblBookTitle, lblStudentName, 
+                lblBookAvailability, lblStudentStatus, lblBorrowedTitle);
             txtBorrowID.Text = LibModule.GetAutoID("tblBorrows", "borrowID");
             dtpIssueDate.Value = DateTime.Today;
             dtpDueDate.Value = dtpIssueDate.Value.Date.AddDays(GetDueDate(dtpIssueDate));

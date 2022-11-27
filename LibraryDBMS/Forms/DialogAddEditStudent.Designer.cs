@@ -42,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.txtTel = new System.Windows.Forms.TextBox();
-            this.txtMajor = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblHeader = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
+            this.cbMajor = new System.Windows.Forms.ComboBox();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,14 +222,6 @@
             this.txtTel.Size = new System.Drawing.Size(266, 26);
             this.txtTel.TabIndex = 8;
             // 
-            // txtMajor
-            // 
-            this.txtMajor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMajor.Location = new System.Drawing.Point(132, 231);
-            this.txtMajor.Name = "txtMajor";
-            this.txtMajor.Size = new System.Drawing.Size(266, 26);
-            this.txtMajor.TabIndex = 7;
-            // 
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -352,6 +344,16 @@
             this.dtpDateAdded.TabIndex = 9;
             this.dtpDateAdded.TabStop = false;
             // 
+            // cbMajor
+            // 
+            this.cbMajor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMajor.FormattingEnabled = true;
+            this.cbMajor.Location = new System.Drawing.Point(132, 231);
+            this.cbMajor.Name = "cbMajor";
+            this.cbMajor.Size = new System.Drawing.Size(266, 28);
+            this.cbMajor.TabIndex = 7;
+            // 
             // DialogAddEditStudent
             // 
             this.AcceptButton = this.btnSaveChanges;
@@ -361,6 +363,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(426, 487);
+            this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.pTitleBar);
             this.Controls.Add(this.panel1);
@@ -382,7 +385,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtStudentID);
             this.Controls.Add(this.txtTel);
-            this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -412,7 +414,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtStudentID;
         private System.Windows.Forms.TextBox txtTel;
-        private System.Windows.Forms.TextBox txtMajor;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label lblHeader;
@@ -424,5 +425,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDateAdded;
+        private System.Windows.Forms.ComboBox cbMajor;
     }
 }

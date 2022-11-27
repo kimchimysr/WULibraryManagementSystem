@@ -2,16 +2,19 @@
 using System;
 using System.Windows.Forms;
 using LibraryDBMS.Setting;
+using System.Data;
 
 namespace LibraryDBMS.Forms
 {
     public partial class DialogSetting : Form
     {
         private UserSetting us;
-        public DialogSetting()
+        private readonly DataTable user;
+        public DialogSetting(DataTable _user)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
+            user = _user;
             InitializeValues();
         }
 
@@ -45,12 +48,17 @@ namespace LibraryDBMS.Forms
                 case "btnRestore":
                     Utils.RestoreDatabase();
                     break;
+                case "btnLoginHistory":
+                    var dialogLoginHistory = new DialogLoginHistory();
+                    dialogLoginHistory.ShowDialog();
+                    break;
                 case "btnRestart":
                     if (SettingHasChanged())
                         us.Save();
                     DialogResult result = MessageBox.Show("Do you want to restart the application?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result == DialogResult.Yes)
                     {
+                        LibModule.LogTimestampUserLogout(user);
                         Application.Restart();
                         Environment.Exit(0);
                     }
