@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -101,6 +102,12 @@ namespace LibraryDBMS.Libs
                 ep.SetError(publishYear, "Publish Year is not valid!");
                 e.Cancel = true;
             }
+            else if(int.Parse(publishYear.Text) > System.DateTime.Now.Year)
+            {
+                ep.SetError(publishYear, $"Publish Year cannot be more than " +
+                    $"{System.DateTime.Now.Year}");
+                e.Cancel = true;
+            }
             else
             {
                 ep.SetError(publishYear, null);
@@ -189,7 +196,13 @@ namespace LibraryDBMS.Libs
                     // for every 4 characters, add -
                     string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
                     isbn.Text = newIsbn;
-                    ep.SetError(isbn, null);
+                    if (CheckISBNDigits())
+                        ep.SetError(isbn, null);
+                    else
+                    {
+                        ep.SetError(isbn, "ISBN is not valid!");
+                        e.Cancel = true;
+                    }
                 }
                 else
                 {
@@ -197,6 +210,74 @@ namespace LibraryDBMS.Libs
                     e.Cancel = true;
                 }
             }
+        }
+        // https://isbn-information.com/the-10-digit-isbn.html
+        // https://isbn-information.com/check-digit-for-the-13-digit-isbn.html
+        private bool CheckISBNDigits()
+        {
+            bool returnBoolean = false;
+            try
+            {
+                string isbnValueNoMinus = isbn.Text;
+                if (isbn.Text.Length == 10)
+                {
+
+                    isbnValueNoMinus.Remove(4);
+                    isbnValueNoMinus.Remove(8);
+                    char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
+                    int sum = 0;
+
+                    for (int i = 0; i < isbnValueArray.Length - 1; i++)
+                    {
+                        sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])));
+                    }
+                    if (sum % 11 == 0) { returnBoolean = true; }
+
+                }
+
+                else if (isbn.Text.Length == 13)
+                {
+                    int resultModulus;
+                    isbnValueNoMinus.Remove(4);
+                    isbnValueNoMinus.Remove(8);
+                    isbnValueNoMinus.Remove(12);
+                    char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
+                    int sum = 0;
+                    for (int i = 0; i < isbnValueArray.Length - 1; i++)
+                    {
+                        //if digit is not even
+                        if (i % 2 == 0)
+                        {
+                            // 
+                            sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 1);
+                        }
+                        //if digit is even
+                        else
+                        {
+                            sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 3);
+                        }
+                    }
+                    resultModulus = sum % 10;
+                    if (resultModulus % 10 == 0)
+                    {
+                        if (resultModulus % 10 == isbnValueArray[isbnValueArray.Length - 1])
+                            returnBoolean = true;
+                    }
+                    if(resultModulus % 10 != 0)
+                    {
+                        if(10 - (resultModulus % 10) == isbnValueArray[isbnValueArray.Length - 1])
+                            returnBoolean= true;
+                    }
+                    if (sum % 10 == 0) { returnBoolean = true; }
+                }
+                return returnBoolean;
+            }
+            catch(Exception e) 
+            {
+                MessageBox.Show($" Error Message: {e.Message}");
+                return returnBoolean;
+            }
+
         }
     }
 }
