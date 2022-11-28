@@ -1,10 +1,13 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office.Word;
 using IWshRuntimeLibrary;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
@@ -803,6 +806,36 @@ namespace LibraryDBMS.Libs
             //    }
             //}
         }
+
+        public static void FillReportViewerWithDGVDataSource(DataGridView dgv, ReportViewer rpv, string rpPath,
+            string rpDataSet, Dictionary<string, string> parameters = null)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = ((DataTable)dgv.DataSource).Copy();
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+                rpv.LocalReport.ReportEmbeddedResource = rpPath;
+                if (parameters != null)
+                {
+                    List<ReportParameter> listReportParameter = new List<ReportParameter>();
+                    foreach (var p in parameters)
+                        listReportParameter.Add(new ReportParameter(p.Key, p.Value));
+                    rpv.LocalReport.SetParameters(listReportParameter);
+                }
+                ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
+                rpv.LocalReport.DataSources.Clear();
+                rpv.ResetPageSettings();
+                rpv.LocalReport.DataSources.Add(rds);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+
         #endregion
 
         #region Form Related

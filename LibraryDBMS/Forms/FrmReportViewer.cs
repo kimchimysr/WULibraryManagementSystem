@@ -186,24 +186,28 @@ namespace LibraryDBMS
             }
             else if (rbDateRange.Checked)
             {
-                setParameters.Add("month", "");
-                setParameters.Add("year", $"{dtpFromDate.Text} - {dtpToDate.Text}");
-                if (cbReportsList.SelectedItem.ToString() == "All Students")
+                if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
                 {
-                    query = $"SELECT * FROM tblStudents WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
+                    setParameters.Add("month", "");
+                    setParameters.Add("year", $"{dtpFromDate.Text} - {dtpToDate.Text}");
+                    if (cbReportsList.SelectedItem.ToString() == "All Students")
+                    {
+                        query = $"SELECT * FROM tblStudents WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
+                    }
+                    else if (cbReportsList.SelectedItem.ToString() == "All Books")
+                    {
+                        query = $"SELECT * FROM viewBooks WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
+                    }
+                    else if (cbReportsList.SelectedItem.ToString() == "All Borrowed Books")
+                    {
+                        query = $"SELECT * FROM viewBorrowedBooks WHERE DATE(dateLoan) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
+                    }
+                    else if (cbReportsList.SelectedItem.ToString() == "All Users")
+                    {
+                        query = $"SELECT * FROM tblUser WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
+                    }
                 }
-                else if (cbReportsList.SelectedItem.ToString() == "All Books")
-                {
-                    query = $"SELECT * FROM viewBooks WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
-                }
-                else if (cbReportsList.SelectedItem.ToString() == "All Borrowed Books")
-                {
-                    query = $"SELECT * FROM viewBorrowedBooks WHERE DATE(dateLoan) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
-                }
-                else if (cbReportsList.SelectedItem.ToString() == "All Users")
-                {
-                    query = $"SELECT * FROM tblUser WHERE DATE(dateAdded) BETWEEN '{dtpFromDate.Text}' AND '{dtpToDate.Text}';";
-                }
+                else return;
             }
             LibModule.FillReportViewerWithQuery(query, reportViewer1,
                 reportPath, reportDataSet, setParameters);

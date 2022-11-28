@@ -10,6 +10,7 @@ namespace LibraryDBMS.Forms
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
+            Utils.DragFormWithControlMouseDown(this, lblHeader);
             Utils.EnableControlDoubleBuffer(dgvLoginList);
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvLoginList);
             PopulateDataGridView();
