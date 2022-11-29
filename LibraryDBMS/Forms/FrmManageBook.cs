@@ -95,10 +95,18 @@ namespace LibraryDBMS.Forms
                     {
                         if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
                         {
+                            if(dtpToDate.Value > DateTime.Now)
+                                dtpToDate.Value = DateTime.Now;
                             string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
                             string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
                             LibModule.SearchBetweenDateAndFillDataGrid("viewBooks", dgvBookList, "dateAdded", fromDate, toDate);
                             lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
+                        }
+                        else
+                        {
+                            MessageBox.Show("From Datepicker should not be more than To Datepicker","Warning Invalid Date Span",
+                                MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                            dtpFromDate.Focus();
                         }
                     }
                     catch (Exception ex)

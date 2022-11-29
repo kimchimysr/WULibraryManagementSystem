@@ -186,7 +186,7 @@ namespace LibraryDBMS.Libs
             else if(isbn.Text.Length > 0)
             {
                 // 12-34-1-234-12 (digit atleast 10) or 12-34-12-34-1234-1 (digit atleast 13)
-                Regex pattern = new Regex(@"^-*(\d-*){10}|^-*(\d-*){13}$");
+                Regex pattern = new Regex(@"^-*(\d-*){9}(\d{1}|X)|^-*(\d-*){13}$");
                 if (pattern.IsMatch(isbn.Text))
                 {
                     StringBuilder sb = new StringBuilder();
@@ -194,9 +194,10 @@ namespace LibraryDBMS.Libs
                         if (char.IsDigit(c))
                             sb.Append(c);
                     // for every 4 characters, add -
-                    string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
-                    isbn.Text = newIsbn;
-                    if (CheckISBNDigits())
+                    //string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
+                    //isbn.Text = newIsbn;
+
+                    if(CheckISBNDigits())
                         ep.SetError(isbn, null);
                     else
                     {
@@ -215,68 +216,59 @@ namespace LibraryDBMS.Libs
         // https://isbn-information.com/check-digit-for-the-13-digit-isbn.html
         private bool CheckISBNDigits()
         {
-            bool returnBoolean = false;
-            try
+
+            string isbnValueNoMinus = isbn.Text;
+            if (isbn.Text.Length == 10)
             {
-                string isbnValueNoMinus = isbn.Text;
-                if (isbn.Text.Length == 10)
+                //isbnValueNoMinus.Remove(4);
+                //isbnValueNoMinus.Remove(8);
+                // assign number to char array
+                char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
+                int sum = 0;
+
+                for (int i = 0; i < isbnValueArray.Length; i++)
                 {
-
-                    isbnValueNoMinus.Remove(4);
-                    isbnValueNoMinus.Remove(8);
-                    char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
-                    int sum = 0;
-
-                    for (int i = 0; i < isbnValueArray.Length - 1; i++)
-                    {
-                        sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])));
-                    }
-                    if (sum % 11 == 0) { returnBoolean = true; }
-
+                    sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * (10 - i));
                 }
-
-                else if (isbn.Text.Length == 13)
-                {
-                    int resultModulus;
-                    isbnValueNoMinus.Remove(4);
-                    isbnValueNoMinus.Remove(8);
-                    isbnValueNoMinus.Remove(12);
-                    char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
-                    int sum = 0;
-                    for (int i = 0; i < isbnValueArray.Length - 1; i++)
-                    {
-                        //if digit is not even
-                        if (i % 2 == 0)
-                        {
-                            // 
-                            sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 1);
-                        }
-                        //if digit is even
-                        else
-                        {
-                            sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 3);
-                        }
-                    }
-                    resultModulus = sum % 10;
-                    if (resultModulus % 10 == 0)
-                    {
-                        if (resultModulus % 10 == isbnValueArray[isbnValueArray.Length - 1])
-                            returnBoolean = true;
-                    }
-                    if(resultModulus % 10 != 0)
-                    {
-                        if(10 - (resultModulus % 10) == isbnValueArray[isbnValueArray.Length - 1])
-                            returnBoolean= true;
-                    }
-                    if (sum % 10 == 0) { returnBoolean = true; }
-                }
-                return returnBoolean;
+                if (sum % 11 == 0 || isbnValueNoMinus.EndsWith("X")) {  return true; }
             }
-            catch(Exception e) 
+            else if (isbn.Text.Length == 13)
             {
-                MessageBox.Show($" Error Message: {e.Message}");
-                return returnBoolean;
+                int resultModulus;
+
+                /*isbnValueNoMinus.Remove(4);
+                isbnValueNoMinus.Remove(8);
+                isbnValueNoMinus.Remove(12);*/
+
+                char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
+                int sum = 0;
+                for (int i = 0; i < isbnValueArray.Length - 1; i++)
+                {
+                    if (i % 2 == 0) //if digit is odd
+                    {
+                        sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 1);
+                    }
+                    else //if digit is even
+                    {
+                        sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * 3);
+                    }
+                }
+                resultModulus = sum % 10;
+                if (resultModulus == 0)
+                {
+                    if (resultModulus == isbnValueArray[isbnValueArray.Length - 1])
+                        return  true;
+                }
+                if (resultModulus != 0)
+                {
+                    if ((10 - resultModulus) == Convert.ToInt32(Char.GetNumericValue(isbnValueArray[isbnValueArray.Length-1])))
+                    {
+                        return true;
+                    }
+                }
+                if (resultModulus == 0) { return  true; }
             }
+            return false;
 
         }
     }

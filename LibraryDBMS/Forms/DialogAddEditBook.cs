@@ -169,7 +169,7 @@ namespace LibraryDBMS.Forms
                     }
                     else
                     {
-                        MessageBox.Show("Please Fill in info, Do not leave them hanging", " Lack Info ", MessageBoxButtons.OK,
+                        MessageBox.Show("Please Input Valid data", " Lack Info ", MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
                     }
                     break;

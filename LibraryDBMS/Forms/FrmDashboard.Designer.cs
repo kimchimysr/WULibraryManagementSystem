@@ -44,9 +44,9 @@
             this.button8 = new System.Windows.Forms.Button();
             this.pCurrentUser = new System.Windows.Forms.Panel();
             this.lblRole = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pBooks = new System.Windows.Forms.Panel();
             this.lblBooks = new System.Windows.Forms.Label();
             this.lblBookCount = new System.Windows.Forms.Label();
@@ -251,7 +251,7 @@
             this.pCurrentUser.Controls.Add(this.lblCurrentUser);
             this.pCurrentUser.Controls.Add(this.button9);
             this.pCurrentUser.Controls.Add(this.lblUsername);
-            this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Default;
             this.pCurrentUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pCurrentUser.Location = new System.Drawing.Point(880, 348);
             this.pCurrentUser.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
@@ -271,18 +271,6 @@
             this.lblRole.TabIndex = 4;
             this.lblRole.Text = "Anything";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(12, 32);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(247, 60);
-            this.lblUsername.TabIndex = 4;
-            this.lblUsername.Text = "You";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCurrentUser
             // 
@@ -312,6 +300,18 @@
             this.button9.Size = new System.Drawing.Size(90, 150);
             this.button9.TabIndex = 5;
             this.button9.UseVisualStyleBackColor = true;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblUsername.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(12, 32);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(247, 60);
+            this.lblUsername.TabIndex = 4;
+            this.lblUsername.Text = "You";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pBooks
             // 
