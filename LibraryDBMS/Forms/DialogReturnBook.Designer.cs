@@ -325,6 +325,7 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.Button_Click);
             // 
             // lblHeader
             // 

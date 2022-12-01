@@ -76,8 +76,8 @@ namespace LibraryDBMS.Libs
                 {
                     if (labelCond)
                     {
-                        foreach (string slabel in controlname)
-                            if (lbl.Name.Equals(slabel))
+                        foreach (string label in controlname)
+                            if (lbl.Name.Equals(label))
                                 lbl.Text = string.Empty;
                     }
                     else lbl.Text = string.Empty;
