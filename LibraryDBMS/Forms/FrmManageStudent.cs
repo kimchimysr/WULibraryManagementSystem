@@ -41,6 +41,7 @@ namespace LibraryDBMS.Forms
             btnDelete.Enabled = false;
             btnView.Enabled = false;
             btnSearch.Enabled = false;
+            btnFilter.Enabled = true;
             txtSearchValue.Clear();
             Utils.SetFromDateAYearFromNow(dtpFromDate, dtpToDate);
         }
@@ -179,6 +180,23 @@ namespace LibraryDBMS.Forms
                 //e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+        private void dtpFromAndToDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFromDate.Value > dtpToDate.Value && dtpFromDate.Value < DateTime.Now)
+            {
+                btnFilter.Enabled = false;
+                Utils.ToolTipOnControlMouseHover("The From Date Value is more" +
+                    " than To Date Value", dtpFromDate);
+            }
+            else if (dtpFromDate.Value > DateTime.Now)
+            {
+                btnFilter.Enabled = false;
+                Utils.ToolTipOnControlMouseHover("The From Date value should not" +
+                    " set in the future", btnFilter);
+            }
+            else
+                btnFilter.Enabled = true;
         }
     }
 }

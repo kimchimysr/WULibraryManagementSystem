@@ -225,12 +225,25 @@ namespace LibraryDBMS.Libs
                 // assign number to char array
                 char[] isbnValueArray = isbnValueNoMinus.ToCharArray();
                 int sum = 0;
-
-                for (int i = 0; i < isbnValueArray.Length; i++)
+                if (isbnValueNoMinus.EndsWith("X"))
                 {
-                    sum += (Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * (10 - i));
+                    for(int i = 0; i < isbnValueArray.Length - 1; i++)
+                    {
+                        sum += Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * (10 - i);
+                    }
+                    sum += 10;
+                    if (sum % 11 == 0) { return true; }
                 }
-                if (sum % 11 == 0 || isbnValueNoMinus.EndsWith("X")) {  return true; }
+                else
+                {
+                    for (int i = 0; i < isbnValueArray.Length; i++)
+                    {
+                        sum += Convert.ToInt32(Char.GetNumericValue(isbnValueArray[i])) * (10 - i);
+                    }
+
+                    if (sum % 11 == 0) { return true; }
+                }
+
             }
             else if (isbn.Text.Length == 13)
             {

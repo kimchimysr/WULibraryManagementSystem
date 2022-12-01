@@ -47,6 +47,7 @@ namespace LibraryDBMS.Forms
             btnView.Enabled = false;
             txtSearchValue.Clear();
             btnSearch.Enabled = false;
+            btnFilter.Enabled = true;
             Utils.SetFromDateAYearFromNow(dtpFromDate,dtpToDate);
         }
         private void Button_Click(object sender, EventArgs e)
@@ -105,7 +106,7 @@ namespace LibraryDBMS.Forms
                         else
                         {
                             MessageBox.Show("From Datepicker should not be more than To Datepicker","Warning Invalid Date Span",
-                                MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             dtpFromDate.Focus();
                         }
                     }
@@ -193,6 +194,25 @@ namespace LibraryDBMS.Forms
                 //e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+
+
+        private void dtpFromAndToDate_ValueChanged(object sender,EventArgs e)
+        {
+            if(dtpFromDate.Value > dtpToDate.Value && dtpFromDate.Value < DateTime.Now)
+            {
+                btnFilter.Enabled = false;
+                Utils.ToolTipOnControlMouseHover("The From Date Value is more" +
+                    " than To Date Value", dtpFromDate);
+            }
+            else if(dtpFromDate.Value > DateTime.Now)
+            {
+                btnFilter.Enabled = false;
+                Utils.ToolTipOnControlMouseHover("The From Date value should not" +
+                    " set in the future", btnFilter);
+            }
+            else
+                btnFilter.Enabled = true;
         }
     }
 }
