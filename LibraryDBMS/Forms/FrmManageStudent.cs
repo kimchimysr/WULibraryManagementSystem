@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 
@@ -53,7 +54,11 @@ namespace LibraryDBMS.Forms
             {
                 case "btnPrint":
                     Utils.BlurEffect.Blur(frmMainMenu);
-                    Utils.PrintPreviewDataGridView("Book Loan List", dgvStudentList);
+                    var parameters = new Dictionary<string, string>();
+                    parameters.Add("username", frmMainMenu.user.Rows[0]["username"].ToString());
+                    var dialogReportViewer = new DialogReportViewer(dgvStudentList,
+                        "LibraryDBMS.Reports.RpStudent.rdlc", "Student", parameters);
+                    dialogReportViewer.ShowDialog();
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":

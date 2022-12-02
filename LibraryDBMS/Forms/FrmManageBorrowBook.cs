@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 using Color = System.Drawing.Color;
@@ -70,7 +71,13 @@ namespace LibraryDBMS.Forms
             {
                 case "btnPrint":
                     Utils.BlurEffect.Blur(frmMainMenu);
-                    Utils.PrintPreviewDataGridView("Book Loan List", dgvBorrowList);
+                    var parameters = new Dictionary<string, string>();
+                    parameters.Add("username", frmMainMenu.user.Rows[0]["username"].ToString());
+                    parameters.Add("bookReturnedCount", "-");
+                    parameters.Add("bookLostCount", lblBookLostCount.Text.Substring(11));
+                    var dialogReportViewer = new DialogReportViewer(dgvBorrowList,
+                        "LibraryDBMS.Reports.RpBorrowBook.rdlc", "BorrowBook", parameters);
+                    dialogReportViewer.ShowDialog();
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":
@@ -137,8 +144,8 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnAdd":
-                    var dialogIssueBook = new DialogIssueBook(this);
-                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogIssueBook, frmMainMenu);
+                    var dialogIssueBook2 = new DialogIssueBook2(this);
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogIssueBook2, frmMainMenu);
                     CheckBookLoanNotificationChanged();
                     break;
                 case "btnEdit":

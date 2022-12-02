@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -57,7 +60,12 @@ namespace LibraryDBMS.Forms
             {
                 case "btnPrint":
                     Utils.BlurEffect.Blur(frmMainMenu);
-                    Utils.PrintPreviewDataGridView("Books List", dgvBookList);
+                    var parameters = new Dictionary<string, string>();
+                    parameters.Add("username", frmMainMenu.user.Rows[0]["username"].ToString());
+                    parameters.Add("totalBook", lblBookCount.Text.Substring(13));
+                    var dialogReportViewer = new DialogReportViewer(dgvBookList,
+                        "LibraryDBMS.Reports.RpBook.rdlc", "Book", parameters);
+                    dialogReportViewer.ShowDialog();
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":

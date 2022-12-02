@@ -110,7 +110,7 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnReport":
                     ActivateButton(btnReport);
-                    OpenChildForm(new FrmReportViewer(), pReport);
+                    OpenChildForm(new FrmReportViewer(user), pReport);
                     break;
                 case "btnRecentActivity":
                     ActivateButton(btnRecentActivity);

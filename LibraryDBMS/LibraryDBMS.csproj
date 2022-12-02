@@ -123,11 +123,23 @@
     <Compile Include="Forms\DialogAddEditBook.Designer.cs">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DialogIssueBook2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogIssueBook2.Designer.cs">
+      <DependentUpon>DialogIssueBook2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogLoginHistory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DialogLoginHistory.Designer.cs">
       <DependentUpon>DialogLoginHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogReportViewer.Designer.cs">
+      <DependentUpon>DialogReportViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogUserRegistration.cs">
       <SubType>Form</SubType>
@@ -251,6 +263,7 @@
     <Compile Include="Libs\BlurEffect.cs" />
     <Compile Include="Libs\BookValidator.cs" />
     <Compile Include="Libs\IssueBookValidator.cs" />
+    <Compile Include="Libs\IssueBookValidator2.cs" />
     <Compile Include="Libs\NotificationToast.cs" />
     <Compile Include="Libs\StudentValidator.cs" />
     <Compile Include="Libs\UserSetting.cs" />
@@ -286,8 +299,14 @@
     <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogIssueBook2.resx">
+      <DependentUpon>DialogIssueBook2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogLoginHistory.resx">
       <DependentUpon>DialogLoginHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogReportViewer.resx">
+      <DependentUpon>DialogReportViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogUserRegistration.resx">
       <DependentUpon>DialogUserRegistration.cs</DependentUpon>
