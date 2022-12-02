@@ -775,36 +775,45 @@ namespace LibraryDBMS.Libs
 
         public static void CopyDatabaseToLocalUserAppDataFolder()
         {
-            // C:\Users\[curentUser]\AppData\Roaming
-            string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
-            string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
-            // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
-            string databaseFile = Path.Combine(databaseFolder, "library.db");
-            // projectPath\Resources\library.db
-            string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");
-
-            // check if the destination folder is already exist if not, create directory
-            if (!Directory.Exists(databaseFolder))
-                Directory.CreateDirectory(databaseFolder);
-
-            // check if database file already exist 
-            if (!File.Exists(databaseFile))
+            try
             {
-                File.Copy(defaultDatabase, databaseFile);
-            }
-            //else
-            //{
-            //    // check if default database newer than current database
-            //    if (File.GetLastWriteTime(defaultDatabase) > File.GetLastWriteTime(databaseFile))
-            //    {
-            //        // backup current database before copy latest default database
-            //        File.Move(databaseFile, Path.Combine(databaseFolder, "library.bak"));
+                // C:\Users\[curentUser]\AppData\Roaming
+                string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
+                string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+                // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
+                string databaseFile = Path.Combine(databaseFolder, "library.db");
+                // projectPath\Resources\library.db
+                string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");
 
-            //        // copy latest default database
-            //        File.Copy(defaultDatabase, databaseFile, true);
-            //    }
-            //}
+                // check if the destination folder is already exist if not, create directory
+                if (!Directory.Exists(databaseFolder))
+                    Directory.CreateDirectory(databaseFolder);
+
+                // check if database file already exist 
+                if (!File.Exists(databaseFile))
+                {
+                    File.Copy(defaultDatabase, databaseFile);
+                }
+                //else
+                //{
+                //    // check if default database newer than current database
+                //    if (File.GetLastWriteTime(defaultDatabase) > File.GetLastWriteTime(databaseFile))
+                //    {
+                //        // backup current database before copy latest default database
+                //        File.Move(databaseFile, Path.Combine(databaseFolder, "library.bak"));
+
+                //        // copy latest default database
+                //        File.Copy(defaultDatabase, databaseFile, true);
+                //    }
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void FillReportViewerWithDGVDataSource(DataGridView dgv, ReportViewer rpv, string rpPath,
