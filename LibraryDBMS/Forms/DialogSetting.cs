@@ -43,10 +43,23 @@ namespace LibraryDBMS.Forms
                     Utils.ExportDatabaseTableToExcel(cbTable.SelectedItem.ToString());
                     break;
                 case "btnBackup":
-                    Utils.BackupDatabase();
+                    DialogResult databaseType =
+                        MessageBox.Show("Do you want to backup database for new user?" +
+                        "\nYes (Current User will not be included)" +
+                        "\nNo (Current User will be included)", "Choose Backup Mode", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                    if (databaseType == DialogResult.Yes)
+                        LibModule.BackupDatabaseForNewUser();
+                    else if (databaseType == DialogResult.No)
+                        Utils.BackupDatabase();
+                    else return;
                     break;
                 case "btnRestore":
-                    Utils.RestoreDatabase();
+                    if (Utils.RestoreDatabase())
+                    {
+                        LibModule.LogTimestampUserLogout(user);
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
                     break;
                 case "btnLoginHistory":
                     var dialogLoginHistory = new DialogLoginHistory();

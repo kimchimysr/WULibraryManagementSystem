@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Office.Word;
 using IWshRuntimeLibrary;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -7,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
@@ -533,7 +531,7 @@ namespace LibraryDBMS.Libs
 
         // Backup&Restore SQLite Database in C#
         // https://www.codeproject.com/Questions/1213783/Restore-sqlite-database-in-Csharp
-        public static void BackupDatabase()
+        public static bool BackupDatabase()
         {
             try
             {
@@ -545,13 +543,34 @@ namespace LibraryDBMS.Libs
                         string dbPath = databasePath;
                         string backupDestPath = Path.GetFullPath(fbd.SelectedPath) + $@"\{fileName}";
 
+
+                        // https://www.codeproject.com/Questions/5280874/How-do-I-automatically-put-the-following-number-be
                         if (File.Exists(backupDestPath))
-                            File.Delete(backupDestPath);
+                        {
+                            string folder = Path.GetDirectoryName(backupDestPath);
+                            string fileWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                            string extension = Path.GetExtension(fileName);
+
+                            int filecounter = 1;
+                            while (File.Exists(backupDestPath))
+                            {
+                                backupDestPath = Path.Combine(folder, $"{fileWithoutExtension}({filecounter}){extension}");
+                                filecounter++;
+                            }
+                        }
+
                         File.Copy(dbPath, backupDestPath);
 
                         if (File.Exists(backupDestPath))
+                        {
                             MessageBox.Show("Successfully backup database!", "Backup Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else MessageBox.Show("Cannot backup database!", "Backup Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot backup database!", "Backup Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
                     }
                 }
             }
@@ -565,9 +584,10 @@ namespace LibraryDBMS.Libs
                 MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
                     $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return false;
         }
 
-        public static void RestoreDatabase()
+        public static bool RestoreDatabase()
         {
             MessageBox.Show("Restoring database will overwrite current database, make sure to do backup first!",
                 "Restore Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -599,8 +619,15 @@ namespace LibraryDBMS.Libs
                     File.Copy(backupPath, dbPath);
 
                     if (File.Exists(dbPath))
-                        MessageBox.Show("Successfully restored database!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
 
                 }
                 catch (Exception ex)
@@ -609,6 +636,52 @@ namespace LibraryDBMS.Libs
                         $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            return false;
+        }
+
+        public static bool ImportOldDatabase()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Database Backup Files (*.bak)|*.bak";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // current database path
+                    string dbPath = databasePath;
+                    string backupPath = Path.GetFullPath(ofd.FileName);
+
+                    // C:\Users\[curentUser]\AppData\Roaming
+                    string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
+                    string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+
+                    // check if the destination folder is already exist if not, create directory
+                    if (!Directory.Exists(databaseFolder))
+                        Directory.CreateDirectory(databaseFolder);
+
+                    // copy backup db to current db location
+                    File.Copy(backupPath, dbPath);
+
+                    if (File.Exists(dbPath))
+                    {
+                        MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return false;
         }
 
         // How to Export Data from Database To Excel File in c#

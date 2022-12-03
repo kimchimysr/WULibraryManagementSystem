@@ -1,6 +1,7 @@
 ﻿using LibraryDBMS.Libs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -19,7 +20,18 @@ namespace LibraryDBMS.Forms
         };
         public FrmSplashScreen()
         {
-            Utils.CopyDatabaseToLocalUserAppDataFolder();
+            if (!File.Exists(Utils.databasePath))
+            {
+                var dialogDatabaseCreationMode = new DialogDatabaseCreationMode();
+                DialogResult result = dialogDatabaseCreationMode.ShowDialog();
+                // yes == create new database
+                if (result == DialogResult.Yes)
+                    Utils.CopyDatabaseToLocalUserAppDataFolder();
+                // no == import old database
+                else if (result == DialogResult.No)
+                    Utils.ImportOldDatabase();
+            }
+
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.FixControlFlickering(panel1);

@@ -73,6 +73,16 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap add_database_26px {
+            get {
+                object obj = ResourceManager.GetObject("add_database_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap add_user_male_26px {
             get {
                 object obj = ResourceManager.GetObject("add_user_male_26px", resourceCulture);
@@ -186,6 +196,16 @@ namespace LibraryDBMS.Properties {
         public static System.Drawing.Bitmap data_recovery_26px {
             get {
                 object obj = ResourceManager.GetObject("data_recovery_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap database_administrator_26px {
+            get {
+                object obj = ResourceManager.GetObject("database_administrator_26px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
