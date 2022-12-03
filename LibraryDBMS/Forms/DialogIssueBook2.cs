@@ -94,6 +94,7 @@ namespace LibraryDBMS.Forms
                         cbMajor.Text = "";
                         txtTel.Clear();
                         dtpDateAdded.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        MessageBox.Show("Please enter new student information!", "Student ID doesn't exist!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
                 case "btnSave":

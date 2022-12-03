@@ -851,6 +851,90 @@ namespace LibraryDBMS.Libs
             };
             InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
         }
+
+        public static bool BackupDatabaseForNewUser()
+        {
+            try
+            {
+                using (var fbd = new FolderBrowserDialog())
+                {
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        string dateTimeNow = DateTime.Now.ToString("yyyy_MM_dd");
+                        string fileName = $"librarydb_{dateTimeNow}(newUser)";
+                        string extension = ".bak";
+                        string dbPath = Utils.databasePath;
+                        string backupDestPath = Path.GetFullPath(fbd.SelectedPath) + $@"\{fileName}{extension}";
+
+
+                        // https://www.codeproject.com/Questions/5280874/How-do-I-automatically-put-the-following-number-be
+                        if (File.Exists(backupDestPath))
+                        {
+                            string folder = Path.GetDirectoryName(backupDestPath);
+
+                            int filecounter = 1;
+                            extension = ".db";
+                            while (File.Exists(backupDestPath))
+                            {
+                                backupDestPath = Path.Combine(folder, $"{fileName}({filecounter}){extension}");
+                                filecounter++;
+                            }
+                        }
+
+                        File.Copy(dbPath, backupDestPath);
+
+                        // connect to new copied database
+                        string connectionString = $@"Data Source={backupDestPath}; Version=3; Foreign Keys=True;";
+                        using (var conn = new SQLiteConnection(connectionString))
+                        {
+                            conn.Open();
+                            using (var cmd = new SQLiteCommand(conn))
+                            {
+                                cmd.CommandText = "DELETE FROM tblUser;";
+                                cmd.ExecuteNonQuery();
+                                // reset increment to 1 in tblUser
+                                cmd.CommandText = "DELETE FROM sqlite_sequence WHERE name='tblUser';";
+                                cmd.ExecuteNonQuery();
+                                cmd.CommandText = "DELETE FROM tblUserLogs;";
+                                cmd.ExecuteNonQuery();
+                                cmd.CommandText = "DELETE FROM sqlite_sequence WHERE name='tblUserLogs';";
+                                cmd.ExecuteNonQuery();
+                                cmd.CommandText = "DELETE FROM tblLogs;";
+                                cmd.ExecuteNonQuery();
+                                cmd.CommandText = "DELETE FROM sqlite_sequence WHERE name='tblLogs';";
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        string newName = backupDestPath.Substring(0, backupDestPath.Length - 3) + ".bak";
+
+                        File.Move(backupDestPath, newName);
+
+                        if (File.Exists(newName))
+                        {
+                            MessageBox.Show("Successfully backup database!", "Backup Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot backup database!", "Backup Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Cannot backup to this location! Please try another location!", "Permission Denied",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return false;
+        }
         #endregion
     }
 }

@@ -123,6 +123,12 @@
     <Compile Include="Forms\DialogAddEditBook.Designer.cs">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DialogDatabaseCreationMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogDatabaseCreationMode.Designer.cs">
+      <DependentUpon>DialogDatabaseCreationMode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogIssueBook2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +305,9 @@
     <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogDatabaseCreationMode.resx">
+      <DependentUpon>DialogDatabaseCreationMode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogIssueBook2.resx">
       <DependentUpon>DialogIssueBook2.cs</DependentUpon>
     </EmbeddedResource>
@@ -438,6 +447,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\add_database_26px.png" />
+    <None Include="Resources\database_administrator_26px.png" />
     <Content Include="Resources\library.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -133,6 +133,7 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnClear":
                     Utils.DoClearControl(this, false, true, false, false, false);
+                    cbMajor.Text = "";
                     break;
                 case "btnCancel":
                 case "btnClose":

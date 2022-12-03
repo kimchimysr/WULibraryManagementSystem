@@ -11,7 +11,6 @@ namespace LibraryDBMS.Forms
     {
         private readonly DataGridView dgv;
         private readonly int rowIndex;
-        private Regex datetimeregex = new Regex(@"^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
         public DialogViewDetail()
         {
             InitializeComponent();
@@ -30,6 +29,7 @@ namespace LibraryDBMS.Forms
 
         private void FillAndResizeForm()
         {
+            Regex datetimeregex = new Regex(@"^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
             int i = 0;
             StringBuilder columns = new StringBuilder();
             for (i = 0; i < dgv.Columns.Count; i++)
@@ -44,11 +44,9 @@ namespace LibraryDBMS.Forms
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");
                 }
-                
             }
             lblText.Text = columns.ToString();
             this.Size = new Size(Width, lblText.Height + 160);
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
