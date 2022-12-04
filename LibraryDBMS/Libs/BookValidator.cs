@@ -191,14 +191,16 @@ namespace LibraryDBMS.Libs
                 {
                     StringBuilder sb = new StringBuilder();
                     foreach (char c in isbn.Text)
-                        if (char.IsDigit(c))
+                        if (char.IsDigit(c) || c == 'X')
                             sb.Append(c);
-                    // for every 4 characters, add -
-                    //string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
-                    //isbn.Text = newIsbn;
 
-                    if(CheckISBNDigits())
+                    if (CheckISBNDigits(sb.ToString()))
+                    {
+                        // for every 4 characters, add -
+                        string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
+                        isbn.Text = newIsbn;
                         ep.SetError(isbn, null);
+                    }
                     else
                     {
                         ep.SetError(isbn, "ISBN is not valid!");
@@ -214,11 +216,11 @@ namespace LibraryDBMS.Libs
         }
         // https://isbn-information.com/the-10-digit-isbn.html
         // https://isbn-information.com/check-digit-for-the-13-digit-isbn.html
-        private bool CheckISBNDigits()
+        private bool CheckISBNDigits(string isbn)
         {
 
-            string isbnValueNoMinus = isbn.Text;
-            if (isbn.Text.Length == 10)
+            string isbnValueNoMinus = isbn;
+            if (isbn.Length == 10)
             {
                 //isbnValueNoMinus.Remove(4);
                 //isbnValueNoMinus.Remove(8);
@@ -245,7 +247,7 @@ namespace LibraryDBMS.Libs
                 }
 
             }
-            else if (isbn.Text.Length == 13)
+            else if (isbn.Length == 13)
             {
                 int resultModulus;
 
@@ -269,7 +271,7 @@ namespace LibraryDBMS.Libs
                 resultModulus = sum % 10;
                 if (resultModulus == 0)
                 {
-                    if (resultModulus == isbnValueArray[isbnValueArray.Length - 1])
+                    if (resultModulus == Convert.ToInt32(Char.GetNumericValue(isbnValueArray[isbnValueArray.Length - 1])))
                         return  true;
                 }
                 if (resultModulus != 0)
@@ -279,7 +281,7 @@ namespace LibraryDBMS.Libs
                         return true;
                     }
                 }
-                if (resultModulus == 0) { return  true; }
+                //if (resultModulus == 0) { return  true; }
             }
             return false;
 
