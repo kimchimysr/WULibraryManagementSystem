@@ -41,6 +41,8 @@ namespace LibraryDBMS.Forms
             Utils.FixControlFlickering(pContainer);
             // get user information
             user = LibModule.GetDataTableFromDBWithTableName("tblUser");
+            // add application version
+            lblAppTitle.Text += $" v{Application.ProductVersion}";
             // open form to start counting uptime
             OpenChildForm(new FrmDashboard(this), pDashboard);
             AppliedUserSetting();

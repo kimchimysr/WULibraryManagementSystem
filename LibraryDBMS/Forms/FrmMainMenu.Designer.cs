@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMenu));
             this.pSidebar = new System.Windows.Forms.Panel();
+            this.lblNotificationBadge = new System.Windows.Forms.Label();
             this.btnHomeCollapsed = new System.Windows.Forms.Button();
             this.panelSelected = new System.Windows.Forms.Panel();
             this.btnDashboard = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.pNotification = new System.Windows.Forms.Panel();
             this.pContainer = new System.Windows.Forms.Panel();
             this.pRecentActivity = new System.Windows.Forms.Panel();
-            this.lblNotificationBadge = new System.Windows.Forms.Label();
             this.pSidebar.SuspendLayout();
             this.pHomeBorder.SuspendLayout();
             this.pTitleBar.SuspendLayout();
@@ -93,6 +93,19 @@
             this.pSidebar.Name = "pSidebar";
             this.pSidebar.Size = new System.Drawing.Size(214, 806);
             this.pSidebar.TabIndex = 0;
+            // 
+            // lblNotificationBadge
+            // 
+            this.lblNotificationBadge.AutoSize = true;
+            this.lblNotificationBadge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
+            this.lblNotificationBadge.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotificationBadge.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblNotificationBadge.Location = new System.Drawing.Point(29, 483);
+            this.lblNotificationBadge.Name = "lblNotificationBadge";
+            this.lblNotificationBadge.Size = new System.Drawing.Size(16, 18);
+            this.lblNotificationBadge.TabIndex = 2;
+            this.lblNotificationBadge.Text = "0";
+            this.lblNotificationBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnHomeCollapsed
             // 
@@ -376,12 +389,13 @@
             // 
             // lblAppTitle
             // 
+            this.lblAppTitle.AutoSize = true;
             this.lblAppTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblAppTitle.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lblAppTitle.Location = new System.Drawing.Point(0, 0);
             this.lblAppTitle.Name = "lblAppTitle";
-            this.lblAppTitle.Size = new System.Drawing.Size(210, 25);
+            this.lblAppTitle.Size = new System.Drawing.Size(209, 20);
             this.lblAppTitle.TabIndex = 0;
             this.lblAppTitle.Text = "Library Management System";
             this.lblAppTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -567,19 +581,6 @@
             this.pRecentActivity.Size = new System.Drawing.Size(1174, 756);
             this.pRecentActivity.TabIndex = 11;
             // 
-            // lblNotificationBadge
-            // 
-            this.lblNotificationBadge.AutoSize = true;
-            this.lblNotificationBadge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
-            this.lblNotificationBadge.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotificationBadge.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNotificationBadge.Location = new System.Drawing.Point(29, 483);
-            this.lblNotificationBadge.Name = "lblNotificationBadge";
-            this.lblNotificationBadge.Size = new System.Drawing.Size(16, 18);
-            this.lblNotificationBadge.TabIndex = 2;
-            this.lblNotificationBadge.Text = "0";
-            this.lblNotificationBadge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // FrmMainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -597,6 +598,7 @@
             this.pSidebar.PerformLayout();
             this.pHomeBorder.ResumeLayout(false);
             this.pTitleBar.ResumeLayout(false);
+            this.pTitleBar.PerformLayout();
             this.pHeader.ResumeLayout(false);
             this.pHeader.PerformLayout();
             this.pContainer.ResumeLayout(false);
