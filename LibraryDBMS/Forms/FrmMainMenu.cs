@@ -84,7 +84,7 @@ namespace LibraryDBMS.Forms
 
         private async void CheckForUpdate()
         {
-            using (var manager = new UpdateManager(@""))
+            using (var manager = new UpdateManager(@"https://raw.githubusercontent.com/kimchimysr/WesternLibraryManagementSystem/release/published/"))
             {
                 await manager.UpdateApp();
             }
