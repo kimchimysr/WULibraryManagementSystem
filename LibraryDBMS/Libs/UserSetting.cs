@@ -45,5 +45,14 @@ namespace LibraryDBMS.Setting
             get { return (bool)this["SetSidebarCollapsed"]; }
             set { this["SetSidebarCollapsed"] = value; }
         }
+
+        [UserScopedSetting]
+        [DefaultSettingValue("False")]
+        public bool SetAutoUpdateInBackground
+        {
+            get { return (bool)this["SetAutoUpdateInBackground"]; }
+            set { this["SetAutoUpdateInBackground"] = value; }
+        }
+
     }
 }

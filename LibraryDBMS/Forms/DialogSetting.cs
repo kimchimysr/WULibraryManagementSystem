@@ -91,6 +91,7 @@ namespace LibraryDBMS.Forms
             tbStartInFullscreen.Checked = us.StartAppInFullscreen;
             tbAutoStartup.Checked = us.SetApplicationAutoRun;
             tbSidebarCollapse.Checked = us.SetSidebarCollapsed;
+            tbAutoUpdate.Checked = us.SetAutoUpdateInBackground;
         }
 
         private bool SettingHasChanged()
@@ -100,6 +101,7 @@ namespace LibraryDBMS.Forms
             bool startInFullscreen = tbStartInFullscreen.Checked;
             bool startAppWhenWindowsStarted = tbAutoStartup.Checked;
             bool startAppWithCollapsedSidebar = tbSidebarCollapse.Checked;
+            bool autoUpdateInBackground = tbAutoUpdate.Checked;
 
             if (us.DefaultStartPage != defaultStartPage)
             {
@@ -123,6 +125,11 @@ namespace LibraryDBMS.Forms
             if (us.SetSidebarCollapsed != startAppWithCollapsedSidebar)
             {
                 us.SetSidebarCollapsed = startAppWithCollapsedSidebar;
+                changes = true;
+            }
+            if (us.SetAutoUpdateInBackground != autoUpdateInBackground)
+            {
+                us.SetAutoUpdateInBackground = autoUpdateInBackground;
                 changes = true;
             }
 

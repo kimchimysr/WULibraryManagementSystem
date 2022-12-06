@@ -1,8 +1,0 @@
-Purpose: Converting excel file (.xlsx) to import data into database (SQLite)
-
-Step 1: Using Power Query in Excel to filter data appropriately for data migration
-Step 2: Drop your excel file (.xlsx) into https://sqlizer.io/#/ and select sql language you want to convert to.
-	(Unfortunately, there are no conversion to SQLite language so choose MS SQL instead)
-Step 3: Download the converted file (.sql) and modifying MS SQL Syntax into SQLite Syntax in the file
-Step 4: Create database in SQLite (I use DB Browser for SQLite)
-Step 5: Open the converted file (.sql) and execute the query. Done.

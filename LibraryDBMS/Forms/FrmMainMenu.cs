@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 using LibraryDBMS.Setting;
+using Squirrel;
 
 namespace LibraryDBMS.Forms
 {
@@ -61,6 +63,9 @@ namespace LibraryDBMS.Forms
 
         private void AppliedUserSetting()
         {
+            if (us.SetAutoUpdateInBackground)
+                CheckForUpdate();
+
             if (us.SetSidebarCollapsed)
             {
                 isMenuCollapsed = true;
@@ -75,6 +80,14 @@ namespace LibraryDBMS.Forms
                 OpenChildForm(new FrmDashboard(this), pDashboard);
             }
             else OpenChildForm(new FrmHome(), pHome);
+        }
+
+        private async void CheckForUpdate()
+        {
+            using (var manager = new UpdateManager(@""))
+            {
+                await manager.UpdateApp();
+            }
         }
 
         private void Button_Click(object sender, EventArgs e)
