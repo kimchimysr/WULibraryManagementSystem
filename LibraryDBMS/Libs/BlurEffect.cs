@@ -18,6 +18,7 @@ namespace LibraryDBMS.Libs
                 var blur = new FrmBlurScreen(mainMenu);
                 try
                 {
+                    blur.Owner = mainMenu;
                     blur.Show();
                     dialog.ShowDialog();
                     blur.Dispose();

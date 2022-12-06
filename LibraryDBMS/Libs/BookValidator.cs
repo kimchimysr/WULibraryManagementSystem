@@ -183,7 +183,7 @@ namespace LibraryDBMS.Libs
                 ep.SetError(isbn, "ISBN is required!");
                 e.Cancel = true;
             }
-            else if(isbn.Text.Length > 0)
+            else if (isbn.Text.Length > 0)
             {
                 // 12-34-1-234-12 (digit atleast 10) or 12-34-12-34-1234-1 (digit atleast 13)
                 Regex pattern = new Regex(@"^-*(\d-*){9}(\d{1}|X)|^-*(\d-*){13}$");
@@ -194,7 +194,7 @@ namespace LibraryDBMS.Libs
                         if (char.IsDigit(c) || c == 'X')
                             sb.Append(c);
 
-                    if (CheckISBNDigits(sb.ToString()))
+                    if (CheckISBNDigits(sb.ToString()) || sb.ToString() == "0000000000")
                     {
                         // for every 4 characters, add -
                         string newIsbn = Regex.Replace(sb.ToString(), ".{4}", "$0-");
