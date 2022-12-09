@@ -88,7 +88,7 @@
             this.flpContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpContainer.BackColor = System.Drawing.Color.White;
+            this.flpContainer.BackColor = System.Drawing.SystemColors.Control;
             this.flpContainer.Controls.Add(this.pBookDue);
             this.flpContainer.Controls.Add(this.pBookDueTmr);
             this.flpContainer.Controls.Add(this.pBookOverdue);
