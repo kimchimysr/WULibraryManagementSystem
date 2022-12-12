@@ -91,7 +91,7 @@
             this.pSidebar.MaximumSize = new System.Drawing.Size(214, 0);
             this.pSidebar.MinimumSize = new System.Drawing.Size(55, 0);
             this.pSidebar.Name = "pSidebar";
-            this.pSidebar.Size = new System.Drawing.Size(214, 806);
+            this.pSidebar.Size = new System.Drawing.Size(214, 656);
             this.pSidebar.TabIndex = 0;
             // 
             // lblNotificationBadge
@@ -100,7 +100,7 @@
             this.lblNotificationBadge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(19)))), ((int)(((byte)(5)))));
             this.lblNotificationBadge.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNotificationBadge.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNotificationBadge.Location = new System.Drawing.Point(29, 483);
+            this.lblNotificationBadge.Location = new System.Drawing.Point(29, 413);
             this.lblNotificationBadge.Name = "lblNotificationBadge";
             this.lblNotificationBadge.Size = new System.Drawing.Size(16, 18);
             this.lblNotificationBadge.TabIndex = 2;
@@ -134,7 +134,7 @@
             this.panelSelected.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelSelected.Location = new System.Drawing.Point(3, 137);
             this.panelSelected.Name = "panelSelected";
-            this.panelSelected.Size = new System.Drawing.Size(8, 50);
+            this.panelSelected.Size = new System.Drawing.Size(8, 40);
             this.panelSelected.TabIndex = 0;
             this.panelSelected.Visible = false;
             // 
@@ -149,7 +149,7 @@
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboard.Location = new System.Drawing.Point(12, 137);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(202, 50);
+            this.btnDashboard.Size = new System.Drawing.Size(202, 40);
             this.btnDashboard.TabIndex = 0;
             this.btnDashboard.TabStop = false;
             this.btnDashboard.Text = "  Dashboard";
@@ -166,9 +166,9 @@
             this.btnManageBook.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnManageBook.Image = global::LibraryDBMS.Properties.Resources.books_26px;
             this.btnManageBook.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageBook.Location = new System.Drawing.Point(12, 195);
+            this.btnManageBook.Location = new System.Drawing.Point(12, 183);
             this.btnManageBook.Name = "btnManageBook";
-            this.btnManageBook.Size = new System.Drawing.Size(202, 50);
+            this.btnManageBook.Size = new System.Drawing.Size(202, 40);
             this.btnManageBook.TabIndex = 0;
             this.btnManageBook.TabStop = false;
             this.btnManageBook.Text = "  Manage Books";
@@ -185,9 +185,9 @@
             this.btnManageStudent.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnManageStudent.Image = global::LibraryDBMS.Properties.Resources.student_male_26px;
             this.btnManageStudent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageStudent.Location = new System.Drawing.Point(12, 253);
+            this.btnManageStudent.Location = new System.Drawing.Point(12, 229);
             this.btnManageStudent.Name = "btnManageStudent";
-            this.btnManageStudent.Size = new System.Drawing.Size(202, 50);
+            this.btnManageStudent.Size = new System.Drawing.Size(202, 40);
             this.btnManageStudent.TabIndex = 0;
             this.btnManageStudent.TabStop = false;
             this.btnManageStudent.Text = "  Manage Students";
@@ -204,9 +204,9 @@
             this.btnBookLoanReturn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnBookLoanReturn.Image = global::LibraryDBMS.Properties.Resources.bookmark_26px;
             this.btnBookLoanReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBookLoanReturn.Location = new System.Drawing.Point(12, 311);
+            this.btnBookLoanReturn.Location = new System.Drawing.Point(12, 275);
             this.btnBookLoanReturn.Name = "btnBookLoanReturn";
-            this.btnBookLoanReturn.Size = new System.Drawing.Size(202, 50);
+            this.btnBookLoanReturn.Size = new System.Drawing.Size(202, 40);
             this.btnBookLoanReturn.TabIndex = 0;
             this.btnBookLoanReturn.TabStop = false;
             this.btnBookLoanReturn.Text = "  Borrow/Return Books";
@@ -223,9 +223,9 @@
             this.btnReport.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnReport.Image = global::LibraryDBMS.Properties.Resources.document_26px;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(12, 369);
+            this.btnReport.Location = new System.Drawing.Point(12, 321);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(202, 50);
+            this.btnReport.Size = new System.Drawing.Size(202, 40);
             this.btnReport.TabIndex = 0;
             this.btnReport.TabStop = false;
             this.btnReport.Text = "  Reports";
@@ -242,9 +242,9 @@
             this.btnRecentActivity.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRecentActivity.Image = global::LibraryDBMS.Properties.Resources.time_machine_26px;
             this.btnRecentActivity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecentActivity.Location = new System.Drawing.Point(12, 427);
+            this.btnRecentActivity.Location = new System.Drawing.Point(12, 367);
             this.btnRecentActivity.Name = "btnRecentActivity";
-            this.btnRecentActivity.Size = new System.Drawing.Size(202, 50);
+            this.btnRecentActivity.Size = new System.Drawing.Size(202, 40);
             this.btnRecentActivity.TabIndex = 0;
             this.btnRecentActivity.TabStop = false;
             this.btnRecentActivity.Text = "  Recent Activity";
@@ -261,9 +261,9 @@
             this.btnNotification.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnNotification.Image = global::LibraryDBMS.Properties.Resources.notification_26px;
             this.btnNotification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotification.Location = new System.Drawing.Point(12, 483);
+            this.btnNotification.Location = new System.Drawing.Point(12, 413);
             this.btnNotification.Name = "btnNotification";
-            this.btnNotification.Size = new System.Drawing.Size(202, 50);
+            this.btnNotification.Size = new System.Drawing.Size(202, 40);
             this.btnNotification.TabIndex = 0;
             this.btnNotification.TabStop = false;
             this.btnNotification.Text = "  Notification";
@@ -282,9 +282,9 @@
             this.btnAbout.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAbout.Image = global::LibraryDBMS.Properties.Resources.info_26px;
             this.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbout.Location = new System.Drawing.Point(12, 641);
+            this.btnAbout.Location = new System.Drawing.Point(12, 521);
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(202, 50);
+            this.btnAbout.Size = new System.Drawing.Size(202, 40);
             this.btnAbout.TabIndex = 0;
             this.btnAbout.TabStop = false;
             this.btnAbout.Text = "  About";
@@ -303,9 +303,9 @@
             this.btnAccount.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnAccount.Image = global::LibraryDBMS.Properties.Resources.male_user_26px;
             this.btnAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccount.Location = new System.Drawing.Point(12, 697);
+            this.btnAccount.Location = new System.Drawing.Point(12, 567);
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(202, 50);
+            this.btnAccount.Size = new System.Drawing.Size(202, 40);
             this.btnAccount.TabIndex = 0;
             this.btnAccount.TabStop = false;
             this.btnAccount.Text = "  Account";
@@ -324,9 +324,9 @@
             this.btnSetting.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnSetting.Image = global::LibraryDBMS.Properties.Resources.settings_26px;
             this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(12, 753);
+            this.btnSetting.Location = new System.Drawing.Point(12, 613);
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(202, 50);
+            this.btnSetting.Size = new System.Drawing.Size(202, 40);
             this.btnSetting.TabIndex = 0;
             this.btnSetting.TabStop = false;
             this.btnSetting.Text = "  Setting";
@@ -371,7 +371,7 @@
             this.pHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pHome.Location = new System.Drawing.Point(214, 75);
             this.pHome.Name = "pHome";
-            this.pHome.Size = new System.Drawing.Size(1174, 756);
+            this.pHome.Size = new System.Drawing.Size(1050, 606);
             this.pHome.TabIndex = 1;
             // 
             // pTitleBar
@@ -384,7 +384,7 @@
             this.pTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTitleBar.Location = new System.Drawing.Point(0, 0);
             this.pTitleBar.Name = "pTitleBar";
-            this.pTitleBar.Size = new System.Drawing.Size(1388, 25);
+            this.pTitleBar.Size = new System.Drawing.Size(1264, 25);
             this.pTitleBar.TabIndex = 2;
             // 
             // lblAppTitle
@@ -407,7 +407,7 @@
             this.btnMinimize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LibraryDBMS.Properties.Resources.subtract_16px;
-            this.btnMinimize.Location = new System.Drawing.Point(1240, 0);
+            this.btnMinimize.Location = new System.Drawing.Point(1116, 0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(50, 25);
             this.btnMinimize.TabIndex = 0;
@@ -422,7 +422,7 @@
             this.btnMaximize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LibraryDBMS.Properties.Resources.maximize_button_16px;
-            this.btnMaximize.Location = new System.Drawing.Point(1291, 0);
+            this.btnMaximize.Location = new System.Drawing.Point(1167, 0);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(50, 25);
             this.btnMaximize.TabIndex = 0;
@@ -438,7 +438,7 @@
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnExit.Location = new System.Drawing.Point(1342, 0);
+            this.btnExit.Location = new System.Drawing.Point(1218, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(50, 25);
             this.btnExit.TabIndex = 0;
@@ -454,7 +454,7 @@
             this.pHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pHeader.Location = new System.Drawing.Point(214, 25);
             this.pHeader.Name = "pHeader";
-            this.pHeader.Size = new System.Drawing.Size(1174, 50);
+            this.pHeader.Size = new System.Drawing.Size(1050, 50);
             this.pHeader.TabIndex = 3;
             // 
             // btnMenu
@@ -490,7 +490,7 @@
             this.btnMenuTitle.Image = global::LibraryDBMS.Properties.Resources.user_shield_26px;
             this.btnMenuTitle.Location = new System.Drawing.Point(0, 0);
             this.btnMenuTitle.Name = "btnMenuTitle";
-            this.btnMenuTitle.Size = new System.Drawing.Size(1174, 50);
+            this.btnMenuTitle.Size = new System.Drawing.Size(1050, 50);
             this.btnMenuTitle.TabIndex = 0;
             this.btnMenuTitle.TabStop = false;
             this.btnMenuTitle.Text = "  Menu Title";
@@ -505,7 +505,7 @@
             this.pDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pDashboard.Location = new System.Drawing.Point(214, 75);
             this.pDashboard.Name = "pDashboard";
-            this.pDashboard.Size = new System.Drawing.Size(1174, 756);
+            this.pDashboard.Size = new System.Drawing.Size(1050, 606);
             this.pDashboard.TabIndex = 4;
             // 
             // pManageBook
@@ -514,7 +514,7 @@
             this.pManageBook.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pManageBook.Location = new System.Drawing.Point(214, 75);
             this.pManageBook.Name = "pManageBook";
-            this.pManageBook.Size = new System.Drawing.Size(1174, 756);
+            this.pManageBook.Size = new System.Drawing.Size(1050, 606);
             this.pManageBook.TabIndex = 5;
             // 
             // pManageStudent
@@ -523,7 +523,7 @@
             this.pManageStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pManageStudent.Location = new System.Drawing.Point(214, 75);
             this.pManageStudent.Name = "pManageStudent";
-            this.pManageStudent.Size = new System.Drawing.Size(1174, 756);
+            this.pManageStudent.Size = new System.Drawing.Size(1050, 606);
             this.pManageStudent.TabIndex = 6;
             // 
             // pBookLoanReturn
@@ -532,7 +532,7 @@
             this.pBookLoanReturn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pBookLoanReturn.Location = new System.Drawing.Point(214, 75);
             this.pBookLoanReturn.Name = "pBookLoanReturn";
-            this.pBookLoanReturn.Size = new System.Drawing.Size(1174, 756);
+            this.pBookLoanReturn.Size = new System.Drawing.Size(1050, 606);
             this.pBookLoanReturn.TabIndex = 7;
             // 
             // pReport
@@ -541,7 +541,7 @@
             this.pReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pReport.Location = new System.Drawing.Point(214, 75);
             this.pReport.Name = "pReport";
-            this.pReport.Size = new System.Drawing.Size(1174, 756);
+            this.pReport.Size = new System.Drawing.Size(1050, 606);
             this.pReport.TabIndex = 8;
             // 
             // pNotification
@@ -550,7 +550,7 @@
             this.pNotification.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pNotification.Location = new System.Drawing.Point(214, 75);
             this.pNotification.Name = "pNotification";
-            this.pNotification.Size = new System.Drawing.Size(1174, 756);
+            this.pNotification.Size = new System.Drawing.Size(1050, 606);
             this.pNotification.TabIndex = 10;
             // 
             // pContainer
@@ -569,7 +569,7 @@
             this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContainer.Location = new System.Drawing.Point(0, 0);
             this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(1388, 831);
+            this.pContainer.Size = new System.Drawing.Size(1264, 681);
             this.pContainer.TabIndex = 0;
             // 
             // pRecentActivity
@@ -578,17 +578,17 @@
             this.pRecentActivity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pRecentActivity.Location = new System.Drawing.Point(214, 75);
             this.pRecentActivity.Name = "pRecentActivity";
-            this.pRecentActivity.Size = new System.Drawing.Size(1174, 756);
+            this.pRecentActivity.Size = new System.Drawing.Size(1050, 606);
             this.pRecentActivity.TabIndex = 11;
             // 
             // FrmMainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1388, 831);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.pContainer);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1404, 870);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "FrmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
