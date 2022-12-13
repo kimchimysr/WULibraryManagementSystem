@@ -32,21 +32,19 @@ namespace LibraryDBMS.Forms
                 case "btnRegister":
                     if (this.ValidateChildren())
                     {
-                        try
-                        {
-                            string userID = txtUserID.Text.Trim();
-                            string username = txtUsername.Text.Trim();
-                            string roleName = cbRole.Text.Trim();
-                            string firstName = txtFirstName.Text.Trim();
-                            string lastName = txtLastName.Text.Trim();
-                            string gender = rbMale.Checked == true ? "M" : "F";
-                            string dob = dtpDOB.Text.Trim();
-                            string address = txtAddress.Text.Trim();
-                            string telephone = txtTelephone.Text.Trim();
-                            string email = txtEmail.Text.Trim();
-                            string dateAdded = DateTime.Now.ToString("yyyy-MM-dd");
+                        string userID = txtUserID.Text.Trim();
+                        string username = txtUsername.Text.Trim();
+                        string roleName = cbRole.Text.Trim();
+                        string firstName = txtFirstName.Text.Trim();
+                        string lastName = txtLastName.Text.Trim();
+                        string gender = rbMale.Checked == true ? "M" : "F";
+                        string dob = dtpDOB.Text.Trim();
+                        string address = txtAddress.Text.Trim();
+                        string telephone = txtTelephone.Text.Trim();
+                        string email = txtEmail.Text.Trim();
+                        string dateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
-                            List<string> user = new List<string>
+                        List<string> user = new List<string>
                             {
                                 userID,
                                 username,
@@ -61,13 +59,8 @@ namespace LibraryDBMS.Forms
                                 dateAdded
                             };
 
-                            LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"), user, false);                         
-                            this.Close();
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                            }
+                        LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"), user, false);
+                        this.Close();
                     }
                     else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;

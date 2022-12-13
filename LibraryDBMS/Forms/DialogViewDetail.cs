@@ -11,10 +11,6 @@ namespace LibraryDBMS.Forms
     {
         private readonly DataGridView dgv;
         private readonly int rowIndex;
-        public DialogViewDetail()
-        {
-            InitializeComponent();
-        }
 
         public DialogViewDetail(DataGridView _dgv, int _rowIndex, string title)
         {

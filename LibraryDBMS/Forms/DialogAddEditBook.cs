@@ -107,23 +107,21 @@ namespace LibraryDBMS.Forms
                 case "btnSaveChanges":
                     if (this.ValidateChildren())
                     {
-                        try
-                        {
-                            string BookID = txtBookID.Text.Trim();
-                            string ISBN = txtISBN.Text.Trim();
-                            string DEWEYCode = txtDEWEYCode.Text.Trim();
-                            string Title = txtTitle.Text.Trim();
-                            string Author = txtAuthor.Text.Trim();
-                            string Publisher = txtPublisher.Text.Trim();
-                            string PublishYear =  txtYear.Text.Trim();
-                            string Pages = nudPages.Text.Trim();
-                            string Other = txtOthers.Text.Trim();
-                            string Quantity = nudQty.Text.Trim();
-                            string CategoryID = 
-                                CalculateCategoryIDFromDEWEYCode(int.Parse(txtDEWEYCode.Text.Substring(0, 3))).ToString();
-                            string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
+                        string BookID = txtBookID.Text.Trim();
+                        string ISBN = txtISBN.Text.Trim();
+                        string DEWEYCode = txtDEWEYCode.Text.Trim();
+                        string Title = txtTitle.Text.Trim();
+                        string Author = txtAuthor.Text.Trim();
+                        string Publisher = txtPublisher.Text.Trim();
+                        string PublishYear = txtYear.Text.Trim();
+                        string Pages = nudPages.Text.Trim();
+                        string Other = txtOthers.Text.Trim();
+                        string Quantity = nudQty.Text.Trim();
+                        string CategoryID =
+                            CalculateCategoryIDFromDEWEYCode(int.Parse(txtDEWEYCode.Text.Substring(0, 3))).ToString();
+                        string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
-                            List<string> book = new List<string>
+                        List<string> book = new List<string>
                             {
                                 BookID,
                                 ISBN,
@@ -138,30 +136,23 @@ namespace LibraryDBMS.Forms
                                 CategoryID,
                                 DateAdded
                             };
-                            if (!isEditMode)
-                            {
-                                if (!IsDuplicatedRecord())
-                                {
-                                    LibModule.InsertRecord("tblBooks", LibModule.GetTableField("tblBooks"), book);
-                                    frmBook.PopulateDataGridView();
-                                }
-                            }
-                            else
-                            {
-                                if (HasAnyChanges())
-                                {
-                                    LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID , book, true);
-                                    frmBook.PopulateDataGridView();
-                                }
-                            }
-                            this.Close();
-                        }
-                        catch(Exception ex)
+                        if (!isEditMode)
                         {
-                            MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}",
-                                $"{ex.GetType()}", MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                            if (!IsDuplicatedRecord())
+                            {
+                                LibModule.InsertRecord("tblBooks", LibModule.GetTableField("tblBooks"), book);
+                                frmBook.PopulateDataGridView();
+                            }
                         }
+                        else
+                        {
+                            if (HasAnyChanges())
+                            {
+                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID, book, true);
+                                frmBook.PopulateDataGridView();
+                            }
+                        }
+                        this.Close();
                     }
                     else if (IsDuplicatedRecord())
                     {

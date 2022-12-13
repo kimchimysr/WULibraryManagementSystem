@@ -62,90 +62,50 @@ namespace LibraryDBMS.Forms
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":
-                    try
+                    if (txtSearchValue.Text.Length > 0)
                     {
-                        if (txtSearchValue.Text.Length > 0)
-                        {
-                            string searchBy = cbSearchBy.SelectedItem.ToString();
-                            string value = txtSearchValue.Text.ToString().Trim();
+                        string searchBy = cbSearchBy.SelectedItem.ToString();
+                        string value = txtSearchValue.Text.ToString().Trim();
 
-                            if (searchBy == "Student ID")
-                                LibModule.SearchAndFillDataGrid("tblStudents", "studentID", value, dgvStudentList);
-                            else if (searchBy == "Name")
-                                LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
-                            lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        if (searchBy == "Student ID")
+                            LibModule.SearchAndFillDataGrid("tblStudents", "studentID", value, dgvStudentList);
+                        else if (searchBy == "Name")
+                            LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
+                        lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
                     }
                     break;
                 case "btnFilter":
-                    try
+                    if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
                     {
-                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
-                        {
-                            if (dtpToDate.Value > DateTime.Now)
-                                dtpToDate.Value = DateTime.Now;
-                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
-                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("tblStudents", dgvStudentList, "dateAdded", fromDate, toDate);
-                            lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
-                        }
-                        else
-                        {
-                            MessageBox.Show("From Datepicker should not be more than To Datepicker", "Warning Invalid Date Span",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dtpFromDate.Focus();
-                        }
+                        if (dtpToDate.Value > DateTime.Now)
+                            dtpToDate.Value = DateTime.Now;
+                        string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                        string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                        LibModule.SearchBetweenDateAndFillDataGrid("tblStudents", dgvStudentList, "dateAdded", fromDate, toDate);
+                        lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        MessageBox.Show("From Datepicker should not be more than To Datepicker", "Warning Invalid Date Span",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpFromDate.Focus();
                     }
                     break;
                 case "btnAdd":
-                    try
-                    {
-                        var frmAddEditUser = new DialogAddEditStudent(this);
-                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditUser, frmMainMenu);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    var frmAddUser = new DialogAddEditStudent(this);
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddUser, frmMainMenu);
                     break;
                 case "btnEdit":
-                    try
-                    {
-                        var frmAddEditUser =
-                            new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
-                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditUser, frmMainMenu);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    var frmEditUser =
+                        new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmEditUser, frmMainMenu);
                     break;
                 case "btnDelete":
-                    try
-                    {
-                        Utils.BlurEffect.Blur(frmMainMenu);
-                        if (LibModule.DeleteRecord("tblStudents", "studentID", selected.studentID,
-                            Utils.GetDataGridSelectedRowData(dgvStudentList, selected.rowIndex)) == true)
-                            PopulateDataGrid();
-                        Utils.BlurEffect.UnBlur();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    Utils.BlurEffect.Blur(frmMainMenu);
+                    if (LibModule.DeleteRecord("tblStudents", "studentID", selected.studentID,
+                        Utils.GetDataGridSelectedRowData(dgvStudentList, selected.rowIndex)) == true)
+                        PopulateDataGrid();
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnView":
                     var frmViewDetail = new DialogViewDetail(dgvStudentList, selected.rowIndex, "Student");

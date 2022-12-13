@@ -133,7 +133,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(443, 45);
             this.label1.TabIndex = 46;
-            this.label1.Text = "LIbrary Management System";
+            this.label1.Text = "Library Management System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVersion
@@ -174,7 +174,8 @@
             this.linkLabel1.Size = new System.Drawing.Size(544, 23);
             this.linkLabel1.TabIndex = 48;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://github.com";
+            this.linkLabel1.Text = "Open in Browser";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label3
             // 

@@ -36,17 +36,10 @@ namespace LibraryDBMS.Forms
             switch (btn.Name)
             {
                 case "btnFind":
-                    try
+                    if (txtSearchValue.Text.Length > 0)
                     {
-                        if (txtSearchValue.Text.Length > 0)
-                        {
-                            string value = txtSearchValue.Text.ToString().Trim();
-                            LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        string value = txtSearchValue.Text.ToString().Trim();
+                        LibModule.SearchNameAndFillDataGrid("tblStudents", value, dgvStudentList);
                     }
                     break;
                 case "btnRefresh":

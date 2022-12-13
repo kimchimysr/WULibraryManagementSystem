@@ -37,20 +37,12 @@ namespace LibraryDBMS.Forms
             switch (btn.Name)
             {
                 case "btnSearchBookID":
-                    try
+                    using (var dialogSelectBook = new DialogSelectBook())
                     {
-                        using (var dialogSelectBook = new DialogSelectBook())
-                        {
-                            if(dialogSelectBook.ShowDialog() == DialogResult.OK)
-                                txtBookID.Text = dialogSelectBook.BookID;
-                        }
-                        txtBookID.Focus();
+                        if (dialogSelectBook.ShowDialog() == DialogResult.OK)
+                            txtBookID.Text = dialogSelectBook.BookID;
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
-                            $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    txtBookID.Focus();
                     break;
                 case "btnSearchStudentID":
                     string studentExists = 
@@ -98,21 +90,19 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnSave":
-                    try
+                    if (this.ValidateChildren() && IsValidData())
                     {
-                        if (this.ValidateChildren() && IsValidData())
-                        {
-                            string borrowID = txtBorrowID.Text.Trim();
-                            string bookID = txtBookID.Text.Trim();
-                            string studentID = txtStudentID.Text.Trim();
-                            string dateLoan = dtpIssueDate.Text.Trim();
-                            string dateDue = dtpDueDate.Text.Trim();
-                            string dateReturned = string.Empty;
-                            string overdueFine = string.Empty;
-                            // 1 == loaned
-                            string loanStatusID = "1";
+                        string borrowID = txtBorrowID.Text.Trim();
+                        string bookID = txtBookID.Text.Trim();
+                        string studentID = txtStudentID.Text.Trim();
+                        string dateLoan = dtpIssueDate.Text.Trim();
+                        string dateDue = dtpDueDate.Text.Trim();
+                        string dateReturned = string.Empty;
+                        string overdueFine = string.Empty;
+                        // 1 == loaned
+                        string loanStatusID = "1";
 
-                            List<string> issueBook = new List<string>
+                        List<string> issueBook = new List<string>
                             {
                                 borrowID,
                                 bookID,
@@ -124,18 +114,12 @@ namespace LibraryDBMS.Forms
                                 loanStatusID
                             };
 
-                            StudentValidation();
-                            LibModule.InsertRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), issueBook);
-                            frmBorrowBook.PopulateDataGrid();
-                            this.Close();
-                        }
-                        else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        StudentValidation();
+                        LibModule.InsertRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), issueBook);
+                        frmBorrowBook.PopulateDataGrid();
+                        this.Close();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}\n" +
-                            $"Stack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case "btnClear":
                     Utils.DoClearControl(this, false, true, false, false, false);

@@ -77,18 +77,16 @@ namespace LibraryDBMS.Forms
                 case "btnSave":
                     if (IsValidData())
                     {
-                        try
-                        {
-                            string borrowID = txtBorrowID.Text.Trim();
-                            string bookID = txtBookID.Text.Trim();
-                            string studentID = txtStudentID.Text.Trim();
-                            string dateLoan = dtpIssueDate.Text.ToString();
-                            string dateDue = dtpDueDate.Text.ToString();
-                            string dateReturned = cbStatus.SelectedItem.ToString() == "Returned" ?
-                                dtpReturnDate.Text.ToString() : string.Empty;
-                            string fine = txtFine.Text.Trim();
-                            string status = (cbStatus.SelectedIndex + 1).ToString();
-                            List<string> updateStatus = new List<string>
+                        string borrowID = txtBorrowID.Text.Trim();
+                        string bookID = txtBookID.Text.Trim();
+                        string studentID = txtStudentID.Text.Trim();
+                        string dateLoan = dtpIssueDate.Text.ToString();
+                        string dateDue = dtpDueDate.Text.ToString();
+                        string dateReturned = cbStatus.SelectedItem.ToString() == "Returned" ?
+                            dtpReturnDate.Text.ToString() : string.Empty;
+                        string fine = txtFine.Text.Trim();
+                        string status = (cbStatus.SelectedIndex + 1).ToString();
+                        List<string> updateStatus = new List<string>
                             {
                                 borrowID,
                                 bookID,
@@ -100,18 +98,13 @@ namespace LibraryDBMS.Forms
                                 status,
                                 dateReturned
                             };
-                            if (HasAnyChanges())
-                            {
-                                LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
-                                    borrowID, updateStatus, true);
-                                frmBorrowBook.PopulateDataGrid();
-                            }
-                            this.Close();
-                        }
-                        catch (Exception ex)
+                        if (HasAnyChanges())
                         {
-                            MessageBox.Show(ex.Message);
-                        } 
+                            LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
+                                borrowID, updateStatus, true);
+                            frmBorrowBook.PopulateDataGrid();
+                        }
+                        this.Close();
                     }
                     break;
                 case "btnCancel":

@@ -1,5 +1,6 @@
 ﻿using LibraryDBMS.Libs;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace LibraryDBMS.Forms
@@ -24,6 +25,11 @@ namespace LibraryDBMS.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/kimchimysr/WesternLibraryManagementSystem/releases");
         }
     }
 }

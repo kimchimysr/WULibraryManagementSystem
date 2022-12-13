@@ -85,18 +85,16 @@ namespace LibraryDBMS.Forms
                 case "btnSaveChanges":
                     if (this.ValidateChildren())
                     {
-                        try
-                        {
-                            string studentID = txtStudentID.Text.Trim();
-                            string firstName = txtFirstName.Text.Trim();
-                            string lastName = txtLastName.Text.Trim();
-                            string gender = rbMale.Checked == true ? "M" : "F";
-                            string year = cbYear.SelectedItem.ToString().Trim();
-                            string major = cbMajor.Text.Trim();
-                            string telephone = txtTel.Text.Trim();
-                            string dateAdded = dtpDateAdded.Text.Trim();
+                        string studentID = txtStudentID.Text.Trim();
+                        string firstName = txtFirstName.Text.Trim();
+                        string lastName = txtLastName.Text.Trim();
+                        string gender = rbMale.Checked == true ? "M" : "F";
+                        string year = cbYear.SelectedItem.ToString().Trim();
+                        string major = cbMajor.Text.Trim();
+                        string telephone = txtTel.Text.Trim();
+                        string dateAdded = dtpDateAdded.Text.Trim();
 
-                            List<string> borrower = new List<string>
+                        List<string> borrower = new List<string>
                             {
                                 studentID,
                                 firstName,
@@ -108,26 +106,21 @@ namespace LibraryDBMS.Forms
                                 dateAdded
                             };
 
-                            if (!isEditMode)
+                        if (!isEditMode)
+                        {
+                            LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
+                            frmManageStudent.PopulateDataGrid();
+                        }
+                        else
+                        {
+                            if (HasAnyChanges())
                             {
-                                LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
+                                LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
+                                                    "studentID", studentID, borrower, true);
                                 frmManageStudent.PopulateDataGrid();
                             }
-                            else
-                            {
-                                if (HasAnyChanges())
-                                {
-                                    LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
-                                                        "studentID", studentID, borrower, true);
-                                    frmManageStudent.PopulateDataGrid();
-                                }
-                            }
-                            this.Close();
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        this.Close();
                     }
                     else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
