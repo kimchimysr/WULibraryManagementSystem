@@ -8,10 +8,6 @@ namespace LibraryDBMS.Forms
     {
         private readonly DataTable user;
 
-        public DialogUserAccount()
-        {
-            InitializeComponent();
-        }
         public DialogUserAccount(DataTable _user)
         {
             InitializeComponent();

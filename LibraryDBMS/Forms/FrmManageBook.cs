@@ -69,100 +69,60 @@ namespace LibraryDBMS.Forms
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":
-                    try
+                    if (txtSearchValue.Text.Length > 0)
                     {
-                        if (txtSearchValue.Text.Length > 0)
-                        {
-                            string searchBy = cbSearchBy.SelectedItem.ToString();
-                            string value = txtSearchValue.Text.ToString().Trim();
+                        string searchBy = cbSearchBy.SelectedItem.ToString();
+                        string value = txtSearchValue.Text.ToString().Trim();
 
-                            if (searchBy == "Book ID")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "bookID", value, dgvBookList, false);
-                            else if (searchBy == "ISBN")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "isbn", value, dgvBookList);
-                            else if (searchBy == "DEWEY")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "dewey", value, dgvBookList);
-                            else if (searchBy == "Title")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "title", value, dgvBookList);
-                            else if (searchBy == "Author")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "author", value, dgvBookList);
-                            else if (searchBy == "Publisher")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "publisher", value, dgvBookList);
-                            else if (searchBy == "Publish Year")
-                                LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList, false);
-                            lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        if (searchBy == "Book ID")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "bookID", value, dgvBookList, false);
+                        else if (searchBy == "ISBN")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "isbn", value, dgvBookList);
+                        else if (searchBy == "DEWEY")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "dewey", value, dgvBookList);
+                        else if (searchBy == "Title")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "title", value, dgvBookList);
+                        else if (searchBy == "Author")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "author", value, dgvBookList);
+                        else if (searchBy == "Publisher")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "publisher", value, dgvBookList);
+                        else if (searchBy == "Publish Year")
+                            LibModule.SearchAndFillDataGrid("viewBooks", "publishYear", value, dgvBookList, false);
+                        lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
                     }
                     break;
                 case "btnFilter":
-                    try
+                    if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
                     {
-                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
-                        {
-                            if(dtpToDate.Value > DateTime.Now)
-                                dtpToDate.Value = DateTime.Now;
-                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
-                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("viewBooks", dgvBookList, "dateAdded", fromDate, toDate);
-                            lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
-                        }
-                        else
-                        {
-                            MessageBox.Show("From Datepicker should not be more than To Datepicker","Warning Invalid Date Span",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dtpFromDate.Focus();
-                        }
+                        if (dtpToDate.Value > DateTime.Now)
+                            dtpToDate.Value = DateTime.Now;
+                        string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                        string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                        LibModule.SearchBetweenDateAndFillDataGrid("viewBooks", dgvBookList, "dateAdded", fromDate, toDate);
+                        lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        MessageBox.Show("(From Date) should not be more than (To Date)", "Warning Invalid Date Span",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpFromDate.Focus();
                     }
                     break;
                 case "btnAdd":
-                    try
-                    {
-                        var dialogAddEditBook = new DialogAddEditBook(this);
-                        Utils.BlurEffect.ShowDialogWithBlurEffect(dialogAddEditBook, frmMainMenu);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    var dialogAddEditBook = new DialogAddEditBook(this);
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogAddEditBook, frmMainMenu);
                     break;
                 case "btnEdit":
-                    try
-                    {
-                        var frmAddEditBook =
-                            new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
-                        Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditBook, frmMainMenu);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    var frmAddEditBook =
+                        new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditBook, frmMainMenu);
                     break;
                 case "btnDelete":
-                    try
-                    {
-                        Utils.BlurEffect.Blur(frmMainMenu);
-                        if (LibModule.DeleteRecord("tblBooks", "bookID", selected.bookID,
-                            Utils.GetDataGridSelectedRowData(dgvBookList, selected.rowIndex)) == true)
-                            PopulateDataGridView();
-                        Utils.BlurEffect.UnBlur();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    Utils.BlurEffect.Blur(frmMainMenu);
+                    if (LibModule.DeleteRecord("tblBooks", "bookID", selected.bookID,
+                        Utils.GetDataGridSelectedRowData(dgvBookList, selected.rowIndex)) == true)
+                        PopulateDataGridView();
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnView":
                     var frmViewDetail = new DialogViewDetail(dgvBookList, selected.rowIndex, "Book");

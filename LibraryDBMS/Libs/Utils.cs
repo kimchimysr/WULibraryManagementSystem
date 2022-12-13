@@ -183,23 +183,14 @@ namespace LibraryDBMS.Libs
 
         public static void searchButtonTextChanged(object sender, Button searchButton)
         {
-            try
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text.Length > 0)
             {
-                TextBox textBox = (TextBox)sender;
-                if (textBox.Text.Length > 0)
-                {
-                    searchButton.Enabled = true;
-                }
-                else
-                {
-                    searchButton.Enabled = false;
-                }
+                searchButton.Enabled = true;
             }
-
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"{ex.Message}\nStack Trace: {ex.StackTrace}", ex.GetType() + "", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                searchButton.Enabled = false;
             }
         }
 
@@ -539,6 +530,7 @@ namespace LibraryDBMS.Libs
                 {
                     if (fbd.ShowDialog() == DialogResult.OK)
                     {
+                        Cursor.Current = Cursors.WaitCursor;
                         string fileName = $"librarydb_{DateTime.Now.ToString("yyyy_MM_dd")}.bak";
                         string dbPath = databasePath;
                         string backupDestPath = Path.GetFullPath(fbd.SelectedPath) + $@"\{fileName}";
@@ -561,6 +553,7 @@ namespace LibraryDBMS.Libs
 
                         File.Copy(dbPath, backupDestPath);
 
+                        Cursor.Current = Cursors.Default;
                         if (File.Exists(backupDestPath))
                         {
                             MessageBox.Show("Successfully backup database!", "Backup Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -579,11 +572,6 @@ namespace LibraryDBMS.Libs
                 MessageBox.Show("Cannot backup to this location! Please try another location!", "Permission Denied",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             return false;
         }
 
@@ -596,44 +584,37 @@ namespace LibraryDBMS.Libs
             ofd.Filter = "Database Backup Files (*.bak)|*.bak";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                try
+                Cursor.Current = Cursors.WaitCursor;
+                // current database path
+                string dbPath = databasePath;
+                string backupPath = Path.GetFullPath(ofd.FileName);
+
+                string currentDbBackupPath = Path.GetDirectoryName(dbPath) + @"\library.bak";
+
+                // check if current db exists
+                if (File.Exists(dbPath))
                 {
-                    // current database path
-                    string dbPath = databasePath;
-                    string backupPath = Path.GetFullPath(ofd.FileName);
+                    // delete backup of current db if exists
+                    if (File.Exists(currentDbBackupPath))
+                        File.Delete(currentDbBackupPath);
 
-                    string currentDbBackupPath = Path.GetDirectoryName(dbPath) + @"\library.bak";
-
-                    // check if current db exists
-                    if (File.Exists(dbPath))
-                    {
-                        // delete backup of current db if exists
-                        if (File.Exists(currentDbBackupPath))
-                            File.Delete(currentDbBackupPath);
-
-                        // backup current db by rename it to .bak
-                        File.Move(dbPath, currentDbBackupPath);
-                    }
-
-                    // copy backup db to current db location
-                    File.Copy(backupPath, dbPath);
-
-                    if (File.Exists(dbPath))
-                    {
-                        MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-
+                    // backup current db by rename it to .bak
+                    File.Move(dbPath, currentDbBackupPath);
                 }
-                catch (Exception ex)
+
+                // copy backup db to current db location
+                File.Copy(backupPath, dbPath);
+
+                Cursor.Current = Cursors.Default;
+                if (File.Exists(dbPath))
                 {
-                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
             return false;
@@ -645,40 +626,33 @@ namespace LibraryDBMS.Libs
             ofd.Filter = "Database Backup Files (*.bak)|*.bak";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                try
+                Cursor.Current = Cursors.WaitCursor;
+                // current database path
+                string dbPath = databasePath;
+                string backupPath = Path.GetFullPath(ofd.FileName);
+
+                // C:\Users\[curentUser]\AppData\Roaming
+                string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
+                string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+
+                // check if the destination folder is already exist if not, create directory
+                if (!Directory.Exists(databaseFolder))
+                    Directory.CreateDirectory(databaseFolder);
+
+                // copy backup db to current db location
+                File.Copy(backupPath, dbPath);
+
+                Cursor.Current = Cursors.Default;
+                if (File.Exists(dbPath))
                 {
-                    // current database path
-                    string dbPath = databasePath;
-                    string backupPath = Path.GetFullPath(ofd.FileName);
-
-                    // C:\Users\[curentUser]\AppData\Roaming
-                    string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                    // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
-                    string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
-
-                    // check if the destination folder is already exist if not, create directory
-                    if (!Directory.Exists(databaseFolder))
-                        Directory.CreateDirectory(databaseFolder);
-
-                    // copy backup db to current db location
-                    File.Copy(backupPath, dbPath);
-
-                    if (File.Exists(dbPath))
-                    {
-                        MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
-                    }
-
+                    MessageBox.Show("Successfully restored database! Application will be restarted!", "Restore Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot restore database!", "Restore Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
             return false;
@@ -694,46 +668,39 @@ namespace LibraryDBMS.Libs
             sfd.FileName = $"{fileName}.xlsx";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                try
+                Cursor.Current = Cursors.WaitCursor;
+                DataTable dt = new DataTable();
+                XLWorkbook workbook = new XLWorkbook();
+                if (table == "All")
                 {
-                    DataTable dt = new DataTable();
-                    XLWorkbook workbook = new XLWorkbook();
-                    if (table == "All")
-                    {
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblBooks");
-                        workbook.Worksheets.Add(dt, "tblBooks");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblBookCategories");
-                        workbook.Worksheets.Add(dt, "tblBookCategories");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblBorrows");
-                        workbook.Worksheets.Add(dt, "tblBorrows");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblLoanStatus");
-                        workbook.Worksheets.Add(dt, "tblLoanStatus");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblLogs");
-                        workbook.Worksheets.Add(dt, "tblLogs");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblUser");
-                        workbook.Worksheets.Add(dt, "tblUser");
-                        dt = LibModule.GetDataTableFromDBWithTableName("tblStudents");
-                        workbook.Worksheets.Add(dt, "tblStudents");
-                        dt = LibModule.GetDataTableFromDBWithTableName("viewOverview");
-                        workbook.Worksheets.Add(dt, "viewOverview");
-                        workbook.SaveAs(sfd.FileName);
-                    }
-                    else
-                    {
-                        dt = LibModule.GetDataTableFromDBWithTableName(table);
-                        workbook.Worksheets.Add(dt, table);
-                        workbook.SaveAs(sfd.FileName);
-                    }
-
-                    if (File.Exists(Path.GetFullPath(sfd.FileName)))
-                        MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else MessageBox.Show("Cannot export table!", "Export Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblBooks");
+                    workbook.Worksheets.Add(dt, "tblBooks");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblBookCategories");
+                    workbook.Worksheets.Add(dt, "tblBookCategories");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblBorrows");
+                    workbook.Worksheets.Add(dt, "tblBorrows");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblLoanStatus");
+                    workbook.Worksheets.Add(dt, "tblLoanStatus");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblLogs");
+                    workbook.Worksheets.Add(dt, "tblLogs");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblUser");
+                    workbook.Worksheets.Add(dt, "tblUser");
+                    dt = LibModule.GetDataTableFromDBWithTableName("tblStudents");
+                    workbook.Worksheets.Add(dt, "tblStudents");
+                    dt = LibModule.GetDataTableFromDBWithTableName("viewOverview");
+                    workbook.Worksheets.Add(dt, "viewOverview");
+                    workbook.SaveAs(sfd.FileName);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dt = LibModule.GetDataTableFromDBWithTableName(table);
+                    workbook.Worksheets.Add(dt, table);
+                    workbook.SaveAs(sfd.FileName);
                 }
+                Cursor.Current = Cursors.Default;
+                if (File.Exists(Path.GetFullPath(sfd.FileName)))
+                    MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show("Cannot export table!", "Export Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -749,174 +716,150 @@ namespace LibraryDBMS.Libs
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 int rowCount = 0;
-                try
-                {
-                    string importFilePath = Path.GetFullPath(ofd.FileName);
+                Cursor.Current = Cursors.WaitCursor;
+                string importFilePath = Path.GetFullPath(ofd.FileName);
 
-                    if (File.Exists(importFilePath))
-                    {
-                        // tbBook columns
-                        List<string> colName = new List<string>
+                if (File.Exists(importFilePath))
+                {
+                    // tbBook columns
+                    List<string> colName = new List<string>
                         {
                             "bookID", "isbn", "dewey", "title", "author", "publisher", "publishYear", "pages", "other",
                             "qty", "cateID", "dateAdded",
                         };
 
-                        //Create a new DataTable.
-                        DataTable dt = new DataTable();
-                        using (XLWorkbook workBook = new XLWorkbook(importFilePath))
+                    //Create a new DataTable.
+                    DataTable dt = new DataTable();
+                    using (XLWorkbook workBook = new XLWorkbook(importFilePath))
+                    {
+                        //Read the first Sheet from Excel file.
+                        IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                        //Loop through the Worksheet rows.
+                        bool firstRow = true;
+                        foreach (IXLRow row in workSheet.Rows())
                         {
-                            //Read the first Sheet from Excel file.
-                            IXLWorksheet workSheet = workBook.Worksheet(1);
-
-                            //Loop through the Worksheet rows.
-                            bool firstRow = true;
-                            foreach (IXLRow row in workSheet.Rows())
+                            if (row.IsEmpty())
+                                break;
+                            //Use the first row to add columns to DataTable.
+                            if (firstRow)
                             {
-                                if (row.IsEmpty())
-                                    break;
-                                //Use the first row to add columns to DataTable.
-                                if (firstRow)
+                                foreach (IXLCell cell in row.Cells())
                                 {
-                                    foreach (IXLCell cell in row.Cells())
-                                    {
-                                        dt.Columns.Add(cell.Value.ToString());
-                                    }
-
-                                    // Get columns name in excel
-                                    List<string> dtColName = new List<string>();
-                                    foreach (DataColumn col in dt.Columns)
-                                    {
-                                        dtColName.Add(col.ColumnName);
-                                    }
-
-                                    // Compare excel columns and tbkBook columns
-                                    if (!dtColName.SequenceEqual(colName))
-                                    {
-                                        MessageBox.Show("Excel file has wrong format! Cannot import data!", "Import Cancelled",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return;
-                                    }
-                                    firstRow = false;
+                                    dt.Columns.Add(cell.Value.ToString());
                                 }
-                                else
+
+                                // Get columns name in excel
+                                List<string> dtColName = new List<string>();
+                                foreach (DataColumn col in dt.Columns)
                                 {
-                                    //Add rows to DataTable.
-                                    dt.Rows.Add();
-                                    int i = 0;
-                                    foreach (IXLCell cell in row.Cells(1, dt.Columns.Count))
-                                    {
-                                        //// L is date cell
-                                        //if (cell.Address.ColumnLetter == "L")
-                                        //{
-                                        //    string strDate = cell.Value.ToString();
-                                        //    DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
-                                        //    dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
-                                        //}
-                                        //else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
-                                        dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
-                                        i++;
-                                    }
-                                    rowCount++;
+                                    dtColName.Add(col.ColumnName);
                                 }
+
+                                // Compare excel columns and tbkBook columns
+                                if (!dtColName.SequenceEqual(colName))
+                                {
+                                    MessageBox.Show("Excel file has wrong format! Cannot import data!", "Import Cancelled",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                firstRow = false;
+                            }
+                            else
+                            {
+                                //Add rows to DataTable.
+                                dt.Rows.Add();
+                                int i = 0;
+                                foreach (IXLCell cell in row.Cells(1, dt.Columns.Count))
+                                {
+                                    //// L is date cell
+                                    //if (cell.Address.ColumnLetter == "L")
+                                    //{
+                                    //    string strDate = cell.Value.ToString();
+                                    //    DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                    //    dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
+                                    //}
+                                    //else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                    dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                    i++;
+                                }
+                                rowCount++;
                             }
                         }
-
-                        // Insert rows into database
-                        Cursor.Current = Cursors.WaitCursor;
-                        if (LibModule.BulkInsertRecord(dt))
-                        {
-                            MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Cannot import data into database!", "Import Incomplete",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        Cursor.Current = Cursors.Default;
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                        $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Insert rows into database
+                    if (LibModule.BulkInsertRecord(dt))
+                    {
+                        MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot import data into database!", "Import Incomplete",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    Cursor.Current = Cursors.Default;
                 }
             }
         }
 
         public static void CopyDatabaseToLocalUserAppDataFolder()
         {
-            try
+            // C:\Users\[curentUser]\AppData\Roaming
+            string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
+            string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+            // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
+            string databaseFile = Path.Combine(databaseFolder, "library.db");
+            // projectPath\Resources\library.db
+            string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");
+
+            // check if the destination folder is already exist if not, create directory
+            if (!Directory.Exists(databaseFolder))
+                Directory.CreateDirectory(databaseFolder);
+
+            // check if database file already exist 
+            if (!File.Exists(databaseFile))
             {
-                // C:\Users\[curentUser]\AppData\Roaming
-                string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
-                string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
-                // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
-                string databaseFile = Path.Combine(databaseFolder, "library.db");
-                // projectPath\Resources\library.db
-                string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");
-
-                // check if the destination folder is already exist if not, create directory
-                if (!Directory.Exists(databaseFolder))
-                    Directory.CreateDirectory(databaseFolder);
-
-                // check if database file already exist 
-                if (!File.Exists(databaseFile))
-                {
-                    File.Copy(defaultDatabase, databaseFile);
-                }
-                //else
-                //{
-                //    // check if default database newer than current database
-                //    if (File.GetLastWriteTime(defaultDatabase) > File.GetLastWriteTime(databaseFile))
-                //    {
-                //        // backup current database before copy latest default database
-                //        File.Move(databaseFile, Path.Combine(databaseFolder, "library.bak"));
-
-                //        // copy latest default database
-                //        File.Copy(defaultDatabase, databaseFile, true);
-                //    }
-                //}
-
+                File.Copy(defaultDatabase, databaseFile);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
-                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //else
+            //{
+            //    // check if default database newer than current database
+            //    if (File.GetLastWriteTime(defaultDatabase) > File.GetLastWriteTime(databaseFile))
+            //    {
+            //        // backup current database before copy latest default database
+            //        File.Move(databaseFile, Path.Combine(databaseFolder, "library.bak"));
+
+            //        // copy latest default database
+            //        File.Copy(defaultDatabase, databaseFile, true);
+            //    }
+            //}
         }
 
         public static void FillReportViewerWithDGVDataSource(DataGridView dgv, ReportViewer rpv, string rpPath,
             string rpDataSet, Dictionary<string, string> parameters = null)
         {
-            try
+            Cursor.Current = Cursors.WaitCursor;
+            DataTable dt = new DataTable();
+            dt = ((DataTable)dgv.DataSource).Copy();
+            DataSet ds = new DataSet();
+            ds.Tables.Add(dt);
+            rpv.LocalReport.ReportEmbeddedResource = rpPath;
+            if (parameters != null)
             {
-                DataTable dt = new DataTable();
-                dt = ((DataTable)dgv.DataSource).Copy();
-                DataSet ds = new DataSet();
-                ds.Tables.Add(dt);
-                rpv.LocalReport.ReportEmbeddedResource = rpPath;
-                if (parameters != null)
-                {
-                    List<ReportParameter> listReportParameter = new List<ReportParameter>();
-                    foreach (var p in parameters)
-                        listReportParameter.Add(new ReportParameter(p.Key, p.Value));
-                    rpv.LocalReport.SetParameters(listReportParameter);
-                }
-                ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
-                rpv.LocalReport.DataSources.Clear();
-                rpv.ResetPageSettings();
-                rpv.LocalReport.DataSources.Add(rds);
+                List<ReportParameter> listReportParameter = new List<ReportParameter>();
+                foreach (var p in parameters)
+                    listReportParameter.Add(new ReportParameter(p.Key, p.Value));
+                rpv.LocalReport.SetParameters(listReportParameter);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
+            ReportDataSource rds = new ReportDataSource(rpDataSet, ds.Tables[0]);
+            rpv.LocalReport.DataSources.Clear();
+            rpv.ResetPageSettings();
+            rpv.LocalReport.DataSources.Add(rds);
+            Cursor.Current = Cursors.Default;
         }
-
 
         #endregion
 

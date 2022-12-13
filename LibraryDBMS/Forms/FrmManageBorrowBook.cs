@@ -10,12 +10,6 @@ namespace LibraryDBMS.Forms
     {
         private readonly FrmMainMenu frmMainMenu;
         private (int rowIndex, string borrowID) selected;
-
-        public FrmManageBorrowBook()
-        {
-            InitializeComponent();
-            InitializeValues();
-        }
         
         public FrmManageBorrowBook(FrmMainMenu frm)
         {
@@ -81,37 +75,29 @@ namespace LibraryDBMS.Forms
                     Utils.BlurEffect.UnBlur();
                     break;
                 case "btnSearch":
-                    try
+                    if (txtSearchValue.Text.Length > 0)
                     {
-                        if (txtSearchValue.Text.Length > 0)
+                        string searchBy = cbSearchBy.SelectedItem.ToString();
+                        string value = txtSearchValue.Text.Trim();
+                        switch (searchBy)
                         {
-                            string searchBy = cbSearchBy.SelectedItem.ToString();
-                            string value = txtSearchValue.Text.Trim();
-                            switch (searchBy)
-                            {
-                                case "Borrow ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "borrowID", value, dgvBorrowList);
-                                    break;
-                                case "Book ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "bookID", value, dgvBorrowList);
-                                    break;
-                                case "Student ID":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "studentID", value, dgvBorrowList);
-                                    break;
-                                case "Title":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "title", value, dgvBorrowList);
-                                    break;
-                                case "Name":
-                                    LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "fullName", value, dgvBorrowList);
-                                    break;
-                            }
-                            lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
+                            case "Borrow ID":
+                                LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "borrowID", value, dgvBorrowList);
+                                break;
+                            case "Book ID":
+                                LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "bookID", value, dgvBorrowList);
+                                break;
+                            case "Student ID":
+                                LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "studentID", value, dgvBorrowList);
+                                break;
+                            case "Title":
+                                LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "title", value, dgvBorrowList);
+                                break;
+                            case "Name":
+                                LibModule.SearchAndFillDataGrid("viewBorrowedBooks", "fullName", value, dgvBorrowList);
+                                break;
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
                     }
                     break;
                 case "btnRefresh":
@@ -119,28 +105,20 @@ namespace LibraryDBMS.Forms
                     PopulateDataGrid();
                     break;
                 case "btnFilter":
-                    try
+                    if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
                     {
-                        if (dtpToDate.Value.Date >= dtpFromDate.Value.Date)
-                        {
-                            if(dtpToDate.Value > DateTime.Now)
-                                dtpToDate.Value = DateTime.Now;
-                            string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
-                            string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
-                            LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowedBooks", dgvBorrowList, "dateLoan", fromDate, toDate);
-                            lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
-                        }
-                        else
-                        {
-                            MessageBox.Show("From Datepicker should not be more than To Datepicker", "Warning Invalid Date Span",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            dtpFromDate.Focus();
-                        }
+                        if (dtpToDate.Value > DateTime.Now)
+                            dtpToDate.Value = DateTime.Now;
+                        string fromDate = dtpFromDate.Value.ToString("yyyy-MM-dd");
+                        string toDate = dtpToDate.Value.ToString("yyyy-MM-dd");
+                        LibModule.SearchBetweenDateAndFillDataGrid("viewBorrowedBooks", dgvBorrowList, "dateLoan", fromDate, toDate);
+                        lblRowsCount.Text = $"Display Result: {dgvBorrowList.Rows.Count}";
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        MessageBox.Show("From Datepicker should not be more than To Datepicker", "Warning Invalid Date Span",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        dtpFromDate.Focus();
                     }
                     break;
                 case "btnAdd":
@@ -149,36 +127,20 @@ namespace LibraryDBMS.Forms
                     CheckBookLoanNotificationChanged();
                     break;
                 case "btnEdit":
-                    try
-                    {
-                        var dialogReturnBook =
-                            new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
-                        Utils.BlurEffect.ShowDialogWithBlurEffect(dialogReturnBook, frmMainMenu);
-                        CheckBookLoanNotificationChanged();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    var dialogReturnBook =
+                        new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
+                    Utils.BlurEffect.ShowDialogWithBlurEffect(dialogReturnBook, frmMainMenu);
+                    CheckBookLoanNotificationChanged();
                     break;
                 case "btnDelete":
-                    try
+                    Utils.BlurEffect.Blur(frmMainMenu);
+                    if (LibModule.DeleteRecord("tblBorrows", "borrowID", selected.borrowID,
+                        Utils.GetDataGridSelectedRowData(dgvBorrowList, selected.rowIndex)) == true)
                     {
-                        Utils.BlurEffect.Blur(frmMainMenu);
-                        if(LibModule.DeleteRecord("tblBorrows", "borrowID", selected.borrowID,
-                            Utils.GetDataGridSelectedRowData(dgvBorrowList, selected.rowIndex)) == true)
-                        {
-                            PopulateDataGrid();
-                            CheckBookLoanNotificationChanged();
-                        }
-                        Utils.BlurEffect.UnBlur();
+                        PopulateDataGrid();
+                        CheckBookLoanNotificationChanged();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error Message: {ex.Message}\nStack Trace:\n{ex.StackTrace}", $"{ex.GetType()}", MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    Utils.BlurEffect.UnBlur();
                     break;
                 case "btnView":
                     var frmViewDetail = new DialogViewDetail(dgvBorrowList, selected.rowIndex, "Borrow Book");
