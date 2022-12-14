@@ -23,7 +23,7 @@ namespace LibraryDBMS.Setting
         }
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public bool StartAppInFullscreen
         {
             get { return (bool)this["StartAppInFullscreen"]; }
@@ -47,12 +47,11 @@ namespace LibraryDBMS.Setting
         }
 
         [UserScopedSetting]
-        [DefaultSettingValue("False")]
+        [DefaultSettingValue("True")]
         public bool SetAutoUpdateInBackground
         {
             get { return (bool)this["SetAutoUpdateInBackground"]; }
             set { this["SetAutoUpdateInBackground"] = value; }
         }
-
     }
 }
