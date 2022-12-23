@@ -2,6 +2,8 @@
 using System.Data;
 using System.Deployment.Application;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 using LibraryDBMS.Setting;
@@ -65,7 +67,14 @@ namespace LibraryDBMS.Forms
         private void AppliedUserSetting()
         {
             if (us.SetAutoUpdateInBackground)
-                CheckForUpdate();
+            {
+                // check if application is installed through Squirrel installtaion
+                var assembly = Assembly.GetEntryAssembly();
+                string updateDotExe = Path.Combine(Path.GetDirectoryName(assembly.Location), "..", "Update.exe");
+                bool isSquirrelInstall = File.Exists(updateDotExe);
+                if(isSquirrelInstall)
+                    CheckForUpdate();
+            }
 
             if (us.SetSidebarCollapsed)
             {
