@@ -59,7 +59,7 @@ namespace LibraryDBMS.Forms
                                 dateAdded
                             };
 
-                        LibModule.InsertRecord("tblUser", LibModule.GetTableField("tblUser"), user, false);
+                        LibModule.InsertRecord("tblUser", LibModule.GetTableField(DBTable.tblUser), user, false);
                         this.Close();
                     }
                     else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);

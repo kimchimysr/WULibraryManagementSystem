@@ -140,7 +140,7 @@ namespace LibraryDBMS.Forms
                         {
                             if (!IsDuplicatedRecord())
                             {
-                                LibModule.InsertRecord("tblBooks", LibModule.GetTableField("tblBooks"), book);
+                                LibModule.InsertRecord("tblBooks", LibModule.GetTableField(DBTable.tblBooks), book);
                                 frmBook.PopulateDataGridView();
                             }
                         }
@@ -148,7 +148,7 @@ namespace LibraryDBMS.Forms
                         {
                             if (HasAnyChanges())
                             {
-                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField("tblBooks"), "bookID", BookID, book, true);
+                                LibModule.UpdateRecord("tblBooks", LibModule.GetTableField(DBTable.tblBooks), "bookID", BookID, book, true);
                                 frmBook.PopulateDataGridView();
                             }
                         }

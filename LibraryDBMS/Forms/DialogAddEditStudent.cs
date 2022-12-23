@@ -108,14 +108,14 @@ namespace LibraryDBMS.Forms
 
                         if (!isEditMode)
                         {
-                            LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
+                            LibModule.InsertRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents), borrower);
                             frmManageStudent.PopulateDataGrid();
                         }
                         else
                         {
                             if (HasAnyChanges())
                             {
-                                LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
+                                LibModule.UpdateRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents),
                                                     "studentID", studentID, borrower, true);
                                 frmManageStudent.PopulateDataGrid();
                             }
