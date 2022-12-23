@@ -24,6 +24,7 @@ namespace LibraryDBMS.Forms
         private void InitailizeValues()
         {
             Utils.EnableControlDoubleBuffer(dgvBookList);
+            Utils.ClearSelectionAfterDataBindingDataGridView(dgvBookList);
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);
@@ -163,7 +164,6 @@ namespace LibraryDBMS.Forms
                 e.SuppressKeyPress = true;
             }
         }
-
 
         private void dtpFromAndToDate_ValueChanged(object sender,EventArgs e)
         {

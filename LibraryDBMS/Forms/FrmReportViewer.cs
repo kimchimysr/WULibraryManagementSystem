@@ -36,7 +36,7 @@ namespace LibraryDBMS
             reportViewer1.Clear();
             ComboBox cb = (ComboBox)sender;
             gbFilterBy.Visible = cbReportsList.SelectedIndex != 4;
-            cbMonth.SelectedIndex = 0;
+            cbMonth.SelectedIndex = DateTime.Now.Month - 1;
             switch ((string)cb.SelectedItem)
             {
                 case "All Students":
@@ -89,7 +89,7 @@ namespace LibraryDBMS
         private void radioButton_Click(object sender, EventArgs e)
         {
             pMonthlyFilter.Visible = rbMonthly.Checked == true;
-            cbMonth.SelectedIndex = 0;
+            cbMonth.SelectedIndex = DateTime.Now.Month - 1;
             pYearlyFilter.Visible = rbYearly.Checked == true;
             pDateRangeFilter.Visible = rbDateRange.Checked == true;
         }
@@ -105,6 +105,7 @@ namespace LibraryDBMS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             setParameters.Clear();
             setParameters.Add("username", user.Rows[0]["username"].ToString());
             string query = string.Empty;
@@ -212,6 +213,7 @@ namespace LibraryDBMS
             LibModule.FillReportViewerWithQuery(query, reportViewer1,
                 reportPath, reportDataSet, setParameters);
             this.reportViewer1.RefreshReport();
+            Cursor.Current = Cursors.Default;
         }
 
         private string GetTwoDigitString(int index)

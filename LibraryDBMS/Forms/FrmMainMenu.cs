@@ -160,12 +160,7 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnExit":
-                    DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (result == DialogResult.Yes)
-                    {
-                        LibModule.LogTimestampUserLogout(user);
-                        Application.Exit();
-                    }
+                    Application.Exit();
                     break;
             }
         }
@@ -248,11 +243,17 @@ namespace LibraryDBMS.Forms
 
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // close notification if it existed
-            if(niBookLoan.Visible == true)
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             {
-                niBookLoan.Icon.Dispose();
-                niBookLoan.Dispose();
+                LibModule.LogTimestampUserLogout(user);
+
+                // close notification if it existed
+                if (niBookLoan.Visible == true)
+                {
+                    niBookLoan.Icon.Dispose();
+                    niBookLoan.Dispose();
+                }
             }
         }
 

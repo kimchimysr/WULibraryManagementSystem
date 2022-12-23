@@ -100,7 +100,7 @@ namespace LibraryDBMS.Forms
                             };
                         if (HasAnyChanges())
                         {
-                            LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), "borrowID",
+                            LibModule.UpdateRecord("tblBorrows", LibModule.GetTableField(DBTable.tblBorrows), "borrowID",
                                 borrowID, updateStatus, true);
                             frmBorrowBook.PopulateDataGrid();
                         }

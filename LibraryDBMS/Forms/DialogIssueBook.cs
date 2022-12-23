@@ -72,7 +72,7 @@ namespace LibraryDBMS.Forms
                                 overdueFine,
                                 loanStatusID
                             };
-                        if (LibModule.InsertRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), issueBook) == true)
+                        if (LibModule.InsertRecord("tblBorrows", LibModule.GetTableField(DBTable.tblBorrows), issueBook) == true)
                         {
                             // reduce 1 qty of the loaned book
                             LibModule.ExecuteQuery($"UPDATE tblBooks SET qty = qty - 1 WHERE bookID='{bookID}'");

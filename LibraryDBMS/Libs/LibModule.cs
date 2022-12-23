@@ -11,6 +11,17 @@ using LibraryDBMS.Forms;
 
 namespace LibraryDBMS.Libs
 {
+    public enum DBTable
+    {
+        tblBooks,
+        tblBookCategories,
+        tblStudents,
+        tblLoanStatus,
+        tblBorrows,
+        tblUser,
+        tblUserLogs
+    }
+
     public static class LibModule
     {
         private static string connectionString;
@@ -30,20 +41,19 @@ namespace LibraryDBMS.Libs
             }
         }
 
-        public static string GetTableField(string tableName)
+        public static string GetTableField(DBTable tableName)
         {
-            List<(string Name, string Fields)> dbTables = new List<(string Name, string Fields)>
+            List<(DBTable Table, string Fields)> dbTables = new List<(DBTable Table, string Fields)>
             {
-                ("tblBooks", "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
-                ("tblBookCategories", "cateID,cateName"),
-                ("tblStudents", "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
-                ("tblLoanStatus", "loanStatusID,loanStatusName"),
-                ("tblBorrows", "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                ("tblUser", "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
-                ("tblUserLogs", "username,info,dateTime")
+                (DBTable.tblBooks, "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
+                (DBTable.tblBookCategories, "cateID,cateName"),
+                (DBTable.tblStudents, "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
+                (DBTable.tblLoanStatus, "loanStatusID,loanStatusName"),
+                (DBTable.tblBorrows, "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
+                (DBTable.tblUser, "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
+                (DBTable.tblUserLogs, "username,info,dateTime")
             };
-            int index = dbTables.IndexOf(dbTables.Find(x => x.Name == tableName));
-            return dbTables[index].Fields;
+            return dbTables[(int)tableName].Fields;
         }
 
         #region Insert,Update,Delete
@@ -371,11 +381,6 @@ namespace LibraryDBMS.Libs
                 adapter.Fill(dt);
                 dgv.AutoGenerateColumns = false;
                 dgv.DataSource = dt;
-                dgv.DataBindingComplete += Dgv_DataBindingComplete;
-                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-                {
-                    dgv.ClearSelection();
-                }
             }
             catch (Exception ex)
             {
@@ -835,7 +840,7 @@ namespace LibraryDBMS.Libs
                 info,
                 dateTime
             };
-            InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
+            InsertRecord("tblUserLogs", GetTableField(DBTable.tblUserLogs), userLog, false);
         }
 
         public static void LogTimestampUserLogout(DataTable user)
@@ -849,7 +854,7 @@ namespace LibraryDBMS.Libs
                 info,
                 dateTime
             };
-            InsertRecord("tblUserLogs", GetTableField("tblUserLogs"), userLog, false);
+            InsertRecord("tblUserLogs", GetTableField(DBTable.tblUserLogs), userLog, false);
         }
 
         public static bool BackupDatabaseForNewUser()

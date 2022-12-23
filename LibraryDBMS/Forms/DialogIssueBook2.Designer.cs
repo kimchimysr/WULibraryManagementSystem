@@ -96,11 +96,10 @@
             // 
             // dtpIssueDate
             // 
-            this.dtpIssueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIssueDate.Location = new System.Drawing.Point(147, 621);
+            this.dtpIssueDate.Location = new System.Drawing.Point(650, 328);
             this.dtpIssueDate.Name = "dtpIssueDate";
             this.dtpIssueDate.Size = new System.Drawing.Size(345, 25);
             this.dtpIssueDate.TabIndex = 12;
@@ -109,10 +108,9 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 621);
+            this.label5.Location = new System.Drawing.Point(517, 328);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 22);
             this.label5.TabIndex = 54;
@@ -120,10 +118,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 653);
+            this.label1.Location = new System.Drawing.Point(517, 360);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 22);
             this.label1.TabIndex = 54;
@@ -131,12 +128,11 @@
             // 
             // dtpDueDate
             // 
-            this.dtpDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpDueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpDueDate.Enabled = false;
             this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(147, 653);
+            this.dtpDueDate.Location = new System.Drawing.Point(650, 360);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpDueDate.Size = new System.Drawing.Size(345, 25);
@@ -165,10 +161,9 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 589);
+            this.label4.Location = new System.Drawing.Point(517, 163);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 22);
             this.label4.TabIndex = 50;
@@ -176,11 +171,10 @@
             // 
             // lblBookAvailability
             // 
-            this.lblBookAvailability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBookAvailability.AutoSize = true;
             this.lblBookAvailability.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBookAvailability.ForeColor = System.Drawing.Color.Green;
-            this.lblBookAvailability.Location = new System.Drawing.Point(154, 589);
+            this.lblBookAvailability.Location = new System.Drawing.Point(657, 163);
             this.lblBookAvailability.Name = "lblBookAvailability";
             this.lblBookAvailability.Size = new System.Drawing.Size(0, 22);
             this.lblBookAvailability.TabIndex = 50;
@@ -208,7 +202,7 @@
             this.btnSearchBookID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchBookID.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchBookID.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSearchBookID.Location = new System.Drawing.Point(117, 195);
+            this.btnSearchBookID.Location = new System.Drawing.Point(620, 130);
             this.btnSearchBookID.Name = "btnSearchBookID";
             this.btnSearchBookID.Size = new System.Drawing.Size(375, 26);
             this.btnSearchBookID.TabIndex = 4;
@@ -221,7 +215,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 167);
+            this.label3.Location = new System.Drawing.Point(517, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 22);
             this.label3.TabIndex = 81;
@@ -230,7 +224,7 @@
             // txtBookID
             // 
             this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBookID.Location = new System.Drawing.Point(117, 163);
+            this.txtBookID.Location = new System.Drawing.Point(620, 98);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.Size = new System.Drawing.Size(375, 26);
             this.txtBookID.TabIndex = 3;
@@ -264,7 +258,7 @@
             this.groupBox1.Controls.Add(this.lblBorrowedTitle);
             this.groupBox1.Controls.Add(this.lblStudentStatus);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(18, 456);
+            this.groupBox1.Location = new System.Drawing.Point(521, 193);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(474, 127);
             this.groupBox1.TabIndex = 79;
@@ -279,7 +273,7 @@
             this.pTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTitleBar.Location = new System.Drawing.Point(3, 3);
             this.pTitleBar.Name = "pTitleBar";
-            this.pTitleBar.Size = new System.Drawing.Size(510, 45);
+            this.pTitleBar.Size = new System.Drawing.Size(1021, 45);
             this.pTitleBar.TabIndex = 105;
             // 
             // btnClose
@@ -290,7 +284,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LibraryDBMS.Properties.Resources.close_16px;
-            this.btnClose.Location = new System.Drawing.Point(465, 0);
+            this.btnClose.Location = new System.Drawing.Point(976, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
             this.btnClose.TabIndex = 0;
@@ -306,7 +300,7 @@
             this.lblHeader.ForeColor = System.Drawing.SystemColors.Control;
             this.lblHeader.Location = new System.Drawing.Point(0, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(510, 45);
+            this.lblHeader.Size = new System.Drawing.Size(1021, 45);
             this.lblHeader.TabIndex = 33;
             this.lblHeader.Text = "New Book Loan";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,25 +311,25 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 760);
+            this.panel1.Size = new System.Drawing.Size(3, 412);
             this.panel1.TabIndex = 106;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(510, 48);
+            this.panel2.Location = new System.Drawing.Point(1021, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 760);
+            this.panel2.Size = new System.Drawing.Size(3, 412);
             this.panel2.TabIndex = 107;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 805);
+            this.panel3.Location = new System.Drawing.Point(6, 457);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(504, 3);
+            this.panel3.Size = new System.Drawing.Size(1015, 3);
             this.panel3.TabIndex = 108;
             // 
             // btnSave
@@ -348,7 +342,7 @@
             this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSave.Image = global::LibraryDBMS.Properties.Resources.save_26px;
-            this.btnSave.Location = new System.Drawing.Point(18, 746);
+            this.btnSave.Location = new System.Drawing.Point(18, 398);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 50);
             this.btnSave.TabIndex = 13;
@@ -369,7 +363,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(342, 746);
+            this.btnCancel.Location = new System.Drawing.Point(342, 398);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
             this.btnCancel.TabIndex = 15;
@@ -389,7 +383,7 @@
             this.btnClear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.Control;
             this.btnClear.Image = global::LibraryDBMS.Properties.Resources.clear_symbol_26px;
-            this.btnClear.Location = new System.Drawing.Point(180, 746);
+            this.btnClear.Location = new System.Drawing.Point(180, 398);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(150, 50);
             this.btnClear.TabIndex = 14;
@@ -401,11 +395,10 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(14, 677);
+            this.label6.Location = new System.Drawing.Point(517, 384);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(327, 66);
             this.label6.TabIndex = 50;
@@ -417,7 +410,7 @@
             this.cbMajor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMajor.FormattingEnabled = true;
-            this.cbMajor.Location = new System.Drawing.Point(117, 359);
+            this.cbMajor.Location = new System.Drawing.Point(117, 295);
             this.cbMajor.Name = "cbMajor";
             this.cbMajor.Size = new System.Drawing.Size(375, 28);
             this.cbMajor.TabIndex = 10;
@@ -428,7 +421,7 @@
             this.dtpDateAdded.Enabled = false;
             this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateAdded.Location = new System.Drawing.Point(117, 425);
+            this.dtpDateAdded.Location = new System.Drawing.Point(117, 361);
             this.dtpDateAdded.Name = "dtpDateAdded";
             this.dtpDateAdded.Size = new System.Drawing.Size(375, 25);
             this.dtpDateAdded.TabIndex = 0;
@@ -443,7 +436,7 @@
             this.cbYear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbYear.ForeColor = System.Drawing.SystemColors.Control;
             this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(117, 325);
+            this.cbYear.Location = new System.Drawing.Point(117, 261);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(375, 28);
             this.cbYear.TabIndex = 9;
@@ -452,7 +445,7 @@
             // 
             this.rbFemale.AutoSize = true;
             this.rbFemale.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFemale.Location = new System.Drawing.Point(183, 293);
+            this.rbFemale.Location = new System.Drawing.Point(183, 229);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(79, 26);
             this.rbFemale.TabIndex = 8;
@@ -464,7 +457,7 @@
             this.rbMale.AutoSize = true;
             this.rbMale.Checked = true;
             this.rbMale.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMale.Location = new System.Drawing.Point(117, 293);
+            this.rbMale.Location = new System.Drawing.Point(117, 229);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(60, 26);
             this.rbMale.TabIndex = 7;
@@ -476,7 +469,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 329);
+            this.label11.Location = new System.Drawing.Point(14, 265);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 22);
             this.label11.TabIndex = 123;
@@ -486,7 +479,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 426);
+            this.label8.Location = new System.Drawing.Point(14, 362);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 22);
             this.label8.TabIndex = 121;
@@ -496,7 +489,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 397);
+            this.label10.Location = new System.Drawing.Point(14, 333);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 22);
             this.label10.TabIndex = 122;
@@ -506,7 +499,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(14, 362);
+            this.label12.Location = new System.Drawing.Point(14, 298);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 22);
             this.label12.TabIndex = 125;
@@ -516,7 +509,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(14, 297);
+            this.label13.Location = new System.Drawing.Point(14, 233);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 22);
             this.label13.TabIndex = 120;
@@ -526,7 +519,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(14, 264);
+            this.label14.Location = new System.Drawing.Point(14, 200);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(89, 22);
             this.label14.TabIndex = 119;
@@ -536,7 +529,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(14, 231);
+            this.label15.Location = new System.Drawing.Point(14, 167);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(92, 22);
             this.label15.TabIndex = 118;
@@ -545,7 +538,7 @@
             // txtTel
             // 
             this.txtTel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTel.Location = new System.Drawing.Point(117, 393);
+            this.txtTel.Location = new System.Drawing.Point(117, 329);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(375, 26);
             this.txtTel.TabIndex = 11;
@@ -553,7 +546,7 @@
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(117, 260);
+            this.txtLastName.Location = new System.Drawing.Point(117, 196);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(375, 26);
             this.txtLastName.TabIndex = 6;
@@ -561,7 +554,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(117, 227);
+            this.txtFirstName.Location = new System.Drawing.Point(117, 161);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(375, 26);
             this.txtFirstName.TabIndex = 5;
@@ -574,7 +567,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(516, 811);
+            this.ClientSize = new System.Drawing.Size(1027, 463);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.cbYear);

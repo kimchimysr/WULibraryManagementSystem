@@ -27,6 +27,9 @@ namespace LibraryDBMS.Libs
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 @"WesternLibraryManagementSystem\Database\library.db");
         #region Security
+        /// <summary>
+        /// Convert normal string into encrpyted string.
+        /// </summary>
         public static string HashPassword(string password)
         {
             SHA256 sha = SHA256.Create();
@@ -48,6 +51,9 @@ namespace LibraryDBMS.Libs
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Get deafult encrypted string.
+        /// </summary>
         public static string DefaultHashPassword()
         {
             return HashPassword("Password@123");
@@ -113,6 +119,9 @@ namespace LibraryDBMS.Libs
             return true;
         }
 
+        /// <summary>
+        /// Enable double buffer on Control.
+        /// </summary>
         public static void EnableControlDoubleBuffer(Control control)
         {
             control.GetType().InvokeMember(
@@ -123,8 +132,11 @@ namespace LibraryDBMS.Libs
                new object[] { true });
         }
 
+        /// <summary>
+        /// Fixes DataGridView not resize proerly in FlowLayoutPanel.
+        /// </summary>
         // https://www.anycodings.com/1questions/1647481/how-can-i-get-a-stackpanel-like-layout-in-winforms
-        public static void AutoSizeChildrenInFlowLayoutPanel(this FlowLayoutPanel panel, Control fillControl = null)
+        public static void AutoSizeChildrenInFlowLayoutPanel(FlowLayoutPanel panel, Control fillControl = null)
         {
             // wrapping does not make sense with auto-resizing
             panel.WrapContents = false;
@@ -194,6 +206,9 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        /// <summary>
+        /// Make Columns auto resizes in DataGridView.
+        /// </summary>
         public static void AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(DataGridView dgv)
         {
             dgv.DataBindingComplete += Dgv_DataBindingComplete;
@@ -233,6 +248,9 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        /// <summary>
+        /// Show ToolTip when hovering on Control.
+        /// </summary>
         public static void ToolTipOnControlMouseHover(string text, Control ctrl)
         {
             ToolTip tip = new ToolTip()
@@ -255,6 +273,9 @@ namespace LibraryDBMS.Libs
             dtpFromDate.Value = dtpToDate.Value.AddYears(-1);
         }
 
+        /// <summary>
+        /// Enable AutoComplete using DataTable on Control.
+        /// </summary>
         public static void EnableControlAutoComplete(Control ctl, DataTable dt)
         {
             if (ctl is ComboBox cb)
@@ -286,9 +307,27 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        /// <summary>
+        /// Deselect row after filling DataSource in DataGridView.
+        /// </summary>
+        public static void ClearSelectionAfterDataBindingDataGridView(params DataGridView[] dgvs)
+        {
+            foreach (var dgv in dgvs)
+            {
+                dgv.DataBindingComplete += Dgv_DataBindingComplete;
+                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+                {
+                    dgv.ClearSelection();
+                }
+            }
+        }
+
         #endregion
 
         #region Tool
+        /// <summary>
+        /// Fill ComboBox with provided string.
+        /// </summary>
         public static void FillComboBox(ComboBox cb, bool setSelectedIndex, params string[] items)
         {
             if(items.Length > 0)
@@ -298,6 +337,9 @@ namespace LibraryDBMS.Libs
                 cb.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Get row data from selected row in DataGridView.
+        /// </summary>
         public static string GetDataGridSelectedRowData(DataGridView dgv, int rowIndex)
         {
             StringBuilder row = new StringBuilder();
@@ -308,6 +350,10 @@ namespace LibraryDBMS.Libs
             return row.ToString();
         }
 
+        /// <summary>
+        /// Auto convert normal number string into (K,M) formatted.
+        /// E.g. 12345 => 123.K, 1234567 => 1.23M
+        /// </summary>
         // string extension method
         public static string ToKMString(this string str)
         {
@@ -317,6 +363,9 @@ namespace LibraryDBMS.Libs
                 amount >= 1_000_000 ? amount.ToString("0,,.##M", CultureInfo.InvariantCulture) : str;
         }
 
+        /// <summary>
+        /// Show print preview using DataGridView's DataSource.
+        /// </summary>
         // Printing of DataGridView
         // https://www.codeproject.com/Articles/28046/Printing-of-DataGridView
         public static void PrintPreviewDataGridView(string title, DataGridView dgvo)
@@ -520,6 +569,9 @@ namespace LibraryDBMS.Libs
             objPPdialog.ShowDialog();
         }
 
+        /// <summary>
+        /// Backup Database by copying.
+        /// </summary>
         // Backup&Restore SQLite Database in C#
         // https://www.codeproject.com/Questions/1213783/Restore-sqlite-database-in-Csharp
         public static bool BackupDatabase()
@@ -575,6 +627,9 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
+        /// <summary>
+        /// Restore Database by copying.
+        /// </summary>
         public static bool RestoreDatabase()
         {
             MessageBox.Show("Restoring database will overwrite current database, make sure to do backup first!",
@@ -620,6 +675,9 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
+        /// <summary>
+        /// Import selected old backup Database.
+        /// </summary>
         public static bool ImportOldDatabase()
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -658,6 +716,9 @@ namespace LibraryDBMS.Libs
             return false;
         }
 
+        /// <summary>
+        /// Export table from Database into Excel file.
+        /// </summary>
         // How to Export Data from Database To Excel File in c#
         // https://www.youtube.com/watch?v=ySkUEhNu4t4
         public static void ExportDatabaseTableToExcel(string table)
@@ -704,6 +765,9 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        /// <summary>
+        /// Import old Database in Excel into current Database.
+        /// </summary>
         // How to read(import) excel files
         // https://www.aspsnippets.com/Articles/Read-Import-Excel-file-without-OLEDB-Microsoft-Office-or-Interop-Library-in-C-and-VBNet.aspx
         public static void ImportExcelDataIntoDatabase()
@@ -804,6 +868,9 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        /// <summary>
+        /// Copy current Database to C:\Users\[curentUser]\AppData\Roaming
+        /// </summary>
         public static void CopyDatabaseToLocalUserAppDataFolder()
         {
             // C:\Users\[curentUser]\AppData\Roaming
@@ -838,6 +905,12 @@ namespace LibraryDBMS.Libs
             //}
         }
 
+        /// <summary>
+        /// Fill Report Viewer with DataGridView's DataSource.
+        /// </summary>
+        /// <param name="rpPath">Path to rdlc file</param>
+        /// <param name="rpDataSet">Name of DataSet in rdlc file</param>
+        /// <param name="parameters">Parameter in rdlc file</param>
         public static void FillReportViewerWithDGVDataSource(DataGridView dgv, ReportViewer rpv, string rpPath,
             string rpDataSet, Dictionary<string, string> parameters = null)
         {

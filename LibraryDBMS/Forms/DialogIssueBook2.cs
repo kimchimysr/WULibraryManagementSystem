@@ -69,13 +69,16 @@ namespace LibraryDBMS.Forms
                             $"WHERE studentID = '{txtStudentID.Text.Trim()}' ORDER BY borrowID DESC LIMIT 1;";
                         result = LibModule.GetDataTableFromDBWithQuery(query);
 
-                        if (result.Rows[0]["loanStatusName"].ToString() == "Borrowed")
-                            lblStudentStatus.Text += "Currently borrowing 1 book";
-                        else if (result.Rows[0]["loanStatusName"].ToString() == "Returned")
-                            lblStudentStatus.Text += "Returned last borrowed book";
-                        else if (result.Rows[0]["loanStatusName"].ToString() == "Lost")
-                            lblStudentStatus.Text += "Lost last borrowed book";
-                        lblBorrowedTitle.Text += result.Rows[0]["title"].ToString();
+                        if (result.Rows.Count > 0)
+                        {
+                            if (result.Rows[0]["loanStatusName"].ToString() == "Borrowed")
+                                lblStudentStatus.Text += "Currently borrowing 1 book";
+                            else if (result.Rows[0]["loanStatusName"].ToString() == "Returned")
+                                lblStudentStatus.Text += "Returned last borrowed book";
+                            else if (result.Rows[0]["loanStatusName"].ToString() == "Lost")
+                                lblStudentStatus.Text += "Lost last borrowed book";
+                            lblBorrowedTitle.Text += result.Rows[0]["title"].ToString(); 
+                        }
                     }
                     else
                     {
@@ -115,7 +118,7 @@ namespace LibraryDBMS.Forms
                             };
 
                         StudentValidation();
-                        LibModule.InsertRecord("tblBorrows", LibModule.GetTableField("tblBorrows"), issueBook);
+                        LibModule.InsertRecord("tblBorrows", LibModule.GetTableField(DBTable.tblBorrows), issueBook);
                         frmBorrowBook.PopulateDataGrid();
                         this.Close();
                     }
@@ -204,7 +207,7 @@ namespace LibraryDBMS.Forms
                         dateAdded
                     };
 
-                    LibModule.UpdateRecord("tblStudents", LibModule.GetTableField("tblStudents"),
+                    LibModule.UpdateRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents),
                                            "studentID", studentID, borrower, true);
                 }
             }
@@ -230,7 +233,7 @@ namespace LibraryDBMS.Forms
                     telephone,
                     dateAdded
                 };
-                LibModule.InsertRecord("tblStudents", LibModule.GetTableField("tblStudents"), borrower);
+                LibModule.InsertRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents), borrower);
             }
         }
 

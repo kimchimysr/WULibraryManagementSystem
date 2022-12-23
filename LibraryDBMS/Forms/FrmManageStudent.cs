@@ -20,6 +20,7 @@ namespace LibraryDBMS.Forms
         private void InitializeValues()
         {
             Utils.EnableControlDoubleBuffer(dgvStudentList);
+            Utils.ClearSelectionAfterDataBindingDataGridView(dgvStudentList);
             Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvStudentList);
             Utils.ToolTipOnControlMouseHover
