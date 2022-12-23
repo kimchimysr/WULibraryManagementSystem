@@ -29,7 +29,7 @@ namespace LibraryDBMS.Forms
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/kimchimysr/WesternLibraryManagementSystem/releases");
+            Process.Start("https://github.com/kimchimysr/WULibraryManagementSystem/releases");
         }
     }
 }

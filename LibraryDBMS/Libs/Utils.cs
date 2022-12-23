@@ -22,10 +22,10 @@ namespace LibraryDBMS.Libs
 {
     public static partial class Utils
     {
-        // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database\library.db
+        // C:\Users\[curentUser]\AppData\Roaming\WULibraryManagementSystem\Database\library.db
         public static string databasePath =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                @"WesternLibraryManagementSystem\Database\library.db");
+                @"WULibraryManagementSystem\Database\library.db");
         #region Security
         /// <summary>
         /// Convert normal string into encrpyted string.
@@ -691,8 +691,8 @@ namespace LibraryDBMS.Libs
 
                 // C:\Users\[curentUser]\AppData\Roaming
                 string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
-                string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
+                // C:\Users\[curentUser]\AppData\Roaming\WULibraryManagementSystem\Database
+                string databaseFolder = Path.Combine(userAppDataPath, @"WULibraryManagementSystem\Database\");
 
                 // check if the destination folder is already exist if not, create directory
                 if (!Directory.Exists(databaseFolder))
@@ -875,9 +875,9 @@ namespace LibraryDBMS.Libs
         {
             // C:\Users\[curentUser]\AppData\Roaming
             string userAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            // C:\Users\[curentUser]\AppData\Roaming\WesternLibraryManagementSystem\Database
-            string databaseFolder = Path.Combine(userAppDataPath, @"WesternLibraryManagementSystem\Database\");
-            // C:\Users\[currentUser]\AppData\Romaing\WesternLibraryManagementSystem\Database\library.db
+            // C:\Users\[curentUser]\AppData\Roaming\WULibraryManagementSystem\Database
+            string databaseFolder = Path.Combine(userAppDataPath, @"WULibraryManagementSystem\Database\");
+            // C:\Users\[currentUser]\AppData\Romaing\WULibraryManagementSystem\Database\library.db
             string databaseFile = Path.Combine(databaseFolder, "library.db");
             // projectPath\Resources\library.db
             string defaultDatabase = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\library.db");

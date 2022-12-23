@@ -68,7 +68,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>LibDataSet</rd:DataSetName>
-        <rd:SchemaPath>I:\Study Materials\Year IV\Year 4 Project\WesternLibraryManagementSystem\WesternLibraryManagementSystem\LibDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>I:\Study Materials\Year IV\Year 4 Project\WULibraryManagementSystem\WULibraryManagementSystem\LibDataSet.xsd</rd:SchemaPath>
         <rd:TableName>tblUser</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

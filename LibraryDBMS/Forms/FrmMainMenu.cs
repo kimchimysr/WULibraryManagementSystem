@@ -19,6 +19,7 @@ namespace LibraryDBMS.Forms
         private Size formSize;
         private int borderSize = 3;
 
+        private bool hasClickExitButton = false;
         public FrmMainMenu()
         {
             InitializeComponent();
@@ -84,7 +85,7 @@ namespace LibraryDBMS.Forms
 
         private async void CheckForUpdate()
         {
-            using (var manager = new UpdateManager(@"https://raw.githubusercontent.com/kimchimysr/WesternLibraryManagementSystem/release/published/"))
+            using (var manager = new UpdateManager(@"https://raw.githubusercontent.com/kimchimysr/WULibraryManagementSystem/release/published/"))
             {
                 await manager.UpdateApp();
             }
@@ -160,7 +161,13 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnExit":
-                    Application.Exit();
+                    DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        hasClickExitButton = true;
+                        LibModule.LogTimestampUserLogout(user);
+                        Application.Exit();
+                    }
                     break;
             }
         }
@@ -243,17 +250,27 @@ namespace LibraryDBMS.Forms
 
         private void FrmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == DialogResult.Yes)
+            // handle when user right click application in taskbar and
+            //  click Close window instead of exit button
+            if (!hasClickExitButton)
             {
-                LibModule.LogTimestampUserLogout(user);
-
-                // close notification if it existed
-                if (niBookLoan.Visible == true)
+                DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
                 {
-                    niBookLoan.Icon.Dispose();
-                    niBookLoan.Dispose();
+                    LibModule.LogTimestampUserLogout(user);
                 }
+                else
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            // close notification if it existed
+            if (niBookLoan.Visible == true)
+            {
+                niBookLoan.Icon.Dispose();
+                niBookLoan.Dispose();
             }
         }
 

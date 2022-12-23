@@ -60,7 +60,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>LibDataSet</rd:DataSetName>
-        <rd:SchemaPath>I:\Study Materials\Year IV\Year 4 Project\WesternLibraryManagementSystem\LibraryDBMS\LibDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>I:\Study Materials\Year IV\Year 4 Project\WULibraryManagementSystem\LibraryDBMS\LibDataSet.xsd</rd:SchemaPath>
         <rd:TableName>viewBorrowedBooks</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

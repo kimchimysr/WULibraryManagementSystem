@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WesternLibraryManagementSystem.Libs;
+using WULibraryManagementSystem.Libs;
 
 namespace WesternLibraryManagement.Forms
 {
