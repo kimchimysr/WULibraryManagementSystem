@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.cbReportsList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.gbFilterBy = new System.Windows.Forms.GroupBox();
-            this.rbMonthly = new System.Windows.Forms.RadioButton();
-            this.rbYearly = new System.Windows.Forms.RadioButton();
-            this.rbDateRange = new System.Windows.Forms.RadioButton();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.dtpYearInMonthly = new System.Windows.Forms.DateTimePicker();
             this.pMonthlyFilter = new System.Windows.Forms.Panel();
+            this.dtpYearInMonthly = new System.Windows.Forms.DateTimePicker();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
             this.pYearlyFilter = new System.Windows.Forms.Panel();
             this.dtpYearInYearly = new System.Windows.Forms.DateTimePicker();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.rbDateRange = new System.Windows.Forms.RadioButton();
+            this.rbYearly = new System.Windows.Forms.RadioButton();
+            this.rbMonthly = new System.Windows.Forms.RadioButton();
             this.pDateRangeFilter = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.gbFilterBy.SuspendLayout();
             this.pMonthlyFilter.SuspendLayout();
             this.pYearlyFilter.SuspendLayout();
@@ -58,9 +58,9 @@
             this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource5.Name = "Borrower";
-            reportDataSource5.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource5);
+            reportDataSource1.Name = "Borrower";
+            reportDataSource1.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "";
             this.reportViewer1.Location = new System.Drawing.Point(12, 118);
             this.reportViewer1.Name = "reportViewer1";
@@ -130,40 +130,25 @@
             this.gbFilterBy.Text = "Advance Filter";
             this.gbFilterBy.Visible = false;
             // 
-            // rbMonthly
+            // pMonthlyFilter
             // 
-            this.rbMonthly.AutoSize = true;
-            this.rbMonthly.Checked = true;
-            this.rbMonthly.Location = new System.Drawing.Point(6, 22);
-            this.rbMonthly.Name = "rbMonthly";
-            this.rbMonthly.Size = new System.Drawing.Size(71, 22);
-            this.rbMonthly.TabIndex = 0;
-            this.rbMonthly.TabStop = true;
-            this.rbMonthly.Text = "Monthly";
-            this.rbMonthly.UseVisualStyleBackColor = true;
-            this.rbMonthly.Click += new System.EventHandler(this.radioButton_Click);
+            this.pMonthlyFilter.Controls.Add(this.dtpYearInMonthly);
+            this.pMonthlyFilter.Controls.Add(this.cbMonth);
+            this.pMonthlyFilter.Location = new System.Drawing.Point(6, 53);
+            this.pMonthlyFilter.Name = "pMonthlyFilter";
+            this.pMonthlyFilter.Size = new System.Drawing.Size(277, 37);
+            this.pMonthlyFilter.TabIndex = 57;
             // 
-            // rbYearly
+            // dtpYearInMonthly
             // 
-            this.rbYearly.AutoSize = true;
-            this.rbYearly.Location = new System.Drawing.Point(83, 22);
-            this.rbYearly.Name = "rbYearly";
-            this.rbYearly.Size = new System.Drawing.Size(60, 22);
-            this.rbYearly.TabIndex = 0;
-            this.rbYearly.Text = "Yearly";
-            this.rbYearly.UseVisualStyleBackColor = true;
-            this.rbYearly.Click += new System.EventHandler(this.radioButton_Click);
-            // 
-            // rbDateRange
-            // 
-            this.rbDateRange.AutoSize = true;
-            this.rbDateRange.Location = new System.Drawing.Point(149, 22);
-            this.rbDateRange.Name = "rbDateRange";
-            this.rbDateRange.Size = new System.Drawing.Size(93, 22);
-            this.rbDateRange.TabIndex = 0;
-            this.rbDateRange.Text = "Date Range";
-            this.rbDateRange.UseVisualStyleBackColor = true;
-            this.rbDateRange.Click += new System.EventHandler(this.radioButton_Click);
+            this.dtpYearInMonthly.CustomFormat = "yyyy";
+            this.dtpYearInMonthly.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpYearInMonthly.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpYearInMonthly.Location = new System.Drawing.Point(197, 4);
+            this.dtpYearInMonthly.Name = "dtpYearInMonthly";
+            this.dtpYearInMonthly.Size = new System.Drawing.Size(74, 26);
+            this.dtpYearInMonthly.TabIndex = 58;
+            this.dtpYearInMonthly.Value = new System.DateTime(2022, 11, 27, 18, 31, 42, 0);
             // 
             // cbMonth
             // 
@@ -191,45 +176,6 @@
             this.cbMonth.Size = new System.Drawing.Size(175, 28);
             this.cbMonth.TabIndex = 1;
             // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFilter.FlatAppearance.BorderSize = 0;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.Image = global::LibraryDBMS.Properties.Resources.filter_20px;
-            this.btnFilter.Location = new System.Drawing.Point(289, 55);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(90, 34);
-            this.btnFilter.TabIndex = 57;
-            this.btnFilter.Text = "  Filter";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // dtpYearInMonthly
-            // 
-            this.dtpYearInMonthly.CustomFormat = "yyyy";
-            this.dtpYearInMonthly.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpYearInMonthly.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpYearInMonthly.Location = new System.Drawing.Point(197, 4);
-            this.dtpYearInMonthly.Name = "dtpYearInMonthly";
-            this.dtpYearInMonthly.Size = new System.Drawing.Size(74, 26);
-            this.dtpYearInMonthly.TabIndex = 58;
-            this.dtpYearInMonthly.Value = new System.DateTime(2022, 11, 27, 18, 31, 42, 0);
-            // 
-            // pMonthlyFilter
-            // 
-            this.pMonthlyFilter.Controls.Add(this.dtpYearInMonthly);
-            this.pMonthlyFilter.Controls.Add(this.cbMonth);
-            this.pMonthlyFilter.Location = new System.Drawing.Point(6, 53);
-            this.pMonthlyFilter.Name = "pMonthlyFilter";
-            this.pMonthlyFilter.Size = new System.Drawing.Size(277, 37);
-            this.pMonthlyFilter.TabIndex = 57;
-            // 
             // pYearlyFilter
             // 
             this.pYearlyFilter.Controls.Add(this.dtpYearInYearly);
@@ -249,6 +195,60 @@
             this.dtpYearInYearly.TabIndex = 58;
             this.dtpYearInYearly.Value = new System.DateTime(2022, 11, 27, 18, 31, 42, 0);
             // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.Image = global::LibraryDBMS.Properties.Resources.filter_20px;
+            this.btnFilter.Location = new System.Drawing.Point(289, 55);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(90, 34);
+            this.btnFilter.TabIndex = 57;
+            this.btnFilter.Text = "  Filter";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // rbDateRange
+            // 
+            this.rbDateRange.AutoSize = true;
+            this.rbDateRange.Location = new System.Drawing.Point(149, 22);
+            this.rbDateRange.Name = "rbDateRange";
+            this.rbDateRange.Size = new System.Drawing.Size(93, 22);
+            this.rbDateRange.TabIndex = 0;
+            this.rbDateRange.Text = "Date Range";
+            this.rbDateRange.UseVisualStyleBackColor = true;
+            this.rbDateRange.Click += new System.EventHandler(this.radioButton_Click);
+            // 
+            // rbYearly
+            // 
+            this.rbYearly.AutoSize = true;
+            this.rbYearly.Location = new System.Drawing.Point(83, 22);
+            this.rbYearly.Name = "rbYearly";
+            this.rbYearly.Size = new System.Drawing.Size(60, 22);
+            this.rbYearly.TabIndex = 0;
+            this.rbYearly.Text = "Yearly";
+            this.rbYearly.UseVisualStyleBackColor = true;
+            this.rbYearly.Click += new System.EventHandler(this.radioButton_Click);
+            // 
+            // rbMonthly
+            // 
+            this.rbMonthly.AutoSize = true;
+            this.rbMonthly.Checked = true;
+            this.rbMonthly.Location = new System.Drawing.Point(6, 22);
+            this.rbMonthly.Name = "rbMonthly";
+            this.rbMonthly.Size = new System.Drawing.Size(71, 22);
+            this.rbMonthly.TabIndex = 0;
+            this.rbMonthly.TabStop = true;
+            this.rbMonthly.Text = "Monthly";
+            this.rbMonthly.UseVisualStyleBackColor = true;
+            this.rbMonthly.Click += new System.EventHandler(this.radioButton_Click);
+            // 
             // pDateRangeFilter
             // 
             this.pDateRangeFilter.Controls.Add(this.label2);
@@ -258,6 +258,16 @@
             this.pDateRangeFilter.Name = "pDateRangeFilter";
             this.pDateRangeFilter.Size = new System.Drawing.Size(277, 37);
             this.pDateRangeFilter.TabIndex = 57;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(107, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "_";
             // 
             // dtpToDate
             // 
@@ -278,16 +288,6 @@
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(98, 26);
             this.dtpFromDate.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(107, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 20);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "_";
             // 
             // FrmReportViewer
             // 

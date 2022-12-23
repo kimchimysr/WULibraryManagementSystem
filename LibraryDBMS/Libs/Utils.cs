@@ -286,6 +286,18 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        public static void ClearSelectionAfterDataBindingDataGridView(params DataGridView[] dgvs)
+        {
+            foreach (var dgv in dgvs)
+            {
+                dgv.DataBindingComplete += Dgv_DataBindingComplete;
+                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+                {
+                    dgv.ClearSelection();
+                }
+            }
+        }
+
         #endregion
 
         #region Tool

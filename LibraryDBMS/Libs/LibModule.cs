@@ -371,11 +371,6 @@ namespace LibraryDBMS.Libs
                 adapter.Fill(dt);
                 dgv.AutoGenerateColumns = false;
                 dgv.DataSource = dt;
-                dgv.DataBindingComplete += Dgv_DataBindingComplete;
-                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-                {
-                    dgv.ClearSelection();
-                }
             }
             catch (Exception ex)
             {
