@@ -11,11 +11,13 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 
 namespace LibraryDBMS.Libs
@@ -934,6 +936,40 @@ namespace LibraryDBMS.Libs
             Cursor.Current = Cursors.Default;
         }
 
+        [DllImport("wininet.dll")]
+        private extern static bool InternetGetConnectedState(out int description, int reservedValue);
+
+        /// <summary>
+        /// Check if there is internet connection using simple API function InternetGetConnectedState.
+        /// </summary>
+        public static bool IsInternetAvailable()
+        {
+            try
+            {
+                int description;
+                return InternetGetConnectedState(out description, 0);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Check if there is internet connection by pinging to specific URL.
+        /// </summary>
+        public static bool IsInternetAvailable(string url)
+        {
+            Ping p = new Ping();
+            try
+            {
+                PingReply reply = p.Send(url, 3000);
+                if (reply.Status == IPStatus.Success)
+                    return true;
+            }
+            catch { }
+            return false;
+        }
         #endregion
 
         #region Form Related

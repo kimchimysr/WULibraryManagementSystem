@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Deployment.Application;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -22,6 +21,7 @@ namespace LibraryDBMS.Forms
         private int borderSize = 3;
 
         private bool hasClickExitButton = false;
+
         public FrmMainMenu()
         {
             InitializeComponent();
@@ -72,7 +72,8 @@ namespace LibraryDBMS.Forms
                 var assembly = Assembly.GetEntryAssembly();
                 string updateDotExe = Path.Combine(Path.GetDirectoryName(assembly.Location), "..", "Update.exe");
                 bool isSquirrelInstall = File.Exists(updateDotExe);
-                if(isSquirrelInstall)
+
+                if(isSquirrelInstall && Utils.IsInternetAvailable("https://www.google.com"))
                     CheckForUpdate();
             }
 
