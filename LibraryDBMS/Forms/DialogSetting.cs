@@ -9,11 +9,14 @@ namespace LibraryDBMS.Forms
     public partial class DialogSetting : Form
     {
         private UserSetting us;
+        private FrmMainMenu mainMenu;
         private readonly DataTable user;
-        public DialogSetting(DataTable _user)
+
+        public DialogSetting(FrmMainMenu main,DataTable _user)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
+            mainMenu = main;
             user = _user;
             InitializeValues();
         }
@@ -71,6 +74,7 @@ namespace LibraryDBMS.Forms
                     DialogResult result = MessageBox.Show("Do you want to restart the application?", "Restart", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (result == DialogResult.Yes)
                     {
+                        mainMenu.hasClickExitOrRestartButton = true;
                         LibModule.LogTimestampUserLogout(user);
                         Application.Restart();
                         Environment.Exit(0);

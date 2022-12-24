@@ -20,7 +20,7 @@ namespace LibraryDBMS.Forms
         private Size formSize;
         private int borderSize = 3;
 
-        private bool hasClickExitButton = false;
+        internal bool hasClickExitOrRestartButton = false;
 
         public FrmMainMenu()
         {
@@ -150,7 +150,7 @@ namespace LibraryDBMS.Forms
                     OpenChildFormAsDialog(new DialogUserAccount(user));
                     break;
                 case "btnSetting":
-                    OpenChildFormAsDialog(new DialogSetting(user));
+                    OpenChildFormAsDialog(new DialogSetting(this, user));
                     break;
                 case "btnAbout":
                     OpenChildFormAsDialog(new DialogAbout());
@@ -174,7 +174,7 @@ namespace LibraryDBMS.Forms
                     DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (result == DialogResult.Yes)
                     {
-                        hasClickExitButton = true;
+                        hasClickExitOrRestartButton = true;
                         LibModule.LogTimestampUserLogout(user);
                         Application.Exit();
                     }
@@ -262,7 +262,7 @@ namespace LibraryDBMS.Forms
         {
             // handle when user right click application in taskbar and
             //  click Close window instead of exit button
-            if (!hasClickExitButton)
+            if (!hasClickExitOrRestartButton)
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
