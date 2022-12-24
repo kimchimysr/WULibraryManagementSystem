@@ -83,17 +83,17 @@ namespace LibraryDBMS.Forms
             string author = txtAuthor.Text.Trim();
             string publisher = txtPublisher.Text.Trim();
             string year = txtYear.Text.Trim();
-            string pages = nudPages.Text;
+            //string pages = nudPages.Text;
             string other = txtOthers.Text.Trim();
 
-            string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,pages,other FROM tblBooks " +
+            string query = $"SELECT isbn,dewey,title,author,publisher,publishYear,other FROM tblBooks " +
                 $"WHERE isbn=@val1 AND dewey=@val2 " +
                 $"AND title=@val3 AND author=@val4 " +
                 $"AND publisher=@val5 AND publishYear=@val6 " +
-                $"AND pages=@val7 AND other=@val8;";
+                $"AND other=@val7;";
 
             if (!string.IsNullOrEmpty(LibModule.ExecuteScalarQueryWithSQLiteParameters
-                (query, "@val", isbn, dewey, title, author, publisher, year, pages, other)))
+                (query, "@val", isbn, dewey, title, author, publisher, year, other)))
                 return true;
 
             return false;
@@ -122,26 +122,31 @@ namespace LibraryDBMS.Forms
                         string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
                         List<string> book = new List<string>
-                            {
-                                BookID,
-                                ISBN,
-                                DEWEYCode,
-                                Title,
-                                Author,
-                                Publisher,
-                                PublishYear,
-                                Pages,
-                                Other,
-                                Quantity,
-                                CategoryID,
-                                DateAdded
-                            };
+                        {
+                            BookID,
+                            ISBN,
+                            DEWEYCode,
+                            Title,
+                            Author,
+                            Publisher,
+                            PublishYear,
+                            Pages,
+                            Other,
+                            Quantity,
+                            CategoryID,
+                            DateAdded
+                        };
+
                         if (!isEditMode)
                         {
                             if (!IsDuplicatedRecord())
                             {
                                 LibModule.InsertRecord("tblBooks", LibModule.GetTableField(DBTable.tblBooks), book);
                                 frmBook.PopulateDataGridView();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Book already exist!", "Duplicated Book", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -153,10 +158,6 @@ namespace LibraryDBMS.Forms
                             }
                         }
                         this.Close();
-                    }
-                    else if (IsDuplicatedRecord())
-                    {
-                        MessageBox.Show("Book already exist!", "Duplicated Book", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
