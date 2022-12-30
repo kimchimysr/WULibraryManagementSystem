@@ -78,7 +78,7 @@
             // txtBookID
             // 
             this.txtBookID.Enabled = false;
-            this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookID.Location = new System.Drawing.Point(150, 66);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.ReadOnly = true;
@@ -87,7 +87,7 @@
             // 
             // txtDEWEYCode
             // 
-            this.txtDEWEYCode.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDEWEYCode.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDEWEYCode.Location = new System.Drawing.Point(150, 115);
             this.txtDEWEYCode.Name = "txtDEWEYCode";
             this.txtDEWEYCode.Size = new System.Drawing.Size(361, 26);
@@ -105,7 +105,7 @@
             // 
             // txtTitle
             // 
-            this.txtTitle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(150, 163);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(361, 26);
@@ -123,7 +123,7 @@
             // 
             // txtAuthor
             // 
-            this.txtAuthor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuthor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAuthor.Location = new System.Drawing.Point(150, 211);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(361, 26);
@@ -141,7 +141,7 @@
             // 
             // txtPublisher
             // 
-            this.txtPublisher.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPublisher.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPublisher.Location = new System.Drawing.Point(150, 259);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(361, 26);
@@ -169,7 +169,7 @@
             // 
             // txtOthers
             // 
-            this.txtOthers.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOthers.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOthers.Location = new System.Drawing.Point(645, 206);
             this.txtOthers.Multiline = true;
             this.txtOthers.Name = "txtOthers";
@@ -208,7 +208,7 @@
             // 
             // txtYear
             // 
-            this.txtYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtYear.Location = new System.Drawing.Point(645, 67);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(161, 26);
@@ -343,18 +343,18 @@
             // 
             this.dtpDateAdded.CustomFormat = "yyyy-MM-dd";
             this.dtpDateAdded.Enabled = false;
-            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateAdded.Location = new System.Drawing.Point(645, 308);
             this.dtpDateAdded.Name = "dtpDateAdded";
-            this.dtpDateAdded.Size = new System.Drawing.Size(161, 25);
+            this.dtpDateAdded.Size = new System.Drawing.Size(161, 26);
             this.dtpDateAdded.TabIndex = 0;
             this.dtpDateAdded.TabStop = false;
             // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(527, 305);
+            this.label12.Location = new System.Drawing.Point(527, 306);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(112, 31);
             this.label12.TabIndex = 16;
@@ -363,7 +363,7 @@
             // 
             // nudQty
             // 
-            this.nudQty.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudQty.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudQty.Location = new System.Drawing.Point(645, 163);
             this.nudQty.Maximum = new decimal(new int[] {
             1000,
@@ -376,7 +376,7 @@
             // 
             // nudPages
             // 
-            this.nudPages.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudPages.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nudPages.Increment = new decimal(new int[] {
             10,
             0,
@@ -394,7 +394,7 @@
             // 
             // txtISBN
             // 
-            this.txtISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(150, 310);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(361, 26);

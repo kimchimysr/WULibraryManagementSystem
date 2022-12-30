@@ -86,7 +86,7 @@
             // 
             // txtBorrowID
             // 
-            this.txtBorrowID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBorrowID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBorrowID.Location = new System.Drawing.Point(117, 66);
             this.txtBorrowID.Name = "txtBorrowID";
             this.txtBorrowID.ReadOnly = true;
@@ -97,11 +97,11 @@
             // dtpIssueDate
             // 
             this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
-            this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpIssueDate.Location = new System.Drawing.Point(650, 328);
             this.dtpIssueDate.Name = "dtpIssueDate";
-            this.dtpIssueDate.Size = new System.Drawing.Size(345, 25);
+            this.dtpIssueDate.Size = new System.Drawing.Size(345, 26);
             this.dtpIssueDate.TabIndex = 12;
             this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             this.dtpIssueDate.ValueChanged += new System.EventHandler(this.dtpIssueDate_ValueChanged);
@@ -130,19 +130,19 @@
             // 
             this.dtpDueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpDueDate.Enabled = false;
-            this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDueDate.Location = new System.Drawing.Point(650, 360);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtpDueDate.Size = new System.Drawing.Size(345, 25);
+            this.dtpDueDate.Size = new System.Drawing.Size(345, 26);
             this.dtpDueDate.TabIndex = 0;
             this.dtpDueDate.TabStop = false;
             this.dtpDueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             // 
             // txtStudentID
             // 
-            this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentID.Location = new System.Drawing.Point(117, 98);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(375, 26);
@@ -223,7 +223,7 @@
             // 
             // txtBookID
             // 
-            this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBookID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookID.Location = new System.Drawing.Point(620, 98);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.Size = new System.Drawing.Size(375, 26);
@@ -408,22 +408,22 @@
             // cbMajor
             // 
             this.cbMajor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMajor.FormattingEnabled = true;
             this.cbMajor.Location = new System.Drawing.Point(117, 295);
             this.cbMajor.Name = "cbMajor";
-            this.cbMajor.Size = new System.Drawing.Size(375, 28);
+            this.cbMajor.Size = new System.Drawing.Size(375, 30);
             this.cbMajor.TabIndex = 10;
             // 
             // dtpDateAdded
             // 
             this.dtpDateAdded.CustomFormat = "yyyy-MM-dd";
             this.dtpDateAdded.Enabled = false;
-            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateAdded.Location = new System.Drawing.Point(117, 361);
             this.dtpDateAdded.Name = "dtpDateAdded";
-            this.dtpDateAdded.Size = new System.Drawing.Size(375, 25);
+            this.dtpDateAdded.Size = new System.Drawing.Size(375, 26);
             this.dtpDateAdded.TabIndex = 0;
             this.dtpDateAdded.TabStop = false;
             // 
@@ -433,12 +433,12 @@
             this.cbYear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbYear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbYear.ForeColor = System.Drawing.SystemColors.Control;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(117, 261);
             this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(375, 28);
+            this.cbYear.Size = new System.Drawing.Size(375, 30);
             this.cbYear.TabIndex = 9;
             // 
             // rbFemale
@@ -537,7 +537,7 @@
             // 
             // txtTel
             // 
-            this.txtTel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTel.Location = new System.Drawing.Point(117, 329);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(375, 26);
@@ -545,7 +545,7 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(117, 196);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(375, 26);
@@ -553,7 +553,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(117, 161);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(375, 26);

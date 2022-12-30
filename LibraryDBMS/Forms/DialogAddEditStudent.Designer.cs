@@ -63,12 +63,12 @@
             this.cbYear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbYear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbYear.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbYear.ForeColor = System.Drawing.SystemColors.Control;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(132, 197);
             this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(266, 28);
+            this.cbYear.Size = new System.Drawing.Size(266, 30);
             this.cbYear.TabIndex = 6;
             // 
             // rbFemale
@@ -140,7 +140,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(29, 70);
+            this.label9.Location = new System.Drawing.Point(29, 68);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 22);
             this.label9.TabIndex = 24;
@@ -160,7 +160,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(29, 267);
+            this.label8.Location = new System.Drawing.Point(29, 271);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 22);
             this.label8.TabIndex = 22;
@@ -170,7 +170,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(29, 234);
+            this.label7.Location = new System.Drawing.Point(29, 237);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 22);
             this.label7.TabIndex = 25;
@@ -180,7 +180,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 169);
+            this.label4.Location = new System.Drawing.Point(29, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 22);
             this.label4.TabIndex = 19;
@@ -190,7 +190,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 136);
+            this.label3.Location = new System.Drawing.Point(29, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 22);
             this.label3.TabIndex = 18;
@@ -200,7 +200,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 103);
+            this.label2.Location = new System.Drawing.Point(29, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 22);
             this.label2.TabIndex = 17;
@@ -208,7 +208,7 @@
             // 
             // txtStudentID
             // 
-            this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentID.Location = new System.Drawing.Point(132, 66);
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(266, 26);
@@ -216,15 +216,15 @@
             // 
             // txtTel
             // 
-            this.txtTel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTel.Location = new System.Drawing.Point(132, 263);
+            this.txtTel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTel.Location = new System.Drawing.Point(132, 269);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(266, 26);
             this.txtTel.TabIndex = 8;
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(132, 132);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(266, 26);
@@ -232,7 +232,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(132, 99);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(266, 26);
@@ -326,7 +326,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(29, 296);
+            this.label1.Location = new System.Drawing.Point(29, 303);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 22);
             this.label1.TabIndex = 22;
@@ -336,22 +336,22 @@
             // 
             this.dtpDateAdded.CustomFormat = "yyyy-MM-dd";
             this.dtpDateAdded.Enabled = false;
-            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateAdded.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateAdded.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateAdded.Location = new System.Drawing.Point(132, 295);
+            this.dtpDateAdded.Location = new System.Drawing.Point(132, 301);
             this.dtpDateAdded.Name = "dtpDateAdded";
-            this.dtpDateAdded.Size = new System.Drawing.Size(266, 25);
+            this.dtpDateAdded.Size = new System.Drawing.Size(266, 26);
             this.dtpDateAdded.TabIndex = 9;
             this.dtpDateAdded.TabStop = false;
             // 
             // cbMajor
             // 
             this.cbMajor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMajor.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMajor.FormattingEnabled = true;
-            this.cbMajor.Location = new System.Drawing.Point(132, 231);
+            this.cbMajor.Location = new System.Drawing.Point(132, 233);
             this.cbMajor.Name = "cbMajor";
-            this.cbMajor.Size = new System.Drawing.Size(266, 28);
+            this.cbMajor.Size = new System.Drawing.Size(266, 30);
             this.cbMajor.TabIndex = 7;
             // 
             // DialogAddEditStudent

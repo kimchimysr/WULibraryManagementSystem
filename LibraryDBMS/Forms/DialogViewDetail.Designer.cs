@@ -42,11 +42,11 @@
             // lblText
             // 
             this.lblText.AutoSize = true;
-            this.lblText.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblText.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblText.Location = new System.Drawing.Point(24, 78);
             this.lblText.MaximumSize = new System.Drawing.Size(515, 0);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(63, 24);
+            this.lblText.Size = new System.Drawing.Size(54, 22);
             this.lblText.TabIndex = 0;
             this.lblText.Text = "label2";
             // 

@@ -61,7 +61,7 @@
             this.dgvlogList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -78,7 +78,7 @@
             this.table});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -98,6 +98,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvlogList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvlogList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvlogList.RowTemplate.Height = 30;
             this.dgvlogList.Size = new System.Drawing.Size(1159, 383);
             this.dgvlogList.TabIndex = 21;
             this.dgvlogList.TabStop = false;
@@ -108,7 +109,7 @@
             this.timestamp.HeaderText = "Timestamp";
             this.timestamp.Name = "timestamp";
             this.timestamp.ReadOnly = true;
-            this.timestamp.Width = 131;
+            this.timestamp.Width = 116;
             // 
             // logID
             // 
@@ -116,7 +117,7 @@
             this.logID.HeaderText = "Log ID";
             this.logID.Name = "logID";
             this.logID.ReadOnly = true;
-            this.logID.Width = 89;
+            this.logID.Width = 81;
             // 
             // operation
             // 
@@ -124,7 +125,7 @@
             this.operation.HeaderText = "Operation";
             this.operation.Name = "operation";
             this.operation.ReadOnly = true;
-            this.operation.Width = 122;
+            this.operation.Width = 109;
             // 
             // detail
             // 
@@ -140,7 +141,7 @@
             this.target.HeaderText = "Target";
             this.target.Name = "target";
             this.target.ReadOnly = true;
-            this.target.Width = 91;
+            this.target.Width = 82;
             // 
             // table
             // 
@@ -148,7 +149,7 @@
             this.table.HeaderText = "Table";
             this.table.Name = "table";
             this.table.ReadOnly = true;
-            this.table.Width = 82;
+            this.table.Width = 73;
             // 
             // cbDay
             // 

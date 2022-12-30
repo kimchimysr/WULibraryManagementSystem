@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBookList = new System.Windows.Forms.DataGridView();
             this.bookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dewey = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,22 +75,22 @@
             this.dgvBookList.AllowUserToDeleteRows = false;
             this.dgvBookList.AllowUserToResizeColumns = false;
             this.dgvBookList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBookList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvBookList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvBookList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookList.ColumnHeadersHeight = 30;
             this.dgvBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -106,28 +106,29 @@
             this.qry,
             this.other,
             this.dateAdded});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookList.EnableHeadersVisualStyles = false;
             this.dgvBookList.Location = new System.Drawing.Point(15, 92);
             this.dgvBookList.MultiSelect = false;
             this.dgvBookList.Name = "dgvBookList";
             this.dgvBookList.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBookList.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBookList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBookList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvBookList.RowTemplate.Height = 30;
             this.dgvBookList.Size = new System.Drawing.Size(1159, 383);
             this.dgvBookList.TabIndex = 23;
             this.dgvBookList.TabStop = false;
@@ -140,7 +141,7 @@
             this.bookID.HeaderText = "Book ID";
             this.bookID.Name = "bookID";
             this.bookID.ReadOnly = true;
-            this.bookID.Width = 77;
+            this.bookID.Width = 92;
             // 
             // dewey
             // 
@@ -149,7 +150,7 @@
             this.dewey.HeaderText = "DEWEY";
             this.dewey.Name = "dewey";
             this.dewey.ReadOnly = true;
-            this.dewey.Width = 75;
+            this.dewey.Width = 86;
             // 
             // title
             // 
@@ -158,7 +159,7 @@
             this.title.HeaderText = "Title";
             this.title.Name = "title";
             this.title.ReadOnly = true;
-            this.title.Width = 60;
+            this.title.Width = 67;
             // 
             // author
             // 
@@ -167,7 +168,7 @@
             this.author.HeaderText = "Author";
             this.author.Name = "author";
             this.author.ReadOnly = true;
-            this.author.Width = 74;
+            this.author.Width = 86;
             // 
             // publisher
             // 
@@ -176,7 +177,7 @@
             this.publisher.HeaderText = "Publisher";
             this.publisher.Name = "publisher";
             this.publisher.ReadOnly = true;
-            this.publisher.Width = 91;
+            this.publisher.Width = 102;
             // 
             // cateName
             // 
@@ -185,7 +186,7 @@
             this.cateName.HeaderText = "Category";
             this.cateName.Name = "cateName";
             this.cateName.ReadOnly = true;
-            this.cateName.Width = 86;
+            this.cateName.Width = 102;
             // 
             // isbn
             // 
@@ -194,7 +195,7 @@
             this.isbn.HeaderText = "ISBN";
             this.isbn.Name = "isbn";
             this.isbn.ReadOnly = true;
-            this.isbn.Width = 60;
+            this.isbn.Width = 67;
             // 
             // publishYear
             // 
@@ -203,7 +204,7 @@
             this.publishYear.HeaderText = "Year";
             this.publishYear.Name = "publishYear";
             this.publishYear.ReadOnly = true;
-            this.publishYear.Width = 60;
+            this.publishYear.Width = 68;
             // 
             // pages
             // 
@@ -212,7 +213,7 @@
             this.pages.HeaderText = "Pages";
             this.pages.Name = "pages";
             this.pages.ReadOnly = true;
-            this.pages.Width = 66;
+            this.pages.Width = 76;
             // 
             // qry
             // 
@@ -221,7 +222,7 @@
             this.qry.HeaderText = "Qty";
             this.qry.Name = "qry";
             this.qry.ReadOnly = true;
-            this.qry.Width = 53;
+            this.qry.Width = 59;
             // 
             // other
             // 
@@ -230,7 +231,7 @@
             this.other.HeaderText = "Other";
             this.other.Name = "other";
             this.other.ReadOnly = true;
-            this.other.Width = 67;
+            this.other.Width = 76;
             // 
             // dateAdded
             // 
@@ -239,7 +240,7 @@
             this.dateAdded.HeaderText = "Date Added";
             this.dateAdded.Name = "dateAdded";
             this.dateAdded.ReadOnly = true;
-            this.dateAdded.Width = 101;
+            this.dateAdded.Width = 119;
             // 
             // tlpButtonContainer
             // 
