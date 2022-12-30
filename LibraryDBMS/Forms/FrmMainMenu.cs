@@ -73,7 +73,7 @@ namespace LibraryDBMS.Forms
                 string updateDotExe = Path.Combine(Path.GetDirectoryName(assembly.Location), "..", "Update.exe");
                 bool isSquirrelInstall = File.Exists(updateDotExe);
 
-                if(isSquirrelInstall && Utils.IsInternetAvailable("https://www.google.com"))
+                if (isSquirrelInstall && Utils.IsInternetAvailable("www.google.com"))
                     CheckForUpdate();
             }
 
