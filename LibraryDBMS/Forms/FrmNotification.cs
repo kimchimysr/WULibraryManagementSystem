@@ -11,10 +11,9 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvBookDue, dgvBookDueTmr, dgvBookOverdue);
+            Utils.EnableRightClickInCells(dgvBookDue, dgvBookDueTmr, dgvBookOverdue);
             Utils.AutoSizeChildrenInFlowLayoutPanel(flpContainer);
-            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookDue);
-            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookDueTmr);
-            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookOverdue);
+            Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookDue, dgvBookDueTmr, dgvBookOverdue);
             SetBookCount();
         }
 

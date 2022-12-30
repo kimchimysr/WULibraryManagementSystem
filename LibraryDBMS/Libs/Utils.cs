@@ -211,42 +211,45 @@ namespace LibraryDBMS.Libs
         /// <summary>
         /// Make Columns auto resizes in DataGridView.
         /// </summary>
-        public static void AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(DataGridView dgv)
+        public static void AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(params DataGridView[] dgvs)
         {
-            dgv.DataBindingComplete += Dgv_DataBindingComplete;
-            dgv.Resize += Dgv_Resize;
-
-            void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+            foreach (var dgv in dgvs)
             {
-                AutoSizeColumns();
-            }
+                dgv.DataBindingComplete += Dgv_DataBindingComplete;
+                dgv.Resize += Dgv_Resize;
 
-            void Dgv_Resize(object sender, EventArgs e)
-            {
-                AutoSizeColumns();
-            }
-
-            void AutoSizeColumns()
-            {
-                dgv.SuspendLayout();
-                // set all columns auto size to fit contents
-                foreach (DataGridViewColumn column in dgv.Columns)
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                int columnsWidth = dgv.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + dgv.RowHeadersWidth;
-
-                // if all columns combined width less than dgv width, then set autosizemode to fill for every columns
-                if (columnsWidth < dgv.Width)
+                void Dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
                 {
-                    foreach (DataGridViewColumn column in dgv.Columns)
-                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-                    // make sure that every columns show all of contents
-                    for (int i = 0; dgv.Columns.Count > i; i++)
-                    {
-                        dgv.AutoResizeColumn(i);
-                    }
+                    AutoSizeColumns();
                 }
-                dgv.ResumeLayout();
+
+                void Dgv_Resize(object sender, EventArgs e)
+                {
+                    AutoSizeColumns();
+                }
+
+                void AutoSizeColumns()
+                {
+                    dgv.SuspendLayout();
+                    // set all columns auto size to fit contents
+                    foreach (DataGridViewColumn column in dgv.Columns)
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    int columnsWidth = dgv.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + dgv.RowHeadersWidth;
+
+                    // if all columns combined width less than dgv width, then set autosizemode to fill for every columns
+                    if (columnsWidth < dgv.Width)
+                    {
+                        foreach (DataGridViewColumn column in dgv.Columns)
+                            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                        // make sure that every columns show all of contents
+                        for (int i = 0; dgv.Columns.Count > i; i++)
+                        {
+                            dgv.AutoResizeColumn(i);
+                        }
+                    }
+                    dgv.ResumeLayout();
+                }
             }
         }
 
@@ -970,6 +973,47 @@ namespace LibraryDBMS.Libs
             catch { }
             return false;
         }
+
+        /// <summary>
+        /// Enable right click to show copy context menu in DataGridView Cell
+        /// </summary>
+        public static void EnableRightClickInCells(params DataGridView[] dgvs)
+        {
+            foreach (var dgv in dgvs)
+            {
+                ContextMenuStrip menu = new ContextMenuStrip();
+                ToolStripMenuItem menuCopy = new ToolStripMenuItem("Copy");
+                menuCopy.Click += MenuCopy_Click;
+                menu.Items.Add(menuCopy);
+                dgv.ContextMenuStrip = menu;
+                void MenuCopy_Click(object sender, EventArgs e)
+                {
+                    if (dgv.SelectedCells.Count > 0)
+                        Clipboard.SetText(dgv.CurrentCell.Value.ToString());
+                }
+                dgv.CellMouseDown += dgv_CellMouseDown;
+                void dgv_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+                {
+                    // check if mouse click is right click
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        if (dgv.SelectedCells.Count > 0)
+                        {
+                            if (menu.Items.Count == 0)
+                                menu.Items.Add(menuCopy);
+                        }
+                        else menu.Items.Clear();
+                    }
+                }
+                dgv.MouseDown += dgv_MouseDown;
+                // clear right click context menu if click on grey area in datagridview
+                void dgv_MouseDown(object sender, MouseEventArgs e)
+                {
+                    menu.Items.Clear();
+                }
+            }
+        }
+
         #endregion
 
         #region Form Related

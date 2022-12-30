@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Wordprocessing;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -25,6 +26,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.EnableControlDoubleBuffer(dgvBookList);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvBookList);
+            //Utils.EnableRightClickInCells(dgvBookList);
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);

@@ -21,6 +21,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.EnableControlDoubleBuffer(dgvStudentList);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvStudentList);
+            Utils.EnableRightClickInCells(dgvStudentList);
             Utils.FillComboBox(cbSearchBy, true, "Student ID", "Name");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvStudentList);
             Utils.ToolTipOnControlMouseHover

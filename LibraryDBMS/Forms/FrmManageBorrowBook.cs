@@ -23,6 +23,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.EnableControlDoubleBuffer(dgvBorrowList);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvBorrowList);
+            Utils.EnableRightClickInCells(dgvBorrowList);
             Utils.FillComboBox(cbStatus, false, "Borrowed", "Returned", "Lost");
             Utils.FillComboBox(cbSearchBy, true, "Borrow ID", "Book ID", "Student ID", "Title", "Name");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBorrowList);
