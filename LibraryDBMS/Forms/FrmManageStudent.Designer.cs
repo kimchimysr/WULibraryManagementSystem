@@ -92,7 +92,7 @@
             this.dgvStudentList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -111,7 +111,7 @@
             this.dateAdded});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -144,7 +144,7 @@
             this.studentID.HeaderText = "Student ID";
             this.studentID.Name = "studentID";
             this.studentID.ReadOnly = true;
-            this.studentID.Width = 109;
+            this.studentID.Width = 127;
             // 
             // firstName
             // 
@@ -169,7 +169,7 @@
             this.gender.HeaderText = "Gender";
             this.gender.Name = "gender";
             this.gender.ReadOnly = true;
-            this.gender.Width = 88;
+            this.gender.Width = 99;
             // 
             // year
             // 
@@ -178,7 +178,7 @@
             this.year.HeaderText = "Year";
             this.year.Name = "year";
             this.year.ReadOnly = true;
-            this.year.Width = 68;
+            this.year.Width = 74;
             // 
             // major
             // 
@@ -187,7 +187,7 @@
             this.major.HeaderText = "Major";
             this.major.Name = "major";
             this.major.ReadOnly = true;
-            this.major.Width = 78;
+            this.major.Width = 84;
             // 
             // tel
             // 
@@ -196,7 +196,7 @@
             this.tel.HeaderText = "Telephone";
             this.tel.Name = "tel";
             this.tel.ReadOnly = true;
-            this.tel.Width = 110;
+            this.tel.Width = 127;
             // 
             // dateAdded
             // 
@@ -205,7 +205,7 @@
             this.dateAdded.HeaderText = "Date Added";
             this.dateAdded.Name = "dateAdded";
             this.dateAdded.ReadOnly = true;
-            this.dateAdded.Width = 119;
+            this.dateAdded.Width = 136;
             // 
             // label10
             // 

@@ -85,7 +85,7 @@
             this.dgvBookList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -108,7 +108,7 @@
             this.dateAdded});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -141,7 +141,6 @@
             this.bookID.HeaderText = "Book ID";
             this.bookID.Name = "bookID";
             this.bookID.ReadOnly = true;
-            this.bookID.Width = 92;
             // 
             // dewey
             // 
@@ -150,7 +149,7 @@
             this.dewey.HeaderText = "DEWEY";
             this.dewey.Name = "dewey";
             this.dewey.ReadOnly = true;
-            this.dewey.Width = 86;
+            this.dewey.Width = 98;
             // 
             // title
             // 
@@ -159,7 +158,7 @@
             this.title.HeaderText = "Title";
             this.title.Name = "title";
             this.title.ReadOnly = true;
-            this.title.Width = 67;
+            this.title.Width = 76;
             // 
             // author
             // 
@@ -168,7 +167,7 @@
             this.author.HeaderText = "Author";
             this.author.Name = "author";
             this.author.ReadOnly = true;
-            this.author.Width = 86;
+            this.author.Width = 95;
             // 
             // publisher
             // 
@@ -177,7 +176,7 @@
             this.publisher.HeaderText = "Publisher";
             this.publisher.Name = "publisher";
             this.publisher.ReadOnly = true;
-            this.publisher.Width = 102;
+            this.publisher.Width = 117;
             // 
             // cateName
             // 
@@ -186,7 +185,7 @@
             this.cateName.HeaderText = "Category";
             this.cateName.Name = "cateName";
             this.cateName.ReadOnly = true;
-            this.cateName.Width = 102;
+            this.cateName.Width = 114;
             // 
             // isbn
             // 
@@ -195,7 +194,7 @@
             this.isbn.HeaderText = "ISBN";
             this.isbn.Name = "isbn";
             this.isbn.ReadOnly = true;
-            this.isbn.Width = 67;
+            this.isbn.Width = 73;
             // 
             // publishYear
             // 
@@ -204,7 +203,7 @@
             this.publishYear.HeaderText = "Year";
             this.publishYear.Name = "publishYear";
             this.publishYear.ReadOnly = true;
-            this.publishYear.Width = 68;
+            this.publishYear.Width = 74;
             // 
             // pages
             // 
@@ -213,7 +212,7 @@
             this.pages.HeaderText = "Pages";
             this.pages.Name = "pages";
             this.pages.ReadOnly = true;
-            this.pages.Width = 76;
+            this.pages.Width = 83;
             // 
             // qry
             // 
@@ -222,7 +221,7 @@
             this.qry.HeaderText = "Qty";
             this.qry.Name = "qry";
             this.qry.ReadOnly = true;
-            this.qry.Width = 59;
+            this.qry.Width = 65;
             // 
             // other
             // 
@@ -231,7 +230,7 @@
             this.other.HeaderText = "Other";
             this.other.Name = "other";
             this.other.ReadOnly = true;
-            this.other.Width = 76;
+            this.other.Width = 85;
             // 
             // dateAdded
             // 
@@ -240,7 +239,7 @@
             this.dateAdded.HeaderText = "Date Added";
             this.dateAdded.Name = "dateAdded";
             this.dateAdded.ReadOnly = true;
-            this.dateAdded.Width = 119;
+            this.dateAdded.Width = 136;
             // 
             // tlpButtonContainer
             // 

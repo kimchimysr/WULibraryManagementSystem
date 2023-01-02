@@ -126,7 +126,7 @@
             this.dgvBookDue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -145,7 +145,7 @@
             this.dateDue});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
@@ -176,7 +176,7 @@
             this.borrowID.HeaderText = "Borrow ID";
             this.borrowID.Name = "borrowID";
             this.borrowID.ReadOnly = true;
-            this.borrowID.Width = 111;
+            this.borrowID.Width = 122;
             // 
             // bookID
             // 
@@ -184,7 +184,6 @@
             this.bookID.HeaderText = "Book ID";
             this.bookID.Name = "bookID";
             this.bookID.ReadOnly = true;
-            this.bookID.Width = 92;
             // 
             // title
             // 
@@ -200,7 +199,7 @@
             this.studentID.HeaderText = "Student ID";
             this.studentID.Name = "studentID";
             this.studentID.ReadOnly = true;
-            this.studentID.Width = 109;
+            this.studentID.Width = 127;
             // 
             // fullName
             // 
@@ -208,7 +207,7 @@
             this.fullName.HeaderText = "Full Name";
             this.fullName.Name = "fullName";
             this.fullName.ReadOnly = true;
-            this.fullName.Width = 107;
+            this.fullName.Width = 123;
             // 
             // loanStatusName
             // 
@@ -216,7 +215,7 @@
             this.loanStatusName.HeaderText = "Status";
             this.loanStatusName.Name = "loanStatusName";
             this.loanStatusName.ReadOnly = true;
-            this.loanStatusName.Width = 79;
+            this.loanStatusName.Width = 89;
             // 
             // dateLoan
             // 
@@ -224,7 +223,7 @@
             this.dateLoan.HeaderText = "Date Loan";
             this.dateLoan.Name = "dateLoan";
             this.dateLoan.ReadOnly = true;
-            this.dateLoan.Width = 110;
+            this.dateLoan.Width = 124;
             // 
             // dateDue
             // 
@@ -232,7 +231,7 @@
             this.dateDue.HeaderText = "Date Due";
             this.dateDue.Name = "dateDue";
             this.dateDue.ReadOnly = true;
-            this.dateDue.Width = 101;
+            this.dateDue.Width = 115;
             // 
             // btnBookDue
             // 
@@ -281,7 +280,7 @@
             this.dgvBookDueTmr.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -300,7 +299,7 @@
             this.dataGridViewTextBoxColumn18});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
@@ -331,7 +330,7 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Borrow ID";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 111;
+            this.dataGridViewTextBoxColumn11.Width = 122;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -339,7 +338,6 @@
             this.dataGridViewTextBoxColumn12.HeaderText = "Book ID";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 92;
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -355,7 +353,7 @@
             this.dataGridViewTextBoxColumn14.HeaderText = "Student ID";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Width = 109;
+            this.dataGridViewTextBoxColumn14.Width = 127;
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -363,7 +361,7 @@
             this.dataGridViewTextBoxColumn15.HeaderText = "Full Name";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 107;
+            this.dataGridViewTextBoxColumn15.Width = 123;
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -371,7 +369,7 @@
             this.dataGridViewTextBoxColumn16.HeaderText = "Status";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 79;
+            this.dataGridViewTextBoxColumn16.Width = 89;
             // 
             // dataGridViewTextBoxColumn17
             // 
@@ -379,7 +377,7 @@
             this.dataGridViewTextBoxColumn17.HeaderText = "Date Loan";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.Width = 110;
+            this.dataGridViewTextBoxColumn17.Width = 124;
             // 
             // dataGridViewTextBoxColumn18
             // 
@@ -387,7 +385,7 @@
             this.dataGridViewTextBoxColumn18.HeaderText = "Date Due";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
             this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Width = 101;
+            this.dataGridViewTextBoxColumn18.Width = 115;
             // 
             // btnBookDueTmr
             // 
@@ -436,7 +434,7 @@
             this.dgvBookOverdue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -455,7 +453,7 @@
             this.dataGridViewTextBoxColumn8});
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
@@ -486,7 +484,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Borrow ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 111;
+            this.dataGridViewTextBoxColumn1.Width = 122;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -494,7 +492,6 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Book ID";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 92;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -510,7 +507,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Student ID";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 109;
+            this.dataGridViewTextBoxColumn4.Width = 127;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -518,7 +515,7 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Full Name";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 107;
+            this.dataGridViewTextBoxColumn5.Width = 123;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -526,7 +523,7 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Status";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 79;
+            this.dataGridViewTextBoxColumn6.Width = 89;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -534,7 +531,7 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Date Loan";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 110;
+            this.dataGridViewTextBoxColumn7.Width = 124;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -542,7 +539,7 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Date Due";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 101;
+            this.dataGridViewTextBoxColumn8.Width = 115;
             // 
             // btnBookOverdue
             // 
