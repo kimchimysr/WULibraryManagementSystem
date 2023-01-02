@@ -26,7 +26,7 @@ namespace LibraryDBMS.Forms
         {
             Utils.EnableControlDoubleBuffer(dgvBookList);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvBookList);
-            //Utils.EnableRightClickInCells(dgvBookList);
+            Utils.EnableRightClickInCells(dgvBookList);
             Utils.FillComboBox(cbSearchBy, true, "Book ID", "ISBN", "DEWEY", "Title",
                 "Author", "Publisher", "Publish Year");
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvBookList);

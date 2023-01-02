@@ -11,6 +11,7 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.EnableControlDoubleBuffer(dgvlogList);
+            Utils.EnableRightClickInCells(dgvlogList);
             Utils.ClearSelectionAfterDataBindingDataGridView(dgvlogList);
             Utils.AutoSizeDGVColumnsBasedOnContentsAndDGVWidth(dgvlogList);
             Utils.FillComboBox(cbDay, true, "All", "Today", "Yesterday", "Older");
