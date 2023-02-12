@@ -41,7 +41,7 @@
             this.lblTime.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.Location = new System.Drawing.Point(482, 349);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(538, 23);
+            this.lblTime.Size = new System.Drawing.Size(538, 32);
             this.lblTime.TabIndex = 4;
             this.lblTime.Text = "Time";
             this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,7 +52,7 @@
             this.lblDate.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(481, 289);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(539, 23);
+            this.lblDate.Size = new System.Drawing.Size(539, 32);
             this.lblDate.TabIndex = 5;
             this.lblDate.Text = "Date";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
