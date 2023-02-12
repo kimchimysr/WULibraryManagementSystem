@@ -37,45 +37,45 @@
             this.pStudents = new System.Windows.Forms.Panel();
             this.lblStudentCount = new System.Windows.Forms.Label();
             this.lblStudents = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnStudentsIcon = new System.Windows.Forms.Button();
             this.pActivities = new System.Windows.Forms.Panel();
             this.lblActivityCount = new System.Windows.Forms.Label();
             this.lblTodayActivities = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnTodayActivitiesIcon = new System.Windows.Forms.Button();
             this.pCurrentUser = new System.Windows.Forms.Panel();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblCurrentUser = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnCurrentUserIcon = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
             this.pBooks = new System.Windows.Forms.Panel();
             this.lblBooks = new System.Windows.Forms.Label();
             this.lblBookCount = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBooksIcon = new System.Windows.Forms.Button();
             this.chartBookBySubject = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pUptime = new System.Windows.Forms.Panel();
             this.lblUpTime = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.pTitles = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnTitlesIcon = new System.Windows.Forms.Button();
             this.lblBookTitleCount = new System.Windows.Forms.Label();
             this.lblTitles = new System.Windows.Forms.Label();
             this.pDueTodayBooks = new System.Windows.Forms.Panel();
             this.lblBookDue = new System.Windows.Forms.Label();
             this.lblBooksDueToday = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnBooksDueTodayIcon = new System.Windows.Forms.Button();
             this.pOverdueBooks = new System.Windows.Forms.Panel();
             this.lblBookOverdueCount = new System.Windows.Forms.Label();
             this.lblOverdueBooks = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnOverdueBooksIcon = new System.Windows.Forms.Button();
             this.pReturnedBooks = new System.Windows.Forms.Panel();
             this.lblBookReturnCount = new System.Windows.Forms.Label();
             this.lblReturnedBooks = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnReturnedBooksIcon = new System.Windows.Forms.Button();
             this.pBorrowedBooks = new System.Windows.Forms.Panel();
             this.lblBookLoanCount = new System.Windows.Forms.Label();
             this.lblBorrowedBooks = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBorrowedBooksIcon = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pStudents.SuspendLayout();
@@ -137,7 +137,7 @@
             this.pStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pStudents.Controls.Add(this.lblStudentCount);
             this.pStudents.Controls.Add(this.lblStudents);
-            this.pStudents.Controls.Add(this.button4);
+            this.pStudents.Controls.Add(this.btnStudentsIcon);
             this.pStudents.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pStudents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pStudents.Location = new System.Drawing.Point(10, 179);
@@ -158,6 +158,7 @@
             this.lblStudentCount.TabIndex = 4;
             this.lblStudentCount.Text = "00";
             this.lblStudentCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStudentCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblStudents
             // 
@@ -172,28 +173,29 @@
             this.lblStudents.Text = "Students";
             this.lblStudents.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button4
+            // btnStudentsIcon
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::LibraryDBMS.Properties.Resources.student_male_78px;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button4.Location = new System.Drawing.Point(169, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 150);
-            this.button4.TabIndex = 5;
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnStudentsIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnStudentsIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnStudentsIcon.FlatAppearance.BorderSize = 0;
+            this.btnStudentsIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnStudentsIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnStudentsIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStudentsIcon.Image = global::LibraryDBMS.Properties.Resources.student_male_78px;
+            this.btnStudentsIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnStudentsIcon.Location = new System.Drawing.Point(169, 0);
+            this.btnStudentsIcon.Name = "btnStudentsIcon";
+            this.btnStudentsIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnStudentsIcon.TabIndex = 5;
+            this.btnStudentsIcon.UseVisualStyleBackColor = true;
+            this.btnStudentsIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // pActivities
             // 
             this.pActivities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pActivities.Controls.Add(this.lblActivityCount);
             this.pActivities.Controls.Add(this.lblTodayActivities);
-            this.pActivities.Controls.Add(this.button8);
+            this.pActivities.Controls.Add(this.btnTodayActivitiesIcon);
             this.pActivities.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pActivities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pActivities.Location = new System.Drawing.Point(880, 179);
@@ -214,6 +216,7 @@
             this.lblActivityCount.TabIndex = 3;
             this.lblActivityCount.Text = "00";
             this.lblActivityCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblActivityCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblTodayActivities
             // 
@@ -228,30 +231,31 @@
             this.lblTodayActivities.Text = "Today Activities";
             this.lblTodayActivities.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button8
+            // btnTodayActivitiesIcon
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Image = global::LibraryDBMS.Properties.Resources.todo_list_78px;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button8.Location = new System.Drawing.Point(172, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(90, 150);
-            this.button8.TabIndex = 4;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnTodayActivitiesIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTodayActivitiesIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTodayActivitiesIcon.FlatAppearance.BorderSize = 0;
+            this.btnTodayActivitiesIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTodayActivitiesIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTodayActivitiesIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTodayActivitiesIcon.Image = global::LibraryDBMS.Properties.Resources.todo_list_78px;
+            this.btnTodayActivitiesIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnTodayActivitiesIcon.Location = new System.Drawing.Point(172, 0);
+            this.btnTodayActivitiesIcon.Name = "btnTodayActivitiesIcon";
+            this.btnTodayActivitiesIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnTodayActivitiesIcon.TabIndex = 4;
+            this.btnTodayActivitiesIcon.UseVisualStyleBackColor = true;
+            this.btnTodayActivitiesIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // pCurrentUser
             // 
             this.pCurrentUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pCurrentUser.Controls.Add(this.lblRole);
             this.pCurrentUser.Controls.Add(this.lblCurrentUser);
-            this.pCurrentUser.Controls.Add(this.button9);
+            this.pCurrentUser.Controls.Add(this.btnCurrentUserIcon);
             this.pCurrentUser.Controls.Add(this.lblUsername);
-            this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pCurrentUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pCurrentUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pCurrentUser.Location = new System.Drawing.Point(880, 348);
             this.pCurrentUser.Margin = new System.Windows.Forms.Padding(19, 10, 9, 9);
@@ -271,6 +275,7 @@
             this.lblRole.TabIndex = 4;
             this.lblRole.Text = "Anything";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRole.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblCurrentUser
             // 
@@ -285,21 +290,22 @@
             this.lblCurrentUser.Text = "Current User";
             this.lblCurrentUser.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button9
+            // btnCurrentUserIcon
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Image = global::LibraryDBMS.Properties.Resources.male_user_78px;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button9.Location = new System.Drawing.Point(172, 0);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(90, 150);
-            this.button9.TabIndex = 5;
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnCurrentUserIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCurrentUserIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnCurrentUserIcon.FlatAppearance.BorderSize = 0;
+            this.btnCurrentUserIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnCurrentUserIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnCurrentUserIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCurrentUserIcon.Image = global::LibraryDBMS.Properties.Resources.male_user_78px;
+            this.btnCurrentUserIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnCurrentUserIcon.Location = new System.Drawing.Point(172, 0);
+            this.btnCurrentUserIcon.Name = "btnCurrentUserIcon";
+            this.btnCurrentUserIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnCurrentUserIcon.TabIndex = 5;
+            this.btnCurrentUserIcon.UseVisualStyleBackColor = true;
+            this.btnCurrentUserIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblUsername
             // 
@@ -312,13 +318,14 @@
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "You";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUsername.Click += new System.EventHandler(this.Control_Click);
             // 
             // pBooks
             // 
             this.pBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pBooks.Controls.Add(this.lblBooks);
             this.pBooks.Controls.Add(this.lblBookCount);
-            this.pBooks.Controls.Add(this.button1);
+            this.pBooks.Controls.Add(this.btnBooksIcon);
             this.pBooks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pBooks.Location = new System.Drawing.Point(10, 10);
@@ -352,22 +359,24 @@
             this.lblBookCount.TabIndex = 1;
             this.lblBookCount.Text = "00";
             this.lblBookCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookCount.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button1
+            // btnBooksIcon
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::LibraryDBMS.Properties.Resources.book_78px;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.Location = new System.Drawing.Point(169, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 150);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBooksIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBooksIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksIcon.FlatAppearance.BorderSize = 0;
+            this.btnBooksIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBooksIcon.Image = global::LibraryDBMS.Properties.Resources.book_78px;
+            this.btnBooksIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnBooksIcon.Location = new System.Drawing.Point(169, 0);
+            this.btnBooksIcon.Name = "btnBooksIcon";
+            this.btnBooksIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnBooksIcon.TabIndex = 2;
+            this.btnBooksIcon.UseVisualStyleBackColor = true;
+            this.btnBooksIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // chartBookBySubject
             // 
@@ -450,7 +459,7 @@
             // pTitles
             // 
             this.pTitles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.pTitles.Controls.Add(this.button5);
+            this.pTitles.Controls.Add(this.btnTitlesIcon);
             this.pTitles.Controls.Add(this.lblBookTitleCount);
             this.pTitles.Controls.Add(this.lblTitles);
             this.pTitles.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -462,21 +471,22 @@
             this.pTitles.TabIndex = 0;
             this.pTitles.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button5
+            // btnTitlesIcon
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::LibraryDBMS.Properties.Resources.typography_78px;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button5.Location = new System.Drawing.Point(172, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(90, 150);
-            this.button5.TabIndex = 5;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnTitlesIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTitlesIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTitlesIcon.FlatAppearance.BorderSize = 0;
+            this.btnTitlesIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTitlesIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnTitlesIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTitlesIcon.Image = global::LibraryDBMS.Properties.Resources.typography_78px;
+            this.btnTitlesIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnTitlesIcon.Location = new System.Drawing.Point(172, 0);
+            this.btnTitlesIcon.Name = "btnTitlesIcon";
+            this.btnTitlesIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnTitlesIcon.TabIndex = 5;
+            this.btnTitlesIcon.UseVisualStyleBackColor = true;
+            this.btnTitlesIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBookTitleCount
             // 
@@ -489,6 +499,7 @@
             this.lblBookTitleCount.TabIndex = 4;
             this.lblBookTitleCount.Text = "00";
             this.lblBookTitleCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookTitleCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblTitles
             // 
@@ -508,7 +519,7 @@
             this.pDueTodayBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pDueTodayBooks.Controls.Add(this.lblBookDue);
             this.pDueTodayBooks.Controls.Add(this.lblBooksDueToday);
-            this.pDueTodayBooks.Controls.Add(this.button6);
+            this.pDueTodayBooks.Controls.Add(this.btnBooksDueTodayIcon);
             this.pDueTodayBooks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pDueTodayBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pDueTodayBooks.Location = new System.Drawing.Point(587, 10);
@@ -529,6 +540,7 @@
             this.lblBookDue.TabIndex = 3;
             this.lblBookDue.Text = "00";
             this.lblBookDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookDue.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBooksDueToday
             // 
@@ -543,28 +555,29 @@
             this.lblBooksDueToday.Text = "Books Due Today";
             this.lblBooksDueToday.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button6
+            // btnBooksDueTodayIcon
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = global::LibraryDBMS.Properties.Resources.Clock_78px;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button6.Location = new System.Drawing.Point(172, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(90, 150);
-            this.button6.TabIndex = 4;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnBooksDueTodayIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBooksDueTodayIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksDueTodayIcon.FlatAppearance.BorderSize = 0;
+            this.btnBooksDueTodayIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksDueTodayIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBooksDueTodayIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBooksDueTodayIcon.Image = global::LibraryDBMS.Properties.Resources.Clock_78px;
+            this.btnBooksDueTodayIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnBooksDueTodayIcon.Location = new System.Drawing.Point(172, 0);
+            this.btnBooksDueTodayIcon.Name = "btnBooksDueTodayIcon";
+            this.btnBooksDueTodayIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnBooksDueTodayIcon.TabIndex = 4;
+            this.btnBooksDueTodayIcon.UseVisualStyleBackColor = true;
+            this.btnBooksDueTodayIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // pOverdueBooks
             // 
             this.pOverdueBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pOverdueBooks.Controls.Add(this.lblBookOverdueCount);
             this.pOverdueBooks.Controls.Add(this.lblOverdueBooks);
-            this.pOverdueBooks.Controls.Add(this.button7);
+            this.pOverdueBooks.Controls.Add(this.btnOverdueBooksIcon);
             this.pOverdueBooks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pOverdueBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pOverdueBooks.Location = new System.Drawing.Point(880, 10);
@@ -585,6 +598,7 @@
             this.lblBookOverdueCount.TabIndex = 3;
             this.lblBookOverdueCount.Text = "00";
             this.lblBookOverdueCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookOverdueCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblOverdueBooks
             // 
@@ -599,28 +613,29 @@
             this.lblOverdueBooks.Text = "Overdue Books";
             this.lblOverdueBooks.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button7
+            // btnOverdueBooksIcon
             // 
-            this.button7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::LibraryDBMS.Properties.Resources.expired_78px;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button7.Location = new System.Drawing.Point(172, 0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(90, 150);
-            this.button7.TabIndex = 4;
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnOverdueBooksIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnOverdueBooksIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnOverdueBooksIcon.FlatAppearance.BorderSize = 0;
+            this.btnOverdueBooksIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnOverdueBooksIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnOverdueBooksIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOverdueBooksIcon.Image = global::LibraryDBMS.Properties.Resources.expired_78px;
+            this.btnOverdueBooksIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnOverdueBooksIcon.Location = new System.Drawing.Point(172, 0);
+            this.btnOverdueBooksIcon.Name = "btnOverdueBooksIcon";
+            this.btnOverdueBooksIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnOverdueBooksIcon.TabIndex = 4;
+            this.btnOverdueBooksIcon.UseVisualStyleBackColor = true;
+            this.btnOverdueBooksIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // pReturnedBooks
             // 
             this.pReturnedBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pReturnedBooks.Controls.Add(this.lblBookReturnCount);
             this.pReturnedBooks.Controls.Add(this.lblReturnedBooks);
-            this.pReturnedBooks.Controls.Add(this.button3);
+            this.pReturnedBooks.Controls.Add(this.btnReturnedBooksIcon);
             this.pReturnedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pReturnedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pReturnedBooks.Location = new System.Drawing.Point(10, 517);
@@ -641,6 +656,7 @@
             this.lblBookReturnCount.TabIndex = 4;
             this.lblBookReturnCount.Text = "00";
             this.lblBookReturnCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookReturnCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblReturnedBooks
             // 
@@ -655,28 +671,29 @@
             this.lblReturnedBooks.Text = "Returned Books";
             this.lblReturnedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button3
+            // btnReturnedBooksIcon
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::LibraryDBMS.Properties.Resources.borrow_book_78px;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button3.Location = new System.Drawing.Point(169, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 152);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnReturnedBooksIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnReturnedBooksIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnReturnedBooksIcon.FlatAppearance.BorderSize = 0;
+            this.btnReturnedBooksIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnReturnedBooksIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnReturnedBooksIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturnedBooksIcon.Image = global::LibraryDBMS.Properties.Resources.borrow_book_78px;
+            this.btnReturnedBooksIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnReturnedBooksIcon.Location = new System.Drawing.Point(169, 0);
+            this.btnReturnedBooksIcon.Name = "btnReturnedBooksIcon";
+            this.btnReturnedBooksIcon.Size = new System.Drawing.Size(90, 152);
+            this.btnReturnedBooksIcon.TabIndex = 5;
+            this.btnReturnedBooksIcon.UseVisualStyleBackColor = true;
+            this.btnReturnedBooksIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // pBorrowedBooks
             // 
             this.pBorrowedBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
             this.pBorrowedBooks.Controls.Add(this.lblBookLoanCount);
             this.pBorrowedBooks.Controls.Add(this.lblBorrowedBooks);
-            this.pBorrowedBooks.Controls.Add(this.button2);
+            this.pBorrowedBooks.Controls.Add(this.btnBorrowedBooksIcon);
             this.pBorrowedBooks.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pBorrowedBooks.Location = new System.Drawing.Point(10, 348);
@@ -697,6 +714,7 @@
             this.lblBookLoanCount.TabIndex = 4;
             this.lblBookLoanCount.Text = "00";
             this.lblBookLoanCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBookLoanCount.Click += new System.EventHandler(this.Control_Click);
             // 
             // lblBorrowedBooks
             // 
@@ -711,21 +729,22 @@
             this.lblBorrowedBooks.Text = "Borrowed Books";
             this.lblBorrowedBooks.Click += new System.EventHandler(this.Control_Click);
             // 
-            // button2
+            // btnBorrowedBooksIcon
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::LibraryDBMS.Properties.Resources.return_book_78px;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button2.Location = new System.Drawing.Point(169, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 150);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBorrowedBooksIcon.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBorrowedBooksIcon.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBorrowedBooksIcon.FlatAppearance.BorderSize = 0;
+            this.btnBorrowedBooksIcon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBorrowedBooksIcon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(36)))), ((int)(((byte)(60)))));
+            this.btnBorrowedBooksIcon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrowedBooksIcon.Image = global::LibraryDBMS.Properties.Resources.return_book_78px;
+            this.btnBorrowedBooksIcon.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnBorrowedBooksIcon.Location = new System.Drawing.Point(169, 0);
+            this.btnBorrowedBooksIcon.Name = "btnBorrowedBooksIcon";
+            this.btnBorrowedBooksIcon.Size = new System.Drawing.Size(90, 150);
+            this.btnBorrowedBooksIcon.TabIndex = 5;
+            this.btnBorrowedBooksIcon.UseVisualStyleBackColor = true;
+            this.btnBorrowedBooksIcon.Click += new System.EventHandler(this.Control_Click);
             // 
             // FrmDashboard
             // 
@@ -782,32 +801,32 @@
         private System.Windows.Forms.Panel pUptime;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBooksIcon;
         private System.Windows.Forms.Label lblBooks;
         private System.Windows.Forms.Label lblUpTime;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnTitlesIcon;
         private System.Windows.Forms.Label lblBookTitleCount;
         private System.Windows.Forms.Label lblBookDue;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnBooksDueTodayIcon;
         private System.Windows.Forms.Label lblBookOverdueCount;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnOverdueBooksIcon;
         private System.Windows.Forms.Label lblBookLoanCount;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBorrowedBooksIcon;
         private System.Windows.Forms.Label lblBookReturnCount;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnReturnedBooksIcon;
         private System.Windows.Forms.Panel pActivities;
         private System.Windows.Forms.Label lblActivityCount;
         private System.Windows.Forms.Label lblTodayActivities;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnTodayActivitiesIcon;
         private System.Windows.Forms.Panel pCurrentUser;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblCurrentUser;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnCurrentUserIcon;
         private System.Windows.Forms.Panel pStudents;
         private System.Windows.Forms.Label lblStudentCount;
         private System.Windows.Forms.Label lblStudents;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnStudentsIcon;
     }
 }

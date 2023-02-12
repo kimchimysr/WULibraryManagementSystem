@@ -48,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblTel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.lblDOB = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.pTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -230,11 +230,11 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lblEmail);
             this.groupBox2.Controls.Add(this.lblGender);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.lblTel);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.lblEmail);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.lblAddress);
             this.groupBox2.Controls.Add(this.label6);
@@ -289,16 +289,6 @@
             this.label9.Size = new System.Drawing.Size(92, 22);
             this.label9.TabIndex = 43;
             this.label9.Text = "Telephone:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.lblEmail.Location = new System.Drawing.Point(6, 274);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(49, 22);
-            this.lblEmail.TabIndex = 43;
-            this.lblEmail.Text = "Email";
             // 
             // label8
             // 
@@ -370,6 +360,16 @@
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
             // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.lblEmail.Location = new System.Drawing.Point(6, 274);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(49, 22);
+            this.lblEmail.TabIndex = 44;
+            this.lblEmail.Text = "Email";
+            // 
             // DialogUserAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,10 +424,10 @@
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label lblTel;
-        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDOB;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblEmail;
     }
 }

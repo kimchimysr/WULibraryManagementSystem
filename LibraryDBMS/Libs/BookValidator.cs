@@ -175,7 +175,12 @@ namespace LibraryDBMS.Libs
                 }
             }
         }
-
+        /// <summary>
+        /// Validating ISBN only accept Number with 10 digits 13 digits and the number that 
+        /// CheckISBNDigits(string isbn) return true
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Isbn_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(isbn.Text))
@@ -214,8 +219,14 @@ namespace LibraryDBMS.Libs
                 }
             }
         }
-        // https://isbn-information.com/the-10-digit-isbn.html
-        // https://isbn-information.com/check-digit-for-the-13-digit-isbn.html
+
+        /// <summary>
+        /// Checking last ISBN Digit of ISBN 10 and ISBN 13 source below:
+        /// https://isbn-information.com/the-10-digit-isbn.html
+        /// https://isbn-information.com/check-digit-for-the-13-digit-isbn.html
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns></returns>
         private bool CheckISBNDigits(string isbn)
         {
 

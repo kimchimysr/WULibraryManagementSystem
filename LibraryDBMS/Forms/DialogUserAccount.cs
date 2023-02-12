@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using LibraryDBMS.Libs;
 
@@ -27,13 +28,15 @@ namespace LibraryDBMS.Forms
 
         private void PopulateFields()
         {
+            DateTime registrationDateTime = Convert.ToDateTime(user.Rows[0]["dateAdded"].ToString());
+            DateTime dobDateTime = Convert.ToDateTime(user.Rows[0]["dob"].ToString());
 
             lblUsername.Text = user.Rows[0]["username"].ToString();
             lblRole.Text = user.Rows[0]["roleName"].ToString();
-            lblRegistrationDate.Text = user.Rows[0]["dateAdded"].ToString();
+            lblRegistrationDate.Text = registrationDateTime.ToLongDateString();
             lblName.Text = $"{user.Rows[0]["firstName"]} {user.Rows[0]["lastName"]}";
             lblGender.Text = user.Rows[0]["gender"].ToString().Equals("M") ? "Male" : "Female";
-            lblDOB.Text = user.Rows[0]["dob"].ToString();
+            lblDOB.Text = dobDateTime.ToLongDateString();
             lblAddress.Text = user.Rows[0]["addr"].ToString();
             lblTel.Text = user.Rows[0]["tel"].ToString();
             lblEmail.Text = user.Rows[0]["email"].ToString();

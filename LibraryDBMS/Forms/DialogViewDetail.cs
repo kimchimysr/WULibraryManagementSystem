@@ -36,6 +36,14 @@ namespace LibraryDBMS.Forms
                     DateTime dateValue = Convert.ToDateTime(datagridvalue);
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dateValue.ToLongDateString()}");
                 }
+                else if(datagridvalue == "M")
+                {
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: Male");
+                }
+                else if(datagridvalue == "F")
+                {
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: Female");
+                }
                 else
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");
