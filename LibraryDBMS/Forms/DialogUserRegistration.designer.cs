@@ -423,7 +423,7 @@
             this.rbMonk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbMonk.AutoSize = true;
             this.rbMonk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMonk.Location = new System.Drawing.Point(629, 123);
+            this.rbMonk.Location = new System.Drawing.Point(622, 122);
             this.rbMonk.Name = "rbMonk";
             this.rbMonk.Size = new System.Drawing.Size(64, 26);
             this.rbMonk.TabIndex = 8;
