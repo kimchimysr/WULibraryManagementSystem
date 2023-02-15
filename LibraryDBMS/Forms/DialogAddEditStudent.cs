@@ -88,7 +88,7 @@ namespace LibraryDBMS.Forms
                         string studentID = txtStudentID.Text.Trim();
                         string firstName = txtFirstName.Text.Trim();
                         string lastName = txtLastName.Text.Trim();
-                        string gender = rbMale.Checked == true ? "M" : "F";
+                        string gender = LibModule.SetGender(rbMale, rbFemale, rbMonk);
                         string year = cbYear.SelectedItem.ToString().Trim();
                         string major = cbMajor.Text.Trim();
                         string telephone = txtTel.Text.Trim();

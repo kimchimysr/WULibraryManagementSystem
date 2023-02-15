@@ -54,6 +54,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
             this.cbMajor = new System.Windows.Forms.ComboBox();
+            this.rbMonk = new System.Windows.Forms.RadioButton();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -354,6 +355,17 @@
             this.cbMajor.Size = new System.Drawing.Size(266, 30);
             this.cbMajor.TabIndex = 7;
             // 
+            // rbMonk
+            // 
+            this.rbMonk.AutoSize = true;
+            this.rbMonk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMonk.Location = new System.Drawing.Point(283, 165);
+            this.rbMonk.Name = "rbMonk";
+            this.rbMonk.Size = new System.Drawing.Size(64, 26);
+            this.rbMonk.TabIndex = 38;
+            this.rbMonk.Text = "Monk";
+            this.rbMonk.UseVisualStyleBackColor = true;
+            // 
             // DialogAddEditStudent
             // 
             this.AcceptButton = this.btnSaveChanges;
@@ -363,6 +375,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(426, 487);
+            this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.pTitleBar);
@@ -426,5 +439,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpDateAdded;
         private System.Windows.Forms.ComboBox cbMajor;
+        private System.Windows.Forms.RadioButton rbMonk;
     }
 }

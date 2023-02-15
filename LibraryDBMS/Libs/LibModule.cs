@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using Microsoft.Reporting.WinForms;
 using LibraryDBMS.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LibraryDBMS.Libs
 {
@@ -939,6 +940,19 @@ namespace LibraryDBMS.Libs
                     $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
+        }
+        /// <summary>
+        /// Set Gender Value when activate radiobutton
+        /// </summary>
+        public static string SetGender(RadioButton rbMaleChoice, RadioButton rbFemaleChoice,
+            RadioButton rbMonkChoice)
+        {
+            if (rbMaleChoice.Checked)
+                return "M";
+            else if(rbFemaleChoice.Checked)
+                return "F";
+            else if(rbMonkChoice.Checked) { return "Monk"; } 
+            else { return string.Empty; }
         }
         #endregion
     }

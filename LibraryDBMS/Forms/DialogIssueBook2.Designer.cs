@@ -70,6 +70,7 @@
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.rbMonk = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -559,6 +560,17 @@
             this.txtFirstName.Size = new System.Drawing.Size(375, 26);
             this.txtFirstName.TabIndex = 5;
             // 
+            // rbMonk
+            // 
+            this.rbMonk.AutoSize = true;
+            this.rbMonk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMonk.Location = new System.Drawing.Point(268, 229);
+            this.rbMonk.Name = "rbMonk";
+            this.rbMonk.Size = new System.Drawing.Size(64, 26);
+            this.rbMonk.TabIndex = 126;
+            this.rbMonk.Text = "Monk";
+            this.rbMonk.UseVisualStyleBackColor = true;
+            // 
             // DialogIssueBook2
             // 
             this.AcceptButton = this.btnSave;
@@ -568,6 +580,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1027, 463);
+            this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.cbYear);
@@ -662,5 +675,6 @@
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.RadioButton rbMonk;
     }
 }
