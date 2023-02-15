@@ -69,13 +69,15 @@ namespace LibraryDBMS.Forms
 
                         if (result.Rows.Count > 0)
                         {
+                            lblStudentStatus.Text = "";
+                            lblBorrowedTitle.Text = "";
                             if (result.Rows[0]["loanStatusName"].ToString() == "Borrowed")
-                                lblStudentStatus.Text += "Currently borrowing 1 book";
+                                lblStudentStatus.Text = "Student Status: Currently borrowing 1 book";
                             else if (result.Rows[0]["loanStatusName"].ToString() == "Returned")
-                                lblStudentStatus.Text += "Returned last borrowed book";
+                                lblStudentStatus.Text = "Student Status: Returned last borrowed book";
                             else if (result.Rows[0]["loanStatusName"].ToString() == "Lost")
-                                lblStudentStatus.Text += "Lost last borrowed book";
-                            lblBorrowedTitle.Text += result.Rows[0]["title"].ToString(); 
+                                lblStudentStatus.Text = "Student Status: Lost last borrowed book";
+                            lblBorrowedTitle.Text = $"Last Borrowed Title: {result.Rows[0]["title"]}"; 
                         }
                     }
                     else
