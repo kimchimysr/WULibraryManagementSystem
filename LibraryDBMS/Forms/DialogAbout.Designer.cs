@@ -205,7 +205,7 @@
             this.label4.Size = new System.Drawing.Size(648, 83);
             this.label4.TabIndex = 0;
             this.label4.Text = "Advisor: Yeun Sophearith \r\nTeam Members: Kim Chimy, Samol Raingsey, Tang Ponthoeu" +
-    "n, Prey Somnang, Sambath Ratanak Boros\r\nMajor: Computer Science Year IV (Bacth 1" +
+    "n, Prey Somnang, Sambath Ratanak Boros\r\nMajor: Computer Science Year IV (Batch 1" +
     "7)\r\nYear: 2019~2023";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

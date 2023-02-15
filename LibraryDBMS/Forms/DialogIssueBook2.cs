@@ -56,12 +56,7 @@ namespace LibraryDBMS.Forms
                         {
                             txtFirstName.Text = result.Rows[0]["firstName"].ToString();
                             txtLastName.Text = result.Rows[0]["lastName"].ToString();
-                            if (result.Rows[0]["gender"].ToString() == "M")
-                                rbMale.Checked = true;
-                            if (result.Rows[0]["gender"].ToString()=="F")
-                                rbFemale.Checked = true;
-                            if (result.Rows[0]["gender"].ToString() == "Monk")
-                                rbMonk.Checked = true;
+                            LibModule.SetGender(result.Rows[0]["gender"].ToString(),rbMale,rbFemale,rbMonk);
                             cbYear.Text = result.Rows[0]["year"].ToString();
                             cbMajor.Text = result.Rows[0]["major"].ToString();
                             txtTel.Text = result.Rows[0]["tel"].ToString();
@@ -192,7 +187,7 @@ namespace LibraryDBMS.Forms
                 {
                     string firstName = txtFirstName.Text.Trim();
                     string lastName = txtLastName.Text.Trim();
-                    string gender = LibModule.SetGender(rbMale, rbFemale, rbMonk);
+                    string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
                     string year = cbYear.SelectedItem.ToString().Trim();
                     string major = cbMajor.Text.Trim();
                     string telephone = txtTel.Text.Trim();
@@ -219,7 +214,7 @@ namespace LibraryDBMS.Forms
             {
                 string firstName = txtFirstName.Text.Trim();
                 string lastName = txtLastName.Text.Trim();
-                string gender = LibModule.SetGender(rbMale, rbFemale, rbMonk);
+                string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
                 string year = cbYear.SelectedItem.ToString().Trim();
                 string major = cbMajor.Text.Trim();
                 string telephone = txtTel.Text.Trim();
@@ -242,7 +237,7 @@ namespace LibraryDBMS.Forms
 
         private bool StudentHasAnyChanges(DataTable student)
         {
-            string gender = LibModule.SetGender(rbMale, rbFemale, rbMonk);
+            string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
             if (student.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
                 student.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
                 student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||

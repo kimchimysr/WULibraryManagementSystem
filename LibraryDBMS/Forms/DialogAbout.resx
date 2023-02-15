@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>Library management system is software that is designed to manage all the functions of a library. It helps librarian to maintain the database of new books and the books that are borrowed by students along with their due dates with extra functionality of printing reports and more.
-This application is build exclusively for library at Western University (Toul Kork).</value>
+    <value>Library management system is software that is designed to manage all the functions of a library. It helps the librarian maintain the database of new books and the books that are borrowed by students along with their due dates, with the extra functionality of printing reports and more.
+This application is built exclusively for the library at Western University (Toul Kork).</value>
   </data>
 </root>

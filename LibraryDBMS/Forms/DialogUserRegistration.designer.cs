@@ -58,6 +58,7 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.rbMonk = new System.Windows.Forms.RadioButton();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.cbRole.Location = new System.Drawing.Point(471, 155);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(217, 28);
-            this.cbRole.TabIndex = 8;
+            this.cbRole.TabIndex = 9;
             // 
             // dtpDOB
             // 
@@ -241,7 +242,7 @@
             this.txtEmail.Location = new System.Drawing.Point(472, 223);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(216, 26);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 11;
             // 
             // txtTelephone
             // 
@@ -250,7 +251,7 @@
             this.txtTelephone.Location = new System.Drawing.Point(472, 190);
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(216, 26);
-            this.txtTelephone.TabIndex = 9;
+            this.txtTelephone.TabIndex = 10;
             // 
             // txtAddress
             // 
@@ -369,7 +370,7 @@
             this.btnRegister.Location = new System.Drawing.Point(36, 278);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(200, 56);
-            this.btnRegister.TabIndex = 11;
+            this.btnRegister.TabIndex = 12;
             this.btnRegister.Text = " &Register";
             this.btnRegister.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRegister.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -390,7 +391,7 @@
             this.btnCancel.Location = new System.Drawing.Point(488, 278);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(200, 56);
-            this.btnCancel.TabIndex = 13;
+            this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -410,12 +411,24 @@
             this.btnClear.Location = new System.Drawing.Point(262, 279);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(200, 56);
-            this.btnClear.TabIndex = 12;
+            this.btnClear.TabIndex = 13;
             this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // rbMonk
+            // 
+            this.rbMonk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rbMonk.AutoSize = true;
+            this.rbMonk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMonk.Location = new System.Drawing.Point(629, 123);
+            this.rbMonk.Name = "rbMonk";
+            this.rbMonk.Size = new System.Drawing.Size(64, 26);
+            this.rbMonk.TabIndex = 8;
+            this.rbMonk.Text = "Monk";
+            this.rbMonk.UseVisualStyleBackColor = true;
             // 
             // DialogUserRegistration
             // 
@@ -426,6 +439,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(720, 350);
+            this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.pTitleBar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -497,5 +511,6 @@
         private System.Windows.Forms.Panel pTitleBar;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.RadioButton rbMonk;
     }
 }

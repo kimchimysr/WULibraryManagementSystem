@@ -37,7 +37,7 @@ namespace LibraryDBMS.Forms
                         string roleName = cbRole.Text.Trim();
                         string firstName = txtFirstName.Text.Trim();
                         string lastName = txtLastName.Text.Trim();
-                        string gender = rbMale.Checked == true ? "M" : "F";
+                        string gender = LibModule.GetGender(rbMale,rbFemale,rbMonk);
                         string dob = dtpDOB.Text.Trim();
                         string address = txtAddress.Text.Trim();
                         string telephone = txtTelephone.Text.Trim();

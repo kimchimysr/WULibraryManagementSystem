@@ -944,7 +944,7 @@ namespace LibraryDBMS.Libs
         /// <summary>
         /// Set Gender Value when activate radiobutton
         /// </summary>
-        public static string SetGender(RadioButton rbMaleChoice, RadioButton rbFemaleChoice,
+        public static string GetGender(RadioButton rbMaleChoice, RadioButton rbFemaleChoice,
             RadioButton rbMonkChoice)
         {
             if (rbMaleChoice.Checked)
@@ -953,6 +953,32 @@ namespace LibraryDBMS.Libs
                 return "F";
             else if(rbMonkChoice.Checked) { return "Monk"; } 
             else { return string.Empty; }
+        }
+        /// <summary>
+        /// Get gender when receive value from string and return as string
+        /// </summary>
+        public static string GetGender(string receivedGender)
+        {
+            if (receivedGender == "M")
+                return "Male";
+            else if (receivedGender == "F")
+                return "Female";
+            else if (receivedGender == "Monk")
+                return "Monk";
+            return "Other";
+        }
+        /// <summary>
+        /// Geet gender when receive value from string and return as radiobutton
+        /// </summary>
+        public static void SetGender(string receivedGender, RadioButton rbMaleChoice,
+            RadioButton rbFemaleChoice, RadioButton rbMonkChoice)
+        {
+            if (receivedGender == "M")
+                rbMaleChoice.Checked = true;
+            else if (receivedGender == "F")
+                rbFemaleChoice.Checked = true;
+            else if (receivedGender == "Monk")
+                rbMonkChoice.Checked = true;
         }
         #endregion
     }
