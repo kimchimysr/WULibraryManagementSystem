@@ -70,6 +70,7 @@
             this.txtTel = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.rbMonk = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +103,7 @@
             this.dtpIssueDate.Location = new System.Drawing.Point(650, 328);
             this.dtpIssueDate.Name = "dtpIssueDate";
             this.dtpIssueDate.Size = new System.Drawing.Size(345, 26);
-            this.dtpIssueDate.TabIndex = 12;
+            this.dtpIssueDate.TabIndex = 13;
             this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             this.dtpIssueDate.ValueChanged += new System.EventHandler(this.dtpIssueDate_ValueChanged);
             // 
@@ -345,7 +346,7 @@
             this.btnSave.Location = new System.Drawing.Point(18, 398);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 50);
-            this.btnSave.TabIndex = 13;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "  &Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -366,7 +367,7 @@
             this.btnCancel.Location = new System.Drawing.Point(342, 398);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
-            this.btnCancel.TabIndex = 15;
+            this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -386,7 +387,7 @@
             this.btnClear.Location = new System.Drawing.Point(180, 398);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(150, 50);
-            this.btnClear.TabIndex = 14;
+            this.btnClear.TabIndex = 15;
             this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -413,7 +414,7 @@
             this.cbMajor.Location = new System.Drawing.Point(117, 295);
             this.cbMajor.Name = "cbMajor";
             this.cbMajor.Size = new System.Drawing.Size(375, 30);
-            this.cbMajor.TabIndex = 10;
+            this.cbMajor.TabIndex = 11;
             // 
             // dtpDateAdded
             // 
@@ -439,7 +440,7 @@
             this.cbYear.Location = new System.Drawing.Point(117, 261);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(375, 30);
-            this.cbYear.TabIndex = 9;
+            this.cbYear.TabIndex = 10;
             // 
             // rbFemale
             // 
@@ -541,7 +542,7 @@
             this.txtTel.Location = new System.Drawing.Point(117, 329);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(375, 26);
-            this.txtTel.TabIndex = 11;
+            this.txtTel.TabIndex = 12;
             // 
             // txtLastName
             // 
@@ -559,6 +560,17 @@
             this.txtFirstName.Size = new System.Drawing.Size(375, 26);
             this.txtFirstName.TabIndex = 5;
             // 
+            // rbMonk
+            // 
+            this.rbMonk.AutoSize = true;
+            this.rbMonk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMonk.Location = new System.Drawing.Point(268, 229);
+            this.rbMonk.Name = "rbMonk";
+            this.rbMonk.Size = new System.Drawing.Size(64, 26);
+            this.rbMonk.TabIndex = 9;
+            this.rbMonk.Text = "Monk";
+            this.rbMonk.UseVisualStyleBackColor = true;
+            // 
             // DialogIssueBook2
             // 
             this.AcceptButton = this.btnSave;
@@ -568,6 +580,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1027, 463);
+            this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
             this.Controls.Add(this.cbYear);
@@ -662,5 +675,6 @@
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.RadioButton rbMonk;
     }
 }

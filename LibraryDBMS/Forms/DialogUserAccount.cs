@@ -35,7 +35,7 @@ namespace LibraryDBMS.Forms
             lblRole.Text = user.Rows[0]["roleName"].ToString();
             lblRegistrationDate.Text = registrationDateTime.ToLongDateString();
             lblName.Text = $"{user.Rows[0]["firstName"]} {user.Rows[0]["lastName"]}";
-            lblGender.Text = user.Rows[0]["gender"].ToString().Equals("M") ? "Male" : "Female";
+            lblGender.Text = LibModule.GetGender(user.Rows[0]["gender"].ToString());
             lblDOB.Text = dobDateTime.ToLongDateString();
             lblAddress.Text = user.Rows[0]["addr"].ToString();
             lblTel.Text = user.Rows[0]["tel"].ToString();
