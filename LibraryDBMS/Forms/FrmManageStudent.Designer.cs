@@ -34,14 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCount = new System.Windows.Forms.Label();
             this.dgvStudentList = new System.Windows.Forms.DataGridView();
-            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
@@ -60,6 +52,15 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblRowsCount = new System.Windows.Forms.Label();
             this.pShortcuts = new System.Windows.Forms.Panel();
+            this.studentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isWUStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -108,7 +109,8 @@
             this.year,
             this.major,
             this.tel,
-            this.dateAdded});
+            this.dateAdded,
+            this.isWUStudent});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,7 +120,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStudentList.EnableHeadersVisualStyles = false;
-            this.dgvStudentList.Location = new System.Drawing.Point(15, 92);
+            this.dgvStudentList.Location = new System.Drawing.Point(12, 90);
             this.dgvStudentList.MultiSelect = false;
             this.dgvStudentList.Name = "dgvStudentList";
             this.dgvStudentList.ReadOnly = true;
@@ -136,76 +138,6 @@
             this.dgvStudentList.TabIndex = 20;
             this.dgvStudentList.TabStop = false;
             this.dgvStudentList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudentList_CellClick);
-            // 
-            // studentID
-            // 
-            this.studentID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.studentID.DataPropertyName = "studentID";
-            this.studentID.HeaderText = "Student ID";
-            this.studentID.Name = "studentID";
-            this.studentID.ReadOnly = true;
-            this.studentID.Width = 127;
-            // 
-            // firstName
-            // 
-            this.firstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstName.DataPropertyName = "firstName";
-            this.firstName.HeaderText = "First Name";
-            this.firstName.Name = "firstName";
-            this.firstName.ReadOnly = true;
-            // 
-            // lastName
-            // 
-            this.lastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastName.DataPropertyName = "lastName";
-            this.lastName.HeaderText = "Last Name";
-            this.lastName.Name = "lastName";
-            this.lastName.ReadOnly = true;
-            // 
-            // gender
-            // 
-            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.gender.DataPropertyName = "gender";
-            this.gender.HeaderText = "Gender";
-            this.gender.Name = "gender";
-            this.gender.ReadOnly = true;
-            this.gender.Width = 99;
-            // 
-            // year
-            // 
-            this.year.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.year.DataPropertyName = "year";
-            this.year.HeaderText = "Year";
-            this.year.Name = "year";
-            this.year.ReadOnly = true;
-            this.year.Width = 74;
-            // 
-            // major
-            // 
-            this.major.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.major.DataPropertyName = "major";
-            this.major.HeaderText = "Major";
-            this.major.Name = "major";
-            this.major.ReadOnly = true;
-            this.major.Width = 84;
-            // 
-            // tel
-            // 
-            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.tel.DataPropertyName = "tel";
-            this.tel.HeaderText = "Telephone";
-            this.tel.Name = "tel";
-            this.tel.ReadOnly = true;
-            this.tel.Width = 127;
-            // 
-            // dateAdded
-            // 
-            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dateAdded.DataPropertyName = "dateAdded";
-            this.dateAdded.HeaderText = "Date Added";
-            this.dateAdded.Name = "dateAdded";
-            this.dateAdded.ReadOnly = true;
-            this.dateAdded.Width = 136;
             // 
             // label10
             // 
@@ -479,6 +411,84 @@
             this.pShortcuts.Size = new System.Drawing.Size(33, 34);
             this.pShortcuts.TabIndex = 37;
             // 
+            // studentID
+            // 
+            this.studentID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.studentID.DataPropertyName = "studentID";
+            this.studentID.HeaderText = "Student ID";
+            this.studentID.Name = "studentID";
+            this.studentID.ReadOnly = true;
+            this.studentID.Width = 127;
+            // 
+            // firstName
+            // 
+            this.firstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.firstName.DataPropertyName = "firstName";
+            this.firstName.HeaderText = "First Name";
+            this.firstName.Name = "firstName";
+            this.firstName.ReadOnly = true;
+            // 
+            // lastName
+            // 
+            this.lastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.lastName.DataPropertyName = "lastName";
+            this.lastName.HeaderText = "Last Name";
+            this.lastName.Name = "lastName";
+            this.lastName.ReadOnly = true;
+            // 
+            // gender
+            // 
+            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.gender.DataPropertyName = "gender";
+            this.gender.HeaderText = "Gender";
+            this.gender.Name = "gender";
+            this.gender.ReadOnly = true;
+            this.gender.Width = 99;
+            // 
+            // year
+            // 
+            this.year.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.year.DataPropertyName = "year";
+            this.year.HeaderText = "Year";
+            this.year.Name = "year";
+            this.year.ReadOnly = true;
+            this.year.Width = 74;
+            // 
+            // major
+            // 
+            this.major.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.major.DataPropertyName = "major";
+            this.major.HeaderText = "Major";
+            this.major.Name = "major";
+            this.major.ReadOnly = true;
+            this.major.Width = 84;
+            // 
+            // tel
+            // 
+            this.tel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.tel.DataPropertyName = "tel";
+            this.tel.HeaderText = "Telephone";
+            this.tel.Name = "tel";
+            this.tel.ReadOnly = true;
+            this.tel.Width = 127;
+            // 
+            // dateAdded
+            // 
+            this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dateAdded.DataPropertyName = "dateAdded";
+            this.dateAdded.HeaderText = "Date Added";
+            this.dateAdded.Name = "dateAdded";
+            this.dateAdded.ReadOnly = true;
+            this.dateAdded.Width = 136;
+            // 
+            // isWUStudent
+            // 
+            this.isWUStudent.DataPropertyName = "isWUStudent";
+            this.isWUStudent.HeaderText = "WU Student";
+            this.isWUStudent.Name = "isWUStudent";
+            this.isWUStudent.ReadOnly = true;
+            this.isWUStudent.Width = 140;
+            // 
             // FrmManageStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,6 +541,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label lblRowsCount;
+        private System.Windows.Forms.Panel pShortcuts;
         private System.Windows.Forms.DataGridViewTextBoxColumn studentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
@@ -539,6 +550,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn major;
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
-        private System.Windows.Forms.Panel pShortcuts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isWUStudent;
     }
 }

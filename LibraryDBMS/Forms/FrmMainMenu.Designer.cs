@@ -403,7 +403,7 @@
             // btnMinimize
             // 
             this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LibraryDBMS.Properties.Resources.subtract_16px;
@@ -418,7 +418,7 @@
             // btnMaximize
             // 
             this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LibraryDBMS.Properties.Resources.maximize_button_16px;
@@ -434,7 +434,7 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Red;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = global::LibraryDBMS.Properties.Resources.close_16px;

@@ -53,27 +53,29 @@ namespace LibraryDBMS.Forms
             txtStudentID.Text = student.Rows[0]["studentID"].ToString();
             txtFirstName.Text = student.Rows[0]["firstName"].ToString();
             txtLastName.Text = student.Rows[0]["lastName"].ToString();
-            if (student.Rows[0]["gender"].ToString().Equals("M"))
-                rbMale.Checked = true;
-            else rbFemale.Checked = true;
+            LibModule.SetGender(student.Rows[0]["gender"].ToString(),rbMale,rbFemale,rbMonk);
             cbYear.SelectedItem = student.Rows[0]["year"].ToString();
             cbMajor.Text = student.Rows[0]["major"].ToString();
             txtTel.Text = student.Rows[0]["tel"].ToString();
             dtpDateAdded.Text = student.Rows[0]["dateAdded"].ToString();
+            chbIsWUStudent.Checked = (student.Rows[0]["isWUStudent"].ToString() == "1") ? true : false;
+            txtStudentOther.Text = student.Rows[0]["otherStudent"].ToString();
         }
 
         private bool HasAnyChanges()
         {
-            string gender = rbMale.Checked ? "M" : "F";
+            string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
+            string isWUStudentString = (chbIsWUStudent.Checked) ? "1" : "0";
             if (student.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
                 student.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
                 student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
                 student.Rows[0]["gender"].ToString() != gender ||
                 student.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
                 student.Rows[0]["major"].ToString() != cbMajor.Text.Trim() ||
-                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
+                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim() ||
+                student.Rows[0]["isWUStudent"].ToString() != isWUStudentString ||
+                student.Rows[0]["otherstudent"].ToString() != txtStudentOther.Text.Trim())
                 return true;
-
             return false;
         }
 
@@ -93,6 +95,8 @@ namespace LibraryDBMS.Forms
                         string major = cbMajor.Text.Trim();
                         string telephone = txtTel.Text.Trim();
                         string dateAdded = dtpDateAdded.Text.Trim();
+                        string isWUStudent = (chbIsWUStudent.Checked) ? "1" : "0"; 
+                        string otherStudent = txtStudentOther.Text.Trim(); // data for other text box.
 
                         List<string> borrower = new List<string>
                             {
@@ -103,7 +107,9 @@ namespace LibraryDBMS.Forms
                                 year,
                                 major,
                                 telephone,
-                                dateAdded
+                                dateAdded,
+                                isWUStudent,
+                                otherStudent
                             };
 
                         if (!isEditMode)
@@ -134,5 +140,18 @@ namespace LibraryDBMS.Forms
                     break;
             }
         }
+
+        private void chbIsWUStudent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chbIsWUStudent.Checked) 
+            {
+                txtStudentID.Enabled = false;
+            }
+            else
+            {
+                txtStudentID.Enabled = true;
+            }
+        }
+
     }
 }

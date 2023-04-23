@@ -37,7 +37,8 @@ namespace LibraryDBMS.Forms
         internal void PopulateDataGrid()
         {
             LibModule.FillDataGrid("tblStudents", dgvStudentList, "dateAdded");
-            lblCount.Text = "Total Student: " + 
+            lblCount.Text = Convert.ToInt32(LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;")) <= 1 ? "Total Student: " + 
+                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;") : "Total Students: " +
                 LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;");
             lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
             btnEdit.Enabled = false;

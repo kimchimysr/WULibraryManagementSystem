@@ -43,9 +43,15 @@ namespace LibraryDBMS.Forms
         internal void PopulateDataGridView()
         {
             LibModule.FillDataGrid("viewBooks", dgvBookList, "bookID");
-            lblBookCount.Text = "Total Books: " +
-                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBooks;");
-            lblTitleCount.Text = "Total Titles: " +
+            lblBookCount.Text = (Convert.ToInt32(LibModule.ExecuteScalarQuery
+                ("SELECT SUM(qty) FROM tblBooks;")) <= 1 )  ? "Total Book: " +
+                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBooks;") :
+                    "Total Books: " + LibModule.ExecuteScalarQuery
+                    ("SELECT SUM(qty) FROM tblBooks;") ;
+            lblTitleCount.Text = (Convert.ToInt32(LibModule.ExecuteScalarQuery
+                ("SELECT COUNT(bookID) FROM tblBooks;")) <= 1) ? "Total Titles: " +
+                    LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;") :
+                    "Total Titles: " +
                     LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;");
             lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
             btnEdit.Enabled = false;
