@@ -173,7 +173,7 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void dtpFromAndToDate_ValueChanged(object sender,EventArgs e)
+        private void DtpFromAndToDate_ValueChanged(object sender,EventArgs e)
         {
             if(dtpFromDate.Value > dtpToDate.Value && dtpFromDate.Value < DateTime.Now)
             {

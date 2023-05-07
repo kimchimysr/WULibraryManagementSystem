@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+using DocumentFormat.OpenXml.Office2013.Excel;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -38,6 +41,7 @@ namespace LibraryDBMS.Forms
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
+                chbIsWUStudent.Enabled = false;
             }
         }
 
@@ -60,6 +64,7 @@ namespace LibraryDBMS.Forms
             dtpDateAdded.Text = student.Rows[0]["dateAdded"].ToString();
             chbIsWUStudent.Checked = (student.Rows[0]["isWUStudent"].ToString() == "1") ? true : false;
             txtStudentOther.Text = student.Rows[0]["otherStudent"].ToString();
+            
         }
 
         private bool HasAnyChanges()
@@ -143,15 +148,10 @@ namespace LibraryDBMS.Forms
 
         private void chbIsWUStudent_CheckedChanged(object sender, EventArgs e)
         {
-            if (!chbIsWUStudent.Checked) 
-            {
-                txtStudentID.Enabled = false;
-            }
-            else
-            {
-                txtStudentID.Enabled = true;
-            }
+            txtStudentID.ReadOnly = chbIsWUStudent.Checked ? false : true;
+            if(!isEditMode) { txtStudentID.Text = LibModule.GenerateIDForNonWUStudent(); }
+            if(chbIsWUStudent.Checked) { txtStudentID.Clear(); }
         }
-
+        
     }
 }

@@ -49,6 +49,7 @@ namespace LibraryDBMS.Forms
                         LibModule.ExecuteScalarQuery($"SELECT studentID FROM tblStudents WHERE studentID='{txtStudentID.Text.Trim()}';");
                     if (!string.IsNullOrEmpty(studentExists))
                     {
+                        chbIsWUStudent.Enabled = false;
                         string query =
                         $"SELECT * FROM tblStudents WHERE studentID = '{txtStudentID.Text.Trim()}';";
                         DataTable result = LibModule.GetDataTableFromDBWithQuery(query);
@@ -289,7 +290,10 @@ namespace LibraryDBMS.Forms
 
         private void chbIsWUStudent_CheckedChanged(object sender, EventArgs e)
         {
-            txtStudentID.Enabled = (chbIsWUStudent.Checked) ? true : false ;
+            txtStudentID.ReadOnly = (chbIsWUStudent.Checked) ? false : true;
+            txtStudentID.Text = LibModule.GenerateIDForNonWUStudent();
+            if(chbIsWUStudent.Checked )
+                txtStudentID.Clear();
         }
     }
 }
