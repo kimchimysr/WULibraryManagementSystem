@@ -31,13 +31,23 @@ namespace LibraryDBMS.Forms
                  "\n* Delete Button (Alt + D)" +
                  "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGrid();
+            SetUserPermission();
             btnPrint.Enabled = dgvStudentList.RowCount > 0 ? true : false;
+        }
+
+        private void SetUserPermission()
+        {
+            if (frmMainMenu.user.Rows[0]["roleName"].ToString().ToLower() == "viewer")
+                Utils.SetControlVisibility(false, btnAdd, btnEdit, btnDelete, btnImport);
+            else
+                Utils.SetControlVisibility(true, btnAdd, btnEdit, btnDelete, btnImport);
         }
 
         internal void PopulateDataGrid()
         {
-            LibModule.FillDataGrid("tblStudents", dgvStudentList, "dateAdded");
-            lblCount.Text = "Total Student: " + 
+            LibModule.FillDataGrid("viewStudents", dgvStudentList, "dateAdded");
+            lblCount.Text = Convert.ToInt32(LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;")) <= 1 ? "Total Student: " + 
+                LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;") : "Total Students: " +
                 LibModule.ExecuteScalarQuery("SELECT COUNT(studentID) FROM tblStudents;");
             lblRowsCount.Text = $"Display Result: {dgvStudentList.Rows.Count}";
             btnEdit.Enabled = false;
@@ -94,12 +104,12 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnAdd":
-                    var frmAddUser = new DialogAddEditStudent(this);
+                    var frmAddUser = new DialogAddEditStudent(frmMainMenu, this);
                     Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddUser, frmMainMenu);
                     break;
                 case "btnEdit":
                     var frmEditUser =
-                        new DialogAddEditStudent(this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
+                        new DialogAddEditStudent(frmMainMenu, this, LibModule.GetSingleRecordFromDB("tblStudents", "studentID", selected.studentID));
                     Utils.BlurEffect.ShowDialogWithBlurEffect(frmEditUser, frmMainMenu);
                     break;
                 case "btnDelete":
@@ -115,6 +125,12 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnRefresh":
                     PopulateDataGrid();
+                    break;
+                case "btnImport":
+                    //Utils.ImportExcelDataIntoDatabase();
+                    break;
+                case "btnExport":
+                    Utils.ExportDatabaseTableToExcel("tblStudents");
                     break;
             }
             btnPrint.Enabled = dgvStudentList.RowCount > 0 ? true : false;

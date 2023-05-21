@@ -26,7 +26,7 @@ namespace LibraryDBMS {
         
         private tblStudentDataTable tabletblStudent;
         
-        private viewUserInfoDataTable tableviewUserInfo;
+        private viewUserRoleDataTable tableviewUserRole;
         
         private viewBookDataTable tableviewBook;
         
@@ -65,8 +65,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["tblStudent"] != null)) {
                     base.Tables.Add(new tblStudentDataTable(ds.Tables["tblStudent"]));
                 }
-                if ((ds.Tables["tblUser"] != null)) {
-                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["tblUser"]));
+                if ((ds.Tables["viewUserRole"] != null)) {
+                    base.Tables.Add(new viewUserRoleDataTable(ds.Tables["viewUserRole"]));
                 }
                 if ((ds.Tables["viewBook"] != null)) {
                     base.Tables.Add(new viewBookDataTable(ds.Tables["viewBook"]));
@@ -109,9 +109,9 @@ namespace LibraryDBMS {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public viewUserInfoDataTable tblUser {
+        public viewUserRoleDataTable viewUserRole {
             get {
-                return this.tableviewUserInfo;
+                return this.tableviewUserRole;
             }
         }
         
@@ -215,8 +215,8 @@ namespace LibraryDBMS {
                 if ((ds.Tables["tblStudent"] != null)) {
                     base.Tables.Add(new tblStudentDataTable(ds.Tables["tblStudent"]));
                 }
-                if ((ds.Tables["tblUser"] != null)) {
-                    base.Tables.Add(new viewUserInfoDataTable(ds.Tables["tblUser"]));
+                if ((ds.Tables["viewUserRole"] != null)) {
+                    base.Tables.Add(new viewUserRoleDataTable(ds.Tables["viewUserRole"]));
                 }
                 if ((ds.Tables["viewBook"] != null)) {
                     base.Tables.Add(new viewBookDataTable(ds.Tables["viewBook"]));
@@ -266,10 +266,10 @@ namespace LibraryDBMS {
                     this.tabletblStudent.InitVars();
                 }
             }
-            this.tableviewUserInfo = ((viewUserInfoDataTable)(base.Tables["tblUser"]));
+            this.tableviewUserRole = ((viewUserRoleDataTable)(base.Tables["viewUserRole"]));
             if ((initTable == true)) {
-                if ((this.tableviewUserInfo != null)) {
-                    this.tableviewUserInfo.InitVars();
+                if ((this.tableviewUserRole != null)) {
+                    this.tableviewUserRole.InitVars();
                 }
             }
             this.tableviewBook = ((viewBookDataTable)(base.Tables["viewBook"]));
@@ -302,8 +302,8 @@ namespace LibraryDBMS {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tabletblStudent = new tblStudentDataTable();
             base.Tables.Add(this.tabletblStudent);
-            this.tableviewUserInfo = new viewUserInfoDataTable();
-            base.Tables.Add(this.tableviewUserInfo);
+            this.tableviewUserRole = new viewUserRoleDataTable();
+            base.Tables.Add(this.tableviewUserRole);
             this.tableviewBook = new viewBookDataTable();
             base.Tables.Add(this.tableviewBook);
             this.tableviewOverview = new viewOverviewDataTable();
@@ -320,7 +320,7 @@ namespace LibraryDBMS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializetblUser() {
+        private bool ShouldSerializeviewUserRole() {
             return false;
         }
         
@@ -401,7 +401,7 @@ namespace LibraryDBMS {
         public delegate void tblStudentRowChangeEventHandler(object sender, tblStudentRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void viewUserInfoRowChangeEventHandler(object sender, viewUserInfoRowChangeEvent e);
+        public delegate void viewUserRoleRowChangeEventHandler(object sender, viewUserRoleRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void viewBookRowChangeEventHandler(object sender, viewBookRowChangeEvent e);
@@ -773,7 +773,7 @@ namespace LibraryDBMS {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class viewUserInfoDataTable : global::System.Data.TypedTableBase<viewUserInfoRow> {
+        public partial class viewUserRoleDataTable : global::System.Data.TypedTableBase<viewUserRoleRow> {
             
             private global::System.Data.DataColumn columnuserID;
             
@@ -801,8 +801,8 @@ namespace LibraryDBMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoDataTable() {
-                this.TableName = "tblUser";
+            public viewUserRoleDataTable() {
+                this.TableName = "viewUserRole";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -810,7 +810,7 @@ namespace LibraryDBMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal viewUserInfoDataTable(global::System.Data.DataTable table) {
+            internal viewUserRoleDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -827,7 +827,7 @@ namespace LibraryDBMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected viewUserInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected viewUserRoleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -939,34 +939,34 @@ namespace LibraryDBMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRow this[int index] {
+            public viewUserRoleRow this[int index] {
                 get {
-                    return ((viewUserInfoRow)(this.Rows[index]));
+                    return ((viewUserRoleRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewUserInfoRowChangeEventHandler viewUserInfoRowChanging;
+            public event viewUserRoleRowChangeEventHandler viewUserRoleRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewUserInfoRowChangeEventHandler viewUserInfoRowChanged;
+            public event viewUserRoleRowChangeEventHandler viewUserRoleRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewUserInfoRowChangeEventHandler viewUserInfoRowDeleting;
+            public event viewUserRoleRowChangeEventHandler viewUserRoleRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewUserInfoRowChangeEventHandler viewUserInfoRowDeleted;
+            public event viewUserRoleRowChangeEventHandler viewUserRoleRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddviewUserInfoRow(viewUserInfoRow row) {
+            public void AddviewUserRoleRow(viewUserRoleRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRow AddviewUserInfoRow(string userID, string username, string isActive, string roleName, string firstName, string lastName, string gender, string dob, string addr, string tel, string email, string dateAdded) {
-                viewUserInfoRow rowviewUserInfoRow = ((viewUserInfoRow)(this.NewRow()));
+            public viewUserRoleRow AddviewUserRoleRow(string userID, string username, string isActive, string roleName, string firstName, string lastName, string gender, string dob, string addr, string tel, string email, string dateAdded) {
+                viewUserRoleRow rowviewUserRoleRow = ((viewUserRoleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         userID,
                         username,
@@ -980,22 +980,22 @@ namespace LibraryDBMS {
                         tel,
                         email,
                         dateAdded};
-                rowviewUserInfoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowviewUserInfoRow);
-                return rowviewUserInfoRow;
+                rowviewUserRoleRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowviewUserRoleRow);
+                return rowviewUserRoleRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRow FindByuserID(string userID) {
-                return ((viewUserInfoRow)(this.Rows.Find(new object[] {
+            public viewUserRoleRow FindByuserID(string userID) {
+                return ((viewUserRoleRow)(this.Rows.Find(new object[] {
                             userID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                viewUserInfoDataTable cln = ((viewUserInfoDataTable)(base.Clone()));
+                viewUserRoleDataTable cln = ((viewUserRoleDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1003,7 +1003,7 @@ namespace LibraryDBMS {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new viewUserInfoDataTable();
+                return new viewUserRoleDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1054,38 +1054,32 @@ namespace LibraryDBMS {
                                 this.columnuserID}, true));
                 this.columnuserID.AllowDBNull = false;
                 this.columnuserID.Unique = true;
-                this.ExtendedProperties.Add("Generator_RowClassName", "viewUserInfoRow");
-                this.ExtendedProperties.Add("Generator_RowEvArgName", "viewUserInfoRowChangeEvent");
-                this.ExtendedProperties.Add("Generator_RowEvHandlerName", "viewUserInfoRowChangeEventHandler");
-                this.ExtendedProperties.Add("Generator_TableClassName", "viewUserInfoDataTable");
-                this.ExtendedProperties.Add("Generator_TableVarName", "tableviewUserInfo");
-                this.ExtendedProperties.Add("Generator_UserTableName", "tblUser");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRow NewviewUserInfoRow() {
-                return ((viewUserInfoRow)(this.NewRow()));
+            public viewUserRoleRow NewviewUserRoleRow() {
+                return ((viewUserRoleRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new viewUserInfoRow(builder);
+                return new viewUserRoleRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(viewUserInfoRow);
+                return typeof(viewUserRoleRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.viewUserInfoRowChanged != null)) {
-                    this.viewUserInfoRowChanged(this, new viewUserInfoRowChangeEvent(((viewUserInfoRow)(e.Row)), e.Action));
+                if ((this.viewUserRoleRowChanged != null)) {
+                    this.viewUserRoleRowChanged(this, new viewUserRoleRowChangeEvent(((viewUserRoleRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1093,8 +1087,8 @@ namespace LibraryDBMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.viewUserInfoRowChanging != null)) {
-                    this.viewUserInfoRowChanging(this, new viewUserInfoRowChangeEvent(((viewUserInfoRow)(e.Row)), e.Action));
+                if ((this.viewUserRoleRowChanging != null)) {
+                    this.viewUserRoleRowChanging(this, new viewUserRoleRowChangeEvent(((viewUserRoleRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1102,8 +1096,8 @@ namespace LibraryDBMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.viewUserInfoRowDeleted != null)) {
-                    this.viewUserInfoRowDeleted(this, new viewUserInfoRowChangeEvent(((viewUserInfoRow)(e.Row)), e.Action));
+                if ((this.viewUserRoleRowDeleted != null)) {
+                    this.viewUserRoleRowDeleted(this, new viewUserRoleRowChangeEvent(((viewUserRoleRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1111,14 +1105,14 @@ namespace LibraryDBMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.viewUserInfoRowDeleting != null)) {
-                    this.viewUserInfoRowDeleting(this, new viewUserInfoRowChangeEvent(((viewUserInfoRow)(e.Row)), e.Action));
+                if ((this.viewUserRoleRowDeleting != null)) {
+                    this.viewUserRoleRowDeleting(this, new viewUserRoleRowChangeEvent(((viewUserRoleRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveviewUserInfoRow(viewUserInfoRow row) {
+            public void RemoveviewUserRoleRow(viewUserRoleRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1145,7 +1139,7 @@ namespace LibraryDBMS {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "viewUserInfoDataTable";
+                attribute2.FixedValue = "viewUserRoleDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2675,25 +2669,25 @@ namespace LibraryDBMS {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class viewUserInfoRow : global::System.Data.DataRow {
+        public partial class viewUserRoleRow : global::System.Data.DataRow {
             
-            private viewUserInfoDataTable tableviewUserInfo;
+            private viewUserRoleDataTable tableviewUserRole;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal viewUserInfoRow(global::System.Data.DataRowBuilder rb) : 
+            internal viewUserRoleRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableviewUserInfo = ((viewUserInfoDataTable)(this.Table));
+                this.tableviewUserRole = ((viewUserRoleDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string userID {
                 get {
-                    return ((string)(this[this.tableviewUserInfo.userIDColumn]));
+                    return ((string)(this[this.tableviewUserRole.userIDColumn]));
                 }
                 set {
-                    this[this.tableviewUserInfo.userIDColumn] = value;
+                    this[this.tableviewUserRole.userIDColumn] = value;
                 }
             }
             
@@ -2702,14 +2696,14 @@ namespace LibraryDBMS {
             public string username {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.usernameColumn]));
+                        return ((string)(this[this.tableviewUserRole.usernameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'username\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'username\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.usernameColumn] = value;
+                    this[this.tableviewUserRole.usernameColumn] = value;
                 }
             }
             
@@ -2718,14 +2712,14 @@ namespace LibraryDBMS {
             public string isActive {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.isActiveColumn]));
+                        return ((string)(this[this.tableviewUserRole.isActiveColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'isActive\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'isActive\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.isActiveColumn] = value;
+                    this[this.tableviewUserRole.isActiveColumn] = value;
                 }
             }
             
@@ -2734,14 +2728,14 @@ namespace LibraryDBMS {
             public string roleName {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.roleNameColumn]));
+                        return ((string)(this[this.tableviewUserRole.roleNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'roleName\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'roleName\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.roleNameColumn] = value;
+                    this[this.tableviewUserRole.roleNameColumn] = value;
                 }
             }
             
@@ -2750,14 +2744,14 @@ namespace LibraryDBMS {
             public string firstName {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.firstNameColumn]));
+                        return ((string)(this[this.tableviewUserRole.firstNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'firstName\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'firstName\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.firstNameColumn] = value;
+                    this[this.tableviewUserRole.firstNameColumn] = value;
                 }
             }
             
@@ -2766,14 +2760,14 @@ namespace LibraryDBMS {
             public string lastName {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.lastNameColumn]));
+                        return ((string)(this[this.tableviewUserRole.lastNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'lastName\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'lastName\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.lastNameColumn] = value;
+                    this[this.tableviewUserRole.lastNameColumn] = value;
                 }
             }
             
@@ -2782,14 +2776,14 @@ namespace LibraryDBMS {
             public string gender {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.genderColumn]));
+                        return ((string)(this[this.tableviewUserRole.genderColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gender\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'gender\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.genderColumn] = value;
+                    this[this.tableviewUserRole.genderColumn] = value;
                 }
             }
             
@@ -2798,14 +2792,14 @@ namespace LibraryDBMS {
             public string dob {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.dobColumn]));
+                        return ((string)(this[this.tableviewUserRole.dobColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.dobColumn] = value;
+                    this[this.tableviewUserRole.dobColumn] = value;
                 }
             }
             
@@ -2814,14 +2808,14 @@ namespace LibraryDBMS {
             public string addr {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.addrColumn]));
+                        return ((string)(this[this.tableviewUserRole.addrColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'addr\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'addr\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.addrColumn] = value;
+                    this[this.tableviewUserRole.addrColumn] = value;
                 }
             }
             
@@ -2830,14 +2824,14 @@ namespace LibraryDBMS {
             public string tel {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.telColumn]));
+                        return ((string)(this[this.tableviewUserRole.telColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'tel\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'tel\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.telColumn] = value;
+                    this[this.tableviewUserRole.telColumn] = value;
                 }
             }
             
@@ -2846,14 +2840,14 @@ namespace LibraryDBMS {
             public string email {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.emailColumn]));
+                        return ((string)(this[this.tableviewUserRole.emailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.emailColumn] = value;
+                    this[this.tableviewUserRole.emailColumn] = value;
                 }
             }
             
@@ -2862,147 +2856,147 @@ namespace LibraryDBMS {
             public string dateAdded {
                 get {
                     try {
-                        return ((string)(this[this.tableviewUserInfo.dateAddedColumn]));
+                        return ((string)(this[this.tableviewUserRole.dateAddedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dateAdded\' in table \'tblUser\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dateAdded\' in table \'viewUserRole\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewUserInfo.dateAddedColumn] = value;
+                    this[this.tableviewUserRole.dateAddedColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsusernameNull() {
-                return this.IsNull(this.tableviewUserInfo.usernameColumn);
+                return this.IsNull(this.tableviewUserRole.usernameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetusernameNull() {
-                this[this.tableviewUserInfo.usernameColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.usernameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsisActiveNull() {
-                return this.IsNull(this.tableviewUserInfo.isActiveColumn);
+                return this.IsNull(this.tableviewUserRole.isActiveColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetisActiveNull() {
-                this[this.tableviewUserInfo.isActiveColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.isActiveColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsroleNameNull() {
-                return this.IsNull(this.tableviewUserInfo.roleNameColumn);
+                return this.IsNull(this.tableviewUserRole.roleNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetroleNameNull() {
-                this[this.tableviewUserInfo.roleNameColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.roleNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsfirstNameNull() {
-                return this.IsNull(this.tableviewUserInfo.firstNameColumn);
+                return this.IsNull(this.tableviewUserRole.firstNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetfirstNameNull() {
-                this[this.tableviewUserInfo.firstNameColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.firstNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IslastNameNull() {
-                return this.IsNull(this.tableviewUserInfo.lastNameColumn);
+                return this.IsNull(this.tableviewUserRole.lastNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetlastNameNull() {
-                this[this.tableviewUserInfo.lastNameColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.lastNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsgenderNull() {
-                return this.IsNull(this.tableviewUserInfo.genderColumn);
+                return this.IsNull(this.tableviewUserRole.genderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetgenderNull() {
-                this[this.tableviewUserInfo.genderColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.genderColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsdobNull() {
-                return this.IsNull(this.tableviewUserInfo.dobColumn);
+                return this.IsNull(this.tableviewUserRole.dobColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetdobNull() {
-                this[this.tableviewUserInfo.dobColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.dobColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsaddrNull() {
-                return this.IsNull(this.tableviewUserInfo.addrColumn);
+                return this.IsNull(this.tableviewUserRole.addrColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetaddrNull() {
-                this[this.tableviewUserInfo.addrColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.addrColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IstelNull() {
-                return this.IsNull(this.tableviewUserInfo.telColumn);
+                return this.IsNull(this.tableviewUserRole.telColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SettelNull() {
-                this[this.tableviewUserInfo.telColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.telColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsemailNull() {
-                return this.IsNull(this.tableviewUserInfo.emailColumn);
+                return this.IsNull(this.tableviewUserRole.emailColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetemailNull() {
-                this[this.tableviewUserInfo.emailColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.emailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsdateAddedNull() {
-                return this.IsNull(this.tableviewUserInfo.dateAddedColumn);
+                return this.IsNull(this.tableviewUserRole.dateAddedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetdateAddedNull() {
-                this[this.tableviewUserInfo.dateAddedColumn] = global::System.Convert.DBNull;
+                this[this.tableviewUserRole.dateAddedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4136,22 +4130,22 @@ namespace LibraryDBMS {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class viewUserInfoRowChangeEvent : global::System.EventArgs {
+        public class viewUserRoleRowChangeEvent : global::System.EventArgs {
             
-            private viewUserInfoRow eventRow;
+            private viewUserRoleRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRowChangeEvent(viewUserInfoRow row, global::System.Data.DataRowAction action) {
+            public viewUserRoleRowChangeEvent(viewUserRoleRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewUserInfoRow Row {
+            public viewUserRoleRow Row {
                 get {
                     return this.eventRow;
                 }

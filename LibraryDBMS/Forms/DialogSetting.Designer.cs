@@ -36,34 +36,34 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbAutoUpdate = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbSidebarCollapse = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbAutoStartup = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbStartInFullscreen = new LibraryDBMS.CustomControls.RJToggleButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.cbStartupForm = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxImport = new System.Windows.Forms.GroupBox();
             this.btnBackup = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxExport = new System.Windows.Forms.GroupBox();
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxLogin = new System.Windows.Forms.GroupBox();
             this.btnLoginHistory = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbAutoUpdate = new LibraryDBMS.CustomControls.RJToggleButton();
             this.pTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBoxImport.SuspendLayout();
+            this.groupBoxExport.SuspendLayout();
+            this.groupBoxLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pTitleBar
@@ -170,6 +170,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Startup|Update";
             // 
+            // tbAutoUpdate
+            // 
+            this.tbAutoUpdate.AutoSize = true;
+            this.tbAutoUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbAutoUpdate.Location = new System.Drawing.Point(343, 172);
+            this.tbAutoUpdate.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tbAutoUpdate.Name = "tbAutoUpdate";
+            this.tbAutoUpdate.OffBackColor = System.Drawing.Color.DarkGray;
+            this.tbAutoUpdate.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tbAutoUpdate.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.tbAutoUpdate.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tbAutoUpdate.Size = new System.Drawing.Size(45, 22);
+            this.tbAutoUpdate.TabIndex = 4;
+            this.tbAutoUpdate.UseVisualStyleBackColor = true;
+            // 
             // tbSidebarCollapse
             // 
             this.tbSidebarCollapse.AutoSize = true;
@@ -214,6 +229,16 @@
             this.tbStartInFullscreen.Size = new System.Drawing.Size(45, 22);
             this.tbStartInFullscreen.TabIndex = 2;
             this.tbStartInFullscreen.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 172);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(290, 22);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Auto update application in background:";
             // 
             // cbStartupForm
             // 
@@ -270,22 +295,22 @@
             this.label1.TabIndex = 43;
             this.label1.Text = "Default startup page:";
             // 
-            // groupBox2
+            // groupBoxImport
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnBackup);
-            this.groupBox2.Controls.Add(this.btnImport);
-            this.groupBox2.Controls.Add(this.btnRestore);
-            this.groupBox2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(15, 408);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(556, 103);
-            this.groupBox2.TabIndex = 42;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Import|Backup|Restore";
+            this.groupBoxImport.Controls.Add(this.btnBackup);
+            this.groupBoxImport.Controls.Add(this.btnImport);
+            this.groupBoxImport.Controls.Add(this.btnRestore);
+            this.groupBoxImport.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxImport.Location = new System.Drawing.Point(15, 408);
+            this.groupBoxImport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxImport.Name = "groupBoxImport";
+            this.groupBoxImport.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxImport.Size = new System.Drawing.Size(556, 103);
+            this.groupBoxImport.TabIndex = 42;
+            this.groupBoxImport.TabStop = false;
+            this.groupBoxImport.Text = "Import|Backup|Restore";
             // 
             // btnBackup
             // 
@@ -350,22 +375,22 @@
             this.btnRestore.UseVisualStyleBackColor = false;
             this.btnRestore.Click += new System.EventHandler(this.Button_Click);
             // 
-            // groupBox3
+            // groupBoxExport
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxExport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.cbTable);
-            this.groupBox3.Controls.Add(this.btnExport);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(15, 297);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(556, 103);
-            this.groupBox3.TabIndex = 42;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Export to Excel (.xlsx)";
+            this.groupBoxExport.Controls.Add(this.cbTable);
+            this.groupBoxExport.Controls.Add(this.btnExport);
+            this.groupBoxExport.Controls.Add(this.label3);
+            this.groupBoxExport.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxExport.Location = new System.Drawing.Point(15, 297);
+            this.groupBoxExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxExport.Name = "groupBoxExport";
+            this.groupBoxExport.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxExport.Size = new System.Drawing.Size(556, 103);
+            this.groupBoxExport.TabIndex = 42;
+            this.groupBoxExport.TabStop = false;
+            this.groupBoxExport.Text = "Export to Excel (.xlsx)";
             // 
             // cbTable
             // 
@@ -413,21 +438,21 @@
             this.label3.TabIndex = 43;
             this.label3.Text = "Select Table:";
             // 
-            // groupBox4
+            // groupBoxLogin
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnLoginHistory);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(15, 519);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(556, 78);
-            this.groupBox4.TabIndex = 42;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Login History";
+            this.groupBoxLogin.Controls.Add(this.btnLoginHistory);
+            this.groupBoxLogin.Controls.Add(this.label4);
+            this.groupBoxLogin.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxLogin.Location = new System.Drawing.Point(15, 519);
+            this.groupBoxLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxLogin.Name = "groupBoxLogin";
+            this.groupBoxLogin.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBoxLogin.Size = new System.Drawing.Size(556, 78);
+            this.groupBoxLogin.TabIndex = 42;
+            this.groupBoxLogin.TabStop = false;
+            this.groupBoxLogin.Text = "Login History";
             // 
             // btnLoginHistory
             // 
@@ -502,31 +527,6 @@
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.Button_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 172);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(290, 22);
-            this.label7.TabIndex = 43;
-            this.label7.Text = "Auto update application in background:";
-            // 
-            // tbAutoUpdate
-            // 
-            this.tbAutoUpdate.AutoSize = true;
-            this.tbAutoUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbAutoUpdate.Location = new System.Drawing.Point(343, 172);
-            this.tbAutoUpdate.MinimumSize = new System.Drawing.Size(45, 22);
-            this.tbAutoUpdate.Name = "tbAutoUpdate";
-            this.tbAutoUpdate.OffBackColor = System.Drawing.Color.DarkGray;
-            this.tbAutoUpdate.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.tbAutoUpdate.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.tbAutoUpdate.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tbAutoUpdate.Size = new System.Drawing.Size(45, 22);
-            this.tbAutoUpdate.TabIndex = 4;
-            this.tbAutoUpdate.UseVisualStyleBackColor = true;
-            // 
             // DialogSetting
             // 
             this.AcceptButton = this.btnCancel;
@@ -534,9 +534,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(586, 689);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxExport);
+            this.Controls.Add(this.groupBoxLogin);
+            this.Controls.Add(this.groupBoxImport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRestart);
@@ -554,11 +554,11 @@
             this.pTitleBar.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxImport.ResumeLayout(false);
+            this.groupBoxExport.ResumeLayout(false);
+            this.groupBoxExport.PerformLayout();
+            this.groupBoxLogin.ResumeLayout(false);
+            this.groupBoxLogin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -577,7 +577,7 @@
         private System.Windows.Forms.ComboBox cbStartupForm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxImport;
         private CustomControls.RJToggleButton tbStartInFullscreen;
         private CustomControls.RJToggleButton tbAutoStartup;
         private System.Windows.Forms.Label label5;
@@ -586,12 +586,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnRestore;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxExport;
         private System.Windows.Forms.ComboBox cbTable;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnImport;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxLogin;
         private System.Windows.Forms.Button btnLoginHistory;
         private System.Windows.Forms.Label label4;
         private CustomControls.RJToggleButton tbAutoUpdate;

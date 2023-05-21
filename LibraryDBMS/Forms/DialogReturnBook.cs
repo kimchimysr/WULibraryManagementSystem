@@ -8,15 +8,17 @@ namespace LibraryDBMS.Forms
 {
     public partial class DialogReturnBook : Form
     {
+        private readonly FrmMainMenu frmMainMenu;
         private readonly FrmManageBorrowBook frmBorrowBook;
         private readonly DataTable borrow;
-        public DialogReturnBook(FrmManageBorrowBook frm, DataTable _borrow)
+        public DialogReturnBook(FrmMainMenu frmMainMenu,FrmManageBorrowBook frm, DataTable _borrow)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.DragFormWithControlMouseDown(this, lblHeader);
             frmBorrowBook = frm;
             borrow = _borrow;
+            this.frmMainMenu = frmMainMenu;
             PopulateFields();
         }
 
@@ -86,6 +88,7 @@ namespace LibraryDBMS.Forms
                             dtpReturnDate.Text.ToString() : string.Empty;
                         string fine = txtFine.Text.Trim();
                         string status = (cbStatus.SelectedIndex + 1).ToString();
+                        string userID = frmMainMenu.user.Rows[0]["userID"].ToString();
                         List<string> updateStatus = new List<string>
                             {
                                 borrowID,
@@ -96,7 +99,7 @@ namespace LibraryDBMS.Forms
                                 dateReturned,
                                 fine,
                                 status,
-                                dateReturned
+                                userID
                             };
                         if (HasAnyChanges())
                         {

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Windows.Forms;
-using DocumentFormat.OpenXml.Drawing.Charts;
-using DocumentFormat.OpenXml.Wordprocessing;
 using LibraryDBMS.Libs;
 
 namespace LibraryDBMS.Forms
@@ -37,15 +34,32 @@ namespace LibraryDBMS.Forms
                  "\n* Delete Button (Alt + D)" +
                  "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGridView();
+            SetUserPermission();
             btnPrint.Enabled = dgvBookList.Rows.Count > 0 ? true : false;
+        }
+
+        private void SetUserPermission()
+        {
+            if (frmMainMenu.user.Rows[0]["roleName"].ToString().ToLower() == "viewer")
+                Utils.SetControlVisibility(false, btnAdd,btnEdit,btnDelete,btnImport);
+            else
+                Utils.SetControlVisibility(true, btnAdd, btnEdit, btnDelete,btnImport);
         }
 
         internal void PopulateDataGridView()
         {
             LibModule.FillDataGrid("viewBooks", dgvBookList, "bookID");
-            lblBookCount.Text = "Total Books: " +
-                    LibModule.ExecuteScalarQuery("SELECT SUM(qty) FROM tblBooks;");
-            lblTitleCount.Text = "Total Titles: " +
+
+
+            lblBookCount.Text = (Convert.ToInt32(LibModule.ExecuteScalarQuery
+                ("SELECT IFNULL(SUM(qty),0) FROM tblBooks;")) <= 1 )  ? "Total Book: " +
+                    LibModule.ExecuteScalarQuery("SELECT IFNULL(SUM(qty),0) FROM tblBooks;") :
+                    "Total Books: " + LibModule.ExecuteScalarQuery
+                    ("SELECT IFNULL(SUM(qty),0) FROM tblBooks;") ;
+            lblTitleCount.Text = (Convert.ToInt32(LibModule.ExecuteScalarQuery
+                ("SELECT COUNT(bookID) FROM tblBooks;")) <= 1) ? "Total Titles: " +
+                    LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;") :
+                    "Total Titles: " +
                     LibModule.ExecuteScalarQuery("SELECT COUNT(bookID) FROM tblBooks;");
             lblRowsCount.Text = $"Display Result: {dgvBookList.Rows.Count}";
             btnEdit.Enabled = false;
@@ -112,12 +126,12 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnAdd":
-                    var dialogAddEditBook = new DialogAddEditBook(this);
+                    var dialogAddEditBook = new DialogAddEditBook(frmMainMenu, this);
                     Utils.BlurEffect.ShowDialogWithBlurEffect(dialogAddEditBook, frmMainMenu);
                     break;
                 case "btnEdit":
                     var frmAddEditBook =
-                        new DialogAddEditBook(this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
+                        new DialogAddEditBook(frmMainMenu, this, LibModule.GetSingleRecordFromDB("tblBooks", "bookID", selected.bookID));
                     Utils.BlurEffect.ShowDialogWithBlurEffect(frmAddEditBook, frmMainMenu);
                     break;
                 case "btnDelete":
@@ -133,6 +147,12 @@ namespace LibraryDBMS.Forms
                     break;
                 case "btnRefresh":
                     PopulateDataGridView();
+                    break;
+                case "btnImport":
+                    Utils.ImportExcelDataIntoDatabase();
+                    break;
+                case "btnExport":
+                    Utils.ExportDatabaseTableToExcel("tblBooks");
                     break;
             }
             btnPrint.Enabled = dgvBookList.Rows.Count > 0 ? true : false;
@@ -167,7 +187,7 @@ namespace LibraryDBMS.Forms
             }
         }
 
-        private void dtpFromAndToDate_ValueChanged(object sender,EventArgs e)
+        private void DtpFromAndToDate_ValueChanged(object sender,EventArgs e)
         {
             if(dtpFromDate.Value > dtpToDate.Value && dtpFromDate.Value < DateTime.Now)
             {

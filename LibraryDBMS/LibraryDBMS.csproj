@@ -150,11 +150,29 @@
     <Compile Include="CustomControls\RJToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\DialogResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogResetPassword.Designer.cs">
+      <DependentUpon>DialogResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogChangePassword.Designer.cs">
+      <DependentUpon>DialogChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DialogAddEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DialogAddEditBook.Designer.cs">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DialogAddEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DialogAddEditUser.designer.cs">
+      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DialogDatabaseCreationMode.cs">
       <SubType>Form</SubType>
@@ -252,11 +270,23 @@
     <Compile Include="Forms\FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmLogin.designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmMainMenu.Designer.cs">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmManageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageUser.Designer.cs">
+      <DependentUpon>FrmManageUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmNotification.cs">
       <SubType>Form</SubType>
@@ -335,8 +365,17 @@
     <Compile Include="Libs\Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\DialogResetPassword.resx">
+      <DependentUpon>DialogResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogChangePassword.resx">
+      <DependentUpon>DialogChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogAddEditBook.resx">
       <DependentUpon>DialogAddEditBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DialogAddEditUser.resx">
+      <DependentUpon>DialogAddEditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogDatabaseCreationMode.resx">
       <DependentUpon>DialogDatabaseCreationMode.cs</DependentUpon>
@@ -377,6 +416,9 @@
     <EmbeddedResource Include="Forms\FrmBlurScreen.resx">
       <DependentUpon>FrmBlurScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageBorrowBook.resx">
       <DependentUpon>FrmManageBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DialogViewDetail.resx">
       <DependentUpon>DialogViewDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageUser.resx">
+      <DependentUpon>FrmManageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmNotification.resx">
       <DependentUpon>FrmNotification.cs</DependentUpon>
@@ -482,6 +527,9 @@
   <ItemGroup>
     <None Include="Resources\add_database_26px.png" />
     <None Include="Resources\database_administrator_26px.png" />
+    <None Include="Resources\key_32px.png" />
+    <None Include="Resources\import_32px.png" />
+    <None Include="Resources\export_26px.png" />
     <Content Include="Resources\library.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -539,6 +587,9 @@
     <None Include="Resources\logo_wu.png" />
     <None Include="Resources\lib_logo.png" />
     <Content Include="lib_logo.ico" />
+    <None Include="Resources\login_26px.png" />
+    <None Include="Resources\password_key_26px.png" />
+    <None Include="Resources\xls_export_32px.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

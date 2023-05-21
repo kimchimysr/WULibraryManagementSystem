@@ -43,6 +43,7 @@
             this.dateDue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateReturned = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.overdueFine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
@@ -105,7 +106,8 @@
             this.dateLoan,
             this.dateDue,
             this.dateReturned,
-            this.overdueFine});
+            this.overdueFine,
+            this.username});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,6 +226,13 @@
             this.overdueFine.Name = "overdueFine";
             this.overdueFine.ReadOnly = true;
             this.overdueFine.Width = 115;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Username";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
             // 
             // label4
             // 
@@ -471,7 +480,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(250, 60);
             this.btnAdd.TabIndex = 10;
-            this.btnAdd.Text = "  &Add";
+            this.btnAdd.Text = "  &Borrow Book";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -533,7 +542,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(250, 60);
             this.btnEdit.TabIndex = 11;
-            this.btnEdit.Text = "  &Edit";
+            this.btnEdit.Text = "  &Return Book";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -644,6 +653,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label lblRowsCount;
+        private System.Windows.Forms.Panel pShortcuts;
         private System.Windows.Forms.DataGridViewTextBoxColumn borrowID;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookID;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
@@ -654,6 +664,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateReturned;
         private System.Windows.Forms.DataGridViewTextBoxColumn overdueFine;
-        private System.Windows.Forms.Panel pShortcuts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
     }
 }

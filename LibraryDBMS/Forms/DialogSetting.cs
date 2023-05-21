@@ -31,7 +31,16 @@ namespace LibraryDBMS.Forms
             Utils.FillComboBox(cbTable, true, "All", "tblBooks", "tblBookCategories", "tblBorrows", "tblLoanStatus",
                 "tblLogs", "tblStudents", "tblUser", "tblUserLogs", "viewOverview");
             AppliedUserSetting();
+            SetUserPermission();
             ResumeLayout();
+        }
+
+        private void SetUserPermission()
+        {
+            if (mainMenu.user.Rows[0]["roleName"].ToString().ToLower() == "admin")
+                Utils.SetControlVisibility(true, groupBoxImport, groupBoxExport, groupBoxLogin);
+            else
+                Utils.SetControlVisibility(false, groupBoxImport, groupBoxExport, groupBoxLogin);
         }
 
         private void Button_Click(object sender, EventArgs e)

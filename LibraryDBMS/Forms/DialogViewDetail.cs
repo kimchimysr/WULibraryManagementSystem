@@ -44,6 +44,19 @@ namespace LibraryDBMS.Forms
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: Female");
                 }
+                else if(datagridvalue =="1" && dgv.Columns[i].HeaderText == "WU Student")
+                {
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: Yes");
+                }
+                else if (datagridvalue == "0" && dgv.Columns[i].HeaderText == "WU Student")
+                {
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: No");
+                }
+                else if (dgv.Columns[i].HeaderText == "Book ID")
+                {
+                    string bookIDNumOnly = dgv.Rows[rowIndex].Cells[i].Value.ToString();
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: {"Book" + bookIDNumOnly.PadLeft(8, '0')}");
+                }
                 else
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");

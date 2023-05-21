@@ -15,8 +15,8 @@ namespace LibraryDBMS.Forms
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
-            InitializeValues();
             frmMainMenu = frm;
+            InitializeValues();
         }
 
         private void InitializeValues()
@@ -34,7 +34,16 @@ namespace LibraryDBMS.Forms
                  "\n* Delete Button (Alt + D)" +
                  "\n* View Information Button (Alt + V)", pShortcuts);
             PopulateDataGrid();
+            SetUserPermission();
             btnPrint.Enabled = dgvBorrowList.RowCount > 0 ? true : false;
+        }
+
+        private void SetUserPermission()
+        {
+            if (frmMainMenu.user.Rows[0]["roleName"].ToString().ToLower() == "viewer")
+                Utils.SetControlVisibility(false, btnAdd, btnEdit, btnDelete);
+            else
+                Utils.SetControlVisibility(true, btnAdd, btnEdit, btnDelete);
         }
 
         internal void PopulateDataGrid()
@@ -124,13 +133,13 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnAdd":
-                    var dialogIssueBook2 = new DialogIssueBook2(this);
+                    var dialogIssueBook2 = new DialogIssueBook2(frmMainMenu, this);
                     Utils.BlurEffect.ShowDialogWithBlurEffect(dialogIssueBook2, frmMainMenu);
                     CheckBookLoanNotificationChanged();
                     break;
                 case "btnEdit":
                     var dialogReturnBook =
-                        new DialogReturnBook(this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
+                        new DialogReturnBook(frmMainMenu, this, LibModule.GetSingleRecordFromDB("viewBorrowedBooks", "borrowID", selected.borrowID));
                     Utils.BlurEffect.ShowDialogWithBlurEffect(dialogReturnBook, frmMainMenu);
                     CheckBookLoanNotificationChanged();
                     break;

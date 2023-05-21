@@ -18,7 +18,8 @@ namespace LibraryDBMS.Forms
 
         private void PopulateDataGridView()
         {
-            LibModule.FillDataGrid("tblUserLogs", dgvLoginList, "userLogID");
+            //LibModule.FillDataGrid("tblUserLogs", dgvLoginList, "userLogID");
+            LibModule.FillDataGrid("SELECT * FROM viewUserLogs;",dgvLoginList);
             lblRowsCount.Text = $"Display Result: {dgvLoginList.Rows.Count}";
         }
 

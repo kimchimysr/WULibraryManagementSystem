@@ -42,6 +42,9 @@
             this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isWUStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.otherStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
@@ -60,6 +63,8 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblRowsCount = new System.Windows.Forms.Label();
             this.pShortcuts = new System.Windows.Forms.Panel();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -108,7 +113,10 @@
             this.year,
             this.major,
             this.tel,
-            this.dateAdded});
+            this.dateAdded,
+            this.isWUStudent,
+            this.username,
+            this.otherStudent});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,7 +126,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStudentList.EnableHeadersVisualStyles = false;
-            this.dgvStudentList.Location = new System.Drawing.Point(15, 92);
+            this.dgvStudentList.Location = new System.Drawing.Point(12, 90);
             this.dgvStudentList.MultiSelect = false;
             this.dgvStudentList.Name = "dgvStudentList";
             this.dgvStudentList.ReadOnly = true;
@@ -206,6 +214,29 @@
             this.dateAdded.Name = "dateAdded";
             this.dateAdded.ReadOnly = true;
             this.dateAdded.Width = 136;
+            // 
+            // isWUStudent
+            // 
+            this.isWUStudent.DataPropertyName = "isWUStudent";
+            this.isWUStudent.HeaderText = "WU Student";
+            this.isWUStudent.Name = "isWUStudent";
+            this.isWUStudent.ReadOnly = true;
+            this.isWUStudent.Width = 140;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Username";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 122;
+            // 
+            // otherStudent
+            // 
+            this.otherStudent.HeaderText = "Other";
+            this.otherStudent.Name = "otherStudent";
+            this.otherStudent.ReadOnly = true;
+            this.otherStudent.Width = 85;
             // 
             // label10
             // 
@@ -479,12 +510,50 @@
             this.pShortcuts.Size = new System.Drawing.Size(33, 34);
             this.pShortcuts.TabIndex = 37;
             // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnExport.Image = global::LibraryDBMS.Properties.Resources.export_26px;
+            this.btnExport.Location = new System.Drawing.Point(1017, 54);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(97, 34);
+            this.btnExport.TabIndex = 38;
+            this.btnExport.Text = " Export";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExport.UseVisualStyleBackColor = false;
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImport.Image = global::LibraryDBMS.Properties.Resources.import_26px;
+            this.btnImport.Location = new System.Drawing.Point(911, 54);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(100, 34);
+            this.btnImport.TabIndex = 39;
+            this.btnImport.Text = " Import";
+            this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImport.UseVisualStyleBackColor = false;
+            // 
             // FrmManageStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.pShortcuts);
             this.Controls.Add(this.lblRowsCount);
             this.Controls.Add(this.btnPrint);
@@ -531,6 +600,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpButtonContainer;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label lblRowsCount;
+        private System.Windows.Forms.Panel pShortcuts;
         private System.Windows.Forms.DataGridViewTextBoxColumn studentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
@@ -539,6 +609,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn major;
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
-        private System.Windows.Forms.Panel pShortcuts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isWUStudent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn otherStudent;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnImport;
     }
 }

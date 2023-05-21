@@ -60,6 +60,7 @@
             this.nudPages = new System.Windows.Forms.NumericUpDown();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.chNoISBN = new System.Windows.Forms.CheckBox();
             this.pTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPages)).BeginInit();
@@ -397,7 +398,7 @@
             this.txtISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(150, 310);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(361, 26);
+            this.txtISBN.Size = new System.Drawing.Size(271, 26);
             this.txtISBN.TabIndex = 6;
             // 
             // label2
@@ -410,6 +411,18 @@
             this.label2.Text = "ISBN:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // chNoISBN
+            // 
+            this.chNoISBN.AutoSize = true;
+            this.chNoISBN.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.chNoISBN.Location = new System.Drawing.Point(427, 312);
+            this.chNoISBN.Name = "chNoISBN";
+            this.chNoISBN.Size = new System.Drawing.Size(84, 26);
+            this.chNoISBN.TabIndex = 46;
+            this.chNoISBN.Text = "No ISBN";
+            this.chNoISBN.UseVisualStyleBackColor = true;
+            this.chNoISBN.CheckedChanged += new System.EventHandler(this.chNoISBN_CheckedChanged);
+            // 
             // DialogAddEditBook
             // 
             this.AcceptButton = this.btnSaveChanges;
@@ -418,6 +431,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(838, 429);
+            this.Controls.Add(this.chNoISBN);
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nudPages);
@@ -495,5 +509,6 @@
         private System.Windows.Forms.NumericUpDown nudPages;
         private System.Windows.Forms.TextBox txtISBN;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chNoISBN;
     }
 }

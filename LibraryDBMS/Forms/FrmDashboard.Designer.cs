@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pStudents = new System.Windows.Forms.Panel();
@@ -269,9 +269,9 @@
             this.lblRole.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRole.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRole.ForeColor = System.Drawing.Color.White;
-            this.lblRole.Location = new System.Drawing.Point(12, 74);
+            this.lblRole.Location = new System.Drawing.Point(12, 82);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(154, 60);
+            this.lblRole.Size = new System.Drawing.Size(154, 51);
             this.lblRole.TabIndex = 4;
             this.lblRole.Text = "Anything";
             this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,7 +314,7 @@
             this.lblUsername.ForeColor = System.Drawing.Color.White;
             this.lblUsername.Location = new System.Drawing.Point(12, 32);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(247, 60);
+            this.lblUsername.Size = new System.Drawing.Size(247, 50);
             this.lblUsername.TabIndex = 4;
             this.lblUsername.Text = "You";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,28 +380,28 @@
             // 
             // chartBookBySubject
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartBookBySubject.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chartBookBySubject.ChartAreas.Add(chartArea3);
             this.tableLayoutPanel1.SetColumnSpan(this.chartBookBySubject, 2);
             this.chartBookBySubject.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartBookBySubject.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chartBookBySubject.Legends.Add(legend3);
             this.chartBookBySubject.Location = new System.Drawing.Point(302, 179);
             this.chartBookBySubject.Margin = new System.Windows.Forms.Padding(15, 10, 14, 11);
             this.chartBookBySubject.Name = "chartBookBySubject";
             this.tableLayoutPanel1.SetRowSpan(this.chartBookBySubject, 3);
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartBookBySubject.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartBookBySubject.Series.Add(series3);
             this.chartBookBySubject.Size = new System.Drawing.Size(545, 488);
             this.chartBookBySubject.TabIndex = 1;
             this.chartBookBySubject.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "Books Count by Subject";
-            this.chartBookBySubject.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Title1";
+            title3.Text = "Books Count by Subject";
+            this.chartBookBySubject.Titles.Add(title3);
             // 
             // pUptime
             // 

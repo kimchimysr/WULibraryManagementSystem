@@ -44,27 +44,30 @@
             this.pages = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.other = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateAdded = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpButtonContainer = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.lblRowsCount = new System.Windows.Forms.Label();
             this.lblBookCount = new System.Windows.Forms.Label();
             this.lblTitleCount = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.cbSearchBy = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSearchValue = new System.Windows.Forms.TextBox();
+            this.pShortcuts = new System.Windows.Forms.Panel();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.pShortcuts = new System.Windows.Forms.Panel();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).BeginInit();
             this.tlpButtonContainer.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +108,7 @@
             this.pages,
             this.qry,
             this.other,
+            this.username,
             this.dateAdded});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -232,6 +236,14 @@
             this.other.ReadOnly = true;
             this.other.Width = 85;
             // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Username";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
+            this.username.Width = 122;
+            // 
             // dateAdded
             // 
             this.dateAdded.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -260,6 +272,237 @@
             this.tlpButtonContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpButtonContainer.Size = new System.Drawing.Size(1159, 60);
             this.tlpButtonContainer.TabIndex = 25;
+            // 
+            // lblRowsCount
+            // 
+            this.lblRowsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRowsCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F);
+            this.lblRowsCount.Location = new System.Drawing.Point(992, 478);
+            this.lblRowsCount.Name = "lblRowsCount";
+            this.lblRowsCount.Size = new System.Drawing.Size(180, 20);
+            this.lblRowsCount.TabIndex = 28;
+            this.lblRowsCount.Text = "Display Result: ";
+            this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblBookCount
+            // 
+            this.lblBookCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblBookCount.AutoSize = true;
+            this.lblBookCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookCount.Location = new System.Drawing.Point(11, 478);
+            this.lblBookCount.Name = "lblBookCount";
+            this.lblBookCount.Size = new System.Drawing.Size(95, 20);
+            this.lblBookCount.TabIndex = 27;
+            this.lblBookCount.Text = "Total Books: ";
+            this.lblBookCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTitleCount
+            // 
+            this.lblTitleCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTitleCount.AutoSize = true;
+            this.lblTitleCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleCount.Location = new System.Drawing.Point(314, 478);
+            this.lblTitleCount.Name = "lblTitleCount";
+            this.lblTitleCount.Size = new System.Drawing.Size(92, 20);
+            this.lblTitleCount.TabIndex = 27;
+            this.lblTitleCount.Text = "Total Titles: ";
+            this.lblTitleCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpToDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(598, 58);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(98, 26);
+            this.dtpToDate.TabIndex = 6;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.DtpFromAndToDate_ValueChanged);
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.CustomFormat = "yyyy-MM-dd";
+            this.dtpFromDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFromDate.Location = new System.Drawing.Point(494, 58);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(98, 26);
+            this.dtpFromDate.TabIndex = 5;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.DtpFromAndToDate_ValueChanged);
+            // 
+            // cbSearchBy
+            // 
+            this.cbSearchBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.cbSearchBy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbSearchBy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearchBy.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbSearchBy.FormattingEnabled = true;
+            this.cbSearchBy.Location = new System.Drawing.Point(15, 58);
+            this.cbSearchBy.Name = "cbSearchBy";
+            this.cbSearchBy.Size = new System.Drawing.Size(121, 28);
+            this.cbSearchBy.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(594, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 22);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "To Date:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(490, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 22);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "From Date:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(11, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 22);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Search By:";
+            // 
+            // txtSearchValue
+            // 
+            this.txtSearchValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearchValue.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchValue.Location = new System.Drawing.Point(140, 58);
+            this.txtSearchValue.Name = "txtSearchValue";
+            this.txtSearchValue.Size = new System.Drawing.Size(155, 26);
+            this.txtSearchValue.TabIndex = 2;
+            this.txtSearchValue.TextChanged += new System.EventHandler(this.txtSearchValue_TextChanged);
+            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
+            // 
+            // pShortcuts
+            // 
+            this.pShortcuts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.pShortcuts.BackgroundImage = global::LibraryDBMS.Properties.Resources.info_26px;
+            this.pShortcuts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pShortcuts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pShortcuts.Location = new System.Drawing.Point(872, 54);
+            this.pShortcuts.Name = "pShortcuts";
+            this.pShortcuts.Size = new System.Drawing.Size(33, 34);
+            this.pShortcuts.TabIndex = 36;
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnExport.Image = global::LibraryDBMS.Properties.Resources.export_26px;
+            this.btnExport.Location = new System.Drawing.Point(1017, 54);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(97, 34);
+            this.btnExport.TabIndex = 8;
+            this.btnExport.Text = " Export";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImport.Image = global::LibraryDBMS.Properties.Resources.import_26px;
+            this.btnImport.Location = new System.Drawing.Point(911, 54);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(100, 34);
+            this.btnImport.TabIndex = 8;
+            this.btnImport.Text = " Import";
+            this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImport.UseVisualStyleBackColor = false;
+            this.btnImport.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnPrint.Image = global::LibraryDBMS.Properties.Resources.print_26px;
+            this.btnPrint.Location = new System.Drawing.Point(781, 54);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(85, 34);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = " Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSearch.Image = global::LibraryDBMS.Properties.Resources.search_26px;
+            this.btnSearch.Location = new System.Drawing.Point(301, 54);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(100, 34);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.Image = global::LibraryDBMS.Properties.Resources.filter_20px;
+            this.btnFilter.Location = new System.Drawing.Point(704, 54);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(71, 34);
+            this.btnFilter.TabIndex = 7;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnRefresh.Image = global::LibraryDBMS.Properties.Resources.refresh_26px;
+            this.btnRefresh.Location = new System.Drawing.Point(407, 54);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(71, 34);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnAdd
             // 
@@ -344,205 +587,14 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.Button_Click);
             // 
-            // lblRowsCount
-            // 
-            this.lblRowsCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRowsCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F);
-            this.lblRowsCount.Location = new System.Drawing.Point(992, 478);
-            this.lblRowsCount.Name = "lblRowsCount";
-            this.lblRowsCount.Size = new System.Drawing.Size(180, 20);
-            this.lblRowsCount.TabIndex = 28;
-            this.lblRowsCount.Text = "Display Result: ";
-            this.lblRowsCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblBookCount
-            // 
-            this.lblBookCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblBookCount.AutoSize = true;
-            this.lblBookCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBookCount.Location = new System.Drawing.Point(11, 478);
-            this.lblBookCount.Name = "lblBookCount";
-            this.lblBookCount.Size = new System.Drawing.Size(95, 20);
-            this.lblBookCount.TabIndex = 27;
-            this.lblBookCount.Text = "Total Books: ";
-            this.lblBookCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTitleCount
-            // 
-            this.lblTitleCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTitleCount.AutoSize = true;
-            this.lblTitleCount.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleCount.Location = new System.Drawing.Point(314, 478);
-            this.lblTitleCount.Name = "lblTitleCount";
-            this.lblTitleCount.Size = new System.Drawing.Size(92, 20);
-            this.lblTitleCount.TabIndex = 27;
-            this.lblTitleCount.Text = "Total Titles: ";
-            this.lblTitleCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnPrint.Image = global::LibraryDBMS.Properties.Resources.print_26px;
-            this.btnPrint.Location = new System.Drawing.Point(781, 54);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 34);
-            this.btnPrint.TabIndex = 8;
-            this.btnPrint.Text = " Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.CustomFormat = "yyyy-MM-dd";
-            this.dtpToDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(598, 58);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(98, 26);
-            this.dtpToDate.TabIndex = 6;
-            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpFromAndToDate_ValueChanged);
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.CustomFormat = "yyyy-MM-dd";
-            this.dtpFromDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(494, 58);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(98, 26);
-            this.dtpFromDate.TabIndex = 5;
-            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromAndToDate_ValueChanged);
-            // 
-            // cbSearchBy
-            // 
-            this.cbSearchBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.cbSearchBy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSearchBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbSearchBy.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSearchBy.ForeColor = System.Drawing.SystemColors.Control;
-            this.cbSearchBy.FormattingEnabled = true;
-            this.cbSearchBy.Location = new System.Drawing.Point(15, 58);
-            this.cbSearchBy.Name = "cbSearchBy";
-            this.cbSearchBy.Size = new System.Drawing.Size(121, 28);
-            this.cbSearchBy.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSearch.Image = global::LibraryDBMS.Properties.Resources.search_26px;
-            this.btnSearch.Location = new System.Drawing.Point(301, 54);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(100, 34);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(594, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 22);
-            this.label3.TabIndex = 33;
-            this.label3.Text = "To Date:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(490, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 22);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "From Date:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(11, 33);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 22);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Search By:";
-            // 
-            // txtSearchValue
-            // 
-            this.txtSearchValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearchValue.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchValue.Location = new System.Drawing.Point(140, 58);
-            this.txtSearchValue.Name = "txtSearchValue";
-            this.txtSearchValue.Size = new System.Drawing.Size(155, 26);
-            this.txtSearchValue.TabIndex = 2;
-            this.txtSearchValue.TextChanged += new System.EventHandler(this.txtSearchValue_TextChanged);
-            this.txtSearchValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchValue_KeyDown);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFilter.FlatAppearance.BorderSize = 0;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.Image = global::LibraryDBMS.Properties.Resources.filter_20px;
-            this.btnFilter.Location = new System.Drawing.Point(704, 54);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(71, 34);
-            this.btnFilter.TabIndex = 7;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnRefresh.Image = global::LibraryDBMS.Properties.Resources.refresh_26px;
-            this.btnRefresh.Location = new System.Drawing.Point(407, 54);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(71, 34);
-            this.btnRefresh.TabIndex = 4;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // pShortcuts
-            // 
-            this.pShortcuts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.pShortcuts.BackgroundImage = global::LibraryDBMS.Properties.Resources.info_26px;
-            this.pShortcuts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pShortcuts.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pShortcuts.Location = new System.Drawing.Point(872, 54);
-            this.pShortcuts.Name = "pShortcuts";
-            this.pShortcuts.Size = new System.Drawing.Size(33, 34);
-            this.pShortcuts.TabIndex = 36;
-            // 
             // FrmManageBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.pShortcuts);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.dtpFromDate);
@@ -602,6 +654,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pages;
         private System.Windows.Forms.DataGridViewTextBoxColumn qry;
         private System.Windows.Forms.DataGridViewTextBoxColumn other;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateAdded;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnExport;
     }
 }

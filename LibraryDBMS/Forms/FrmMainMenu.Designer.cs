@@ -33,27 +33,11 @@
             this.lblNotificationBadge = new System.Windows.Forms.Label();
             this.btnHomeCollapsed = new System.Windows.Forms.Button();
             this.panelSelected = new System.Windows.Forms.Panel();
-            this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnManageBook = new System.Windows.Forms.Button();
-            this.btnManageStudent = new System.Windows.Forms.Button();
-            this.btnBookLoanReturn = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnRecentActivity = new System.Windows.Forms.Button();
-            this.btnNotification = new System.Windows.Forms.Button();
-            this.btnAbout = new System.Windows.Forms.Button();
-            this.btnAccount = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.pHomeBorder = new System.Windows.Forms.Panel();
-            this.btnHome = new System.Windows.Forms.Button();
             this.pHome = new System.Windows.Forms.Panel();
             this.pTitleBar = new System.Windows.Forms.Panel();
             this.lblAppTitle = new System.Windows.Forms.Label();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.pHeader = new System.Windows.Forms.Panel();
-            this.btnMenu = new System.Windows.Forms.Button();
-            this.btnMenuTitle = new System.Windows.Forms.Button();
             this.pDashboard = new System.Windows.Forms.Panel();
             this.pManageBook = new System.Windows.Forms.Panel();
             this.pManageStudent = new System.Windows.Forms.Panel();
@@ -62,16 +46,39 @@
             this.pNotification = new System.Windows.Forms.Panel();
             this.pContainer = new System.Windows.Forms.Panel();
             this.pRecentActivity = new System.Windows.Forms.Panel();
+            this.pManageUser = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnChangePassword = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
+            this.btnMenuTitle = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnManageBook = new System.Windows.Forms.Button();
+            this.btnManageStudent = new System.Windows.Forms.Button();
+            this.btnBookLoanReturn = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnRecentActivity = new System.Windows.Forms.Button();
+            this.btnManageUser = new System.Windows.Forms.Button();
+            this.btnNotification = new System.Windows.Forms.Button();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.btnSetting = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.pSidebar.SuspendLayout();
             this.pHomeBorder.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.pHeader.SuspendLayout();
             this.pContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pSidebar
             // 
             this.pSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.pSidebar.Controls.Add(this.btnLogout);
             this.pSidebar.Controls.Add(this.lblNotificationBadge);
             this.pSidebar.Controls.Add(this.btnHomeCollapsed);
             this.pSidebar.Controls.Add(this.panelSelected);
@@ -81,8 +88,8 @@
             this.pSidebar.Controls.Add(this.btnBookLoanReturn);
             this.pSidebar.Controls.Add(this.btnReport);
             this.pSidebar.Controls.Add(this.btnRecentActivity);
+            this.pSidebar.Controls.Add(this.btnManageUser);
             this.pSidebar.Controls.Add(this.btnNotification);
-            this.pSidebar.Controls.Add(this.btnAbout);
             this.pSidebar.Controls.Add(this.btnAccount);
             this.pSidebar.Controls.Add(this.btnSetting);
             this.pSidebar.Controls.Add(this.pHomeBorder);
@@ -137,6 +144,265 @@
             this.panelSelected.Size = new System.Drawing.Size(8, 40);
             this.panelSelected.TabIndex = 0;
             this.panelSelected.Visible = false;
+            // 
+            // pHomeBorder
+            // 
+            this.pHomeBorder.BackColor = System.Drawing.Color.White;
+            this.pHomeBorder.Controls.Add(this.btnHome);
+            this.pHomeBorder.Location = new System.Drawing.Point(42, 12);
+            this.pHomeBorder.Name = "pHomeBorder";
+            this.pHomeBorder.Size = new System.Drawing.Size(131, 105);
+            this.pHomeBorder.TabIndex = 1;
+            // 
+            // pHome
+            // 
+            this.pHome.BackColor = System.Drawing.SystemColors.Control;
+            this.pHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pHome.Location = new System.Drawing.Point(214, 75);
+            this.pHome.Name = "pHome";
+            this.pHome.Size = new System.Drawing.Size(1050, 606);
+            this.pHome.TabIndex = 1;
+            // 
+            // pTitleBar
+            // 
+            this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
+            this.pTitleBar.Controls.Add(this.lblAppTitle);
+            this.pTitleBar.Controls.Add(this.btnMinimize);
+            this.pTitleBar.Controls.Add(this.btnMaximize);
+            this.pTitleBar.Controls.Add(this.btnExit);
+            this.pTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.pTitleBar.Name = "pTitleBar";
+            this.pTitleBar.Size = new System.Drawing.Size(1264, 25);
+            this.pTitleBar.TabIndex = 2;
+            // 
+            // lblAppTitle
+            // 
+            this.lblAppTitle.AutoSize = true;
+            this.lblAppTitle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblAppTitle.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblAppTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblAppTitle.Name = "lblAppTitle";
+            this.lblAppTitle.Size = new System.Drawing.Size(209, 20);
+            this.lblAppTitle.TabIndex = 0;
+            this.lblAppTitle.Text = "Library Management System";
+            this.lblAppTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pHeader
+            // 
+            this.pHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.pHeader.Controls.Add(this.panel1);
+            this.pHeader.Controls.Add(this.btnMenu);
+            this.pHeader.Controls.Add(this.btnMenuTitle);
+            this.pHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pHeader.Location = new System.Drawing.Point(214, 25);
+            this.pHeader.Name = "pHeader";
+            this.pHeader.Size = new System.Drawing.Size(1050, 50);
+            this.pHeader.TabIndex = 3;
+            // 
+            // pDashboard
+            // 
+            this.pDashboard.BackColor = System.Drawing.Color.White;
+            this.pDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pDashboard.Location = new System.Drawing.Point(214, 75);
+            this.pDashboard.Name = "pDashboard";
+            this.pDashboard.Size = new System.Drawing.Size(1050, 606);
+            this.pDashboard.TabIndex = 4;
+            // 
+            // pManageBook
+            // 
+            this.pManageBook.BackColor = System.Drawing.Color.White;
+            this.pManageBook.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pManageBook.Location = new System.Drawing.Point(214, 75);
+            this.pManageBook.Name = "pManageBook";
+            this.pManageBook.Size = new System.Drawing.Size(1050, 606);
+            this.pManageBook.TabIndex = 5;
+            // 
+            // pManageStudent
+            // 
+            this.pManageStudent.BackColor = System.Drawing.Color.White;
+            this.pManageStudent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pManageStudent.Location = new System.Drawing.Point(214, 75);
+            this.pManageStudent.Name = "pManageStudent";
+            this.pManageStudent.Size = new System.Drawing.Size(1050, 606);
+            this.pManageStudent.TabIndex = 6;
+            // 
+            // pBookLoanReturn
+            // 
+            this.pBookLoanReturn.BackColor = System.Drawing.Color.White;
+            this.pBookLoanReturn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pBookLoanReturn.Location = new System.Drawing.Point(214, 75);
+            this.pBookLoanReturn.Name = "pBookLoanReturn";
+            this.pBookLoanReturn.Size = new System.Drawing.Size(1050, 606);
+            this.pBookLoanReturn.TabIndex = 7;
+            // 
+            // pReport
+            // 
+            this.pReport.BackColor = System.Drawing.Color.White;
+            this.pReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pReport.Location = new System.Drawing.Point(214, 75);
+            this.pReport.Name = "pReport";
+            this.pReport.Size = new System.Drawing.Size(1050, 606);
+            this.pReport.TabIndex = 8;
+            // 
+            // pNotification
+            // 
+            this.pNotification.BackColor = System.Drawing.Color.White;
+            this.pNotification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pNotification.Location = new System.Drawing.Point(214, 75);
+            this.pNotification.Name = "pNotification";
+            this.pNotification.Size = new System.Drawing.Size(1050, 606);
+            this.pNotification.TabIndex = 10;
+            // 
+            // pContainer
+            // 
+            this.pContainer.Controls.Add(this.pHome);
+            this.pContainer.Controls.Add(this.pDashboard);
+            this.pContainer.Controls.Add(this.pManageBook);
+            this.pContainer.Controls.Add(this.pManageStudent);
+            this.pContainer.Controls.Add(this.pBookLoanReturn);
+            this.pContainer.Controls.Add(this.pReport);
+            this.pContainer.Controls.Add(this.pRecentActivity);
+            this.pContainer.Controls.Add(this.pNotification);
+            this.pContainer.Controls.Add(this.pManageUser);
+            this.pContainer.Controls.Add(this.pHeader);
+            this.pContainer.Controls.Add(this.pSidebar);
+            this.pContainer.Controls.Add(this.pTitleBar);
+            this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pContainer.Location = new System.Drawing.Point(0, 0);
+            this.pContainer.Name = "pContainer";
+            this.pContainer.Size = new System.Drawing.Size(1264, 681);
+            this.pContainer.TabIndex = 0;
+            // 
+            // pRecentActivity
+            // 
+            this.pRecentActivity.BackColor = System.Drawing.Color.White;
+            this.pRecentActivity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pRecentActivity.Location = new System.Drawing.Point(214, 75);
+            this.pRecentActivity.Name = "pRecentActivity";
+            this.pRecentActivity.Size = new System.Drawing.Size(1050, 606);
+            this.pRecentActivity.TabIndex = 11;
+            // 
+            // pManageUser
+            // 
+            this.pManageUser.BackColor = System.Drawing.Color.White;
+            this.pManageUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pManageUser.Location = new System.Drawing.Point(214, 75);
+            this.pManageUser.Name = "pManageUser";
+            this.pManageUser.Size = new System.Drawing.Size(1050, 606);
+            this.pManageUser.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnChangePassword);
+            this.panel1.Controls.Add(this.btnAbout);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(850, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 50);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangePassword.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnChangePassword.FlatAppearance.BorderSize = 0;
+            this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePassword.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnChangePassword.Image = global::LibraryDBMS.Properties.Resources.password_key_26px;
+            this.btnChangePassword.Location = new System.Drawing.Point(117, -3);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnChangePassword.Size = new System.Drawing.Size(36, 50);
+            this.btnChangePassword.TabIndex = 1;
+            this.btnChangePassword.TabStop = false;
+            this.btnChangePassword.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbout.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAbout.Image = global::LibraryDBMS.Properties.Resources.info_26px;
+            this.btnAbout.Location = new System.Drawing.Point(154, -3);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.btnAbout.Size = new System.Drawing.Size(36, 50);
+            this.btnAbout.TabIndex = 1;
+            this.btnAbout.TabStop = false;
+            this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMenu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenu.Image = global::LibraryDBMS.Properties.Resources.menu_26px;
+            this.btnMenu.Location = new System.Drawing.Point(0, 0);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(36, 50);
+            this.btnMenu.TabIndex = 0;
+            this.btnMenu.TabStop = false;
+            this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnMenuTitle
+            // 
+            this.btnMenuTitle.AutoSize = true;
+            this.btnMenuTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnMenuTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMenuTitle.FlatAppearance.BorderSize = 0;
+            this.btnMenuTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnMenuTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.btnMenuTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuTitle.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMenuTitle.Image = global::LibraryDBMS.Properties.Resources.user_shield_26px;
+            this.btnMenuTitle.Location = new System.Drawing.Point(0, 0);
+            this.btnMenuTitle.Name = "btnMenuTitle";
+            this.btnMenuTitle.Size = new System.Drawing.Size(1050, 50);
+            this.btnMenuTitle.TabIndex = 0;
+            this.btnMenuTitle.TabStop = false;
+            this.btnMenuTitle.Text = "  Menu Title";
+            this.btnMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMenuTitle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMenuTitle.UseVisualStyleBackColor = true;
+            this.btnMenuTitle.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLogout.Image = global::LibraryDBMS.Properties.Resources.logout_26px;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(12, 521);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(202, 40);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.TabStop = false;
+            this.btnLogout.Text = "  Logout";
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnDashboard
             // 
@@ -252,6 +518,25 @@
             this.btnRecentActivity.UseVisualStyleBackColor = true;
             this.btnRecentActivity.Click += new System.EventHandler(this.Button_Click);
             // 
+            // btnManageUser
+            // 
+            this.btnManageUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManageUser.FlatAppearance.BorderSize = 0;
+            this.btnManageUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageUser.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageUser.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnManageUser.Image = global::LibraryDBMS.Properties.Resources.user_shield_26px;
+            this.btnManageUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageUser.Location = new System.Drawing.Point(12, 459);
+            this.btnManageUser.Name = "btnManageUser";
+            this.btnManageUser.Size = new System.Drawing.Size(202, 40);
+            this.btnManageUser.TabIndex = 0;
+            this.btnManageUser.TabStop = false;
+            this.btnManageUser.Text = "  Manage User";
+            this.btnManageUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManageUser.UseVisualStyleBackColor = true;
+            this.btnManageUser.Click += new System.EventHandler(this.Button_Click);
+            // 
             // btnNotification
             // 
             this.btnNotification.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -270,27 +555,6 @@
             this.btnNotification.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNotification.UseVisualStyleBackColor = true;
             this.btnNotification.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnAbout.FlatAppearance.BorderSize = 0;
-            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbout.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAbout.Image = global::LibraryDBMS.Properties.Resources.info_26px;
-            this.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbout.Location = new System.Drawing.Point(12, 521);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(202, 40);
-            this.btnAbout.TabIndex = 0;
-            this.btnAbout.TabStop = false;
-            this.btnAbout.Text = "  About";
-            this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.Button_Click);
             // 
             // btnAccount
             // 
@@ -334,15 +598,6 @@
             this.btnSetting.UseVisualStyleBackColor = true;
             this.btnSetting.Click += new System.EventHandler(this.Button_Click);
             // 
-            // pHomeBorder
-            // 
-            this.pHomeBorder.BackColor = System.Drawing.Color.White;
-            this.pHomeBorder.Controls.Add(this.btnHome);
-            this.pHomeBorder.Location = new System.Drawing.Point(42, 12);
-            this.pHomeBorder.Name = "pHomeBorder";
-            this.pHomeBorder.Size = new System.Drawing.Size(131, 105);
-            this.pHomeBorder.TabIndex = 1;
-            // 
             // btnHome
             // 
             this.btnHome.BackgroundImage = global::LibraryDBMS.Properties.Resources.lib_logo;
@@ -365,45 +620,10 @@
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.Button_Click);
             // 
-            // pHome
-            // 
-            this.pHome.BackColor = System.Drawing.SystemColors.Control;
-            this.pHome.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pHome.Location = new System.Drawing.Point(214, 75);
-            this.pHome.Name = "pHome";
-            this.pHome.Size = new System.Drawing.Size(1050, 606);
-            this.pHome.TabIndex = 1;
-            // 
-            // pTitleBar
-            // 
-            this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(97)))), ((int)(((byte)(97)))));
-            this.pTitleBar.Controls.Add(this.lblAppTitle);
-            this.pTitleBar.Controls.Add(this.btnMinimize);
-            this.pTitleBar.Controls.Add(this.btnMaximize);
-            this.pTitleBar.Controls.Add(this.btnExit);
-            this.pTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.pTitleBar.Name = "pTitleBar";
-            this.pTitleBar.Size = new System.Drawing.Size(1264, 25);
-            this.pTitleBar.TabIndex = 2;
-            // 
-            // lblAppTitle
-            // 
-            this.lblAppTitle.AutoSize = true;
-            this.lblAppTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblAppTitle.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblAppTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblAppTitle.Name = "lblAppTitle";
-            this.lblAppTitle.Size = new System.Drawing.Size(209, 20);
-            this.lblAppTitle.TabIndex = 0;
-            this.lblAppTitle.Text = "Library Management System";
-            this.lblAppTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // btnMinimize
             // 
             this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LibraryDBMS.Properties.Resources.subtract_16px;
@@ -418,7 +638,7 @@
             // btnMaximize
             // 
             this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximize.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LibraryDBMS.Properties.Resources.maximize_button_16px;
@@ -434,7 +654,7 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.Red;
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Image = global::LibraryDBMS.Properties.Resources.close_16px;
@@ -445,141 +665,6 @@
             this.btnExit.TabStop = false;
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // pHeader
-            // 
-            this.pHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.pHeader.Controls.Add(this.btnMenu);
-            this.pHeader.Controls.Add(this.btnMenuTitle);
-            this.pHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pHeader.Location = new System.Drawing.Point(214, 25);
-            this.pHeader.Name = "pHeader";
-            this.pHeader.Size = new System.Drawing.Size(1050, 50);
-            this.pHeader.TabIndex = 3;
-            // 
-            // btnMenu
-            // 
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnMenu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btnMenu.FlatAppearance.BorderSize = 0;
-            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenu.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenu.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenu.Image = global::LibraryDBMS.Properties.Resources.menu_26px;
-            this.btnMenu.Location = new System.Drawing.Point(0, 0);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(36, 50);
-            this.btnMenu.TabIndex = 0;
-            this.btnMenu.TabStop = false;
-            this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMenu.UseVisualStyleBackColor = true;
-            this.btnMenu.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // btnMenuTitle
-            // 
-            this.btnMenuTitle.AutoSize = true;
-            this.btnMenuTitle.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnMenuTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMenuTitle.FlatAppearance.BorderSize = 0;
-            this.btnMenuTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnMenuTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.btnMenuTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuTitle.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnMenuTitle.Image = global::LibraryDBMS.Properties.Resources.user_shield_26px;
-            this.btnMenuTitle.Location = new System.Drawing.Point(0, 0);
-            this.btnMenuTitle.Name = "btnMenuTitle";
-            this.btnMenuTitle.Size = new System.Drawing.Size(1050, 50);
-            this.btnMenuTitle.TabIndex = 0;
-            this.btnMenuTitle.TabStop = false;
-            this.btnMenuTitle.Text = "  Menu Title";
-            this.btnMenuTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnMenuTitle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnMenuTitle.UseVisualStyleBackColor = true;
-            this.btnMenuTitle.Click += new System.EventHandler(this.Button_Click);
-            // 
-            // pDashboard
-            // 
-            this.pDashboard.BackColor = System.Drawing.Color.White;
-            this.pDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pDashboard.Location = new System.Drawing.Point(214, 75);
-            this.pDashboard.Name = "pDashboard";
-            this.pDashboard.Size = new System.Drawing.Size(1050, 606);
-            this.pDashboard.TabIndex = 4;
-            // 
-            // pManageBook
-            // 
-            this.pManageBook.BackColor = System.Drawing.Color.White;
-            this.pManageBook.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pManageBook.Location = new System.Drawing.Point(214, 75);
-            this.pManageBook.Name = "pManageBook";
-            this.pManageBook.Size = new System.Drawing.Size(1050, 606);
-            this.pManageBook.TabIndex = 5;
-            // 
-            // pManageStudent
-            // 
-            this.pManageStudent.BackColor = System.Drawing.Color.White;
-            this.pManageStudent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pManageStudent.Location = new System.Drawing.Point(214, 75);
-            this.pManageStudent.Name = "pManageStudent";
-            this.pManageStudent.Size = new System.Drawing.Size(1050, 606);
-            this.pManageStudent.TabIndex = 6;
-            // 
-            // pBookLoanReturn
-            // 
-            this.pBookLoanReturn.BackColor = System.Drawing.Color.White;
-            this.pBookLoanReturn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pBookLoanReturn.Location = new System.Drawing.Point(214, 75);
-            this.pBookLoanReturn.Name = "pBookLoanReturn";
-            this.pBookLoanReturn.Size = new System.Drawing.Size(1050, 606);
-            this.pBookLoanReturn.TabIndex = 7;
-            // 
-            // pReport
-            // 
-            this.pReport.BackColor = System.Drawing.Color.White;
-            this.pReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pReport.Location = new System.Drawing.Point(214, 75);
-            this.pReport.Name = "pReport";
-            this.pReport.Size = new System.Drawing.Size(1050, 606);
-            this.pReport.TabIndex = 8;
-            // 
-            // pNotification
-            // 
-            this.pNotification.BackColor = System.Drawing.Color.White;
-            this.pNotification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pNotification.Location = new System.Drawing.Point(214, 75);
-            this.pNotification.Name = "pNotification";
-            this.pNotification.Size = new System.Drawing.Size(1050, 606);
-            this.pNotification.TabIndex = 10;
-            // 
-            // pContainer
-            // 
-            this.pContainer.Controls.Add(this.pHome);
-            this.pContainer.Controls.Add(this.pDashboard);
-            this.pContainer.Controls.Add(this.pManageBook);
-            this.pContainer.Controls.Add(this.pManageStudent);
-            this.pContainer.Controls.Add(this.pBookLoanReturn);
-            this.pContainer.Controls.Add(this.pReport);
-            this.pContainer.Controls.Add(this.pRecentActivity);
-            this.pContainer.Controls.Add(this.pNotification);
-            this.pContainer.Controls.Add(this.pHeader);
-            this.pContainer.Controls.Add(this.pSidebar);
-            this.pContainer.Controls.Add(this.pTitleBar);
-            this.pContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pContainer.Location = new System.Drawing.Point(0, 0);
-            this.pContainer.Name = "pContainer";
-            this.pContainer.Size = new System.Drawing.Size(1264, 681);
-            this.pContainer.TabIndex = 0;
-            // 
-            // pRecentActivity
-            // 
-            this.pRecentActivity.BackColor = System.Drawing.Color.White;
-            this.pRecentActivity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pRecentActivity.Location = new System.Drawing.Point(214, 75);
-            this.pRecentActivity.Name = "pRecentActivity";
-            this.pRecentActivity.Size = new System.Drawing.Size(1050, 606);
-            this.pRecentActivity.TabIndex = 11;
             // 
             // FrmMainMenu
             // 
@@ -602,6 +687,7 @@
             this.pHeader.ResumeLayout(false);
             this.pHeader.PerformLayout();
             this.pContainer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -638,8 +724,13 @@
         internal System.Windows.Forms.Panel pBookLoanReturn;
         internal System.Windows.Forms.Panel pNotification;
         internal System.Windows.Forms.Panel pRecentActivity;
-        private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Panel pHomeBorder;
         internal System.Windows.Forms.Label lblNotificationBadge;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnAbout;
+        internal System.Windows.Forms.Button btnManageUser;
+        internal System.Windows.Forms.Panel pManageUser;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnChangePassword;
     }
 }

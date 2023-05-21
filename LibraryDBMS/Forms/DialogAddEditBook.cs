@@ -8,6 +8,7 @@ namespace LibraryDBMS.Forms
     public partial class DialogAddEditBook : Form
     {
         #region Global variable
+        private FrmMainMenu frmMainMenu;
         private FrmManageBook frmBook;
         private DataTable book;
         private bool isEditMode;
@@ -15,13 +16,14 @@ namespace LibraryDBMS.Forms
         #endregion
 
         #region Method We write
-        public DialogAddEditBook(FrmManageBook formOpenFromFrmBook,DataTable dataTableUser = null)
+        public DialogAddEditBook(FrmMainMenu frmMainMenu,FrmManageBook formOpenFromFrmBook,DataTable dataTableBook = null)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
-            isEditMode = dataTableUser != null;
+            isEditMode = dataTableBook != null;
             frmBook = formOpenFromFrmBook; 
-            book = dataTableUser;
+            book = dataTableBook;
+            this.frmMainMenu = frmMainMenu;
             InitializeValues();
         }
 
@@ -119,6 +121,7 @@ namespace LibraryDBMS.Forms
                         string Quantity = nudQty.Text.Trim();
                         string CategoryID =
                             CalculateCategoryIDFromDEWEYCode(int.Parse(txtDEWEYCode.Text.Substring(0, 3))).ToString();
+                        string UserID = frmMainMenu.user.Rows[0]["userID"].ToString();
                         string DateAdded = DateTime.Now.ToString("yyyy-MM-dd");
 
                         List<string> book = new List<string>
@@ -134,6 +137,7 @@ namespace LibraryDBMS.Forms
                             Other,
                             Quantity,
                             CategoryID,
+                            UserID,
                             DateAdded
                         };
 
@@ -197,5 +201,11 @@ namespace LibraryDBMS.Forms
             else { return 11; }
         }
         #endregion
+
+        private void chNoISBN_CheckedChanged(object sender, EventArgs e)
+        {
+            txtISBN.Enabled = chNoISBN.Checked ? false : true;
+            txtISBN.Text = chNoISBN.Checked ? "0000000000" : "";
+        }
     }
 }

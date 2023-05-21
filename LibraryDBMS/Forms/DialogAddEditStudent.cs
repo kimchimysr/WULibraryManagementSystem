@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+using DocumentFormat.OpenXml.Office2013.Excel;
 using LibraryDBMS.Libs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LibraryDBMS.Forms
 {
     public partial class DialogAddEditStudent : Form
     {
+        private FrmMainMenu frmMainMenu;
         private FrmManageStudent frmManageStudent;
         private DataTable student;
         private bool isEditMode;
 
         private StudentValidator sv;
 
-        public DialogAddEditStudent(FrmManageStudent frm, DataTable _student = null)
+        public DialogAddEditStudent(FrmMainMenu frmMainMenu,FrmManageStudent frm, DataTable _student = null)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
@@ -23,6 +28,7 @@ namespace LibraryDBMS.Forms
             isEditMode = _student != null;
             frmManageStudent = frm;
             student = _student;
+            this.frmMainMenu = frmMainMenu;
             Utils.FillComboBox(cbYear, false, "1", "2", "3", "4");
             EnableAutoCompleteOnComboBoxMajor();
             if (!isEditMode)
@@ -38,6 +44,7 @@ namespace LibraryDBMS.Forms
                 PopulateFields();
                 btnClear.Visible = false;
                 txtStudentID.ReadOnly = true;
+                chbIsWUStudent.Enabled = false;
             }
         }
 
@@ -53,27 +60,30 @@ namespace LibraryDBMS.Forms
             txtStudentID.Text = student.Rows[0]["studentID"].ToString();
             txtFirstName.Text = student.Rows[0]["firstName"].ToString();
             txtLastName.Text = student.Rows[0]["lastName"].ToString();
-            if (student.Rows[0]["gender"].ToString().Equals("M"))
-                rbMale.Checked = true;
-            else rbFemale.Checked = true;
+            LibModule.SetGender(student.Rows[0]["gender"].ToString(),rbMale,rbFemale,rbMonk);
             cbYear.SelectedItem = student.Rows[0]["year"].ToString();
             cbMajor.Text = student.Rows[0]["major"].ToString();
             txtTel.Text = student.Rows[0]["tel"].ToString();
             dtpDateAdded.Text = student.Rows[0]["dateAdded"].ToString();
+            chbIsWUStudent.Checked = (student.Rows[0]["isWUStudent"].ToString() == "1") ? true : false;
+            txtStudentOther.Text = student.Rows[0]["otherStudent"].ToString();
+            
         }
 
         private bool HasAnyChanges()
         {
-            string gender = rbMale.Checked ? "M" : "F";
+            string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
+            string isWUStudentString = (chbIsWUStudent.Checked) ? "1" : "0";
             if (student.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
                 student.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
                 student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
                 student.Rows[0]["gender"].ToString() != gender ||
                 student.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
                 student.Rows[0]["major"].ToString() != cbMajor.Text.Trim() ||
-                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
+                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim() ||
+                student.Rows[0]["isWUStudent"].ToString() != isWUStudentString ||
+                student.Rows[0]["otherstudent"].ToString() != txtStudentOther.Text.Trim())
                 return true;
-
             return false;
         }
 
@@ -93,6 +103,9 @@ namespace LibraryDBMS.Forms
                         string major = cbMajor.Text.Trim();
                         string telephone = txtTel.Text.Trim();
                         string dateAdded = dtpDateAdded.Text.Trim();
+                        string isWUStudent = (chbIsWUStudent.Checked) ? "1" : "0"; 
+                        string otherStudent = txtStudentOther.Text.Trim(); // data for other text box.
+                        string userID = frmMainMenu.user.Rows[0]["userID"].ToString();
 
                         List<string> borrower = new List<string>
                             {
@@ -103,7 +116,10 @@ namespace LibraryDBMS.Forms
                                 year,
                                 major,
                                 telephone,
-                                dateAdded
+                                dateAdded,
+                            isWUStudent,
+                                otherStudent,
+                                userID
                             };
 
                         if (!isEditMode)
@@ -134,5 +150,13 @@ namespace LibraryDBMS.Forms
                     break;
             }
         }
+
+        private void chbIsWUStudent_CheckedChanged(object sender, EventArgs e)
+        {
+            txtStudentID.ReadOnly = chbIsWUStudent.Checked ? false : true;
+            if(!isEditMode) { txtStudentID.Text = LibModule.GenerateIDForNonWUStudent(); }
+            if(chbIsWUStudent.Checked) { txtStudentID.Clear(); }
+        }
+        
     }
 }

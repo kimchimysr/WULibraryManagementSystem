@@ -1154,8 +1154,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>BorrowBook</DataSetName>
-            <Top>2.08333in</Top>
-            <Left>0.08333in</Left>
+            <Top>3.31765in</Top>
+            <Left>0.08332in</Left>
             <Height>0.75in</Height>
             <Width>7.68907in</Width>
             <Style>
@@ -1197,8 +1197,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.86458in</Top>
-            <Left>2.15183in</Left>
+            <Top>2.0989in</Top>
+            <Left>2.18308in</Left>
             <Height>0.58334in</Height>
             <Width>3.55208in</Width>
             <ZIndex>1</ZIndex>
@@ -1250,8 +1250,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.19791in</Top>
-            <Left>2.15183in</Left>
+            <Top>1.43223in</Top>
+            <Left>2.18308in</Left>
             <Height>0.66667in</Height>
             <Width>3.55208in</Width>
             <ZIndex>2</ZIndex>
@@ -1270,10 +1270,10 @@
             <Source>Embedded</Source>
             <Value>wu_logo</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>0.50269cm</Top>
-            <Left>0.21165cm</Left>
+            <Top>0.41891cm</Top>
+            <Left>8.58175cm</Left>
             <Height>1.15614in</Height>
-            <Width>1.08333in</Width>
+            <Width>0.90625in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1316,8 +1316,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>1.44792in</Top>
-            <Left>2.15183in</Left>
+            <Top>2.68224in</Top>
+            <Left>2.18308in</Left>
             <Height>0.35417in</Height>
             <Width>3.55208in</Width>
             <ZIndex>4</ZIndex>
@@ -1333,10 +1333,10 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>7.27605cm</Height>
+        <Height>10.53468cm</Height>
         <Style />
       </Body>
-      <Width>19.95357cm</Width>
+      <Width>19.94958cm</Width>
       <Page>
         <PageFooter>
           <Height>2.34308cm</Height>

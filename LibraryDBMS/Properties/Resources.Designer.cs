@@ -253,6 +253,16 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap export_26px {
+            get {
+                object obj = ResourceManager.GetObject("export_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap filter_20px {
             get {
                 object obj = ResourceManager.GetObject("filter_20px", resourceCulture);
@@ -283,6 +293,16 @@ namespace LibraryDBMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap import_32px {
+            get {
+                object obj = ResourceManager.GetObject("import_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap info_26px {
             get {
                 object obj = ResourceManager.GetObject("info_26px", resourceCulture);
@@ -296,6 +316,16 @@ namespace LibraryDBMS.Properties {
         public static System.Drawing.Bitmap info_52px {
             get {
                 object obj = ResourceManager.GetObject("info_52px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap key_32px {
+            get {
+                object obj = ResourceManager.GetObject("key_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -317,6 +347,16 @@ namespace LibraryDBMS.Properties {
             get {
                 object obj = ResourceManager.GetObject("library", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap login_26px {
+            get {
+                object obj = ResourceManager.GetObject("login_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -416,6 +456,16 @@ namespace LibraryDBMS.Properties {
         public static System.Drawing.Bitmap notification_26px {
             get {
                 object obj = ResourceManager.GetObject("notification_26px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap password_key_26px {
+            get {
+                object obj = ResourceManager.GetObject("password_key_26px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -616,6 +666,16 @@ namespace LibraryDBMS.Properties {
         public static System.Drawing.Bitmap view_32px {
             get {
                 object obj = ResourceManager.GetObject("view_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap xls_export_32px {
+            get {
+                object obj = ResourceManager.GetObject("xls_export_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

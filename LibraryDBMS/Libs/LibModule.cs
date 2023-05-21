@@ -20,6 +20,8 @@ namespace LibraryDBMS.Libs
         tblLoanStatus,
         tblBorrows,
         tblUser,
+        tblRole,
+        tblUserRole,
         tblUserLogs
     }
 
@@ -46,13 +48,15 @@ namespace LibraryDBMS.Libs
         {
             List<(DBTable Table, string Fields)> dbTables = new List<(DBTable Table, string Fields)>
             {
-                (DBTable.tblBooks, "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
+                (DBTable.tblBooks, "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,userID,dateAdded"),
                 (DBTable.tblBookCategories, "cateID,cateName"),
-                (DBTable.tblStudents, "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
+                (DBTable.tblStudents, "studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent,userID"),
                 (DBTable.tblLoanStatus, "loanStatusID,loanStatusName"),
-                (DBTable.tblBorrows, "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
-                (DBTable.tblUser, "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
-                (DBTable.tblUserLogs, "username,info,dateTime")
+                (DBTable.tblBorrows, "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID,userID"),
+                (DBTable.tblUser, "userID,username,password,isActive,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
+                (DBTable.tblRole, "roleID,roleName"),
+                (DBTable.tblUserRole, "userID,roleID"),
+                (DBTable.tblUserLogs, "userID,info,dateTime")
             };
             return dbTables[(int)tableName].Fields;
         }
@@ -110,7 +114,7 @@ namespace LibraryDBMS.Libs
 
         // Bulk insert using transaction
         // https://learn.microsoft.com/en-us/dotnet/standard/data/sqlite/bulk-insert
-        public static bool BulkInsertRecord(DataTable values)
+        public static bool BulkInsertBookRecord(DataTable values)
         {
             Conn.Open();
             Cmd = new SQLiteCommand();
@@ -119,11 +123,23 @@ namespace LibraryDBMS.Libs
             {
                 try
                 {
+                    // Insert or replace, will delete the row first if exist then insert, this will cause foreign key constraint failed if the row primary key has been referenced
+                    //Cmd.CommandText =
+                    //@"
+                    //    INSERT OR REPLACE INTO tblBooks(bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded)
+                    //    VALUES ($bookID,$isbn,$dewey,$title,$author,$publisher,$publishYear,$pages,$other,$qty,$cateID,$dateAdded)
+                    //";
+
+                    // similar to upsert, if exist will update,if not insert
                     Cmd.CommandText =
                     @"
                         INSERT OR REPLACE INTO tblBooks(bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded)
                         VALUES ($bookID,$isbn,$dewey,$title,$author,$publisher,$publishYear,$pages,$other,$qty,$cateID,$dateAdded)
+                        ON CONFLICT(bookID) 
+                        DO UPDATE SET isbn=$isbn,dewey=$dewey,title=$title,author=$author,publisher=$publisher,publishYear=$publishYear,pages=$pages,other=$other,qty=$qty,cateID=$cateID,dateAdded=$dateAdded
                     ";
+
+
 
                     var parameters = new SQLiteParameter[]
                     {
@@ -138,16 +154,18 @@ namespace LibraryDBMS.Libs
                         new SQLiteParameter("$other"),
                         new SQLiteParameter("$qty"),
                         new SQLiteParameter("$cateID"),
-                        new SQLiteParameter("$dateAdded")
+                        new SQLiteParameter("$dateAdded"),
                     };
                     Cmd.Parameters.AddRange(parameters);
 
                     // Insert a lot of data
                     foreach(DataRow row in values.Rows)
                     {
+                        string param = "";
                         for (int i = 0; i < values.Columns.Count; i++)
                         {
                             parameters[i].Value = row[i].ToString();
+                            param += row[i].ToString() + ",";
                         }
                         Cmd.ExecuteNonQuery();
                     }
@@ -170,6 +188,8 @@ namespace LibraryDBMS.Libs
             }
             return false;
         }
+
+
 
         public static bool UpdateRecord(string tableName, string fieldNames,
             string conditionFIeldName, string conditionValue, List<string> values,
@@ -832,12 +852,12 @@ namespace LibraryDBMS.Libs
 
         public static void LogTimestampUserLogin(DataTable user)
         {
-            string username = user.Rows[0]["username"].ToString();
+            string userID = user.Rows[0]["userID"].ToString();
             string info = $"Logged in";
             string dateTime = $"{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             List<string> userLog = new List<string>()
             {
-                username,
+                userID,
                 info,
                 dateTime
             };
@@ -846,12 +866,12 @@ namespace LibraryDBMS.Libs
 
         public static void LogTimestampUserLogout(DataTable user)
         {
-            string username = user.Rows[0]["username"].ToString();
+            string userID = user.Rows[0]["userID"].ToString();
             string info = $"Logged out";
             string dateTime = $"{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             List<string> userLog = new List<string>()
             {
-                username,
+                userID,
                 info,
                 dateTime
             };
@@ -979,6 +999,132 @@ namespace LibraryDBMS.Libs
                 rbFemaleChoice.Checked = true;
             else if (receivedGender == "Monk")
                 rbMonkChoice.Checked = true;
+        }
+
+        public static bool IsValidLoginCredential(string username, string password, out DataTable user)
+        {
+            string query = $"SELECT u.*,r.roleName " +
+                $"FROM tblUser u, tblUserRole ur, tblRole r " +
+                $"WHERE u.username = '{username}' AND u.password = '{password}' " +
+                $"AND u.isActive = 'Yes' AND u.userID = ur.UserID AND r.roleID = ur.roleID;";
+            try
+            {
+                Conn.Open();
+                Cmd = new SQLiteCommand(query, Conn);
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(Cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    //user = (dt.Rows[0]["username"].ToString(), dt.Rows[0]["roleName"].ToString());
+                    user = dt;
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Type of Error :{ex.GetType()}\nMessage : {ex.Message}" +
+                    $"\nStack Trace : \n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cmd.Dispose();
+                Conn.Close();
+            }
+            user = null;
+            return false;
+        }
+
+        // https://code-maze.com/csharp-quicksort-algorithm/
+        public static int[] SortArray(int[] array, int leftIndex, int rightIndex)
+        {
+            var i = leftIndex;
+            var j = rightIndex;
+            var pivot = array[leftIndex];
+            while (i <= j)
+            {
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (leftIndex < j)
+                SortArray(array, leftIndex, j);
+            if (i < rightIndex)
+                SortArray(array, i, rightIndex);
+            return array;
+        }
+
+        public static string GenerateIDForNonWUStudent()
+        {
+            string queryAmountOfNonWUStudent = "SELECT COUNT(studentID) FROM tblStudents WHERE isWUStudent='0';";
+            int AmountOfNonWUStudent = Convert.ToInt32(ExecuteScalarQuery(queryAmountOfNonWUStudent));
+
+            if (AmountOfNonWUStudent == 0)
+            {
+                return "NWU-0001";
+            }
+            else
+            {
+                string onlyWUStudentID = "";
+                string studentID = "";
+                string isWUStudent = "";
+                string queryGetAmountOfAllStudents = "SELECT COUNT(studentID) FROM tblStudents;";
+                int amountOfStudent = Convert.ToInt32(ExecuteScalarQuery(queryGetAmountOfAllStudents));
+                string queryAllID = "SELECT studentID,isWUStudent FROM tblStudents;";
+
+                DataTable dtStudentIDData = GetDataTableFromDBWithQuery(queryAllID);
+
+                var studentIDandIsWUData = new List<string>()
+                {
+                    studentID,
+                    isWUStudent
+                };
+                foreach (DataRow dataRow in dtStudentIDData.Rows)
+                {
+                    studentIDandIsWUData.Add(dataRow[0].ToString());
+                    studentIDandIsWUData.Add(dataRow[1].ToString());
+                }
+                var onlyWUStudent = new List<string>()
+                {
+                    onlyWUStudentID
+                };
+                foreach (DataRow dataRow in dtStudentIDData.Rows)
+                {
+                    if (dataRow[1].ToString() == "0")
+                    {
+                        onlyWUStudent.Add(dataRow[0].ToString().Substring(4));
+                    }
+                    else
+                        continue;
+                }
+                onlyWUStudent.RemoveAt(0);
+                // initialize array only WU Student suffix  0001 
+                int[] suffixOfNonWUID = new int[AmountOfNonWUStudent];
+                for (int i = 0; i < AmountOfNonWUStudent; i++)
+                {
+                    suffixOfNonWUID[i] = Convert.ToInt32(onlyWUStudent[i].TrimStart('0').ToString());
+                }
+                // sort array 
+                int[] sortedNonWUID = SortArray(suffixOfNonWUID, 0, suffixOfNonWUID.Length - 1);
+                int getNumOfNewIndex = ++sortedNonWUID[sortedNonWUID.Length - 1];
+                return "NWU-" + getNumOfNewIndex.ToString().PadLeft(4, '0'); //leading 0
+            }
         }
         #endregion
     }

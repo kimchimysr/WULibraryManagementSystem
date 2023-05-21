@@ -35,7 +35,7 @@ namespace LibraryDBMS.Forms
             InitializeComponent();
             Utils.SetFormIcon(this);
             Utils.FixControlFlickering(panel1);
-            timer.Interval = 60;
+            timer.Interval = 20;
             timer.Tick += Timer_Tick;
             timer.Start();
         }

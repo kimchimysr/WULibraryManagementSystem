@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using IWshRuntimeLibrary;
 using Microsoft.Reporting.WinForms;
+using SharpCompress.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -323,6 +324,14 @@ namespace LibraryDBMS.Libs
                 {
                     dgv.ClearSelection();
                 }
+            }
+        }
+
+        public static void SetControlVisibility(bool visibility,params Control[] ctrl)
+        {
+            foreach (Control ct in ctrl)
+            {
+                ct.Visible = visibility;
             }
         }
 
@@ -759,12 +768,20 @@ namespace LibraryDBMS.Libs
                 else
                 {
                     dt = LibModule.GetDataTableFromDBWithTableName(table);
+                    if (table == "tblBooks")
+                    {
+                        dt = LibModule.GetDataTableFromDBWithQuery("SELECT bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded FROM tblBooks;");//LibModule.GetDataTableFromDBWithTableName("tblBooks");
+                    }
                     workbook.Worksheets.Add(dt, table);
                     workbook.SaveAs(sfd.FileName);
                 }
                 Cursor.Current = Cursors.Default;
                 if (File.Exists(Path.GetFullPath(sfd.FileName)))
-                    MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                {
+                    //MessageBox.Show("Successfully exported table!", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (MessageBox.Show("Do you want to open the exported file?", "Open File", MessageBoxButtons.YesNo,MessageBoxIcon.Information) == DialogResult.Yes)
+                        System.Diagnostics.Process.Start(sfd.FileName);
+                }
                 else MessageBox.Show("Cannot export table!", "Export Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -793,7 +810,7 @@ namespace LibraryDBMS.Libs
                     List<string> colName = new List<string>
                         {
                             "bookID", "isbn", "dewey", "title", "author", "publisher", "publishYear", "pages", "other",
-                            "qty", "cateID", "dateAdded",
+                            "qty", "cateID", "dateAdded"
                         };
 
                     //Create a new DataTable.
@@ -827,7 +844,7 @@ namespace LibraryDBMS.Libs
                                 // Compare excel columns and tbkBook columns
                                 if (!dtColName.SequenceEqual(colName))
                                 {
-                                    MessageBox.Show("Excel file has wrong format! Cannot import data!", "Import Cancelled",
+                                    MessageBox.Show("Excel file has wrong format! Cannot import data! \nPlease make sure excel has the following columns in order: bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded", "Import Cancelled",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
@@ -857,7 +874,7 @@ namespace LibraryDBMS.Libs
                     }
 
                     // Insert rows into database
-                    if (LibModule.BulkInsertRecord(dt))
+                    if (LibModule.BulkInsertBookRecord(dt))
                     {
                         MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1013,6 +1030,14 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        public static int GetAmountOfActiveAdminUser()
+        {
+            int amount = int.Parse(LibModule.ExecuteScalarQuery("SELECT COUNT(*) " +
+                "FROM tblUserRole a INNER JOIN tblUser b ON b.userID = a.userID " +
+                "INNER JOIN tblRole c on c.roleID = a.roleID " +
+                "WHERE b.isActive = 'Yes' AND c.roleName = 'Admin'"));
+            return amount;
+        }
         #endregion
 
         #region Form Related

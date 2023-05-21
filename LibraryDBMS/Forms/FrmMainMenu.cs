@@ -12,6 +12,7 @@ namespace LibraryDBMS.Forms
 {
     public partial class FrmMainMenu : Form
     {
+        private FrmLogin frmLogin;
         public DataTable user { get; set; }
         public NotifyIcon niBookLoan = new NotifyIcon();
         private UserSetting us = new UserSetting();
@@ -22,10 +23,12 @@ namespace LibraryDBMS.Forms
 
         internal bool hasClickExitOrRestartButton = false;
 
-        public FrmMainMenu()
+        public FrmMainMenu(FrmLogin frmLogin,DataTable user)
         {
             InitializeComponent();
             Utils.SetFormIcon(this);
+            this.frmLogin = frmLogin;
+            this.user = user;
             InitializeValues();
         }
 
@@ -34,22 +37,23 @@ namespace LibraryDBMS.Forms
             // load splash screen
             var frmSplashScreen = new FrmSplashScreen();
             frmSplashScreen.ShowDialog();
-            // show user registration dialog if application launch for the first time
-            if (IsFirstTimeApplicationLaunch())
-            {
-                var dialogUserRegistration = new DialogUserRegistration();
-                dialogUserRegistration.ShowDialog();
-            }
+            //// show user registration dialog if application launch for the first time
+            //if (IsFirstTimeApplicationLaunch())
+            //{
+            //    var dialogUserRegistration = new DialogUserRegistration();
+            //    dialogUserRegistration.ShowDialog();
+            //}
             // drag form
             Utils.DragFormWithControlMouseDown(this, pTitleBar);
             // fix flickering
             Utils.FixControlFlickering(pContainer);
-            // get user information
-            user = LibModule.GetDataTableFromDBWithTableName("tblUser");
+            //// get user information
+            //user = LibModule.GetDataTableFromDBWithTableName("tblUser");
             // add application version
             lblAppTitle.Text += $" v{Application.ProductVersion}";
             // open form to start counting uptime
             OpenChildForm(new FrmDashboard(this), pDashboard);
+            SetUserPermission();
             AppliedUserSetting();
             LibModule.LogTimestampUserLogin(user);
             ShowBooksDueAndOverdueNotification();
@@ -62,6 +66,14 @@ namespace LibraryDBMS.Forms
                 return false;
 
             return true;
+        }
+
+        private void SetUserPermission()
+        {
+            if (user.Rows[0]["roleName"].ToString().ToLower() == "admin")
+                Utils.SetControlVisibility(true, btnManageUser);
+            else
+                Utils.SetControlVisibility(false, btnManageUser);
         }
 
         private void AppliedUserSetting()
@@ -146,11 +158,28 @@ namespace LibraryDBMS.Forms
                     ActivateButton(btnNotification);
                     OpenChildForm(new FrmNotification(), pNotification);
                     break;
+                case "btnManageUser":
+                    ActivateButton(btnManageUser);
+                    OpenChildForm(new FrmManageUser(this), pManageUser);
+                    break;
                 case "btnAccount":
                     OpenChildFormAsDialog(new DialogUserAccount(user));
                     break;
                 case "btnSetting":
                     OpenChildFormAsDialog(new DialogSetting(this, user));
+                    break;
+                case "btnLogout":
+                    DialogResult result = MessageBox.Show("Do you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (result == DialogResult.Yes)
+                    {
+                        LibModule.LogTimestampUserLogout(user);
+                        hasClickExitOrRestartButton = true;
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
+                    break;
+                case "btnChangePassword":
+                    OpenChildFormAsDialog(new DialogChangePassword(this));
                     break;
                 case "btnAbout":
                     OpenChildFormAsDialog(new DialogAbout());
@@ -171,8 +200,8 @@ namespace LibraryDBMS.Forms
                     }
                     break;
                 case "btnExit":
-                    DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (result == DialogResult.Yes)
+                    DialogResult result1 = MessageBox.Show("Are you sure you want to exit?", "Exit?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result1 == DialogResult.Yes)
                     {
                         hasClickExitOrRestartButton = true;
                         LibModule.LogTimestampUserLogout(user);
@@ -268,6 +297,8 @@ namespace LibraryDBMS.Forms
                 if (result == DialogResult.Yes)
                 {
                     LibModule.LogTimestampUserLogout(user);
+                    if (frmLogin != null)
+                        frmLogin.Close();
                 }
                 else
                 {
