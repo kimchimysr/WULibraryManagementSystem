@@ -170,6 +170,64 @@ namespace LibraryDBMS.Libs
             }
             return false;
         }
+        public static bool BulkInsertStudentRecord(DataTable values)
+        {
+            Conn.Open();
+            Cmd = new SQLiteCommand();
+            Cmd.Connection = Conn;
+            using (var transaction = Conn.BeginTransaction())
+            {
+                try
+                {
+                    Cmd.CommandText =
+                    @"
+                        INSERT OR REPLACE INTO tblStudents(studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent)
+                        VALUES ($studentID,$firstName,$lastName,$gender,$year,$major,$tel,$dateAdded,$isWUStudent,$otherStudent)
+                    ";
+
+                    var parameters = new SQLiteParameter[]
+                    {
+                        new SQLiteParameter("$studentID"),
+                        new SQLiteParameter("$firstName"),
+                        new SQLiteParameter("$lastName"),
+                        new SQLiteParameter("$gender"),
+                        new SQLiteParameter("$year"),
+                        new SQLiteParameter("$major"),
+                        new SQLiteParameter("$tel"),
+                        new SQLiteParameter("$dateAdded"),
+                        new SQLiteParameter("$isWUStudent"),
+                        new SQLiteParameter("$otherStudent")
+                    };
+                    Cmd.Parameters.AddRange(parameters);
+
+                    // Insert a lot of data
+                    foreach (DataRow row in values.Rows)
+                    {
+                        for (int i = 0; i < values.Columns.Count; i++)
+                        {
+                            parameters[i].Value = row[i].ToString();
+                        }
+                        Cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                    "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (Cmd != null)
+                        Cmd.Dispose();
+                    if (Conn != null)
+                        Conn.Close();
+                }
+            }
+            return false;
+        }
 
         public static bool UpdateRecord(string tableName, string fieldNames,
             string conditionFIeldName, string conditionValue, List<string> values,

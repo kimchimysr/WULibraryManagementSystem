@@ -52,6 +52,11 @@ namespace LibraryDBMS.Forms
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: No");
                 }
+                else if(dgv.Columns[i].HeaderText == "Book ID")
+                {
+                    string bookIDNumOnly = dgv.Rows[rowIndex].Cells[i].Value.ToString();
+                    columns.AppendLine($"{dgv.Columns[i].HeaderText}: {"Book"+bookIDNumOnly.PadLeft(8,'0')}");
+                }
                 else
                 {
                     columns.AppendLine($"{dgv.Columns[i].HeaderText}: {dgv.Rows[rowIndex].Cells[i].Value}");

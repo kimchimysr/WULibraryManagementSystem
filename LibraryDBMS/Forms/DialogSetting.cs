@@ -39,6 +39,9 @@ namespace LibraryDBMS.Forms
             Button btn = (Button)sender;
             switch (btn.Name)
             {
+                case "btnImportStudent":
+                    Utils.ImportStudentExcelDataIntoDatabase();
+                    break;
                 case "btnImport":
                     Utils.ImportExcelDataIntoDatabase();
                     break;

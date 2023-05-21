@@ -36,9 +36,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbAutoUpdate = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbSidebarCollapse = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbAutoStartup = new LibraryDBMS.CustomControls.RJToggleButton();
             this.tbStartInFullscreen = new LibraryDBMS.CustomControls.RJToggleButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.cbStartupForm = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,8 +59,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbAutoUpdate = new LibraryDBMS.CustomControls.RJToggleButton();
+            this.btnImportStudent = new System.Windows.Forms.Button();
             this.pTitleBar.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -170,6 +171,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Startup|Update";
             // 
+            // tbAutoUpdate
+            // 
+            this.tbAutoUpdate.AutoSize = true;
+            this.tbAutoUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbAutoUpdate.Location = new System.Drawing.Point(343, 172);
+            this.tbAutoUpdate.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tbAutoUpdate.Name = "tbAutoUpdate";
+            this.tbAutoUpdate.OffBackColor = System.Drawing.Color.DarkGray;
+            this.tbAutoUpdate.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tbAutoUpdate.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
+            this.tbAutoUpdate.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tbAutoUpdate.Size = new System.Drawing.Size(45, 22);
+            this.tbAutoUpdate.TabIndex = 4;
+            this.tbAutoUpdate.UseVisualStyleBackColor = true;
+            // 
             // tbSidebarCollapse
             // 
             this.tbSidebarCollapse.AutoSize = true;
@@ -214,6 +230,16 @@
             this.tbStartInFullscreen.Size = new System.Drawing.Size(45, 22);
             this.tbStartInFullscreen.TabIndex = 2;
             this.tbStartInFullscreen.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 172);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(290, 22);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Auto update application in background:";
             // 
             // cbStartupForm
             // 
@@ -274,6 +300,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnImportStudent);
             this.groupBox2.Controls.Add(this.btnBackup);
             this.groupBox2.Controls.Add(this.btnImport);
             this.groupBox2.Controls.Add(this.btnRestore);
@@ -297,7 +324,7 @@
             this.btnBackup.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnBackup.ForeColor = System.Drawing.SystemColors.Control;
             this.btnBackup.Image = global::LibraryDBMS.Properties.Resources.data_backup_26px;
-            this.btnBackup.Location = new System.Drawing.Point(142, 37);
+            this.btnBackup.Location = new System.Drawing.Point(284, 37);
             this.btnBackup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(114, 40);
@@ -318,12 +345,12 @@
             this.btnImport.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnImport.ForeColor = System.Drawing.SystemColors.Control;
             this.btnImport.Image = global::LibraryDBMS.Properties.Resources.import_26px;
-            this.btnImport.Location = new System.Drawing.Point(11, 37);
+            this.btnImport.Location = new System.Drawing.Point(153, 37);
             this.btnImport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(125, 40);
             this.btnImport.TabIndex = 7;
-            this.btnImport.Text = "  Import";
+            this.btnImport.Text = "Book";
             this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImport.UseVisualStyleBackColor = false;
@@ -339,7 +366,7 @@
             this.btnRestore.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRestore.ForeColor = System.Drawing.SystemColors.Control;
             this.btnRestore.Image = global::LibraryDBMS.Properties.Resources.data_recovery_26px;
-            this.btnRestore.Location = new System.Drawing.Point(263, 37);
+            this.btnRestore.Location = new System.Drawing.Point(405, 37);
             this.btnRestore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(125, 40);
@@ -502,30 +529,26 @@
             this.btnRestart.UseVisualStyleBackColor = false;
             this.btnRestart.Click += new System.EventHandler(this.Button_Click);
             // 
-            // label7
+            // btnImportStudent
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 172);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(290, 22);
-            this.label7.TabIndex = 43;
-            this.label7.Text = "Auto update application in background:";
-            // 
-            // tbAutoUpdate
-            // 
-            this.tbAutoUpdate.AutoSize = true;
-            this.tbAutoUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbAutoUpdate.Location = new System.Drawing.Point(343, 172);
-            this.tbAutoUpdate.MinimumSize = new System.Drawing.Size(45, 22);
-            this.tbAutoUpdate.Name = "tbAutoUpdate";
-            this.tbAutoUpdate.OffBackColor = System.Drawing.Color.DarkGray;
-            this.tbAutoUpdate.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.tbAutoUpdate.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(49)))), ((int)(((byte)(89)))));
-            this.tbAutoUpdate.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tbAutoUpdate.Size = new System.Drawing.Size(45, 22);
-            this.tbAutoUpdate.TabIndex = 4;
-            this.tbAutoUpdate.UseVisualStyleBackColor = true;
+            this.btnImportStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImportStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(91)))), ((int)(((byte)(156)))));
+            this.btnImportStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImportStudent.FlatAppearance.BorderSize = 0;
+            this.btnImportStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportStudent.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnImportStudent.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnImportStudent.Image = global::LibraryDBMS.Properties.Resources.import_26px;
+            this.btnImportStudent.Location = new System.Drawing.Point(22, 37);
+            this.btnImportStudent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnImportStudent.Name = "btnImportStudent";
+            this.btnImportStudent.Size = new System.Drawing.Size(125, 40);
+            this.btnImportStudent.TabIndex = 10;
+            this.btnImportStudent.Text = "Student";
+            this.btnImportStudent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImportStudent.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportStudent.UseVisualStyleBackColor = false;
+            this.btnImportStudent.Click += new System.EventHandler(this.Button_Click);
             // 
             // DialogSetting
             // 
@@ -596,5 +619,6 @@
         private System.Windows.Forms.Label label4;
         private CustomControls.RJToggleButton tbAutoUpdate;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnImportStudent;
     }
 }
