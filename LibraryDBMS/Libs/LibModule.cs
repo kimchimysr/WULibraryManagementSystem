@@ -48,7 +48,7 @@ namespace LibraryDBMS.Libs
             {
                 (DBTable.tblBooks, "bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded"),
                 (DBTable.tblBookCategories, "cateID,cateName"),
-                (DBTable.tblStudents, "studentID,firstName,lastName,gender,year,major,tel,dateAdded"),
+                (DBTable.tblStudents, "studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent"),
                 (DBTable.tblLoanStatus, "loanStatusID,loanStatusName"),
                 (DBTable.tblBorrows, "borrowID,bookID,studentID,dateLoan,dateDue,dateReturned,overdueFine,loanStatusID"),
                 (DBTable.tblUser, "userID,username,roleName,firstName,lastName,gender,dob,addr,tel,email,dateAdded"),
@@ -144,6 +144,64 @@ namespace LibraryDBMS.Libs
 
                     // Insert a lot of data
                     foreach(DataRow row in values.Rows)
+                    {
+                        for (int i = 0; i < values.Columns.Count; i++)
+                        {
+                            parameters[i].Value = row[i].ToString();
+                        }
+                        Cmd.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Type of Error :" + ex.GetType() + "\nMessage : " + ex.Message.ToString() +
+                    "\nStack Trace : \n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    if (Cmd != null)
+                        Cmd.Dispose();
+                    if (Conn != null)
+                        Conn.Close();
+                }
+            }
+            return false;
+        }
+        public static bool BulkInsertStudentRecord(DataTable values)
+        {
+            Conn.Open();
+            Cmd = new SQLiteCommand();
+            Cmd.Connection = Conn;
+            using (var transaction = Conn.BeginTransaction())
+            {
+                try
+                {
+                    Cmd.CommandText =
+                    @"
+                        INSERT OR REPLACE INTO tblStudents(studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent)
+                        VALUES ($studentID,$firstName,$lastName,$gender,$year,$major,$tel,$dateAdded,$isWUStudent,$otherStudent)
+                    ";
+
+                    var parameters = new SQLiteParameter[]
+                    {
+                        new SQLiteParameter("$studentID"),
+                        new SQLiteParameter("$firstName"),
+                        new SQLiteParameter("$lastName"),
+                        new SQLiteParameter("$gender"),
+                        new SQLiteParameter("$year"),
+                        new SQLiteParameter("$major"),
+                        new SQLiteParameter("$tel"),
+                        new SQLiteParameter("$dateAdded"),
+                        new SQLiteParameter("$isWUStudent"),
+                        new SQLiteParameter("$otherStudent")
+                    };
+                    Cmd.Parameters.AddRange(parameters);
+
+                    // Insert a lot of data
+                    foreach (DataRow row in values.Rows)
                     {
                         for (int i = 0; i < values.Columns.Count; i++)
                         {
@@ -979,6 +1037,95 @@ namespace LibraryDBMS.Libs
                 rbFemaleChoice.Checked = true;
             else if (receivedGender == "Monk")
                 rbMonkChoice.Checked = true;
+        }
+        // https://code-maze.com/csharp-quicksort-algorithm/
+        public static int[] SortArray(int[] array, int leftIndex, int rightIndex)
+        {
+            var i = leftIndex;
+            var j = rightIndex;
+            var pivot = array[leftIndex];
+            while (i <= j)
+            {
+                while (array[i] < pivot)
+                {
+                    i++;
+                }
+
+                while (array[j] > pivot)
+                {
+                    j--;
+                }
+                if (i <= j)
+                {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+
+            if (leftIndex < j)
+                SortArray(array, leftIndex, j);
+            if (i < rightIndex)
+                SortArray(array, i, rightIndex);
+            return array;
+        }
+        public static string GenerateIDForNonWUStudent()
+        {
+            string queryAmountOfNonWUStudent = "SELECT COUNT(studentID) FROM tblStudents WHERE isWUStudent='0';";
+            int AmountOfNonWUStudent = Convert.ToInt32(ExecuteScalarQuery(queryAmountOfNonWUStudent));
+
+            if (AmountOfNonWUStudent == 0)
+            {
+                return "NWU-0001";
+            }
+            else
+            {
+                string onlyWUStudentID = "";
+                string studentID = "";
+                string isWUStudent = "";
+                string queryGetAmountOfAllStudents = "SELECT COUNT(studentID) FROM tblStudents;";
+                int amountOfStudent = Convert.ToInt32(ExecuteScalarQuery(queryGetAmountOfAllStudents));
+                string queryAllID = "SELECT studentID,isWUStudent FROM tblStudents;";
+
+                DataTable dtStudentIDData = GetDataTableFromDBWithQuery(queryAllID);
+
+                var studentIDandIsWUData = new List<string>()
+                {
+                    studentID,
+                    isWUStudent
+                };
+                foreach (DataRow dataRow in dtStudentIDData.Rows)
+                {
+                    studentIDandIsWUData.Add(dataRow[0].ToString());
+                    studentIDandIsWUData.Add(dataRow[1].ToString());
+                }
+                var onlyWUStudent = new List<string>()
+                {
+                    onlyWUStudentID
+                };
+                foreach (DataRow dataRow in dtStudentIDData.Rows)
+                {
+                    if (dataRow[1].ToString() == "0")
+                    {
+                        onlyWUStudent.Add(dataRow[0].ToString().Substring(4));
+                    }
+                    else
+                        continue;
+                }
+                onlyWUStudent.RemoveAt(0);
+                // initialize array only WU Student suffix  0001 
+                int[] suffixOfNonWUID = new int[AmountOfNonWUStudent];
+                for (int i = 0; i < AmountOfNonWUStudent; i++)
+                {
+                    suffixOfNonWUID[i] = Convert.ToInt32(onlyWUStudent[i].TrimStart('0').ToString());
+                }
+                // sort array 
+                int[] sortedNonWUID = SortArray(suffixOfNonWUID, 0, suffixOfNonWUID.Length - 1);
+                int getNumOfNewIndex = ++sortedNonWUID[sortedNonWUID.Length - 1];
+                return "NWU-" + getNumOfNewIndex.ToString().PadLeft(4, '0'); //leading 0
+            }
         }
         #endregion
     }

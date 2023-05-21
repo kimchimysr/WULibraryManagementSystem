@@ -55,6 +55,9 @@
             this.dtpDateAdded = new System.Windows.Forms.DateTimePicker();
             this.cbMajor = new System.Windows.Forms.ComboBox();
             this.rbMonk = new System.Windows.Forms.RadioButton();
+            this.chbIsWUStudent = new System.Windows.Forms.CheckBox();
+            this.txtStudentOther = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +73,7 @@
             this.cbYear.Location = new System.Drawing.Point(132, 197);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(266, 30);
-            this.cbYear.TabIndex = 7;
+            this.cbYear.TabIndex = 8;
             // 
             // rbFemale
             // 
@@ -79,7 +82,7 @@
             this.rbFemale.Location = new System.Drawing.Point(198, 165);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(79, 26);
-            this.rbFemale.TabIndex = 5;
+            this.rbFemale.TabIndex = 6;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
             // 
@@ -91,7 +94,7 @@
             this.rbMale.Location = new System.Drawing.Point(132, 165);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(60, 26);
-            this.rbMale.TabIndex = 4;
+            this.rbMale.TabIndex = 5;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
@@ -107,10 +110,10 @@
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(33, 407);
+            this.btnCancel.Location = new System.Drawing.Point(33, 470);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(365, 56);
-            this.btnCancel.TabIndex = 13;
+            this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -127,10 +130,10 @@
             this.btnSaveChanges.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveChanges.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSaveChanges.Image = global::LibraryDBMS.Properties.Resources.save_26px;
-            this.btnSaveChanges.Location = new System.Drawing.Point(33, 345);
+            this.btnSaveChanges.Location = new System.Drawing.Point(33, 408);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(160, 56);
-            this.btnSaveChanges.TabIndex = 11;
+            this.btnSaveChanges.TabIndex = 12;
             this.btnSaveChanges.Text = "  &Save Changes";
             this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSaveChanges.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -212,7 +215,7 @@
             this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentID.Location = new System.Drawing.Point(132, 66);
             this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(266, 26);
+            this.txtStudentID.Size = new System.Drawing.Size(134, 26);
             this.txtStudentID.TabIndex = 1;
             // 
             // txtTel
@@ -221,7 +224,7 @@
             this.txtTel.Location = new System.Drawing.Point(132, 269);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(266, 26);
-            this.txtTel.TabIndex = 9;
+            this.txtTel.TabIndex = 10;
             // 
             // txtLastName
             // 
@@ -229,7 +232,7 @@
             this.txtLastName.Location = new System.Drawing.Point(132, 132);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(266, 26);
-            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TabIndex = 4;
             // 
             // txtFirstName
             // 
@@ -237,7 +240,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(132, 99);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(266, 26);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 3;
             // 
             // lblHeader
             // 
@@ -261,10 +264,10 @@
             this.btnClear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.Control;
             this.btnClear.Image = global::LibraryDBMS.Properties.Resources.clear_symbol_26px;
-            this.btnClear.Location = new System.Drawing.Point(238, 345);
+            this.btnClear.Location = new System.Drawing.Point(238, 408);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(160, 56);
-            this.btnClear.TabIndex = 12;
+            this.btnClear.TabIndex = 13;
             this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -302,7 +305,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 478);
+            this.panel1.Size = new System.Drawing.Size(3, 541);
             this.panel1.TabIndex = 35;
             // 
             // panel2
@@ -311,14 +314,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(420, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 478);
+            this.panel2.Size = new System.Drawing.Size(3, 541);
             this.panel2.TabIndex = 36;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 481);
+            this.panel3.Location = new System.Drawing.Point(3, 544);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(420, 3);
             this.panel3.TabIndex = 37;
@@ -353,7 +356,7 @@
             this.cbMajor.Location = new System.Drawing.Point(132, 233);
             this.cbMajor.Name = "cbMajor";
             this.cbMajor.Size = new System.Drawing.Size(266, 30);
-            this.cbMajor.TabIndex = 8;
+            this.cbMajor.TabIndex = 9;
             // 
             // rbMonk
             // 
@@ -362,9 +365,41 @@
             this.rbMonk.Location = new System.Drawing.Point(283, 165);
             this.rbMonk.Name = "rbMonk";
             this.rbMonk.Size = new System.Drawing.Size(64, 26);
-            this.rbMonk.TabIndex = 6;
+            this.rbMonk.TabIndex = 7;
             this.rbMonk.Text = "Monk";
             this.rbMonk.UseVisualStyleBackColor = true;
+            // 
+            // chbIsWUStudent
+            // 
+            this.chbIsWUStudent.Checked = true;
+            this.chbIsWUStudent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbIsWUStudent.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.chbIsWUStudent.Location = new System.Drawing.Point(283, 66);
+            this.chbIsWUStudent.Name = "chbIsWUStudent";
+            this.chbIsWUStudent.Size = new System.Drawing.Size(115, 26);
+            this.chbIsWUStudent.TabIndex = 2;
+            this.chbIsWUStudent.Text = "WU Student";
+            this.chbIsWUStudent.UseVisualStyleBackColor = true;
+            this.chbIsWUStudent.CheckedChanged += new System.EventHandler(this.chbIsWUStudent_CheckedChanged);
+            // 
+            // txtStudentOther
+            // 
+            this.txtStudentOther.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentOther.Location = new System.Drawing.Point(132, 333);
+            this.txtStudentOther.Multiline = true;
+            this.txtStudentOther.Name = "txtStudentOther";
+            this.txtStudentOther.Size = new System.Drawing.Size(266, 62);
+            this.txtStudentOther.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(29, 351);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 22);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Other:";
             // 
             // DialogAddEditStudent
             // 
@@ -374,7 +409,10 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(426, 487);
+            this.ClientSize = new System.Drawing.Size(426, 550);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtStudentOther);
+            this.Controls.Add(this.chbIsWUStudent);
             this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
@@ -440,5 +478,8 @@
         private System.Windows.Forms.DateTimePicker dtpDateAdded;
         private System.Windows.Forms.ComboBox cbMajor;
         private System.Windows.Forms.RadioButton rbMonk;
+        private System.Windows.Forms.CheckBox chbIsWUStudent;
+        private System.Windows.Forms.TextBox txtStudentOther;
+        private System.Windows.Forms.Label label5;
     }
 }

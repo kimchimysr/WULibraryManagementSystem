@@ -49,6 +49,7 @@ namespace LibraryDBMS.Forms
                         LibModule.ExecuteScalarQuery($"SELECT studentID FROM tblStudents WHERE studentID='{txtStudentID.Text.Trim()}';");
                     if (!string.IsNullOrEmpty(studentExists))
                     {
+                        chbIsWUStudent.Enabled = false;
                         string query =
                         $"SELECT * FROM tblStudents WHERE studentID = '{txtStudentID.Text.Trim()}';";
                         DataTable result = LibModule.GetDataTableFromDBWithQuery(query);
@@ -61,6 +62,8 @@ namespace LibraryDBMS.Forms
                             cbMajor.Text = result.Rows[0]["major"].ToString();
                             txtTel.Text = result.Rows[0]["tel"].ToString();
                             dtpDateAdded.Text = result.Rows[0]["dateAdded"].ToString();
+                            chbIsWUStudent.Checked = (result.Rows[0]["isWUStudent"].ToString() == "1") ? true : false;
+                            txtStudentOther.Text = result.Rows[0]["otherStudent"].ToString();
                         }
 
                         query = $"SELECT title,loanStatusName FROM viewBorrowedBooks " +
@@ -89,6 +92,8 @@ namespace LibraryDBMS.Forms
                         cbMajor.Text = "";
                         txtTel.Clear();
                         dtpDateAdded.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                        chbIsWUStudent.Checked = true;
+                        txtStudentOther.Clear();
                         MessageBox.Show("Please enter new student information!", "Student ID doesn't exist!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
@@ -194,6 +199,8 @@ namespace LibraryDBMS.Forms
                     string major = cbMajor.Text.Trim();
                     string telephone = txtTel.Text.Trim();
                     string dateAdded = dtpDateAdded.Text.Trim();
+                    string isWUStudent = (chbIsWUStudent.Checked) ? "1" : "0";
+                    string otherBorrow = txtStudentOther.Text.Trim(); // data for other textbox
 
                     List<string> borrower = new List<string>
                     {
@@ -204,7 +211,9 @@ namespace LibraryDBMS.Forms
                         year,
                         major,
                         telephone,
-                        dateAdded
+                        dateAdded,
+                        isWUStudent,
+                        otherBorrow
                     };
 
                     LibModule.UpdateRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents),
@@ -221,6 +230,8 @@ namespace LibraryDBMS.Forms
                 string major = cbMajor.Text.Trim();
                 string telephone = txtTel.Text.Trim();
                 string dateAdded = dtpDateAdded.Text.Trim();
+                string isWUStudent = (chbIsWUStudent.Checked) ? "1" : "0";
+                string otherBorrow = txtStudentOther.Text.Trim();
 
                 List<string> borrower = new List<string>
                 {
@@ -231,7 +242,9 @@ namespace LibraryDBMS.Forms
                     year,
                     major,
                     telephone,
-                    dateAdded
+                    dateAdded,
+                    isWUStudent,
+                    otherBorrow
                 };
                 LibModule.InsertRecord("tblStudents", LibModule.GetTableField(DBTable.tblStudents), borrower);
             }
@@ -240,13 +253,16 @@ namespace LibraryDBMS.Forms
         private bool StudentHasAnyChanges(DataTable student)
         {
             string gender = LibModule.GetGender(rbMale, rbFemale, rbMonk);
+            string isWUStudentString = (chbIsWUStudent.Checked) ? "1" : "0";
             if (student.Rows[0]["studentID"].ToString() != txtStudentID.Text.Trim() ||
                 student.Rows[0]["firstName"].ToString() != txtFirstName.Text.Trim() ||
                 student.Rows[0]["lastName"].ToString() != txtLastName.Text.Trim() ||
                 student.Rows[0]["gender"].ToString() != gender ||
                 student.Rows[0]["year"].ToString() != cbYear.Text.Trim() ||
                 student.Rows[0]["major"].ToString() != cbMajor.Text.Trim() ||
-                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim())
+                student.Rows[0]["tel"].ToString() != txtTel.Text.Trim() ||
+                student.Rows[0]["isWUStudent"].ToString() != isWUStudentString ||
+                student.Rows[0]["otherstudent"].ToString() != txtStudentOther.Text.Trim())
                 return true;
 
             return false;
@@ -270,6 +286,14 @@ namespace LibraryDBMS.Forms
         private void txtStudentID_TextChanged(object sender, EventArgs e)
         {
             Utils.searchButtonTextChanged(sender, btnSearchStudentID);
+        }
+
+        private void chbIsWUStudent_CheckedChanged(object sender, EventArgs e)
+        {
+            txtStudentID.ReadOnly = (chbIsWUStudent.Checked) ? false : true;
+            txtStudentID.Text = LibModule.GenerateIDForNonWUStudent();
+            if(chbIsWUStudent.Checked )
+                txtStudentID.Clear();
         }
     }
 }

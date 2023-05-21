@@ -71,6 +71,10 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.rbMonk = new System.Windows.Forms.RadioButton();
+            this.chbIsWUStudent = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtStudentOther = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -100,10 +104,10 @@
             this.dtpIssueDate.CustomFormat = "yyyy-MM-dd";
             this.dtpIssueDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpIssueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpIssueDate.Location = new System.Drawing.Point(650, 328);
+            this.dtpIssueDate.Location = new System.Drawing.Point(650, 330);
             this.dtpIssueDate.Name = "dtpIssueDate";
             this.dtpIssueDate.Size = new System.Drawing.Size(345, 26);
-            this.dtpIssueDate.TabIndex = 13;
+            this.dtpIssueDate.TabIndex = 14;
             this.dtpIssueDate.Value = new System.DateTime(2022, 9, 14, 0, 0, 0, 0);
             this.dtpIssueDate.ValueChanged += new System.EventHandler(this.dtpIssueDate_ValueChanged);
             // 
@@ -111,7 +115,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(517, 328);
+            this.label5.Location = new System.Drawing.Point(517, 330);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(127, 22);
             this.label5.TabIndex = 54;
@@ -121,7 +125,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(517, 360);
+            this.label1.Location = new System.Drawing.Point(517, 362);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 22);
             this.label1.TabIndex = 54;
@@ -133,7 +137,7 @@
             this.dtpDueDate.Enabled = false;
             this.dtpDueDate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDueDate.Location = new System.Drawing.Point(650, 360);
+            this.dtpDueDate.Location = new System.Drawing.Point(650, 362);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtpDueDate.Size = new System.Drawing.Size(345, 26);
@@ -146,7 +150,7 @@
             this.txtStudentID.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentID.Location = new System.Drawing.Point(117, 98);
             this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(375, 26);
+            this.txtStudentID.Size = new System.Drawing.Size(237, 26);
             this.txtStudentID.TabIndex = 1;
             this.txtStudentID.TextChanged += new System.EventHandler(this.txtStudentID_TextChanged);
             // 
@@ -190,7 +194,7 @@
             this.btnSearchStudentID.Location = new System.Drawing.Point(117, 130);
             this.btnSearchStudentID.Name = "btnSearchStudentID";
             this.btnSearchStudentID.Size = new System.Drawing.Size(375, 27);
-            this.btnSearchStudentID.TabIndex = 2;
+            this.btnSearchStudentID.TabIndex = 3;
             this.btnSearchStudentID.Text = "Search Student";
             this.btnSearchStudentID.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchStudentID.UseVisualStyleBackColor = false;
@@ -206,7 +210,7 @@
             this.btnSearchBookID.Location = new System.Drawing.Point(620, 130);
             this.btnSearchBookID.Name = "btnSearchBookID";
             this.btnSearchBookID.Size = new System.Drawing.Size(375, 26);
-            this.btnSearchBookID.TabIndex = 4;
+            this.btnSearchBookID.TabIndex = 5;
             this.btnSearchBookID.Text = "Select Book";
             this.btnSearchBookID.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearchBookID.UseVisualStyleBackColor = false;
@@ -228,7 +232,7 @@
             this.txtBookID.Location = new System.Drawing.Point(620, 98);
             this.txtBookID.Name = "txtBookID";
             this.txtBookID.Size = new System.Drawing.Size(375, 26);
-            this.txtBookID.TabIndex = 3;
+            this.txtBookID.TabIndex = 4;
             // 
             // lblStudentStatus
             // 
@@ -312,7 +316,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(3, 48);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 412);
+            this.panel1.Size = new System.Drawing.Size(3, 444);
             this.panel1.TabIndex = 106;
             // 
             // panel2
@@ -321,16 +325,16 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1021, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 412);
+            this.panel2.Size = new System.Drawing.Size(3, 444);
             this.panel2.TabIndex = 107;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 457);
+            this.panel3.Location = new System.Drawing.Point(6, 492);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1015, 3);
+            this.panel3.Size = new System.Drawing.Size(1015, 0);
             this.panel3.TabIndex = 108;
             // 
             // btnSave
@@ -343,10 +347,10 @@
             this.btnSave.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSave.Image = global::LibraryDBMS.Properties.Resources.save_26px;
-            this.btnSave.Location = new System.Drawing.Point(18, 398);
+            this.btnSave.Location = new System.Drawing.Point(523, 426);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 50);
-            this.btnSave.TabIndex = 14;
+            this.btnSave.TabIndex = 16;
             this.btnSave.Text = "  &Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -364,10 +368,10 @@
             this.btnCancel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Image = global::LibraryDBMS.Properties.Resources.cancel_26px;
-            this.btnCancel.Location = new System.Drawing.Point(342, 398);
+            this.btnCancel.Location = new System.Drawing.Point(845, 426);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 50);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "  &Cancel";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -384,10 +388,10 @@
             this.btnClear.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.Control;
             this.btnClear.Image = global::LibraryDBMS.Properties.Resources.clear_symbol_26px;
-            this.btnClear.Location = new System.Drawing.Point(180, 398);
+            this.btnClear.Location = new System.Drawing.Point(679, 426);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(150, 50);
-            this.btnClear.TabIndex = 15;
+            this.btnClear.TabIndex = 17;
             this.btnClear.Text = "  Cl&ear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -399,12 +403,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(517, 384);
+            this.label6.Location = new System.Drawing.Point(115, 390);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(327, 66);
+            this.label6.Size = new System.Drawing.Size(377, 22);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Note: \r\n- Each person can only loan 1 book at a time\r\n- Book can be loaned up to " +
-    "1 week";
+            this.label6.Text = "Note:  - Each person can only loan 1 book at a time";
             // 
             // cbMajor
             // 
@@ -414,7 +417,7 @@
             this.cbMajor.Location = new System.Drawing.Point(117, 295);
             this.cbMajor.Name = "cbMajor";
             this.cbMajor.Size = new System.Drawing.Size(375, 30);
-            this.cbMajor.TabIndex = 11;
+            this.cbMajor.TabIndex = 12;
             // 
             // dtpDateAdded
             // 
@@ -440,7 +443,7 @@
             this.cbYear.Location = new System.Drawing.Point(117, 261);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(375, 30);
-            this.cbYear.TabIndex = 10;
+            this.cbYear.TabIndex = 11;
             // 
             // rbFemale
             // 
@@ -449,7 +452,7 @@
             this.rbFemale.Location = new System.Drawing.Point(183, 229);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(79, 26);
-            this.rbFemale.TabIndex = 8;
+            this.rbFemale.TabIndex = 9;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
             // 
@@ -461,7 +464,7 @@
             this.rbMale.Location = new System.Drawing.Point(117, 229);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(60, 26);
-            this.rbMale.TabIndex = 7;
+            this.rbMale.TabIndex = 8;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
@@ -542,7 +545,7 @@
             this.txtTel.Location = new System.Drawing.Point(117, 329);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(375, 26);
-            this.txtTel.TabIndex = 12;
+            this.txtTel.TabIndex = 13;
             // 
             // txtLastName
             // 
@@ -550,7 +553,7 @@
             this.txtLastName.Location = new System.Drawing.Point(117, 196);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(375, 26);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 7;
             // 
             // txtFirstName
             // 
@@ -558,7 +561,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(117, 161);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(375, 26);
-            this.txtFirstName.TabIndex = 5;
+            this.txtFirstName.TabIndex = 6;
             // 
             // rbMonk
             // 
@@ -567,9 +570,53 @@
             this.rbMonk.Location = new System.Drawing.Point(268, 229);
             this.rbMonk.Name = "rbMonk";
             this.rbMonk.Size = new System.Drawing.Size(64, 26);
-            this.rbMonk.TabIndex = 9;
+            this.rbMonk.TabIndex = 10;
             this.rbMonk.Text = "Monk";
             this.rbMonk.UseVisualStyleBackColor = true;
+            // 
+            // chbIsWUStudent
+            // 
+            this.chbIsWUStudent.AutoSize = true;
+            this.chbIsWUStudent.Checked = true;
+            this.chbIsWUStudent.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbIsWUStudent.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.chbIsWUStudent.Location = new System.Drawing.Point(379, 98);
+            this.chbIsWUStudent.Name = "chbIsWUStudent";
+            this.chbIsWUStudent.Size = new System.Drawing.Size(113, 26);
+            this.chbIsWUStudent.TabIndex = 2;
+            this.chbIsWUStudent.Text = "WU Student";
+            this.chbIsWUStudent.UseVisualStyleBackColor = true;
+            this.chbIsWUStudent.CheckedChanged += new System.EventHandler(this.chbIsWUStudent_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 430);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 22);
+            this.label7.TabIndex = 129;
+            this.label7.Text = "Other:";
+            // 
+            // txtStudentOther
+            // 
+            this.txtStudentOther.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentOther.Location = new System.Drawing.Point(119, 416);
+            this.txtStudentOther.Multiline = true;
+            this.txtStudentOther.Name = "txtStudentOther";
+            this.txtStudentOther.Size = new System.Drawing.Size(375, 62);
+            this.txtStudentOther.TabIndex = 15;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label16.Location = new System.Drawing.Point(513, 391);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(259, 22);
+            this.label16.TabIndex = 131;
+            this.label16.Text = "- Book can be loaned up to 1 week";
             // 
             // DialogIssueBook2
             // 
@@ -579,7 +626,11 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1027, 463);
+            this.ClientSize = new System.Drawing.Size(1027, 495);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtStudentOther);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.chbIsWUStudent);
             this.Controls.Add(this.rbMonk);
             this.Controls.Add(this.cbMajor);
             this.Controls.Add(this.dtpDateAdded);
@@ -676,5 +727,9 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.RadioButton rbMonk;
+        private System.Windows.Forms.CheckBox chbIsWUStudent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtStudentOther;
+        private System.Windows.Forms.Label label16;
     }
 }
