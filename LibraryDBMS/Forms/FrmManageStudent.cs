@@ -127,7 +127,7 @@ namespace LibraryDBMS.Forms
                     PopulateDataGrid();
                     break;
                 case "btnImport":
-                    //Utils.ImportExcelDataIntoDatabase();
+                    Utils.ImportStudentExcelDataIntoDatabase();
                     break;
                 case "btnExport":
                     Utils.ExportDatabaseTableToExcel("tblStudents");

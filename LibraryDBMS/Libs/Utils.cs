@@ -772,6 +772,11 @@ namespace LibraryDBMS.Libs
                     {
                         dt = LibModule.GetDataTableFromDBWithQuery("SELECT bookID,isbn,dewey,title,author,publisher,publishYear,pages,other,qty,cateID,dateAdded FROM tblBooks;");//LibModule.GetDataTableFromDBWithTableName("tblBooks");
                     }
+                    else if (table == "tblStudents")
+                    {
+                        dt = LibModule.GetDataTableFromDBWithQuery("SELECT studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent FROM tblStudents;");//LibModule.GetDataTableFromDBWithTableName("tblBooks");
+                    }
+
                     workbook.Worksheets.Add(dt, table);
                     workbook.SaveAs(sfd.FileName);
                 }
@@ -889,6 +894,109 @@ namespace LibraryDBMS.Libs
             }
         }
 
+        public static void ImportStudentExcelDataIntoDatabase()
+        {
+            MessageBox.Show("Import only work with students data in Excel!",
+                        "Import Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel (*.xlsx)|*.xlsx";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                int rowCount = 0;
+                Cursor.Current = Cursors.WaitCursor;
+                string importFilePath = Path.GetFullPath(ofd.FileName);
+
+                if (File.Exists(importFilePath))
+                {
+                    // tbBook columns
+                    List<string> colName = new List<string>
+                        {
+                            "studentID", "firstName", "lastName", "gender", "year", "major", "tel", "dateAdded",
+                            "isWUStudent", "otherStudent"
+,                        };
+
+                    //Create a new DataTable.
+                    DataTable dt = new DataTable();
+                    using (XLWorkbook workBook = new XLWorkbook(importFilePath))
+                    {
+                        //Read the first Sheet from Excel file.
+                        IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                        //Loop through the Worksheet rows.
+                        bool firstRow = true;
+                        foreach (IXLRow row in workSheet.Rows())
+                        {
+                            if (row.IsEmpty())
+                                break;
+                            //Use the first row to add columns to DataTable.
+                            if (firstRow)
+                            {
+                                foreach (IXLCell cell in row.Cells())
+                                {
+                                    dt.Columns.Add(cell.Value.ToString());
+                                }
+
+
+                                // Get columns name in excel
+                                List<string> dtColName = new List<string>();
+                                foreach (DataColumn col in dt.Columns)
+                                {
+                                    dtColName.Add(col.ColumnName);
+                                }
+
+                                // Compare excel columns and tblStudents columns
+                                if (!dtColName.SequenceEqual(colName))
+                                {
+                                    MessageBox.Show("Excel file has wrong format! Cannot import data! \nPlease make sure excel has the following columns in order: studentID,firstName,lastName,gender,year,major,tel,dateAdded,isWUStudent,otherStudent", "Import Cancelled",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                                firstRow = false;
+                            }
+                            else
+                            {
+                                //Add rows to DataTable.
+                                dt.Rows.Add();
+                                int i = 0;
+                                foreach (IXLCell cell in row.Cells(1, dt.Columns.Count))
+                                {
+                                    //// L is date cell
+                                    //if (cell.Address.ColumnLetter == "L")
+                                    //{
+                                    //    string strDate = cell.Value.ToString();
+                                    //    DateTime date = DateTime.ParseExact(strDate, "dd-MMM-yy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                                    //    dt.Rows[dt.Rows.Count - 1][i] = date.ToString("yyyy-MM-dd");
+                                    //}
+                                    //else dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                    dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                    i++;
+                                }
+                                rowCount++;
+                            }
+                        }
+                    }
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        row[8] = 1;
+                        row[9] = string.Empty;
+                    }
+
+                    // Insert rows into database
+                    if (LibModule.BulkInsertStudentRecord(dt))
+                    {
+                        MessageBox.Show($"Import Finished! {rowCount} records has been added into database!", "Import Completed",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot import data into database!", "Import Incomplete",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    Cursor.Current = Cursors.Default;
+                }
+            }
+        }
         /// <summary>
         /// Copy current Database to C:\Users\[curentUser]\AppData\Roaming
         /// </summary>
