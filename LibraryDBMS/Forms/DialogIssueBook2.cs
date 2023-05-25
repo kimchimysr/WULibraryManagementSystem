@@ -87,6 +87,7 @@ namespace LibraryDBMS.Forms
                     }
                     else
                     {
+                        txtStudentID.ReadOnly = false;
                         txtFirstName.Clear();
                         txtLastName.Clear();
                         rbMale.Checked = true;
@@ -134,6 +135,7 @@ namespace LibraryDBMS.Forms
                     else MessageBox.Show("Please enter valid data!", "Invalid Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 case "btnClear":
+                    txtStudentID.ReadOnly = false;
                     Utils.DoClearControl(this, false, true, false, false, false);
                     btnSearchStudentID.Enabled = false;
                     cbMajor.Text = "";

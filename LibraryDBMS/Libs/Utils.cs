@@ -978,8 +978,27 @@ namespace LibraryDBMS.Libs
                     }
                     foreach (DataRow row in dt.Rows)
                     {
-                        row[8] = 1;
-                        row[9] = string.Empty;
+                        for (int i = 0; i < 8; i++)
+                        {
+                            if (i == 3)
+                                continue;
+                            else if (row[i].ToString() == "")
+                            {
+                                row[i] = "Empty";
+                            }
+                        }
+                        if (row[3].ToString() == "Male" || row[3].ToString() == "male"
+                            || row[3].ToString() == "MALE" || row[3].ToString() == "")
+                        {
+                            row[3] = "M";
+                        }
+                        else if (row[3].ToString() == "Female" || row[3].ToString() == "female"
+                            || row[3].ToString() == "FEMALE")
+                        {
+                            row[3] = "F";
+                        }
+                        //row[8] = 1;
+                        //row[9] = string.Empty;
                     }
 
                     // Insert rows into database
